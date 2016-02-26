@@ -1,0 +1,43 @@
+﻿.m-button {
+	@include button-default;
+	padding     : 7px 0;
+	font-size   : 14px;
+	line-height : 1.75;
+	white-space : nowrap;
+}
+
+.btn-radius {
+	@include button-default;
+	background: #00cbdf;
+	width: 132px;
+	height: 38px;
+	border-radius: 19px;
+	color: #fff;
+	font-size: 15px;
+	line-height: 38px;
+	text-align: center;
+
+	&.btn-download {
+		background: $major-color;
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}
+
+@include respond-to(Mobiles) {
+	.is-full-xs .b-mi {
+		padding : 0 10px;
+	}
+}
+
+@include browsers('IE') {
+	button {
+		overflow: visible;
+	}
+}

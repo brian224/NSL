@@ -1,0 +1,38 @@
+﻿/* ==================== 基本設定 ==================== */
+/* html 最小的寬度 */
+$main-min-width : 960px;
+
+/* 預設字型 */
+$font-family : Arial, '黑體', 'Heiti TC', '微軟正黑體', 'Microsoft JhengHei';
+
+/* PC screen */
+$screen-pc : ($main-min-width - 1);
+/* Device screen */
+$screen-device : 740px;
+
+/* ==================== 顏色設定 ==================== */
+/* 企業識別主色 */
+$major-color : #f54a4f;
+
+/* 企業識別次色 */
+$minor-color : #01a5b5;
+
+/* 企業識別替補色 */
+$sub-color : #00cbdf;
+
+/* 強調色 */
+$highlight-color : #f54a4f;
+
+/* 文字主要顏色 */
+$text-major-color : #f4795d;
+
+/* 文字子顏色 */
+$text-minor-color : #ffffff;
+$text-sub-color : #002326;
+
+/* ==================== 動態時間設定 ==================== */
+$transition-times : .3s;
+
+/* ==================== 物件圓角設定 ==================== */
+/* Module 圓角 */
+$module-border-radius : 19px;

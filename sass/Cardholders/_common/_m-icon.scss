@@ -1,0 +1,107 @@
+﻿.m-icon {
+	display: inline-block;
+	position: relative;
+
+	&.icon-menu {
+		background: #fff;
+		width: 22px;
+		position: relative;
+		top: -1px;
+		vertical-align: middle;
+
+		&:before, &:after {
+			margin-left: -11px;
+			content: '';
+			background: #fff;
+			width: 22px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transition(ease-in-out all 0.3s);
+		}
+	}
+
+	&.icon-download {
+		margin-right: 7px;
+
+		&:before {
+			content: '';
+			background: image-url('shared/icon-download.png') 0 0 no-repeat;
+			display: block;
+			width: 17px;
+			height: 14px;
+		}
+	}
+
+	&.icon-pointer {
+		position: absolute;
+		left: 50%;
+
+		&:before {
+			content: '';
+			background: image-url('shared/icon-pointer.png') 0 0 no-repeat;
+			display: block;
+		}
+	}
+}
+
+@include respond-to(Desktops-Tablets) {
+	.m-icon {
+		&.icon-menu {
+			height: 2px;
+	
+			&:before, &:after {
+				height: 2px;
+			}
+	
+			&:before {
+				margin-top: -8px;
+			}
+	
+			&:after {
+				margin-top: 6px;
+			}
+		}
+
+		&.icon-pointer {
+			margin-left: -32px;
+			top: 43px;
+
+			&:before {
+				width: 67px;
+				height: 88px;
+			}
+		}
+	}
+}
+
+@include respond-to(Mobiles) {
+	.m-icon {
+		&.icon-menu {
+			height: 1px;
+	
+			&:before, &:after {
+				height: 1px;
+			}
+	
+			&:before {
+				margin-top: -7px;
+			}
+	
+			&:after {
+				margin-top: 5px;
+			}
+		}
+
+		&.icon-pointer {
+			margin-left: -17px;
+			top: 36px;
+
+			&:before {
+				background-size: 33.5px 44px;
+				width: 33.5px;
+				height: 44px;
+			}
+		}
+	}
+}

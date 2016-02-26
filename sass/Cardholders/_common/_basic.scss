@@ -1,0 +1,42 @@
+/* cloak */
+.b-cloak {
+	display : none !important;
+}
+
+/* vertical-align middle */
+.b-middle {
+	font-size  : 0;
+	max-height : 100%;
+
+	&:before {
+		content : '';
+		height  : 100%;
+		@include inline-block;
+	}
+
+	> * {
+		font-size : initial;
+		zoom      : 1;
+		@include inline-block;
+	}
+}
+
+/* clearfix */
+.b-clearfix {
+	&:after {
+		content : '';
+		width   : 100%;
+		height  : 0;
+		clear   : both;
+		@include clearfix;
+		@include display(block);
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}
+
+@include respond-to(Mobiles) {}
