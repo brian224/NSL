@@ -64,7 +64,6 @@
 		}
 
 		.filter-content {
-			margin-top: 20px;
 			width: 100%;
 			position: absolute;
 			top: 50%;
@@ -72,10 +71,8 @@
 	}
 
 	.btn-area {
-		margin-top: 190px;
 		width: 100%;
 		position: absolute;
-		top: 50%;
 
 		.list {
 			position: absolute;
@@ -85,6 +82,7 @@
 
 			&:first-child + li {
 				margin-top: 40px;
+				z-index: -1;
 				@include opacity(0);
 	
 				.dialog {
@@ -132,9 +130,10 @@
 
 		.btn-start {
 			margin: 0 auto;
-			background: image-url('Cardholders/index/icon-start.png') 0 0 no-repeat;
+			background: image-url('cardholder/index/icon-start.png') 0 0 no-repeat;
+			background-size: 74px auto;
 			display: block;
-			width: 75px;
+			width: 74px;
 			height: 173px;
 			position: relative;
 
@@ -169,6 +168,25 @@
 		}
 	}
 
+	&.show-filter {
+		.filter {
+			z-index: 6;
+
+			&:before {
+				z-index: 4;
+				@include opacity(.53);
+			}
+
+			.animate-list, .btn-area {
+				z-index: 4;
+			}
+
+			.btn-area .dialog {
+				@include opacity(1);
+			}
+		}
+	}
+
 	&.step-1 {
 		.animate-list {
 			top: 100%;
@@ -180,23 +198,6 @@
 	}
 
 	&.step-2 {
-		.filter {
-			z-index: 6;
-
-			&:before {
-				z-index: 2;
-				@include opacity(.53);
-			}
-
-			.animate-list, .btn-area {
-				z-index: 2;
-			}
-
-			.btn-area .dialog {
-				@include opacity(1);
-			}
-		}
-
 		.animate-list {
 			top: 100%;
 
@@ -220,6 +221,11 @@
 
 			+ li + li {
 				top: 0;
+
+				.desc {
+					padding-left: 268px;
+					text-align: left;
+				}
 			}
 
 			+ li + li + li {
@@ -230,17 +236,6 @@
 
 	&.step-4 {
 		.filter {
-			z-index: 6;
-
-			&:before {
-				z-index: 2;
-				@include opacity(.53);
-			}
-
-			.animate-list, .btn-area {
-				z-index: 2;
-			}
-
 			.btn-area .list:first-child {
 				z-index: -1;
 				@include opacity(0);
@@ -250,6 +245,7 @@
 				}
 
 				+ li {
+					z-index: 0;
 					@include opacity(1);
 				}
 			}
@@ -260,6 +256,11 @@
 
 			&:first-child + li + li + li {
 				top: 0;
+
+				.desc {
+					padding-left: 268px;
+					text-align: left;
+				}
 			}
 		}
 	}
@@ -274,50 +275,31 @@
 
 	.list {
 		position: absolute;
-		top: 50%;
+		font-size: 0;
 
 		&:before {
 			content: '';
-			background: image-url('Cardholders/index/icon-title.png') 0 0 no-repeat;
+			background: image-url('cardholder/index/icon-title.png') 0 0 no-repeat;
 		}
 	}
 
 	&:first-child {
 		.list {
-			margin: -270px 0 0 -400px;
-			width: 800px;
-			left: 50%;
-
 			&:before {
 				display: block;
-				width: 298px;
-				height: 246px;
 				position: absolute;
-				bottom: -25px;
-				right: -175px;
 				z-index: 1;
 			}
 
 			.act-title {
 				text-align: left;
-				text-indent: -12px;
 			}
 		}
 
 		+ li .list {
-			margin: -250px 0 0 -480px;
-			width: 960px;
-			left: 50%;
-
 			&:before {
-				margin-top: -109px;
-				background-position: -298px 0;
 				display: block;
-				width: 266px;
-				height: 218px;
 				position: absolute;
-				top: 50%;
-				right: -50px;
 			}
 
 			.act-title {
@@ -325,42 +307,10 @@
 			}
 		}
 
-		+ li + li .list {
-			margin-top: -250px;
-			width: 100%;
-			left: 0;
+		+ li + li .list, + li + li + li .list {
 			text-align: center;
 
-			&:before {
-				margin: 20px 28px -20px 0;
-				background-position: -564px 0;
-				display: inline-block;
-				width: 237px;
-				height: 202px;
-				position: relative;
-			}
-
-			.act-title {
-				display: inline-block;
-			}
-		}
-
-		+ li + li + li .list {
-			margin-top: -230px;
-			width: 100%;
-			left: 0;
-			text-align: center;
-
-			&:before {
-				margin: 30px -50px -30px 0;
-				background-position: -801px 0;
-				display: inline-block;
-				width: 310px;
-				height: 149px;
-				position: relative;
-			}
-
-			.act-title {
+			&:before, .act-title {
 				display: inline-block;
 			}
 		}
@@ -386,13 +336,6 @@
 
 	.desc {
 		color: #fff;
-		font-size: 18px;
-		line-height: 42px;
-
-		em {
-			padding-left: 20px;
-			font-size: 30px;
-		}
 	}
 }
 
@@ -401,8 +344,6 @@
 }
 
 .counter-box {
-	margin: 0 67px;
-	display: inline-block;
 	height: 170px;
 	position: relative;
 	box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.35);
@@ -433,17 +374,12 @@
 			.card {
 				margin-left: 3px;
 				width: 70px;
-
-				em {
-					margin-left: -4px;
-				}
 			}
 		}
 	}
 
 	&.rate-counter {
 		padding: 13px 0 13px 10px;
-		width: 396px;
 
 		&:before {
 			content: '%';
@@ -483,6 +419,8 @@
 
 	.flip-card {
 		font-size: 0;
+		@include transform-style(preserve-3d);
+		@include perspective(1200px);
 
 		.card {
 			display: inline-block;
@@ -552,24 +490,43 @@
 			.card-animate {
 				background: none;
 				z-index: 2;
+				@include transform-style(preserve-3d);
+				@include perspective(600px);
+
+				&.ani-on {
+					@include transition(ease-in-out all .2s);
+					@include transform(rotateX(-180deg));
+				}
 
 				> * {
+					margin: 0 0 0 -1px;
 					width: 100%;
 					height: 50%;
 					position: absolute;
 					top: 0;
 					left: 0;
+					border-right: 1px solid #000;
+					border-left: 1px solid #000;
 					overflow: hidden;
 					@include backface-visibility(hidden);
 				}
 
 				.bottom-half {
 					@include transform(rotateX(180deg));
+					@include background-image(linear-gradient(to bottom, #5a5557, #312f30));
+
+					em {
+						line-height: 0;
+
+						&:before {
+							margin-top: -2px;
+						}
+					}
 				}
 
 				.top-half {
 					box-shadow: inset 0px 1px 0 #aaa;
-					@include backface-visibility(hidden);
+					z-index: -1;
 					@include background-image(linear-gradient(to bottom, #80797b, #5a5557));
 				}
 			}
@@ -586,7 +543,6 @@
 				z-index: 0;
 			}
 		}
-
 	}
 }
 
@@ -610,18 +566,74 @@
 			position: relative;
 			float: left;
 		}
+
+		.filter .filter-content {
+			margin-top: 20px;
+		}
+
+		.btn-area {
+			margin-top: 190px;
+			top: 50%;
+		}
 	}
-}
 
-@include respond-to(Desktops-Tablets) {
 	.animate-list {
-		&:first-child {
-			font-size: 88px;
-			line-height: 1.5em;
+		.list {
+			top: 50%;
+		}
 
-			+ li .act-title {
-				font-size: 72px;
+		&:first-child {
+			.list {
+				font-size: 88px;
 				line-height: 1.5em;
+			}
+
+			+ li .list {
+				margin: -250px 0 0 -480px;
+				width: 960px;
+				left: 50%;
+
+				&:before {
+					margin-top: -109px;
+					background-position: -298px 0;
+					width: 266px;
+					height: 218px;
+					top: 50%;
+					right: -50px;
+				}
+
+				.act-title {
+					font-size: 72px;
+					line-height: 1.5em;
+				}
+			}
+
+			+ li + li .list {
+				margin: -250px 0 0 -565px;
+				width: 1130px;
+				left: 50%;
+
+				&:before {
+					margin: 20px 28px -50px 0;
+					background-position: -564px 0;
+					width: 237px;
+					height: 202px;
+					position: relative;
+				}
+			}
+
+			+ li + li + li .list {
+				margin: -265px 0 0 -572px;
+				width: 1144px;
+				left: 50%;
+
+				&:before {
+					margin: 30px -50px -30px 0;
+					background-position: -801px 0;
+					width: 310px;
+					height: 149px;
+					position: relative;
+				}
 			}
 
 			+ li + li .act-title, + li + li + li .act-title {
@@ -633,7 +645,53 @@
 					font-size: 120px;
 				}
 			}
+
+			.list {
+				margin: -270px 0 0 -400px;
+				width: 800px;
+				left: 50%;
+
+				&:before {
+					width: 298px;
+					height: 246px;
+					bottom: -25px;
+					right: -175px;
+				}
+
+				.act-title {
+					text-indent: -12px;
+				}
+			}
 		}
+
+		.desc {
+			font-size: 18px;
+			line-height: 42px;
+
+			em {
+				padding-left: 20px;
+				font-size: 30px;
+			}
+		}
+	}
+
+	.counter-box {
+		margin: 0 0 0 67px;
+		display: inline-block;
+
+		&:first-child {
+			margin: 0 67px 0 0;
+		}
+		
+		&.rate-counter {
+			width: 396px;
+		}
+	}
+}
+
+@include respond-to(Desktops-Tablets) {
+	.counter-box.money-counter .flip-card .card em {
+		margin-left: -4px;
 	}
 }
 
@@ -653,6 +711,144 @@
 				top: 0;
 			}
 		}
+
+		.filter .filter-content {
+			margin-top: -200px;
+		}
+
+		.btn-area {
+			top: 50%;
+
+			.list {
+				top: 240px;
+			}
+		}
+
+		&.step-4 .filter .btn-area .list:first-child + li {
+			bottom: 80px;
+		}
+	}
+
+	.animate-list {
+		.list {
+			top: 100px;
+
+			&:before {
+				background-size: 555px 123px;
+			}
+		}
+
+		&:first-child {
+			font-size: 60px;
+			line-height: 1.5em;
+
+			.list {
+				margin: 0 0 0 -350px;
+				width: 700px;
+				left: 50%;
+
+				&:before {
+					width: 149px;
+					height: 123px;
+					top: 16px;
+					right: 0;
+				}
+
+				.act-title {
+					font-size: 60px;
+					text-indent: -8px;
+				}
+			}
+
+			+ li .list {
+				margin: 0 0 0 -360px;
+				width: 720px;
+				left: 50%;
+
+				&:before {
+					background-position: -149px 0;
+					width: 133px;
+					height: 109px;
+					bottom: 20px;
+					right: 0;
+				}
+
+				.act-title {
+					font-size: 56px;
+					line-height: 1.5em;
+				}
+			}
+
+			+ li + li .list {
+				padding-top: 20px;
+				width: 100%;
+
+				&:before {
+					margin-right: 28px;
+					background-position: -282px 0;
+					width: 118px;
+					height: 101px;
+					position: relative;
+				}
+
+				.desc {
+					padding-left: 188px !important;
+				}
+			}
+
+			+ li + li + li .list {
+				padding-top: 20px;
+				width: 100%;
+				
+				&:before {
+					background-position: -400px 0;
+					width: 155px;
+					height: 75px;
+					position: relative;
+				}
+
+				.desc {
+					padding-left: 188px !important;
+				}
+			}
+
+			+ li + li .act-title, + li + li + li .act-title {
+				font-size: 45px;
+				line-height: 1.2em;
+
+				.highlight {
+					color: $minor-color;
+					font-size: 84px;
+				}
+			}
+		}
+
+		.desc {
+			font-size: 15px;
+			line-height: 30px;
+
+			em {
+				padding-left: 10px;
+				font-size: 24px;
+			}
+		}
+	}
+
+	.counter-box {
+		margin: 60px auto;
+		display: block;
+
+		&:first-child {
+			margin-top: 0;
+		}
+		
+		&.rate-counter {
+			width: 408px;
+
+			&:before {
+				right: 9px;
+			}
+		}
 	}
 }
 
@@ -663,13 +859,25 @@
 	.l-content {
 		.half-part {
 			.bolling-ans {
-				margin-top: -124px;
-				font-size: 144px;
-				@include opacity(1);
+				bottom: -20px;
+				font-size: 180px;
+				line-height: 180px;
+			}
+
+			&:first-child + div .bolling-ans {
+				margin-top: 0;
+				top: -20px;
+				left: 0;
 			}
 		}
 
 		.filter {
+			.filter-content {
+				margin-top: -90px;
+				padding: 0 15px;
+				@include box-sizing(border-box);
+			}
+
 			.act-title {
 				padding: 22px 0 29px 41px;
 				width: 240px;
@@ -686,6 +894,384 @@
 				font-size: 18px;
 				line-height: 44px;
 			}
+		}
+
+		.btn-area {
+			.list {
+				top: 100px;
+
+				&:first-child + li .dialog {
+					font-size: 16px;
+				}
+			}
+
+			.dialog {
+				margin: -58px 0 0 -140px !important;
+				width: 280px !important;
+				height: 42px !important;
+				font-size: 18px;
+				line-height: 42px !important;
+			}
+
+			.btn-start {
+				height: 132px;
+
+				em {
+					bottom: -6px;
+				}
+			}
+
+			.btn-radius {
+				font-size: 20px;
+			}
+		}
+
+		&.step-1 .animate-list:first-child {
+			top: 50%;
+		}
+
+		&.step-2 .animate-list:first-child + li {
+			margin-top: -230px;
+			top: 50%;
+		}
+
+		&.step-3 .animate-list:first-child + li + li {
+			margin-top: -230px;
+			top: 50%;
+		}
+
+		&.step-4 .animate-list:first-child + li + li + li {
+			margin-top: -220px;
+			top: 50%;
+		}
+	}
+
+	.animate-list {
+		.list {
+			margin-left: -160px !important;
+			padding: 0 15px;
+			width: 320px !important;
+			top: 50px;
+			@include box-sizing(border-box);
+
+			&:before {
+				background-size: 278px 62px;
+			}
+	
+			.act-title {
+				padding: 0;
+				width: auto;
+			}
+		}
+
+		&:first-child {
+			margin-top: -280px;
+
+			.list {
+				&:before {
+					width: 75px;
+					height: 62px;
+					top: auto;
+					bottom: -10px;
+					right: 10px;
+				}
+		
+				.act-title {
+					font-size: 30px;
+					text-indent: -3px;
+				}
+			}
+
+			+ li .list {
+				&:before {
+					background-position: -75px 0;
+					width: 66px;
+					height: 55px;
+					top: -20px;
+					right: 20px;
+				}
+
+				.act-title {
+					font-size: 27px;
+				}
+			}
+
+			+ li + li .list {
+				padding-top: 0;
+				top: 0;
+				left: 50%;
+
+				&:before {
+					margin: 0 0 0 -30px;
+					background-position: -141px 0;
+					width: 59px;
+					height: 51px;
+					position: absolute;
+					bottom: -55px;
+					left: 50%;
+				}
+
+				.act-title {
+					font-size: 24px;
+
+					.highlight {
+						margin: 0 -7px;
+						font-size: 45px;
+					}
+				}
+
+				.desc {
+					padding-left: 0 !important;
+				}
+			}
+
+			+ li + li + li .list {
+				top: 0;
+				left: 50%;
+
+				&:before {
+					margin: 0;
+					background-position: -200px 0;
+					width: 77px;
+					height: 38px;
+					position: absolute;
+					top: 60px;
+					right: 20px;
+				}
+
+				.act-title {
+					font-size: 23px;
+					line-height: 36px;
+
+					.highlight {
+						margin: 0 -5px;
+						font-size: 45px;
+					}
+				}
+
+				.desc {
+					padding-left: 6px !important;
+					width: auto;
+				}
+			}
+		}
+
+		.desc {
+			width: 216px;
+			font-size: 12px;
+			line-height: 21px;
+
+			em {
+				padding-left: 6px;
+				font-size: 18px;
+			}
+		}
+	}
+
+	.counter-box {
+		margin: 30px auto;
+		width: 260px !important;
+		height: 74px;
+
+		&:before {
+			font-size: 24px;
+			line-height: 24px;
+		}
+
+		&.money-counter {
+			padding: 6px;
+
+			&:before {
+				bottom: 5px;
+				left: 5px;
+			}
+
+			.flip-card .card {
+				width: 44px;
+			}
+		}
+
+		&.rate-counter {
+			padding: 6px 10px;
+
+			&:before {
+				bottom: 5px;
+				right: 6px;
+			}
+
+			.flip-card {
+				&:before {
+					left: 65px;
+				}
+
+				.card {
+					width: 60px;
+
+					em:before {
+						margin-left: -38px;
+						width: 76px;
+					}
+				}
+			}
+		}
+
+		.flip-card .card {
+			height: 60px;
+			font-size: 60px;
+			line-height: 60px;
+
+			em:before {
+				width: 50px;
+				left: -2px;
+			}
+		}
+	}
+}
+
+@media screen and (max-height: 567px) {
+	.l-content {
+		.half-part {
+			height: 45%;
+			top: 55%;
+
+			&:first-child {
+				height: 55%;
+			}
+		}
+
+		.filter .filter-content {
+			margin-top: -56px;
+		}
+
+		.btn-area .btn-start {
+			background-size: 60px auto;
+			width: 60px;
+			height: 130px;
+
+			.icon-pointer {
+				top: 50px;
+			}
+
+			em {
+				bottom: 0;
+				font-size: 12px;
+			}
+		}
+	}
+
+	.animate-list {
+		.desc {
+			line-height: 1.5em;
+		}
+
+		&:first-child {
+			.list {
+				top: 100px;
+	
+				&:before {
+					bottom: 0;
+				}
+	
+				.act-title {
+					font-size: 24px;
+					line-height: 1.5em;
+				}
+			}
+
+			+ li .list {
+				top: 75px;
+			}
+
+			+ li + li .list {
+				padding-top: 0;
+				top: 55px;
+
+				&:before {
+					bottom: -36px;
+					left: auto;
+					right: 27px;
+				}
+			}
+
+			+ li + li + li .list {
+				padding-top: 0;
+				top: 55px;
+
+				&:before {
+					top: 40px;
+				}
+
+				.desc {
+					padding-left: 18px !important;
+					text-indent: -12px;
+				}
+			}
+		}
+	}
+
+	.counter-box {
+		width: 242px !important;
+		height: 62px;
+
+		.flip-card .card {
+			height: 48px;
+			font-size: 48px;
+			line-height: 48px;
+
+			&:before, &:after {
+				margin-top: -10px;
+				height: 20px;
+			}
+
+			em:before {
+				margin-top: -2px;
+				width: 44px;
+			}
+		}
+
+		&.money-counter .flip-card .card {
+			width: 40px;
+		}
+
+		&.rate-counter {
+			margin-bottom: 0;
+
+			.flip-card {
+				&:before {
+					width: 8px;
+					height: 9px;
+					left: 58px;
+				}
+
+				.card {
+					width: 53px;
+
+					em:before {
+						margin-left: -32px;
+						width: 64px;
+					}
+				}
+			}
+		}
+	}
+
+	.l-footer {
+		display: none;
+	}
+}
+
+@include browsers('IE') {
+	.counter-box .flip-card .card .card-animate.for-ie {
+		.bottom-half {
+			@include backface-visibility(visible);
+		}
+	}
+}
+
+@include browsers('IE9') {
+	.counter-box .flip-card .card {
+		.card-animate, .card-top {
+			display: none;
 		}
 	}
 }
@@ -725,11 +1311,21 @@
 				border-width: 9px 9px 0 9px;
 				border-style: solid;
 			}
+
+			.btn-start {
+				background: image-url('for-ie8/icon-start.png') 0 0 no-repeat;
+			}
 		}
 	}
 
-	.animate-list .act-title em .highlight {
-		margin: 0;
+	.animate-list {
+		&:first-child + li + li .list {
+			width: 1156px;
+		}
+
+		.act-title em .highlight {
+			margin: 0;
+		}
 	}
 
 	.flip-counter {
@@ -744,6 +1340,10 @@
 			line-height: 144px;
 	
 			&:before, &:after, em:before {
+				display: none;
+			}
+
+			.card-animate, .card-top {
 				display: none;
 			}
 		}
