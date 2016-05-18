@@ -1,0 +1,83 @@
+﻿.l-main {
+	margin: 0 auto;
+	width: 990px;
+	position: relative;
+}
+
+.girl {
+	background: image-url('girl.png') -151px 0 no-repeat;
+	display: block;
+	width: 151px;
+	height: 242px;
+	position: absolute;
+	top: 230px;
+	left: 248px;
+	@include animation(wink-girl 5s steps(1, start) infinite);
+
+	&:hover {
+		@include animation(bow-girl 0.3s steps(11, start) forwards);
+	}
+}
+
+.boy {
+	background: image-url('boy.png') -148px 0 no-repeat;
+	display: block;
+	width: 148px;
+	height: 242px;
+	position: absolute;
+	top: 225px;
+	left: 587px;
+	@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+
+	&:hover {
+		@include animation(bow-boy 0.3s steps(6, start) forwards);
+	}
+}
+
+@include keyframes(wink-girl) {
+	65%, 75% {
+		background-position: -151px 0;
+	}
+
+	70% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(wink-boy) {
+	65%, 75% {
+		background-position: -148px 0;
+	}
+
+	70% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(bow-girl) {
+	0% {
+		background-position: -151px 0;
+	}
+
+	100% {
+		background-position: -1812px 0;
+	}
+}
+
+@include keyframes(bow-boy) {
+	0% {
+		background-position: -148px 0;
+	}
+
+	100% {
+		background-position: -1036px 0;
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}
