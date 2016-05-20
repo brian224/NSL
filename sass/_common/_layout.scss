@@ -1,3 +1,27 @@
+.l-body {
+	position: relative;
+	background: #feedc7 image-url('bg-main.png') center 30px no-repeat;
+}
+
+.l-header {
+	margin-left: -450px;
+	width: 900px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 1;
+}
+
+.l-main {
+	margin: 0 auto;
+	width: 1000px;
+	height: 700px;
+	position: relative;
+}
+
+.l-footer {
+	@include background-image(linear-gradient(to bottom, #304d91 0%, #253a71 100%));
+}
 
 @include respond-to(Desktops) {}
 

@@ -1,8 +1,11 @@
 (function (window, document, jQuery, undefined) {
 	'use strict';
 
-	Projects.Factory.$W.load(function(e){
-		
-	});
-	Projects.Factory.$D.ready(function(e){});
+	var common = new index();
+
+	function index() {
+	}
+
+	projects.$w.load(function(){});
+	projects.$d.ready(function(){});
 }(window, document, $));
