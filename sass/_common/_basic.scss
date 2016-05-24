@@ -33,6 +33,23 @@
 	}
 }
 
+.hide-text {
+	position: relative;
+	overflow: hidden;
+
+	em {
+		position: absolute;
+		top: 100%;
+		left: 100%;
+	}
+
+	.svg-icon {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
 @include respond-to(Desktops) {}
 
 @include respond-to(Desktops-Tablets) {}

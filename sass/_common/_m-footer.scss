@@ -2,7 +2,20 @@
 	margin: 0 auto;
 	padding: 0 22px;
 	width: 1000px;
+	position: relative;
 	@include box-sizing(border-box);
+
+	&:before {
+		content: '';
+		margin-left: -533px;
+		background: image-url('footer-top.png') 0 0 no-repeat;
+		display: block;
+		width: 1170px;
+		height: 5px;
+		position: absolute;
+		top: -5px;
+		left: 50%;
+	}
 
 	.info-list {
 		padding: 34px 0 14px 0;

@@ -1,9 +1,15 @@
 ﻿.logo {
 	width: 140px;
-	height: 50px;
+	height: 40px;
 	position: absolute;
 	top: 27px;
 	left: 0;
+
+	.link {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
 }
 
 .insurance-wrap {
@@ -15,6 +21,7 @@
 
 	.wording {
 		color: #e95854;
+		font-weight: bold;
 		line-height: 27px;
 	}
 
@@ -26,9 +33,11 @@
 		color: #fff;
 		line-height: 32px;
 
-		b {
+		.dollar {
 			position: relative;
 			z-index: 1;
+			font-size: 16px;
+			letter-spacing: 1px;
 		}
 	}
 
@@ -41,29 +50,82 @@
 	}
 }
 
-.btn-topic {
+.quest-title {
+	margin-left: -17px;
+	display: block;
+	width: 34px;
+	height: 181px;
 	position: absolute;
-	top: 460px;
-	overflow: hidden;
+	top: 135px;
+	left: 50%;
+}
 
-	&.btn-prev {
-		left: 85px;
+.choice-list {
+	height: 100%;
+	font-size: 0;
+
+	.list {
+		display: inline-block;
+		width: 50%;
+		height: 100%;
+		text-align: center;
+		@include box-sizing(border-box);
+
+		&:first-child .btn-check {
+			margin-right: 142px;
+			right: 50%;
+		}
+
+		&:last-child .btn-check {
+			margin-left: 142px;
+			left: 50%;
+		}
+
+		.btn-check {
+			position: absolute;
+			bottom: 190px;
+
+			&.is-checked:after {
+				content: '';
+				background: image-url('checked.png') 0 0 no-repeat;
+				display: block;
+				width: 34px;
+				height: 20px;
+				position: absolute;
+				bottom: 7px;
+				left: -5px;
+				z-index: 1;
+				@include animation(btn-checked 0.2s steps(3, end) forwards);
+			}
+
+			.svg-icon {
+				display: inline-block;
+				width: 21px;
+				height: 21px;
+			}
+		}
 	}
 
-	&.btn-next {
-		right: 85px;
-	}
+	&.quest-1 .list {
+		&:first-child .btn-check {
+			&.is-checked ~ .image-wrap {
+				@include animation(bow-girl 0.3s steps(11, start) forwards);
+			}
 
-	em {
-		position: absolute;
-		bottom: 100%;
-		right: 100%;
-	}
+			&.ani-reverse ~ .image-wrap {
+				@include animation(reverse-girl 0.3s steps(11, start) forwards);
+			}
+		}
 
-	.svg-icon {
-		display: block;
-		width: 92px;
-		height: 103px;
+		&:last-child .btn-check {
+			&.is-checked ~ .image-wrap {
+				@include animation(bow-boy 0.3s steps(6, start) forwards);
+			}
+
+			&.ani-reverse ~ .image-wrap {
+				@include animation(reverse-boy 0.3s steps(6, start) forwards);
+			}
+		}
 	}
 }
 
@@ -76,10 +138,6 @@
 	top: 230px;
 	left: 250px;
 	@include animation(wink-girl 5s steps(1, start) infinite);
-
-	&:hover {
-		@include animation(bow-girl 0.3s steps(11, start) forwards);
-	}
 }
 
 .boy {
@@ -91,10 +149,6 @@
 	top: 227px;
 	right: 257px;
 	@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
-
-	&:hover {
-		@include animation(bow-boy 0.3s steps(6, start) forwards);
-	}
 }
 
 .step-list {
@@ -105,30 +159,125 @@
 	font-size: 0;
 	text-align: center;
 
-	.bg-line {
-		position: relative;
+	$types : 0;
+	$total : 4;
+	@while $types <= $total {
+		&.complete-phase-#{$types} {
+			.step-line {
+				width : ((506px / $total) * $types);
+			}
 
-		.svg-line {
-			margin: -4px 0 0 -252px;
-			width: 504px;
-			height: 8px;
-			position: absolute;
-			top: 50%;
-			left: 50%;
+			@for $i from 1 through $types {
+				.list:nth-child(#{$i}) {
+					em {
+						color: #fff;
+					}
+
+					.svg-icon use {
+						fill: #e98e8c;
+						stroke: #e98e8c;
+					}
+				}
+			}
+
+			.list:nth-child(#{$types + 1}) {
+				em {
+					color: #fff;
+				}
+
+				.svg-icon use {
+					fill: #E95854;
+				}
+			}
 		}
 
-		.svg-step {
-			width: 520px;
-			height: 61px;
-			position: relative;
-			z-index: 1;
+		$types : $types + 1;
+	}
+
+	.bg-line {
+		margin: -4px 0 0 -252px;
+		width: 504px;
+		height: 8px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		.svg-line {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.step-line {
+		margin: -4px 0 0 -253px;
+		height: 8px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		overflow: hidden;
+		@include transition(ease-in width 0.3s);
+
+		.svg-container {
+			width: 506px;
+			height: 8px;
+		}
+
+		.svg-line {
+			width: 100%;
+			height: 100%;
 		}
 	}
 
 	.list {
+		padding: 0 30px;
 		display: inline-block;
+		width: 56px;
+		height: 56px;
+		position: relative;
+		z-index: 1;
 		font-size: 14px;
 		line-height: 16px;
+		@include transition(ease-in all 0.3s);
+
+		em {
+			margin: -16px 0 0 -15px;
+			display: block;
+			width: 30px;
+			height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			color: #E95854;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-align: center;
+		}
+
+		.svg-icon {
+			width: 56px;
+			height: 56px;
+
+			use {
+				fill: #fff;
+				stroke: #E95854;
+			}
+		}
+	}
+}
+
+.btn-topic {
+	display: block;
+	width: 92px;
+	height: 103px;
+	position: absolute !important;
+	top: 460px;
+
+	&.btn-prev {
+		left: 85px;
+	}
+
+	&.btn-next {
+		right: 85px;
 	}
 }
 
@@ -162,6 +311,16 @@
 	}
 }
 
+@include keyframes(reverse-girl) {
+	0% {
+		background-position: -1812px 0;
+	}
+
+	100% {
+		background-position: -151px 0;
+	}
+}
+
 @include keyframes(bow-boy) {
 	0% {
 		background-position: -148px 0;
@@ -169,6 +328,26 @@
 
 	100% {
 		background-position: -1036px 0;
+	}
+}
+
+@include keyframes(reverse-boy) {
+	0% {
+		background-position: -1036px 0;
+	}
+
+	100% {
+		background-position: -148px 0;
+	}
+}
+
+@include keyframes(btn-checked) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -102px 0;
 	}
 }
 
