@@ -17,6 +17,39 @@
 	width: 1000px;
 	height: 700px;
 	position: relative;
+
+	&.is-index {
+		&:before, &:after {
+			content: '';
+			background: image-url('bg-index.png') 0 0 no-repeat;
+			display: block;
+			width: 112px;
+			height: 420px;
+			position: absolute;
+			top: -210px;
+			left: 275px;
+		}
+
+		&:after {
+			background-position: -112px 0;
+			width: 126px;
+			height: 312px;
+			top: -4px;
+			left: 165px;
+		}
+
+		.index {
+			display: block;
+		}
+	}
+
+	&.is-quest .quest {
+		display: block;
+	}
+
+	.l-content {
+		display: none;
+	}
 }
 
 .l-footer {

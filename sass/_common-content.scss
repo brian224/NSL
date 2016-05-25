@@ -50,6 +50,42 @@
 	}
 }
 
+.index {
+	height: 100%;
+	position: relative;
+
+	&:before {
+		content: '';
+		background: image-url('bg-index.png') -238px 0 no-repeat;
+		display: block;
+		width: 372px;
+		height: 222px;
+		position: absolute;
+		top: 345px;
+		left: 108px;
+	}
+
+	.page-title {
+		background: image-url('bg-index.png') -238px -222px no-repeat;
+		display: block;
+		width: 454px;
+		height: 108px;
+		position: absolute;
+		top: 200px;
+		left: 427px;
+	}
+
+	.slogan {
+		background: image-url('bg-index.png') -112px -330px no-repeat;
+		display: block;
+		width: 224px;
+		height: 28px;
+		position: absolute;
+		top: 380px;
+		left: 520px;
+	}
+}
+
 .quest-title {
 	margin-left: -17px;
 	display: block;
