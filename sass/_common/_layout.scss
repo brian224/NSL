@@ -23,11 +23,16 @@
 			content: '';
 			background: image-url('bg-index.png') 0 0 no-repeat;
 			display: block;
+			position: absolute;
+			@include animation(wave-cloud 4s ease-in infinite);
+		}
+
+		&:before {
 			width: 112px;
 			height: 420px;
-			position: absolute;
 			top: -210px;
 			left: 275px;
+			@include animation-delay(-2s);
 		}
 
 		&:after {
@@ -36,6 +41,8 @@
 			height: 312px;
 			top: -4px;
 			left: 165px;
+			@include transform(rotate(5deg));
+			@include transform-origin(top, center);
 		}
 
 		.index {
@@ -54,6 +61,16 @@
 
 .l-footer {
 	@include background-image(linear-gradient(to bottom, #304d91 0%, #253a71 100%));
+}
+
+@include keyframes(wave-cloud) {
+	0%, 100% {
+		@include transform(rotate(3deg));
+	}
+
+	50% {
+		@include transform(rotate(-3deg));
+	}
 }
 
 @include respond-to(Desktops) {}

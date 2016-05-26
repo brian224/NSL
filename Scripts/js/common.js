@@ -7,6 +7,10 @@
 	}
 
 	projects.$w.load(function(){
+		$('.jq-start').on('click', function(){
+			$('.l-main').removeClass('is-index').addClass('is-quest');
+		});
+
 		$('.btn-check').on('click', function(){
 			var $another = $(this).parent().siblings().find('.btn-check');
 
@@ -20,7 +24,7 @@
 				$another.removeClass('is-checked').addClass('ani-reverse');
 			}
 		});
-		
+
 		$('.image-wrap').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 			$(this).siblings().removeClass('ani-reverse');
 		});

@@ -65,6 +65,18 @@
 		left: 108px;
 	}
 
+	&:after {
+		content: '';
+		background: image-url('index-ani.png') -238px 0 no-repeat;
+		display: block;
+		width: 200px;
+		height: 167px;
+		position: absolute;
+		top: 300px;
+		left: 281px;
+		@include animation(family-ani 7s steps(118, end) infinite);
+	}
+
 	.page-title {
 		background: image-url('bg-index.png') -238px -222px no-repeat;
 		display: block;
@@ -84,6 +96,101 @@
 		top: 380px;
 		left: 520px;
 	}
+
+	.btn-check {
+		margin-left: -18px;
+		position: absolute;
+		top: 492px;
+		left: 50%;
+
+		.svg-icon {
+			margin-right: 7px;
+			display: inline-block;
+			width: 21px;
+			height: 21px;
+		}
+
+		em {
+			background: image-url('bg-index.png') -112px -390px no-repeat;
+			display: inline-block;
+			width: 80px;
+			height: 15px;
+		}
+	}
+
+	.btn-start {
+		display: block;
+		width: 124px;
+		height: 114px;
+		position: absolute;
+		top: 428px;
+		right: 144px;
+
+		&:before, &:after {
+			content: '';
+			background: image-url('bg-index.png') 0 0 no-repeat;
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			background-position: -336px -330px;
+			width: 100%;
+			height: 86px;
+			bottom: 0;
+			right: 0;
+		}
+
+		&:after {
+			background-position: -610px 0;
+			width: 37px;
+			height: 37px;
+			top: 0;
+			right: 48px;
+			@include animation(nod-head 8s steps(1, end) infinite);
+		}
+
+		&:hover {
+			width: 126px;
+
+			&:before {
+				background-position: -460px -330px;
+			}
+
+			&:after {
+				@include transform(scale(-1, 1));
+			}
+		}
+	}
+
+	.icon-flying-bird {
+		display: block;
+		width: 45px;
+		height: 32px;
+		position: absolute;
+		top: 335px;
+		left: 409px;
+		@include animation(flying-move 8s linear infinite);
+
+		&.reverse {
+			@include animation(flying-move-reverse 8s linear infinite);
+
+			&:before {
+				background: image-url('bg-index.png') -202px -358px no-repeat;
+				@include animation(wing-ani-reverse 0.4s steps(1, end) infinite);
+			}
+		}
+
+		&:before {
+			content: '';
+			background: image-url('bg-index.png') -112px -358px no-repeat;
+			display: block;
+			width: 100%;
+			height: 100%;
+			/*@include animation(wing-ani 8s linear infinite);*/
+			@include animation(wing-ani 0.4s steps(1, end) infinite);
+		}
+	}
 }
 
 .quest-title {
@@ -94,6 +201,19 @@
 	position: absolute;
 	top: 135px;
 	left: 50%;
+}
+
+.btn-check.is-checked:after {
+	content: '';
+	background: image-url('checked.png') 0 0 no-repeat;
+	display: block;
+	width: 34px;
+	height: 20px;
+	position: absolute;
+	bottom: 7px;
+	left: -5px;
+	z-index: 1;
+	@include animation(btn-checked 0.2s steps(3, end) forwards);
 }
 
 .choice-list {
@@ -120,19 +240,6 @@
 		.btn-check {
 			position: absolute;
 			bottom: 190px;
-
-			&.is-checked:after {
-				content: '';
-				background: image-url('checked.png') 0 0 no-repeat;
-				display: block;
-				width: 34px;
-				height: 20px;
-				position: absolute;
-				bottom: 7px;
-				left: -5px;
-				z-index: 1;
-				@include animation(btn-checked 0.2s steps(3, end) forwards);
-			}
 
 			.svg-icon {
 				display: inline-block;
@@ -314,6 +421,105 @@
 
 	&.btn-next {
 		right: 85px;
+	}
+}
+
+@include keyframes(nod-head) {
+	0%, 46%, 80% {
+		background-position: -610px 0;
+	}
+
+	35%, 45% {
+		background-position: -647px 0;
+		@include transform(scale(1, 1));
+	}
+}
+
+@include keyframes(flying-move) {
+	0%, 80% {
+		top: 335px;
+		left: 409px;
+		@include transform(scale(1, 1));
+	}
+
+	35%, 45% {
+		top: 425px;
+		left: 728px;
+		opacity: 1;
+		@include transform(scale(1, 1));
+	}
+
+	46%, 80%, 99% {
+		opacity: 0;
+	}
+}
+
+@include keyframes(flying-move-reverse) {
+	0%, 80% {
+		top: 335px;
+		left: 409px;
+		opacity: 0;
+		@include transform(scale(1, 1));
+	}
+
+	35%, 45% {
+		top: 425px;
+		left: 728px;
+		opacity: 0;
+		@include transform(scale(1, 1));
+	}
+
+	46%, 80% {
+		opacity: 1;
+		@include transform(scale(-1, 1));
+	}
+}
+
+/*@include keyframes(wing-ani) {
+	0%, 2.49%, 5%, 7.49%, 10%, 12.49%, 15%, 17.49%, 20%, 22.49%, 25%, 27.49%, 30%, 32.49%, 35%, 37.49%, 40%, 42.49%, 45%, 47.49%, 50% {
+		background-position: -112px -358px;
+	}
+
+	2.5%, 4.99%, 7.5%, 9.99%, 12.5%, 14.99%, 17.5%, 19.99%, 22.5%, 24.99%, 27.5%, 29.99%, 32.5%, 34.99%, 37.5%, 39.99%, 42.5%, 44.99%, 47.5%, 49.99% {
+		background-position: -157px -358px;
+	}
+
+	50.1%, 52.49%, 55%, 57.49%, 60%, 62.49%, 65%, 67.49%, 70%, 72.49%, 75%, 77.49%, 80%, 82.49%, 85%, 87.49%, 90%, 92.49%, 95%, 97.49%, 100% {
+		background-position: -202px -358px;
+	}
+
+	52.5%, 54.99%, 57.5%, 59.99%, 62.5%, 64.99%, 67.5%, 69.99%, 72.5%, 74.99%, 77.5%, 79.99%, 82.5%, 84.99%, 87.5%, 89.99%, 92.5%, 94.99%, 97.5%, 99.99% {
+		background-position: -247px -358px;
+	}
+}*/
+
+@include keyframes(wing-ani) {
+	0%, 100% {
+		background-position: -112px -358px;
+	}
+
+	50% {
+		background-position: -157px -358px;
+	}
+}
+
+@include keyframes(wing-ani-reverse) {
+	0%, 100% {
+		background-position: -202px -358px;
+	}
+
+	50% {
+		background-position: -247px -358px;
+	}
+}
+
+@include keyframes(family-ani) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -23600px 0;
 	}
 }
 
