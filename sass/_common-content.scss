@@ -259,26 +259,26 @@
 			}
 		}
 	}
+}
 
-	&.quest-1 .list {
-		&:first-child .btn-check {
-			&.is-checked ~ .image-wrap {
-				@include animation(bow-girl 0.3s steps(11, start) forwards);
-			}
-
-			&.ani-reverse ~ .image-wrap {
-				@include animation(reverse-girl 0.3s steps(11, start) forwards);
-			}
+.quest-1 .choice-list .list {
+	&:first-child .btn-check {
+		&.is-checked ~ .image-wrap {
+			@include animation(bow-girl 0.3s steps(11, start) forwards);
 		}
 
-		&:last-child .btn-check {
-			&.is-checked ~ .image-wrap {
-				@include animation(bow-boy 0.3s steps(6, start) forwards);
-			}
+		&.ani-reverse ~ .image-wrap {
+			@include animation(reverse-girl 0.3s steps(11, start) forwards);
+		}
+	}
 
-			&.ani-reverse ~ .image-wrap {
-				@include animation(reverse-boy 0.3s steps(6, start) forwards);
-			}
+	&:last-child .btn-check {
+		&.is-checked ~ .image-wrap {
+			@include animation(bow-boy 0.3s steps(6, start) forwards);
+		}
+
+		&.ani-reverse ~ .image-wrap {
+			@include animation(reverse-boy 0.3s steps(6, start) forwards);
 		}
 	}
 }
