@@ -8,7 +8,15 @@
 
 	projects.$w.load(function(){
 		$('.jq-start').on('click', function(){
-			$('.l-main').removeClass('is-index').addClass('is-quest');
+			if ($('.btn-check').hasClass('is-checked')) {
+				$('.l-main').removeClass('is-index').addClass('is-quest');
+			} else {
+				$('.btn-check').addClass('btn-shake');
+
+				$('.btn-check').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					$(this).removeClass('btn-shake');
+				});
+			}
 		});
 
 		$('.btn-check').on('click', function(){
