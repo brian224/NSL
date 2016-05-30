@@ -205,9 +205,10 @@
 
 .quest-title {
 	margin-left: -17px;
+	background: image-url('bg-exams.png') 0 0 no-repeat;
 	display: block;
-	width: 34px;
-	height: 181px;
+	width: 35px;
+	height: 180px;
 	position: absolute;
 	top: 135px;
 	left: 50%;
@@ -251,6 +252,13 @@
 			position: absolute;
 			bottom: 190px;
 			overflow: visible;
+			@include transition(ease-in all 0.3s);
+
+			em {
+				background: image-url('bg-exams.png') 0 0 no-repeat;
+				display: inline-block;
+				height: 21px;
+			}
 
 			.svg-icon {
 				display: inline-block;
@@ -261,48 +269,167 @@
 	}
 }
 
-.quest-1 .choice-list .list {
-	&:first-child .btn-check {
-		&.is-checked ~ .image-wrap {
-			@include animation(bow-girl 0.3s steps(11, start) forwards);
+.girl, .boy {
+	display: block;
+	position: absolute;
+}
+
+.quest-1 {
+	.quest-title {
+		@include transition(ease-in opacity 0.3s);
+	}
+
+	.choice-list {
+		.list {
+			em {
+				width: 20px;
+			}
+
+			&:first-child .btn-check {
+				em {
+					background-position: 0 -180px;
+				}
+
+				&.is-checked ~ .image-wrap {
+					@include animation(bow-girl 0.3s steps(11, start) forwards);
+				}
+
+				&.ani-reverse ~ .image-wrap {
+					@include animation(reverse-girl 0.3s steps(11, start) forwards);
+				}
+			}
+
+			&:last-child .btn-check {
+				em {
+					background-position: 0 -201px;
+				}
+
+				&.is-checked ~ .image-wrap {
+					@include animation(bow-boy 0.3s steps(6, start) forwards);
+				}
+
+				&.ani-reverse ~ .image-wrap {
+					@include animation(reverse-boy 0.3s steps(6, start) forwards);
+				}
+			}
 		}
 
-		&.ani-reverse ~ .image-wrap {
-			@include animation(reverse-girl 0.3s steps(11, start) forwards);
+		&[class^="chosen-"], &[class*=" chosen-"] {
+			~.quest-title, .btn-check {
+				opacity: 0;
+			}
+		}
+
+		&.chosen-girl {
+			.girl {
+				@include animation(transition-girl 0.3s steps(11, start) forwards !important);
+			}
+
+			.boy {
+				background: image-url('boy-door.png') 0 0 no-repeat;
+				width: 335px;
+				height: 309px;
+				top: 180px;
+				right: 140px;
+				@include animation(flipout-door 1.5s steps(29, start) forwards);
+			}
+		}
+
+		&.chosen-boy .girl {
+			background: image-url('girl-door.png') 0 0 no-repeat;
+			width: 335px;
+			height: 309px;
+			top: 179px;
+			left: 184px;
+			@include animation(flipout-door 1.5s steps(29, start) forwards);
 		}
 	}
 
-	&:last-child .btn-check {
-		&.is-checked ~ .image-wrap {
-			@include animation(bow-boy 0.3s steps(6, start) forwards);
-		}
+	.girl {
+		background: image-url('girl.png') -151px 0 no-repeat;
+		width: 151px;
+		height: 242px;
+		top: 230px;
+		left: 250px;
+		@include animation(wink-girl 5s steps(1, start) infinite);
+	}
 
-		&.ani-reverse ~ .image-wrap {
-			@include animation(reverse-boy 0.3s steps(6, start) forwards);
-		}
+	.boy {
+		background: image-url('boy.png') -148px 0 no-repeat;
+		width: 148px;
+		height: 242px;
+		top: 227px;
+		right: 257px;
+		@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
 	}
 }
 
-.girl {
-	background: image-url('girl.png') -151px 0 no-repeat;
-	display: block;
-	width: 151px;
-	height: 242px;
-	position: absolute;
-	top: 230px;
-	left: 250px;
-	@include animation(wink-girl 5s steps(1, start) infinite);
-}
+.quest-2 {
+	.quest-title {
+		background-position: -35px 0;
+		width: 35px;
+		height: 0;
+		@include animation(q2-title 1.5s linear forwards);
+	}
 
-.boy {
-	background: image-url('boy.png') -148px 0 no-repeat;
-	display: block;
-	width: 148px;
-	height: 242px;
-	position: absolute;
-	top: 227px;
-	right: 257px;
-	@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+	.choice-list {
+		.list {
+			em {
+				width: 39px;
+				height: 21px;
+			}
+
+			&:first-child .btn-check {
+				em {
+					background-position: -35px -186px;
+				}
+			}
+
+			&:last-child .btn-check {
+				em {
+					background-position: -35px -207px;
+				}
+			}
+		}
+	}
+
+	.chosen-girl {
+		.girl {
+			background: image-url('girl.png') -3473px 0 no-repeat;
+			width: 151px;
+			height: 242px;
+			top: 230px;
+			left: 250px;
+		}
+
+		.boy {
+			background: image-url('merry.png') 0 0 no-repeat;
+			width: 335px;
+			height: 303px;
+			top: 180px;
+			right: 140px;
+			@include animation(flipout-husband 1.2s steps(22, start) forwards);
+		}
+	}
+
+	.chosen-boy {
+		.girl {
+			background: image-url('merry.png') 0 -303px no-repeat;
+			width: 335px;
+			height: 303px;
+			top: 179px;
+			left: 184px;
+			@include animation(flipout-wife 1.2s steps(25, start) forwards);
+		}
+
+		.boy {
+			background: image-url('boy.png') -1036px 0 no-repeat;
+			width: 148px;
+			height: 242px;
+			top: 227px;
+			right: 257px;
+		}
+	}
 }
 
 .step-list {
@@ -432,6 +559,16 @@
 
 	&.btn-next {
 		right: 85px;
+	}
+}
+
+@include keyframes(btn-checked) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -102px 0;
 	}
 }
 
@@ -570,6 +707,16 @@
 	}
 }
 
+@include keyframes(transition-girl) {
+	0% {
+		background-position: -1812px 0;
+	}
+
+	100% {
+		background-position: -3473px 0;
+	}
+}
+
 @include keyframes(bow-boy) {
 	0% {
 		background-position: -148px 0;
@@ -590,13 +737,59 @@
 	}
 }
 
-@include keyframes(btn-checked) {
+@include keyframes(flipout-door) {
 	0% {
 		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -102px 0;
+		background-position: -9715px 0;
+	}
+}
+
+@include keyframes(q2-title) {
+	0%, 19% {
+		height: 0;
+	}
+
+	20%, 39% {
+		height: 38px;
+	}
+
+	40%, 59% {
+		height: 71px;
+	}
+
+	60%, 79% {
+		height: 109px;
+	}
+
+	80%, 99% {
+		height: 148px;
+	}
+
+	100% {
+		height: 186px;
+	}
+}
+
+@include keyframes(flipout-husband) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -7370px 0;
+	}
+}
+
+@include keyframes(flipout-wife) {
+	0% {
+		background-position: 0 -303px;
+	}
+
+	100% {
+		background-position: -8375px -303px;
 	}
 }
 

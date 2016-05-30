@@ -4,10 +4,96 @@
 	var common = new index();
 
 	function index() {
-		this._start    = '.jq-start';
-		this._required = '.jq-required';
-		this._lContent = '.l-content';
-		this._checkbox = '.jq-checkbox';
+		this._start      = '.jq-start';
+		this._required   = '.jq-required';
+		this._lContent   = '.l-content';
+		this._checkbox   = '.jq-checkbox';
+		this._btnTopic   = '.jq-topic';
+		this._transition = '.jq-transition';
+		this._imageWrap  = '.image-wrap';
+		this._questTitle = '.jq-title';
+		this._exam       = [
+			{
+				'number' : '1',
+				'title' : '你的性別？',
+				'selection' : ['女', '男']
+			},
+			{
+				'number' : '2',
+				'title' : '你婚了嗎？',
+				'selection' : ['單身', '已婚']
+			},
+			{
+				'number' : '3',
+				'title' : '您的年齡？',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '4',
+				'title' : '你有小孩嗎？',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '5',
+				'title' : '你正處於哪個人生階段？',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '6',
+				'title' : '不好意思，你的年收入？',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '7',
+				'title' : '日常支出支多少',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '8',
+				'title' : '誰都不想破病',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '9',
+				'title' : '醫療項目保障額度',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '10',
+				'title' : '夢想三擇一',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '11',
+				'title' : '無痛退休',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '12',
+				'title' : '給兒女無憂的求學時光',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '13',
+				'title' : '',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '14',
+				'title' : '',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '15',
+				'title' : '',
+				'selection' : ['', '']
+			},
+			{
+				'number' : '16',
+				'title' : '',
+				'selection' : ['', '']
+			}
+		];
 	}
 
 	projects.$w.load(function(){
@@ -44,10 +130,53 @@
 				}
 			});
 
-			$('.image-wrap').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+			$(common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 				$(this).siblings().removeClass('ani-reverse');
 			});
 		}
+
+		$(common._btnTopic).on('click', function(){
+			var $quest   = $(common._lContent + '.quest'),
+				_num     = $quest.data('quest'),
+				_gender  = $quest.find('.is-checked').data('gender'),
+				_compare = '';
+
+			if (_num === 1 && $(this).hasClass('btn-next')) {
+				if (_gender !== undefined) {
+					$(common._transition).addClass('chosen-' + _gender);
+
+					$(common._questTitle).on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+						$(this).find('em').text(common._exam[_num].title);
+
+						for (var i = 0; i < common._exam[_num].selection.length; i++) {
+							$(common._transition + ' .list').eq(i).find('em').text(common._exam[_num].selection[i]);
+						};
+					});
+				}
+
+				if (_gender === 'boy') {
+					_compare = 'girl';
+				} else if (_gender === 'girl') {
+					_compare = 'boy';
+				}
+			} else {
+
+			}
+
+			if (_compare !== '') {
+				$(common._imageWrap + '.' + _compare).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					$(common._checkbox).removeClass('is-checked');
+					$quest.attr({
+						'class': 'l-content quest quest-' + (_num + 1),
+						'data-quest': _num + 1
+					});
+
+					if (_num === 1) {
+						$('.btn-prev').removeClass('b-cloak');
+					}
+				});
+			}
+		});
 	});
 	projects.$d.ready(function(){});
 }(window, document, $));
