@@ -1,4 +1,30 @@
-﻿@include keyframes(q2-girl) {
+﻿@include keyframes(q2-title) {
+	0%, 19% {
+		height: 0;
+	}
+
+	20%, 39% {
+		height: 38px;
+	}
+
+	40%, 59% {
+		height: 71px;
+	}
+
+	60%, 79% {
+		height: 109px;
+	}
+
+	80%, 99% {
+		height: 148px;
+	}
+
+	100% {
+		height: 186px;
+	}
+}
+
+@include keyframes(q2-girl) {
 	0% {
 		background-position: 0 0;
 	}
@@ -45,5 +71,55 @@
 
 	100% {
 		background-position: -1161px 0;
+	}
+}
+
+@include keyframes(q2-boy) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 0 -6363px;
+	}
+}
+
+@include keyframes(q2-boy-single) {
+	0% {
+		background-position: -512px 0;
+	}
+
+	100% {
+		background-position: -512px -8787px;
+	}
+}
+
+@include keyframes(q2-boy-single-reverse) {
+	0% {
+		background-position: -512px -8787px;
+	}
+
+	100% {
+		background-position: -512px 0;
+	}
+}
+
+@include keyframes(q2-boy-merryed) {
+	0% {
+		background-position: -1126px 0;
+	}
+
+	100% {
+		background-position: -1126px -14602px;
+	}
+}
+
+@include keyframes(q2-boy-merryed-reverse) {
+	0% {
+		background-position: -1126px -14602px;
+	}
+
+	100% {
+		background-position: -1126px 0;
 	}
 }

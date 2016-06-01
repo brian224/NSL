@@ -334,7 +334,7 @@
 			}
 
 			.boy {
-				background: image-url('boy-door.png') 0 0 no-repeat;
+				background: url(/Content/img/boy-door.png) 0 0 no-repeat;
 				width: 335px;
 				height: 309px;
 				top: 179px;
@@ -344,7 +344,7 @@
 		}
 
 		&.chosen-boy .girl {
-			background: image-url('girl-door.png') 0 0 no-repeat;
+			background: url(/Content/img/girl-door.png) 0 0 no-repeat;
 			width: 335px;
 			height: 309px;
 			top: 179px;
@@ -412,7 +412,7 @@
 		&.chosen-girl {
 			&:before {
 				margin: -171px 0 0 -237px;
-				background: image-url('ani-q2.png') 0 -7272px no-repeat;
+				background: url(/Content/img/ani-q2-girl.png) 0 -7272px no-repeat;
 				width: 595px;
 				height: 303px;
 			}
@@ -454,9 +454,52 @@
 				@include animation(q2-girl-merryed-reverse 3.5s steps(61, end) forwards);
 			}
 		}
-	}
 
-	.chosen-boy {
+		&.chosen-boy {
+			&:before {
+				margin: -171px 0 0 -316px;
+				background: url(/Content/img/ani-q2-boy.png) 0 -6363px no-repeat;
+				width: 512px;
+				height: 303px;
+			}
+
+			&[data-first="true"]:before {
+				background-position: 0 0;
+				@include animation(q2-boy 1.4s 0.5s steps(21, end) forwards);
+			}
+
+			&[data-select="single"]:before {
+				margin: -171px 0 0 -317px;
+				background-position: -512px 0;
+				width: 614px;
+				height: 303px;
+				@include animation(q2-boy-single 1.7s 0.5s steps(29, end) forwards);
+			}
+
+			&[data-reverse="single"]:before {
+				margin: -171px 0 0 -317px;
+				background-position: -512px -8787px;
+				width: 614px;
+				height: 303px;
+				@include animation(q2-boy-single-reverse 1.7s 0.5s steps(29, end) forwards);
+			}
+
+			&[data-select="merryed"]:before {
+				margin: -170px 0 0 -271px;
+				background-position: -1126px 0;
+				width: 509px;
+				height: 298px;
+				@include animation(q2-boy-merryed 2.7s steps(49, end) forwards);
+			}
+
+			&[data-reverse="merryed"]:before {
+				margin: -170px 0 0 -271px;
+				background-position: -1126px -14602px;
+				width: 509px;
+				height: 298px;
+				@include animation(q2-boy-merryed-reverse 2.7s steps(49, end) forwards);
+			}
+		}
 	}
 }
 
