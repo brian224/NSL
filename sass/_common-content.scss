@@ -1,0 +1,599 @@
+﻿.logo {
+	width: 140px;
+	height: 40px;
+	position: absolute;
+	top: 27px;
+	left: 0;
+
+	.link {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.insurance-wrap {
+	display: none;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	font-size: 14px;
+	text-indent: 18px;
+
+	.wording {
+		color: #e95854;
+		font-weight: bold;
+		line-height: 27px;
+	}
+
+	.cost {
+		display: block;
+		width: 166px;
+		height: 32px;
+		position: relative;
+		color: #fff;
+		line-height: 32px;
+
+		.dollar {
+			position: relative;
+			z-index: 1;
+			font-size: 16px;
+			letter-spacing: 1px;
+		}
+	}
+
+	.svg-icon {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+.index {
+	height: 100%;
+	position: relative;
+
+	&:before {
+		content: '';
+		background: image-url('bg-index.png') -238px 0 no-repeat;
+		display: block;
+		width: 372px;
+		height: 222px;
+		position: absolute;
+		top: 345px;
+		left: 108px;
+	}
+
+	&:after {
+		content: '';
+		background: image-url('index-ani.png') -238px 0 no-repeat;
+		display: block;
+		width: 200px;
+		height: 167px;
+		position: absolute;
+		top: 300px;
+		left: 281px;
+		@include animation(family-ani 7s steps(118, end) infinite);
+	}
+
+	.page-title {
+		background: image-url('bg-index.png') -238px -222px no-repeat;
+		display: block;
+		width: 454px;
+		height: 108px;
+		position: absolute;
+		top: 200px;
+		left: 427px;
+	}
+
+	.slogan {
+		background: image-url('bg-index.png') -112px -330px no-repeat;
+		display: block;
+		width: 224px;
+		height: 28px;
+		position: absolute;
+		top: 380px;
+		left: 520px;
+	}
+
+	.btn-check {
+		margin-left: -18px;
+		position: absolute;
+		top: 492px;
+		left: 50%;
+		overflow: visible;
+
+		&.btn-shake {
+			@include animation(btn-shake 0.4s linear forwards);
+		}
+
+		.svg-icon {
+			margin-right: 7px;
+			display: inline-block;
+			width: 21px;
+			height: 21px;
+		}
+
+		em {
+			background: image-url('bg-index.png') -112px -390px no-repeat;
+			display: inline-block;
+			width: 80px;
+			height: 15px;
+		}
+	}
+
+	.btn-start {
+		display: block;
+		width: 124px;
+		height: 114px;
+		position: absolute;
+		top: 428px;
+		right: 144px;
+
+		&:before, &:after {
+			content: '';
+			background: image-url('bg-index.png') 0 0 no-repeat;
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			background-position: -336px -330px;
+			width: 100%;
+			height: 86px;
+			bottom: 0;
+			right: 0;
+		}
+
+		&:after {
+			background-position: -610px 0;
+			width: 37px;
+			height: 37px;
+			top: 0;
+			right: 48px;
+			@include animation(nod-head 8s steps(1, end) infinite);
+		}
+
+		&:hover {
+			width: 126px;
+
+			&:before {
+				background-position: -460px -330px;
+			}
+
+			&:after {
+				@include animation-play-state(paused);
+				@include transform(scale(-1, 1));
+			}
+
+			~ .icon-flying-bird {
+				@include animation-play-state(paused);
+			}
+		}
+	}
+
+	.icon-flying-bird {
+		display: block;
+		width: 45px;
+		height: 32px;
+		position: absolute;
+		top: 335px;
+		left: 409px;
+		@include animation(flying-move 8s linear infinite);
+
+		&.reverse {
+			@include animation(flying-move-reverse 8s linear infinite);
+
+			&:before {
+				background: image-url('bg-index.png') -202px -358px no-repeat;
+				@include animation(wing-ani-reverse 0.4s steps(1, end) infinite);
+			}
+		}
+
+		&:before {
+			content: '';
+			background: image-url('bg-index.png') -112px -358px no-repeat;
+			display: block;
+			width: 100%;
+			height: 100%;
+			@include animation(wing-ani 0.4s steps(1, end) infinite);
+		}
+	}
+}
+
+.quest-title {
+	margin-left: -17px;
+	background: image-url('bg-exams.png') 0 0 no-repeat;
+	display: block;
+	width: 35px;
+	height: 180px;
+	position: absolute;
+	top: 135px;
+	left: 50%;
+}
+
+.btn-check.is-checked:after {
+	content: '';
+	background: image-url('checked.png') 0 0 no-repeat;
+	display: block;
+	width: 34px;
+	height: 20px;
+	position: absolute;
+	bottom: 7px;
+	left: -5px;
+	z-index: 1;
+	@include animation(btn-checked 0.2s steps(3, end) forwards);
+}
+
+.choice-list {
+	height: 100%;
+	font-size: 0;
+
+	.list {
+		display: inline-block;
+		width: 50%;
+		height: 100%;
+		text-align: center;
+		@include box-sizing(border-box);
+
+		&:first-child .btn-check {
+			margin-right: 142px;
+			right: 50%;
+		}
+
+		&:last-child .btn-check {
+			margin-left: 142px;
+			left: 50%;
+		}
+
+		.btn-check {
+			position: absolute;
+			bottom: 190px;
+			overflow: visible;
+			@include transition(ease-in all 0.3s);
+
+			em {
+				background: image-url('bg-exams.png') 0 0 no-repeat;
+				display: inline-block;
+				height: 21px;
+			}
+
+			.svg-icon {
+				display: inline-block;
+				width: 21px;
+				height: 21px;
+			}
+		}
+	}
+}
+
+.girl, .boy {
+	display: block;
+	position: absolute;
+}
+
+.girl {
+	background: image-url('girl.png') -151px 0 no-repeat;
+}
+
+.boy {
+	background: image-url('boy.png') -148px 0 no-repeat;
+}
+
+.quest-1 {
+	.quest-title {
+		@include transition(ease-in opacity 0.3s);
+	}
+
+	.choice-list {
+		.list {
+			em {
+				width: 20px;
+			}
+
+			&:first-child .btn-check {
+				em {
+					background-position: 0 -180px;
+				}
+
+				&.is-checked ~ .image-wrap {
+					@include animation(bow-girl 0.3s steps(11, start) forwards);
+				}
+
+				&.ani-reverse ~ .image-wrap {
+					@include animation(reverse-girl 0.3s steps(11, start) forwards);
+				}
+			}
+
+			&:last-child .btn-check {
+				em {
+					background-position: 0 -201px;
+				}
+
+				&.is-checked ~ .image-wrap {
+					@include animation(bow-boy 0.3s steps(6, start) forwards);
+				}
+
+				&.ani-reverse ~ .image-wrap {
+					@include animation(reverse-boy 0.3s steps(6, start) forwards);
+				}
+			}
+		}
+
+		&[class^="chosen-"], &[class*=" chosen-"] {
+			~.quest-title, .btn-check {
+				opacity: 0;
+			}
+		}
+
+		&.chosen-girl {
+			.girl {
+				@include animation(transition-girl 0.3s steps(11, start) forwards !important);
+			}
+
+			.boy {
+				background: image-url('boy-door.png') 0 0 no-repeat;
+				width: 335px;
+				height: 309px;
+				top: 179px;
+				right: 143px;
+				@include animation(flipout-door 1.5s steps(29, start) forwards);
+			}
+		}
+
+		&.chosen-boy .girl {
+			background: image-url('girl-door.png') 0 0 no-repeat;
+			width: 335px;
+			height: 309px;
+			top: 179px;
+			left: 184px;
+			@include animation(flipout-door 1.5s steps(29, start) forwards);
+		}
+	}
+
+	.girl {
+		width: 151px;
+		height: 242px;
+		top: 230px;
+		left: 250px;
+		@include animation(wink-girl 5s steps(1, start) infinite);
+	}
+
+	.boy {
+		width: 148px;
+		height: 242px;
+		top: 226px;
+		right: 260px;
+		@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+	}
+
+	.btn-prev {
+		display: none;
+	}
+}
+
+.quest-2 {
+	.quest-title {
+		background-position: -35px 0;
+		width: 35px;
+		height: 0;
+		@include animation(q2-title 1.5s linear forwards);
+	}
+
+	.choice-list {
+		width: 100%;
+		position: absolute;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+
+		.list {
+			em {
+				width: 39px;
+				height: 21px;
+			}
+
+			&:first-child .btn-check em {
+				background-position: -35px -186px;
+			}
+
+			&:last-child .btn-check em {
+				background-position: -35px -207px;
+			}
+		}
+
+		&.chosen-girl {
+			&:before {
+				margin: -171px 0 0 -237px;
+				background: image-url('ani-q2.png') 0 -7272px no-repeat;
+				width: 595px;
+				height: 303px;
+			}
+
+			&[data-first="true"]:before {
+				background-position: 0 0;
+				@include animation(q2-girl 1.4s steps(24, end) forwards);
+			}
+
+			&[data-select="single"]:before {
+				margin: -242px 0 0 -247px;
+				background-position: -595px 0;
+				width: 566px;
+				height: 374px;
+				@include animation(q2-girl-single 1.4s 0.5s steps(17, end) forwards);
+			}
+
+			&[data-reverse="single"]:before {
+				margin: -242px 0 0 -247px;
+				background-position: -595px -6358px;
+				width: 566px;
+				height: 374px;
+				@include animation(q2-girl-single-reverse 1.4s 0.5s steps(17, end) forwards);
+			}
+
+			&[data-select="merryed"]:before {
+				margin: -168px 0 0 -255px;
+				background-position: -1161px 0;
+				width: 508px;
+				height: 298px;
+				@include animation(q2-girl-merryed 3.5s steps(61, end) forwards);
+			}
+
+			&[data-reverse="merryed"]:before {
+				margin: -168px 0 0 -255px;
+				background-position: -1161px -18178px;
+				width: 508px;
+				height: 298px;
+				@include animation(q2-girl-merryed-reverse 3.5s steps(61, end) forwards);
+			}
+		}
+	}
+
+	.chosen-boy {
+	}
+}
+
+.step-list {
+	width: 100%;
+	position: absolute;
+	bottom: 90px;
+	left: 0;
+	font-size: 0;
+	text-align: center;
+
+	$types : 0;
+	$total : 4;
+	@while $types <= $total {
+		&.complete-phase-#{$types} {
+			.step-line {
+				width : ((506px / $total) * $types);
+			}
+
+			@for $i from 1 through $types {
+				.list:nth-child(#{$i}) {
+					em {
+						color: #fff;
+					}
+
+					.svg-icon use {
+						fill: #e98e8c;
+						stroke: #e98e8c;
+					}
+				}
+			}
+
+			.list:nth-child(#{$types + 1}) {
+				em {
+					color: #fff;
+				}
+
+				.svg-icon use {
+					fill: #E95854;
+				}
+			}
+		}
+
+		$types : $types + 1;
+	}
+
+	.bg-line {
+		margin: -4px 0 0 -252px;
+		width: 504px;
+		height: 8px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		.svg-line {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.step-line {
+		margin: -4px 0 0 -253px;
+		height: 8px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		overflow: hidden;
+		@include transition(ease-in width 0.3s);
+
+		.svg-container {
+			width: 506px;
+			height: 8px;
+		}
+
+		.svg-line {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.list {
+		padding: 0 30px;
+		display: inline-block;
+		width: 56px;
+		height: 56px;
+		position: relative;
+		z-index: 1;
+		font-size: 14px;
+		line-height: 16px;
+		@include transition(ease-in all 0.3s);
+
+		em {
+			margin: -16px 0 0 -15px;
+			display: block;
+			width: 30px;
+			height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			color: #E95854;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-align: center;
+		}
+
+		.svg-icon {
+			width: 56px;
+			height: 56px;
+
+			use {
+				fill: #fff;
+				stroke: #E95854;
+			}
+		}
+	}
+}
+
+.btn-topic {
+	display: block;
+	width: 92px;
+	height: 103px;
+	position: absolute !important;
+	top: 460px;
+
+	&.btn-prev {
+		left: 85px;
+	}
+
+	&.btn-next {
+		right: 85px;
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}

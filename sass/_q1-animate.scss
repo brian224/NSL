@@ -1,0 +1,184 @@
+﻿@include keyframes(btn-checked) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -102px 0;
+	}
+}
+
+@include keyframes(nod-head) {
+	0%, 46%, 80% {
+		background-position: -610px 0;
+	}
+
+	35%, 45% {
+		background-position: -647px 0;
+		/*@include transform(scale(1, 1));*/
+	}
+}
+
+@include keyframes(flying-move) {
+	0%, 80% {
+		top: 335px;
+		left: 409px;
+		@include transform(scale(1, 1));
+	}
+
+	35%, 45% {
+		top: 425px;
+		left: 728px;
+		opacity: 1;
+		@include transform(scale(1, 1));
+	}
+
+	46%, 80%, 99% {
+		opacity: 0;
+	}
+}
+
+@include keyframes(flying-move-reverse) {
+	0%, 80% {
+		top: 335px;
+		left: 409px;
+		opacity: 0;
+		@include transform(scale(1, 1));
+	}
+
+	35%, 45% {
+		top: 425px;
+		left: 728px;
+		opacity: 0;
+		@include transform(scale(1, 1));
+	}
+
+	46%, 80% {
+		opacity: 1;
+		@include transform(scale(-1, 1));
+	}
+}
+
+@include keyframes(wing-ani) {
+	0%, 100% {
+		background-position: -112px -358px;
+	}
+
+	50% {
+		background-position: -157px -358px;
+	}
+}
+
+@include keyframes(wing-ani-reverse) {
+	0%, 100% {
+		background-position: -202px -358px;
+	}
+
+	50% {
+		background-position: -247px -358px;
+	}
+}
+
+@include keyframes(family-ani) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -23600px 0;
+	}
+}
+
+@include keyframes(btn-shake) {
+	0%, 50% {
+		@include transform(translate(3px, 0));
+	}
+
+	25%, 75% {
+		@include transform(translate(-3px, 0));
+	}
+
+	100% {
+		@include transform(translate(0, 0));
+	}
+}
+
+@include keyframes(wink-girl) {
+	65%, 75% {
+		background-position: -151px 0;
+	}
+
+	70% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(wink-boy) {
+	65%, 75% {
+		background-position: -148px 0;
+	}
+
+	70% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(bow-girl) {
+	0% {
+		background-position: -151px 0;
+	}
+
+	100% {
+		background-position: -1812px 0;
+	}
+}
+
+@include keyframes(reverse-girl) {
+	0% {
+		background-position: -1812px 0;
+	}
+
+	100% {
+		background-position: -151px 0;
+	}
+}
+
+@include keyframes(transition-girl) {
+	0% {
+		background-position: -1812px 0;
+	}
+
+	100% {
+		background-position: -3473px 0;
+	}
+}
+
+@include keyframes(bow-boy) {
+	0% {
+		background-position: -148px 0;
+	}
+
+	100% {
+		background-position: -1036px 0;
+	}
+}
+
+@include keyframes(reverse-boy) {
+	0% {
+		background-position: -1036px 0;
+	}
+
+	100% {
+		background-position: -148px 0;
+	}
+}
+
+@include keyframes(flipout-door) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -9715px 0;
+	}
+}

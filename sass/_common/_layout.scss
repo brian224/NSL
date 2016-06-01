@@ -1,0 +1,82 @@
+.l-body {
+	position: relative;
+	background: #feedc7 image-url('bg-main.png') center 30px no-repeat;
+}
+
+.l-header {
+	margin-left: -450px;
+	width: 900px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 1;
+}
+
+.l-main {
+	margin: 0 auto;
+	width: 1000px;
+	height: 700px;
+	position: relative;
+
+	&.is-index {
+		&:before, &:after {
+			content: '';
+			background: image-url('bg-index.png') 0 0 no-repeat;
+			display: block;
+			position: absolute;
+			@include animation(wave-cloud 4s ease-in infinite);
+		}
+
+		&:before {
+			width: 112px;
+			height: 420px;
+			top: -210px;
+			left: 275px;
+			@include animation-delay(-2s);
+		}
+
+		&:after {
+			background-position: -112px 0;
+			width: 126px;
+			height: 312px;
+			top: -4px;
+			left: 165px;
+			@include transform(rotate(5deg));
+			@include transform-origin(top, center);
+		}
+
+		.index {
+			display: block;
+		}
+	}
+
+	&.is-quest .quest {
+		display: block;
+	}
+
+	.l-content {
+		display: none;
+	}
+}
+
+.l-footer {
+	@include background-image(linear-gradient(to bottom, #304d91 0%, #253a71 100%));
+}
+
+@include keyframes(wave-cloud) {
+	0%, 100% {
+		@include transform(rotate(3deg));
+	}
+
+	50% {
+		@include transform(rotate(-3deg));
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}

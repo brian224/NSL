@@ -1,0 +1,87 @@
+.m-footer {
+	margin: 0 auto;
+	padding: 0 22px;
+	width: 1000px;
+	position: relative;
+	@include box-sizing(border-box);
+
+	&:before {
+		content: '';
+		margin-left: -533px;
+		background: image-url('footer-top.png') 0 0 no-repeat;
+		display: block;
+		width: 1170px;
+		height: 5px;
+		position: absolute;
+		top: -5px;
+		left: 50%;
+	}
+
+	.info-list {
+		padding: 34px 0 14px 0;
+		border-bottom: 1px solid #42609b;
+		font-size: 0;
+		text-align: right;
+
+		.list {
+			padding: 0 14px;
+			display: inline-block;
+			position: relative;
+			font-size: 12px;
+			line-height: 1.5em;
+
+			&:first-child:before {
+				display: none;
+			}
+
+			&:before {
+				content: '';
+				margin-top: -6px;
+				background: #a69da2;
+				display: block;
+				width: 1px;
+				height: 12px;
+				position: absolute;
+				top: 50%;
+				left: 0;
+			}
+		}
+
+		.link {
+			color: #a69da2;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.m-footer-bd {
+		padding-left: 10px;
+		line-height: 22px;
+	}
+
+	.copyright {
+		color: #6f6b81;
+	}
+
+	.address {
+		color: #fff;
+
+		.link {
+			color: #6f6b81;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}
