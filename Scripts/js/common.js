@@ -131,8 +131,8 @@
 			});
 		}
 
-		if ($(common._lContent).hasClass('quest-1')) {
-			$(common._checkbox).on('click', function(){
+		$(common._checkbox).on('click', function(){
+			if ($(common._lContent).hasClass('quest-1')) {
 				var $another = $(this).parent().siblings().find(common._checkbox);
 
 				if ($(this).hasClass('is-checked')) {
@@ -144,38 +144,30 @@
 				if ($another.hasClass('is-checked')) {
 					$another.removeClass('is-checked').addClass('ani-reverse');
 				}
-			});
 
-			$(common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-				$(this).siblings().removeClass('ani-reverse');
-			});
-		}
-
-		if ($(common._lContent).hasClass('quest-2')) {
-			$(common._checkbox).on('click', function(){
-				var _total = 0;
-
+				$(common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					$(this).siblings().removeClass('ani-reverse');
+				});
+			} else if ($(common._lContent).hasClass('quest-2')) {
 				var $another = $(this).parent().siblings().find(common._checkbox);
 
 				if ($(this).hasClass('is-checked')) {
 					$(this).removeClass('is-checked');
-					$(common._checkbox).addClass('ani-reverse');
-					$(common._transition).attr('data-select', '');
+					$(common._transition).attr('data-select', '').attr('data-reverse', $(this).attr('data-meta'));
 				} else {
 					$(this).addClass('is-checked');
-					$(common._checkbox).removeClass('ani-reverse');
-					$(common._transition).attr('data-select', $(this).data('meta'));
+					$(common._transition).attr('data-select', $(this).attr('data-meta'));
 				}
 
 				if ($another.hasClass('is-checked')) {
-					$(common._checkbox).removeClass('ani-reverse');
+					$another.removeClass('is-checked');
 				}
-			});
 
-			$(common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-				$(common._checkbox).removeClass('ani-reverse');
-			});
-		}
+				$('.choice-list').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					$(this).attr('data-first', '').attr('data-reverse', '');
+				});
+			}
+		});
 
 		$(common._btnTopic).on('click', function(){
 			var $quest   = $(common._lContent + '.quest'),
@@ -214,9 +206,9 @@
 						'data-quest': _num + 1
 					});
 
-					if (_num === 1) {
-						$('.btn-prev').removeClass('b-cloak');
-					}
+					$('.choice-list').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+						$(this).attr('data-first', '');
+					});
 				});
 			}
 		});

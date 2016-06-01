@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<meta charset="UTF-8">
+	<title>南山人壽</title>
+	<link rel="stylesheet" href="../Scripts/plugin/ion-rangeSlider/css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="../Scripts/plugin/ion-rangeSlider/css/ion.rangeSlider.skinHTML5.css" />
+</head>
+<body>
+	<input id="range_01">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://ionden.com/a/plugins/ion.rangeSlider/static/js/ion-rangeSlider/ion.rangeSlider.js"></script>
+	<script>
+	$("#range_01").ionRangeSlider({
+		grid: true,
+		min: 0,
+		max: 100,
+		from: 0,
+		values: [0, 10, 20, 30, 40, 50, 75, 100]
+	});
+	</script>
+</body>
+</html>
