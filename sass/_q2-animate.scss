@@ -24,6 +24,16 @@
 	}
 }
 
+@include keyframes(q2-btn-check) {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 @include keyframes(q2-girl) {
 	0% {
 		background-position: 0 0;
@@ -54,7 +64,7 @@
 	}
 }
 
-@include keyframes(q2-girl-merryed) {
+@include keyframes(q2-girl-merried) {
 	0% {
 		background-position: -1161px 0;
 	}
@@ -64,7 +74,7 @@
 	}
 }
 
-@include keyframes(q2-girl-merryed-reverse) {
+@include keyframes(q2-girl-merried-reverse) {
 	0% {
 		background-position: -1161px -18178px;
 	}
@@ -104,7 +114,7 @@
 	}
 }
 
-@include keyframes(q2-boy-merryed) {
+@include keyframes(q2-boy-merried) {
 	0% {
 		background-position: -1126px 0;
 	}
@@ -114,7 +124,7 @@
 	}
 }
 
-@include keyframes(q2-boy-merryed-reverse) {
+@include keyframes(q2-boy-merried-reverse) {
 	0% {
 		background-position: -1126px -14602px;
 	}

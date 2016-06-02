@@ -203,6 +203,10 @@
 	}
 }
 
+.stage {
+	display: none;
+}
+
 .quest-title {
 	margin-left: -17px;
 	background: image-url('bg-exams.png') 0 0 no-repeat;
@@ -283,6 +287,10 @@
 }
 
 .quest-1 {
+	.cut-1 {
+		display: block;
+	}
+
 	.quest-title {
 		@include transition(ease-in opacity 0.3s);
 	}
@@ -334,7 +342,7 @@
 			}
 
 			.boy {
-				background: url(/Content/img/boy-door.png) 0 0 no-repeat;
+				background: url(../img/boy-door.png) 0 0 no-repeat;
 				width: 335px;
 				height: 309px;
 				top: 179px;
@@ -344,7 +352,7 @@
 		}
 
 		&.chosen-boy .girl {
-			background: url(/Content/img/girl-door.png) 0 0 no-repeat;
+			background: url(../img/girl-door.png) 0 0 no-repeat;
 			width: 335px;
 			height: 309px;
 			top: 179px;
@@ -375,6 +383,10 @@
 }
 
 .quest-2 {
+	.cut-2 {
+		display: block;
+	}
+
 	.quest-title {
 		background-position: -35px 0;
 		width: 35px;
@@ -412,7 +424,7 @@
 		&.chosen-girl {
 			&:before {
 				margin: -171px 0 0 -237px;
-				background: url(/Content/img/ani-q2-girl.png) 0 -7272px no-repeat;
+				background: url(../img/ani-q2-girl.png) 0 -7272px no-repeat;
 				width: 595px;
 				height: 303px;
 			}
@@ -422,43 +434,63 @@
 				@include animation(q2-girl 1.4s steps(24, end) forwards);
 			}
 
-			&[data-select="single"]:before {
-				margin: -242px 0 0 -247px;
-				background-position: -595px 0;
-				width: 566px;
-				height: 374px;
-				@include animation(q2-girl-single 1.4s 0.5s steps(17, end) forwards);
+			&[data-select="single"] {
+				@include animation-duration(1.4s);
+				@include animation-delay(0.5s);
+
+				&:before {
+					margin: -242px 0 0 -247px;
+					background-position: -595px 0;
+					width: 566px;
+					height: 374px;
+					@include animation(q2-girl-single 1.4s 0.5s steps(17, end) forwards);
+				}
 			}
 
-			&[data-reverse="single"]:before {
-				margin: -242px 0 0 -247px;
-				background-position: -595px -6358px;
-				width: 566px;
-				height: 374px;
-				@include animation(q2-girl-single-reverse 1.4s 0.5s steps(17, end) forwards);
+			&[data-reverse="single"] {
+				@include animation-duration(1.4s);
+				@include animation-delay(0.5s);
+
+				&:before {
+					margin: -242px 0 0 -247px;
+					background-position: -595px -6358px;
+					width: 566px;
+					height: 374px;
+					@include animation(q2-girl-single-reverse 1.4s 0.5s steps(17, end) forwards);
+				}
 			}
 
-			&[data-select="merryed"]:before {
-				margin: -168px 0 0 -255px;
-				background-position: -1161px 0;
-				width: 508px;
-				height: 298px;
-				@include animation(q2-girl-merryed 3.5s steps(61, end) forwards);
+			&[data-select="merried"] {
+				@include animation-duration(3.5s);
+				@include animation-delay(0);
+
+				&:before {
+					margin: -168px 0 0 -255px;
+					background-position: -1161px 0;
+					width: 508px;
+					height: 298px;
+					@include animation(q2-girl-merried 3.5s steps(61, end) forwards);
+				}
 			}
 
-			&[data-reverse="merryed"]:before {
-				margin: -168px 0 0 -255px;
-				background-position: -1161px -18178px;
-				width: 508px;
-				height: 298px;
-				@include animation(q2-girl-merryed-reverse 3.5s steps(61, end) forwards);
+			&[data-reverse="merried"] {
+				@include animation-duration(3.5s);
+				@include animation-delay(0);
+
+				&:before {
+					margin: -168px 0 0 -255px;
+					background-position: -1161px -18178px;
+					width: 508px;
+					height: 298px;
+					@include animation(q2-girl-merried-reverse 3.5s steps(61, end) forwards);
+				}
 			}
 		}
 
 		&.chosen-boy {
 			&:before {
 				margin: -171px 0 0 -316px;
-				background: url(/Content/img/ani-q2-boy.png) 0 -6363px no-repeat;
+				background: url(../img/ani-q2-boy.png) 0 -6363px no-repeat;
 				width: 512px;
 				height: 303px;
 			}
@@ -468,38 +500,189 @@
 				@include animation(q2-boy 1.4s 0.5s steps(21, end) forwards);
 			}
 
-			&[data-select="single"]:before {
-				margin: -171px 0 0 -317px;
-				background-position: -512px 0;
-				width: 614px;
-				height: 303px;
-				@include animation(q2-boy-single 1.7s 0.5s steps(29, end) forwards);
+			&[data-select="single"] {
+				@include animation-duration(1.7s);
+				@include animation-delay(0.5s);
+
+				&:before {
+					margin: -171px 0 0 -317px;
+					background-position: -512px 0;
+					width: 614px;
+					height: 303px;
+					@include animation(q2-boy-single 1.7s 0.5s steps(29, end) forwards);
+				}
 			}
 
-			&[data-reverse="single"]:before {
-				margin: -171px 0 0 -317px;
-				background-position: -512px -8787px;
-				width: 614px;
-				height: 303px;
-				@include animation(q2-boy-single-reverse 1.7s 0.5s steps(29, end) forwards);
+			&[data-reverse="single"] {
+				@include animation-duration(1.7s);
+				@include animation-delay(0.5s);
+
+				&:before {
+					margin: -171px 0 0 -317px;
+					background-position: -512px -8787px;
+					width: 614px;
+					height: 303px;
+					@include animation(q2-boy-single-reverse 1.7s 0.5s steps(29, end) forwards);
+				}
 			}
 
-			&[data-select="merryed"]:before {
-				margin: -170px 0 0 -271px;
-				background-position: -1126px 0;
-				width: 509px;
-				height: 298px;
-				@include animation(q2-boy-merryed 2.7s steps(49, end) forwards);
+			&[data-select="merried"] {
+				@include animation-duration(2.7s);
+				@include animation-delay(0);
+
+				&:before {
+					margin: -170px 0 0 -271px;
+					background-position: -1126px 0;
+					width: 509px;
+					height: 298px;
+					@include animation(q2-boy-merried 2.7s steps(49, end) forwards);
+				}
 			}
 
-			&[data-reverse="merryed"]:before {
-				margin: -170px 0 0 -271px;
-				background-position: -1126px -14602px;
-				width: 509px;
-				height: 298px;
-				@include animation(q2-boy-merryed-reverse 2.7s steps(49, end) forwards);
+			&[data-reverse="merried"] {
+				@include animation-duration(2.7s);
+				@include animation-delay(0);
+
+				&:before {
+					margin: -170px 0 0 -271px;
+					background-position: -1126px -14602px;
+					width: 509px;
+					height: 298px;
+					@include animation(q2-boy-merried-reverse 2.7s steps(49, end) forwards);
+				}
 			}
 		}
+
+		&[class^="chosen-"], &[class*=" chosen-"] {
+			.btn-check {
+				@include animation(q2-btn-check 0.3s linear forwards);
+			}
+		}
+	}
+}
+
+.quest-3 {
+	.cut-3 {
+		display: block;
+	}
+
+	.quest-title {
+		background-position: -74px 0;
+		width: 37px;
+		height: 0;
+		top: 48px;
+		@include animation(q3-title 1.2s 0.1s linear forwards);
+	}
+
+	.image-wrap {
+		position: absolute;
+		left: 50%;
+	}
+
+	.range-slider {
+		margin-left: -194px;
+		width: 388px;
+		height: 55px;
+		position: absolute;
+		bottom: 180px;
+		left: 50%;
+
+		.age-slider {
+			display: none;
+		}
+
+		.irs {
+			height: 55px;
+		}
+
+		.irs-line {
+			background: image-url('bg-slider.png') center 0 no-repeat;
+			height: 13px;
+			top: 33px;
+			border: 0;
+			border-radius: 0;
+		}
+
+		.irs-bar, .irs-bar-edge {
+			display: none;
+		}
+
+		.irs-min, .irs-max {
+			padding: 0;
+			background: none;
+			width: 30px;
+			top: auto;
+			bottom: -1em;
+			visibility: visible !important;
+			color: #8a6f5b;
+			font-size: 14px;
+			font-weight: bold;
+			line-height: 1.6em;
+			text-align: center;
+		}
+
+		.irs-single {
+			padding: 0;
+			background: image-url('bg-slider.png') 0 bottom no-repeat;
+			width: 32px;
+			height: 39px;
+			border-radius: 0;
+			cursor: pointer;
+			color: #fff;
+			font-size: 14px;
+			line-height: 32px;
+			text-align: center;
+		}
+
+		.irs-slider {
+			background: none;
+			width: 27px;
+			height: 27px;
+			top: 25px;
+			border: 0;
+			box-shadow: none;
+			cursor: pointer;
+		}
+	}
+
+	.chosen-girl .image-wrap {
+		margin-left: -75px;
+		background: url(../img/ani-q3-girl.png) 0 0 no-repeat;
+		width: 151px;
+		height: 523px;
+		bottom: 230px;
+
+		&[data-age="y-t-o"] {
+			@include animation(q3-girl-y-t-o 1.3s steps(49, end) forwards);
+		}
+
+		&[data-age="m-t-o"] {
+			@include animation(q3-girl-m-t-o 1.3s steps(24, end) forwards);
+		}
+
+		&[data-age="y-t-m"] {
+			@include animation(q3-girl-y-t-m 1.3s steps(24, end) forwards);
+		}
+
+		&[data-age="o-t-m"] {
+			@include animation(q3-girl-o-t-m 1.3s steps(24, end) forwards);
+		}
+
+		&[data-age="o-t-y"] {
+			@include animation(q3-girl-o-t-y 1.3s steps(49, end) forwards);
+		}
+
+		&[data-age="m-t-y"] {
+			@include animation(q3-girl-m-t-y 1.3s steps(24, end) forwards);
+		}
+	}
+
+	.chosen-boy .image-wrap {
+		margin-left: -73px;
+		background: url(../img/ani-q3-boy.png) 0 0 no-repeat;
+		width: 147px;
+		height: 533px;
+		bottom: 220px;
 	}
 }
 

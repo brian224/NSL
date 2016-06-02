@@ -3,6 +3,7 @@
 <head>	
 	<meta charset="UTF-8">
 	<title>南山人壽</title>
+	<link rel="stylesheet" href="../Scripts/plugin/ion-rangeSlider/css/ion.rangeSlider.css" />
 	<link rel="stylesheet" href="../Content/css/style.css?CSS=20160420_01" />
 </head>
 <body>
@@ -22,7 +23,7 @@
 				</div>
 			</div>
 		</header>
-		<div class="l-main is-index">
+		<div class="l-main is-quest">
 			<div class="l-content index">
 				<h2 class="page-title hide-text">這是個殘酷中帶著促咪的小測驗，評估你的人生需要多少保障才足夠？</h2>
 				<em class="slogan hide-text">只要6分鐘，就能護一生</em>
@@ -34,46 +35,60 @@
 				<i class="icon-flying-bird"></i>
 				<i class="icon-flying-bird reverse"></i>
 			</div>
-			<!-- <div class="l-content quest quest-2" data-quest="2">
-				<ul class="choice-list jq-transition chosen-boy" data-first="true" data-select="" data-reverse="">
-					<li class="list">
-						<button class="btn-check jq-checkbox" data-meta="single">
-							<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
-							<em class="hide-text">單身</em>
-						</button>
-						<div class="image-wrap girl"></div>
-					</li>
-					<li class="list">
-						<button class="btn-check jq-checkbox" data-meta="merryed">
-							<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
-							<em class="hide-text">已婚</em>
-						</button>
-						<div class="image-wrap boy"></div>
-					</li>
-				</ul>
-				<h2 class="quest-title hide-text jq-title">
-					<em>你婚了嗎？</em>
-				</h2> -->
-			<div class="l-content quest quest-1" data-quest="1">
-				<ul class="choice-list jq-transition" data-first="true" data-select="" data-reverse="">
-					<li class="list">
-						<button class="btn-check jq-checkbox" data-meta="girl">
-							<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
-							<em class="hide-text">女</em>
-						</button>
-						<div class="image-wrap girl"></div>
-					</li>
-					<li class="list">
-						<button class="btn-check jq-checkbox" data-meta="boy">
-							<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
-							<em class="hide-text">男</em>
-						</button>
-						<div class="image-wrap boy"></div>
-					</li>
-				</ul>
-				<h2 class="quest-title hide-text jq-title">
-					<em>你的性別？</em>
-				</h2>
+			<div class="l-content quest quest-3" data-quest="3">
+				<div class="stage cut-1">
+					<ul class="choice-list jq-transition chosen-girl" data-first="true" data-select="" data-reverse="">
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="girl">
+								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
+								<em class="hide-text">女</em>
+							</button>
+							<div class="image-wrap girl"></div>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="boy">
+								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
+								<em class="hide-text">男</em>
+							</button>
+							<div class="image-wrap boy"></div>
+						</li>
+					</ul>
+					<h2 class="quest-title hide-text jq-title">
+						<em>你的性別？</em>
+					</h2>
+				</div>
+				<div class="stage cut-2">
+					<ul class="choice-list jq-transition chosen-girl" data-first="true" data-select="" data-reverse="">
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="single">
+								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
+								<em class="hide-text">單身</em>
+							</button>
+							<div class="image-wrap girl"></div>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="merried">
+								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
+								<em class="hide-text">已婚</em>
+							</button>
+							<div class="image-wrap boy"></div>
+						</li>
+					</ul>
+					<h2 class="quest-title hide-text jq-title">
+						<em>你婚了嗎？</em>
+					</h2>
+				</div>
+				<div class="stage cut-3">
+					<div class="choice-list jq-transition chosen-girl">
+						<div class="image-wrap" data-age="young"></div>
+						<div class="range-slider">
+							<input class="age-slider">
+						</div>
+					</div>
+					<h2 class="quest-title hide-text jq-title">
+						<em>你的年齡？</em>
+					</h2>
+				</div>
 				<ol class="step-list complete-phase-0">
 					<li class="list is-complete">
 						<em>基本資料</em>
@@ -138,11 +153,14 @@
 		<img class="b-lazy" src="../Content/img/boy-door.png" alt="">
 		<img class="b-lazy" src="../Content/img/ani-q2-girl.png" alt="">
 		<img class="b-lazy" src="../Content/img/ani-q2-boy.png" alt="">
+		<img class="b-lazy" src="../Content/img/ani-q3-girl.png" alt="">
+		<img class="b-lazy" src="../Content/img/ani-q3-boy.png" alt="">
 	</div>
 </body>
 <script src="../Scripts/plugin/svgxuse/svgxuse.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/jquery/jquery.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/lazyload/jquery.lazyload.min.js?JS=20160216_01"></script>
+<script src="../Scripts/plugin/ion-rangeSlider/ion.rangeSlider.min.js?JS=20160216_01"></script>
 <script src="../Scripts/js/factory.js?JS=20160420_01"></script>
 <script src="../Scripts/js/common.js?JS=20160420_01"></script>
 </html>

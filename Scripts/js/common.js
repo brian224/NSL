@@ -11,108 +11,45 @@
 		this._btnTopic   = '.jq-topic';
 		this._transition = '.jq-transition';
 		this._imageWrap  = '.image-wrap';
-		this._questTitle = '.jq-title';
-		this._exam       = [
-			{
-				'number' : '1',
-				'title' : '你的性別？',
-				'selection' : ['女', '男'],
-				'selectMeta' : ['girl', 'boy']
-			},
-			{
-				'number' : '2',
-				'title' : '你婚了嗎？',
-				'selection' : ['單身', '已婚'],
-				'selectMeta' : ['single', 'merryed']
-			},
-			{
-				'number' : '3',
-				'title' : '您的年齡？',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '4',
-				'title' : '你有小孩嗎？',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '5',
-				'title' : '你正處於哪個人生階段？',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '6',
-				'title' : '不好意思，你的年收入？',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '7',
-				'title' : '日常支出支多少',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '8',
-				'title' : '誰都不想破病',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '9',
-				'title' : '醫療項目保障額度',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '10',
-				'title' : '夢想三擇一',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '11',
-				'title' : '無痛退休',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '12',
-				'title' : '給兒女無憂的求學時光',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '13',
-				'title' : '',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '14',
-				'title' : '',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '15',
-				'title' : '',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			},
-			{
-				'number' : '16',
-				'title' : '',
-				'selection' : ['', ''],
-				'selectMeta' : ['', '']
-			}
-		];
+		this._prevAge    = 20;
 	}
 
 	projects.$w.load(function(){
+		$('.age-slider').ionRangeSlider({
+			min: 20,
+			max: 84,
+			from: 20,
+			max_postfix: "+",
+			onStart: function (data) {
+				common._prevAge = data.min;
+			},
+			onFinish: function (data) {
+				// console.log(data);
+				if (data.from >= 55 && common._prevAge < 35) {
+					// 直接從青年拉到老年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-o');
+				} else if (data.from >= 55 && (common._prevAge >= 35 && common._prevAge < 55)) {
+					// 中年拉到老年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-o');
+				} else if (data.from >= 35 && common._prevAge < 35) {
+					// 青年拉到中年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-m');
+				} else if (data.from >= 55 && common._prevAge >= 35) {
+					// 老年拉到中年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-m');
+				} else if (data.from < 35 && common._prevAge >= 55) {
+					// 直接從老年拉到青年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-y');
+				} else if (data.from < 35 && (common._prevAge >= 35 && common._prevAge < 55)) {
+					// 中年拉到青年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-y');
+				} else {
+
+				}
+				common._prevAge = data.from;
+			}
+		});
+
 		if ($(common._lContent).hasClass('index')) {
 			$(common._start).on('click', function(){
 				if ($(common._required).hasClass('is-checked')) {
@@ -139,9 +76,7 @@
 			if ($(common._lContent).hasClass('quest-1')) {
 				var $another = $(this).parent().siblings().find(common._checkbox);
 
-				if ($(this).hasClass('is-checked')) {
-					$(this).removeClass('is-checked').addClass('ani-reverse');
-				} else {
+				if (!$(this).hasClass('is-checked')) {
 					$(this).addClass('is-checked').removeClass('ani-reverse');
 				}
 
@@ -155,23 +90,29 @@
 			} else if ($(common._lContent).hasClass('quest-2')) {
 				var $another = $(this).parent().siblings().find(common._checkbox);
 
-				$('.choice-list').attr('data-first', '');
+				$(common._transition).attr('data-first', '');
 
-				if ($(this).hasClass('is-checked')) {
-					$(this).removeClass('is-checked');
-					$(common._transition).attr('data-select', '').attr('data-reverse', $(this).attr('data-meta'));
-				} else {
+				if (!$(this).hasClass('is-checked')) {
 					$(this).addClass('is-checked');
-					$(common._transition).attr('data-select', $(this).attr('data-meta'));
-				}
 
-				if ($another.hasClass('is-checked')) {
-					$another.removeClass('is-checked');
-				}
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
 
-				$('.choice-list').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					$(this).attr('data-reverse', '');
-				});
+						var $this = $(this);
+
+						$another.removeClass('is-checked');
+						$(common._transition).attr('data-reverse', $another.attr('data-meta'));
+
+						setTimeout(function(){
+							$(common._transition).attr({
+								'data-reverse': '',
+								'data-select': $this.attr('data-meta')
+							});
+						}, (parseFloat($('[data-reverse="' + $another.attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $another.attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
+					} else {
+						$(common._transition).attr('data-select', $(this).attr('data-meta'));
+					}
+				}
 			}
 		});
 
@@ -179,40 +120,61 @@
 			var $quest   = $(common._lContent + '.quest'),
 				_num     = parseInt($quest.attr('data-quest'), 10),
 				_meta    = $quest.find('.is-checked').attr('data-meta'),
-				_compare = '';
+				_compare = '',
+				_direct  = 0;
 
-			if (_num === 1 && $(this).hasClass('btn-next')) {
-				if (_meta !== undefined) {
-					$(common._transition).addClass('chosen-' + _meta);
+			// 判斷是上一題還是下一題
+			if ($(this).hasClass('btn-next')) {
+				_direct = 1;
+				// 是否為第一題
+				if (_num === 1) {
+					// 作答了沒
+					if (_meta !== undefined) {
+						$(common._transition).addClass('chosen-' + _meta);
+					}
 
-					$(common._questTitle).on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-						$(this).find('em').text(common._exam[_num].title);
+					if (_meta === 'boy') {
+						_compare = 'girl';
+					} else if (_meta === 'girl') {
+						_compare = 'boy';
+					}
 
-						for (var i = 0; i < common._exam[_num].selection.length; i++) {
-							$(common._transition + ' .list').eq(i).find('.btn-check').attr('data-meta', common._exam[_num].selectMeta[i]);
-							$(common._transition + ' .list').eq(i).find('em').text(common._exam[_num].selection[i]);
-						};
-					});
+					if (_compare !== '') {
+						$(common._imageWrap + '.' + _compare).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$quest.attr({
+								'class': 'l-content quest quest-' + (_num + _direct),
+								'data-quest': _num + _direct
+							});
+						});
+					}
+				} else {
+					// 作答了沒
+					if (_meta !== undefined) {
+						$(common._transition).addClass('chosen-' + _meta);
+
+						$quest.attr({
+							'class': 'l-content quest quest-' + (_num + _direct),
+							'data-quest': _num + _direct
+						});
+					}
 				}
+			} else {
+				_direct = -1;
 
-				if (_meta === 'boy') {
-					_compare = 'girl';
-				} else if (_meta === 'girl') {
-					_compare = 'boy';
-				}
-			}
-
-			if (_compare !== '') {
-				$(common._imageWrap + '.' + _compare).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					$(common._checkbox).removeClass('is-checked');
-					$quest.attr({
-						'class': 'l-content quest quest-' + (_num + 1),
-						'data-quest': _num + 1
-					});
+				$quest.attr({
+					'class': 'l-content quest quest-' + (_num + _direct),
+					'data-quest': _num + _direct
 				});
+
+				$(common._imageWrap).off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+
+				if (_num === 2) {
+					$(common._transition).removeClass('chosen-boy chosen-girl');
+				}
 			}
 		});
 	});
+
 	projects.$d.ready(function(){
 		$('img.b-lazy').lazyload();
 	});

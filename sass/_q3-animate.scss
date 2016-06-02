@@ -1,0 +1,53 @@
+﻿@include keyframes(q3-title) {
+	0%, 19% {
+		height: 0;
+	}
+
+	20%, 39% {
+		height: 39px;
+	}
+
+	40%, 59% {
+		height: 72px;
+	}
+
+	60%, 79% {
+		height: 110px;
+	}
+
+	80%, 99% {
+		height: 150px;
+	}
+
+	100% {
+		height: 186px;
+	}
+}
+
+@include keyframes(q3-girl-y-t-o) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50% {
+		background-position: 0 0;
+	}
+
+	50.1% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q3-girl-y-t-m) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3624px 0;
+	}
+}
