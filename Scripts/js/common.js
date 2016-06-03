@@ -25,26 +25,44 @@
 			},
 			onFinish: function (data) {
 				// console.log(data);
-				if (data.from >= 55 && common._prevAge < 35) {
-					// 直接從青年拉到老年
+				if ((data.from >= 55 && data.from < 84) && common._prevAge < 35) {
+					// 青年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-o');
-				} else if (data.from >= 55 && (common._prevAge >= 35 && common._prevAge < 55)) {
+				} else if ((data.from >= 55 && data.from < 84) && (common._prevAge >= 35 && common._prevAge < 55)) {
 					// 中年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-o');
-				} else if (data.from >= 35 && common._prevAge < 35) {
+				} else if ((data.from >= 55 && data.from < 84) && common._prevAge >= 84) {
+					// 人瑞拉到老年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-o');
+				} else if ((data.from >= 35 && data.from < 55) && common._prevAge < 35) {
 					// 青年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-m');
-				} else if (data.from >= 55 && common._prevAge >= 35) {
+				} else if ((data.from >= 35 && data.from < 55) && (common._prevAge >= 55 && common._prevAge < 84)) {
 					// 老年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-m');
-				} else if (data.from < 35 && common._prevAge >= 55) {
-					// 直接從老年拉到青年
+				} else if ((data.from >= 35 && data.from < 55) && common._prevAge >= 84) {
+					// 人瑞拉到中年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-m');
+				} else if (data.from < 35 && (common._prevAge >= 55 && common._prevAge < 84)) {
+					// 老年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-y');
 				} else if (data.from < 35 && (common._prevAge >= 35 && common._prevAge < 55)) {
 					// 中年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-y');
+				} else if (data.from < 35 && common._prevAge >= 84) {
+					// 人瑞拉到青年
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-y');
+				} else if (data.from >= 84 && common._prevAge < 35) {
+					// 青年拉到人瑞
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-c');
+				} else if (data.from >= 84 && (common._prevAge >= 35 && common._prevAge < 55)) {
+					// 中年拉到人瑞
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-c');
+				} else if (data.from >= 84 && (common._prevAge >= 55 && common._prevAge < 84)) {
+					// 老年拉到人瑞
+					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-c');
 				} else {
-
+					// 不改變
 				}
 				common._prevAge = data.from;
 			}
@@ -119,7 +137,7 @@
 		$(common._btnTopic).on('click', function(){
 			var $quest   = $(common._lContent + '.quest'),
 				_num     = parseInt($quest.attr('data-quest'), 10),
-				_meta    = $quest.find('.is-checked').attr('data-meta'),
+				_meta    = $('.cut-' + _num).find('.is-checked').attr('data-meta'),
 				_compare = '',
 				_direct  = 0;
 
@@ -131,6 +149,12 @@
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
+					} else {
+						$('.cut-' + _num + ' ' + common._checkbox).addClass('btn-shake');
+
+						$('.cut-' + _num + ' ' + common._checkbox).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('btn-shake');
+						});
 					}
 
 					if (_meta === 'boy') {
@@ -147,7 +171,7 @@
 							});
 						});
 					}
-				} else {
+				} else if (_num === 2) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
@@ -156,7 +180,20 @@
 							'class': 'l-content quest quest-' + (_num + _direct),
 							'data-quest': _num + _direct
 						});
+					} else {
+						$('.cut-' + _num + ' ' + common._checkbox).addClass('btn-shake');
+
+						$('.cut-' + _num + ' ' + common._checkbox).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('btn-shake');
+						});
 					}
+				} else {
+					$(common._transition).addClass('chosen-' + _meta);
+
+					$quest.attr({
+						'class': 'l-content quest quest-' + (_num + _direct),
+						'data-quest': _num + _direct
+					});
 				}
 			} else {
 				_direct = -1;
@@ -169,7 +206,7 @@
 				$(common._imageWrap).off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 
 				if (_num === 2) {
-					$(common._transition).removeClass('chosen-boy chosen-girl');
+					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
 				}
 			}
 		});

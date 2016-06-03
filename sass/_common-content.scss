@@ -105,10 +105,6 @@
 		left: 50%;
 		overflow: visible;
 
-		&.btn-shake {
-			@include animation(btn-shake 0.4s linear forwards);
-		}
-
 		.svg-icon {
 			margin-right: 7px;
 			display: inline-block;
@@ -378,7 +374,7 @@
 	}
 
 	.btn-prev {
-		display: none;
+		top: -120px;
 	}
 }
 
@@ -554,7 +550,7 @@
 		}
 
 		&[class^="chosen-"], &[class*=" chosen-"] {
-			.btn-check {
+			.btn-check > * {
 				@include animation(q2-btn-check 0.3s linear forwards);
 			}
 		}
@@ -601,6 +597,7 @@
 			top: 33px;
 			border: 0;
 			border-radius: 0;
+			cursor: pointer;
 		}
 
 		.irs-bar, .irs-bar-edge {
@@ -649,15 +646,19 @@
 		margin-left: -75px;
 		background: url(../img/ani-q3-girl.png) 0 0 no-repeat;
 		width: 151px;
-		height: 523px;
+		height: 524px;
 		bottom: 230px;
 
 		&[data-age="y-t-o"] {
-			@include animation(q3-girl-y-t-o 1.3s steps(49, end) forwards);
+			@include animation(q3-girl-y-t-o 2.6s steps(49, end) forwards);
 		}
 
 		&[data-age="m-t-o"] {
-			@include animation(q3-girl-m-t-o 1.3s steps(24, end) forwards);
+			@include animation(q3-girl-m-t-o 1.3s steps(25, end) forwards);
+		}
+
+		&[data-age="c-t-o"] {
+			@include animation(q3-girl-c-t-o 1.3s steps(25, end) forwards);
 		}
 
 		&[data-age="y-t-m"] {
@@ -665,24 +666,92 @@
 		}
 
 		&[data-age="o-t-m"] {
-			@include animation(q3-girl-o-t-m 1.3s steps(24, end) forwards);
+			@include animation(q3-girl-o-t-m 1.3s steps(25, end) forwards);
+		}
+
+		&[data-age="c-t-m"] {
+			@include animation(q3-girl-c-t-m 2.6s steps(49, end) forwards);
 		}
 
 		&[data-age="o-t-y"] {
-			@include animation(q3-girl-o-t-y 1.3s steps(49, end) forwards);
+			@include animation(q3-girl-o-t-y 2.6s steps(49, end) forwards);
 		}
 
 		&[data-age="m-t-y"] {
 			@include animation(q3-girl-m-t-y 1.3s steps(24, end) forwards);
 		}
+
+		&[data-age="c-t-y"] {
+			@include animation(q3-girl-c-t-y 3.9s steps(74, end) forwards);
+		}
+
+		&[data-age="y-t-c"] {
+			@include animation(q3-girl-y-t-c 3.9s steps(74, end) forwards);
+		}
+
+		&[data-age="m-t-c"] {
+			@include animation(q3-girl-m-t-c 2.6s steps(49, end) forwards);
+		}
+
+		&[data-age="o-t-c"] {
+			@include animation(q3-girl-o-t-c 1.3s steps(25, end) forwards);
+		}
 	}
 
 	.chosen-boy .image-wrap {
-		margin-left: -73px;
+		margin-left: -76px;
 		background: url(../img/ani-q3-boy.png) 0 0 no-repeat;
-		width: 147px;
-		height: 533px;
-		bottom: 220px;
+		width: 153px;
+		height: 537px;
+		bottom: 215px;
+
+		&[data-age="y-t-o"] {
+			@include animation(q3-boy-y-t-o 2.8s steps(50, end) forwards);
+		}
+
+		&[data-age="m-t-o"] {
+			@include animation(q3-boy-m-t-o 1.4s steps(25, end) forwards);
+		}
+
+		&[data-age="c-t-o"] {
+			@include animation(q3-boy-c-t-o 1.4s steps(25, end) forwards);
+		}
+
+		&[data-age="y-t-m"] {
+			@include animation(q3-boy-y-t-m 1.4s steps(25, end) forwards);
+		}
+
+		&[data-age="o-t-m"] {
+			@include animation(q3-boy-o-t-m 1.4s steps(25, end) forwards);
+		}
+
+		&[data-age="c-t-m"] {
+			@include animation(q3-boy-c-t-m 2.8s steps(50, end) forwards);
+		}
+
+		&[data-age="o-t-y"] {
+			@include animation(q3-boy-o-t-y 2.8s steps(50, end) forwards);
+		}
+
+		&[data-age="m-t-y"] {
+			@include animation(q3-boy-m-t-y 1.4s steps(25, end) forwards);
+		}
+
+		&[data-age="c-t-y"] {
+			@include animation(q3-boy-c-t-y 4.2s steps(75, end) forwards);
+		}
+
+		&[data-age="y-t-c"] {
+			@include animation(q3-boy-y-t-c 4.2s steps(75, end) forwards);
+		}
+
+		&[data-age="m-t-c"] {
+			@include animation(q3-boy-m-t-c 2.8s steps(50, end) forwards);
+		}
+
+		&[data-age="o-t-c"] {
+			@include animation(q3-boy-o-t-c 1.4s steps(25, end) forwards);
+		}
 	}
 }
 
@@ -806,6 +875,7 @@
 	height: 103px;
 	position: absolute !important;
 	top: 460px;
+	@include transition(ease-in-out all 0.3s);
 
 	&.btn-prev {
 		left: 85px;
@@ -814,6 +884,10 @@
 	&.btn-next {
 		right: 85px;
 	}
+}
+
+.btn-shake {
+	@include animation(btn-shake 0.4s linear forwards !important);
 }
 
 @include respond-to(Desktops) {}

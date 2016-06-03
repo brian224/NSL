@@ -24,17 +24,39 @@
 	}
 }
 
+@include keyframes(q3-girl-y-t-c) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -11174px 0;
+	}
+}
+
+@include keyframes(q3-girl-c-t-y) {
+	0% {
+		background-position: -11174px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
 @include keyframes(q3-girl-y-t-o) {
 	0% {
 		background-position: 0 0;
 	}
 
-	50% {
-		background-position: 0 0;
+	100% {
+		background-position: -7399px 0;
 	}
+}
 
-	50.1% {
-		background-position: 0 0;
+@include keyframes(q3-girl-o-t-y) {
+	0% {
+		background-position: -7399px 0;
 	}
 
 	100% {
@@ -49,5 +71,195 @@
 
 	100% {
 		background-position: -3624px 0;
+	}
+}
+
+@include keyframes(q3-girl-m-t-y) {
+	0% {
+		background-position: -3624px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q3-girl-m-t-c) {
+	0% {
+		background-position: -3624px 0;
+	}
+
+	100% {
+		background-position: -11174px 0;
+	}
+}
+
+@include keyframes(q3-girl-c-t-m) {
+	0% {
+		background-position: -11174px 0;
+	}
+
+	100% {
+		background-position: -3624px 0;
+	}
+}
+
+@include keyframes(q3-girl-m-t-o) {
+	0% {
+		background-position: -3624px 0;
+	}
+
+	100% {
+		background-position: -7399px 0;
+	}
+}
+
+@include keyframes(q3-girl-o-t-m) {
+	0% {
+		background-position: -7399px 0;
+	}
+
+	100% {
+		background-position: -3624px 0;
+	}
+}
+
+@include keyframes(q3-girl-c-t-o) {
+	0% {
+		background-position: -11174px 0;
+	}
+
+	100% {
+		background-position: -7399px 0;
+	}
+}
+
+@include keyframes(q3-girl-o-t-c) {
+	0% {
+		background-position: -7399px 0;
+	}
+
+	100% {
+		background-position: -11475px 0;
+	}
+}
+
+@include keyframes(q3-boy-y-t-c) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -11475px 0;
+	}
+}
+
+@include keyframes(q3-boy-c-t-y) {
+	0% {
+		background-position: -11475px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q3-boy-y-t-o) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -7650px 0;
+	}
+}
+
+@include keyframes(q3-boy-o-t-y) {
+	0% {
+		background-position: -7650px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q3-boy-y-t-m) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3825px 0;
+	}
+}
+
+@include keyframes(q3-boy-m-t-y) {
+	0% {
+		background-position: -3825px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q3-boy-m-t-c) {
+	0% {
+		background-position: -3825px 0;
+	}
+
+	100% {
+		background-position: -11475px 0;
+	}
+}
+
+@include keyframes(q3-boy-c-t-m) {
+	0% {
+		background-position: -11475px 0;
+	}
+
+	100% {
+		background-position: -3825px 0;
+	}
+}
+
+@include keyframes(q3-boy-m-t-o) {
+	0% {
+		background-position: -3825px 0;
+	}
+
+	100% {
+		background-position: -7650px 0;
+	}
+}
+
+@include keyframes(q3-boy-o-t-m) {
+	0% {
+		background-position: -7650px 0;
+	}
+
+	100% {
+		background-position: -3825px 0;
+	}
+}
+
+@include keyframes(q3-boy-c-t-o) {
+	0% {
+		background-position: -11475px 0;
+	}
+
+	100% {
+		background-position: -7650px 0;
+	}
+}
+
+@include keyframes(q3-boy-o-t-c) {
+	0% {
+		background-position: -7650px 0;
+	}
+
+	100% {
+		background-position: -11475px 0;
 	}
 }
