@@ -670,7 +670,7 @@
 		}
 
 		&[data-age="c-t-m"] {
-			@include animation(q3-girl-c-t-m 2.6s steps(49, end) forwards);
+			@include animation(q3-girl-c-t-m 2.6s steps(50, end) forwards);
 		}
 
 		&[data-age="o-t-y"] {
@@ -690,7 +690,7 @@
 		}
 
 		&[data-age="m-t-c"] {
-			@include animation(q3-girl-m-t-c 2.6s steps(49, end) forwards);
+			@include animation(q3-girl-m-t-c 2.6s steps(50, end) forwards);
 		}
 
 		&[data-age="o-t-c"] {
@@ -897,3 +897,33 @@
 @include respond-to(Tablets) {}
 
 @include respond-to(Tablets-Mobiles) {}
+
+@include browsers('IE') {
+	.quest-1 {
+		.chosen-boy .girl {
+			background: none !important;
+
+			&:before {
+				content: '';
+				background: url(../img/girl-door.png) 0 0 no-repeat;
+				display: block;
+				width: 100%;
+				height: 100%;
+				@include animation(flipout-door 1.5s steps(29, start) forwards);
+			}
+		}
+
+		.chosen-girl .boy {
+			background: none !important;
+
+			&:before {
+				content: '';
+				background: url(../img/boy-door.png) 0 0 no-repeat;
+				display: block;
+				width: 100%;
+				height: 100%;
+				@include animation(flipout-door 1.5s steps(29, start) forwards);
+			}
+		}
+	}
+}

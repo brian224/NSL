@@ -11,14 +11,24 @@
 		this._btnTopic   = '.jq-topic';
 		this._transition = '.jq-transition';
 		this._imageWrap  = '.image-wrap';
-		this._prevAge    = 20;
+		this._prevAge    = 20; // 紀錄預設年紀
+		this._steps      = [7, 10, 14, 15]; // 五階段的題目區隔
+	}
+
+	// 沒作答就往下一題
+	index.prototype.shake = function(className) {
+		$(className).addClass('btn-shake');
+
+		$(className).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+			$(this).removeClass('btn-shake');
+		});
 	}
 
 	projects.$w.load(function(){
 		$('.age-slider').ionRangeSlider({
 			min: 20,
 			max: 84,
-			from: 20,
+			from: common._prevAge,
 			max_postfix: "+",
 			onStart: function (data) {
 				common._prevAge = data.min;
@@ -77,11 +87,7 @@
 						$(this).remove();
 					});
 				} else {
-					$(common._required).addClass('btn-shake');
-
-					$(common._required).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-						$(this).removeClass('btn-shake');
-					});
+					common.shake(common._required);
 				}
 			});
 
@@ -150,11 +156,7 @@
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
 					} else {
-						$('.cut-' + _num + ' ' + common._checkbox).addClass('btn-shake');
-
-						$('.cut-' + _num + ' ' + common._checkbox).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-							$(this).removeClass('btn-shake');
-						});
+						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
 
 					if (_meta === 'boy') {
@@ -181,11 +183,7 @@
 							'data-quest': _num + _direct
 						});
 					} else {
-						$('.cut-' + _num + ' ' + common._checkbox).addClass('btn-shake');
-
-						$('.cut-' + _num + ' ' + common._checkbox).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-							$(this).removeClass('btn-shake');
-						});
+						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
 				} else {
 					$(common._transition).addClass('chosen-' + _meta);
@@ -206,6 +204,7 @@
 				$(common._imageWrap).off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 
 				if (_num === 2) {
+					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
 				}
 			}

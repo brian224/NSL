@@ -48,6 +48,10 @@
 		.index {
 			opacity: 1;
 		}
+
+		.quest > * {
+			display: none;
+		}
 	}
 
 	&.is-quest .quest {
