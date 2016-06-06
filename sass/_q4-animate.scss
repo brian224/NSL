@@ -1,0 +1,109 @@
+﻿@include keyframes(q4-title) {
+	0%, 16.9% {
+		height: 0;
+	}
+
+	17%, 33.9% {
+		height: 37px;
+	}
+
+	34%, 49.9% {
+		height: 72px;
+	}
+
+	50%, 66.9% {
+		height: 108px;
+	}
+
+	67%, 83.9% {
+		height: 147px;
+	}
+
+	84%, 99.9% {
+		height: 183px;
+	}
+
+	100% {
+		height: 213px;
+	}
+}
+
+@include keyframes(q4-elementary) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -2508px 0;
+	}
+}
+
+@include keyframes(q4-elementary-reverse) {
+	0% {
+		background-position: -2640px 0;
+	}
+
+	100% {
+		background-position: -4488px 0;
+	}
+}
+
+@include keyframes(q4-kindergarten) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -4004px 0;
+	}
+}
+
+@include keyframes(q4-kindergarten-reverse) {
+	0% {
+		background-position: -4095px 0;
+	}
+
+	100% {
+		background-position: -5187px 0;
+	}
+}
+
+@include keyframes(q4-baby) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3813px 0;
+	}
+}
+
+@include keyframes(q4-baby-reverse) {
+	0% {
+		background-position: -3906px 0;
+	}
+
+	100% {
+		background-position: -5115px 0;
+	}
+}
+
+@include keyframes(q4-dog) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1862px 0;
+	}
+}
+
+@include keyframes(q4-dog-reverse) {
+	0% {
+		background-position: -1862px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}

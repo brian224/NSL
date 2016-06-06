@@ -29,7 +29,7 @@
 			min: 20,
 			max: 84,
 			from: common._prevAge,
-			max_postfix: "+",
+			max_postfix: '+',
 			onStart: function (data) {
 				common._prevAge = data.min;
 			},
@@ -76,6 +76,18 @@
 				}
 				common._prevAge = data.from;
 			}
+		});
+
+		$('.amount-slider').each(function(){
+			$(this).rangeslider({
+				polyfill : false,
+				onInit: function() {
+
+				},
+				onSlideEnd: function(position, value) {
+					console.log(value);
+				}
+			});
 		});
 
 		if ($(common._lContent).hasClass('index')) {
@@ -137,6 +149,8 @@
 						$(common._transition).attr('data-select', $(this).attr('data-meta'));
 					}
 				}
+			} else if ($(common._lContent).hasClass('quest-4')) {
+				$(this).toggleClass('is-checked');
 			}
 		});
 

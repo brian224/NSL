@@ -40,6 +40,8 @@
 .hide-text {
 	position: relative;
 	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
 	text-indent: 200%;
 	white-space: nowrap;
 

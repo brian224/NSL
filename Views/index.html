@@ -12,42 +12,37 @@
 			<h1 class="logo">
 				<a href="http://www.nanshanlife.com.tw/" class="link hide-text" target="_blank">
 					<em>南山人壽</em>
-					<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#logo"/></svg>
 				</a>
 			</h1>
 			<div class="insurance-wrap">
 				<em class="wording">你需要的保障 /</em>
 				<div class="cost">
 					<span class="dollar">$ <b>1,234,567,890</b></span>
-					<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-cost"/></svg>
 				</div>
 			</div>
 		</header>
-		<div class="l-main is-index">
-			<div class="l-content index">
+		<div class="l-main is-quest">
+			<div class="l-content quindexest">
 				<h2 class="page-title hide-text">這是個殘酷中帶著促咪的小測驗，評估你的人生需要多少保障才足夠？</h2>
 				<em class="slogan hide-text">只要6分鐘，就能護一生</em>
 				<button class="btn-check b-middle jq-required">
-					<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
 					<em class="hide-text">個資保護聲明</em>
 				</button>
 				<button class="btn-start hide-text jq-start"><em>開始遊戲</em></button>
 				<i class="icon-flying-bird"></i>
 				<i class="icon-flying-bird reverse"></i>
 			</div>
-			<div class="l-content quest quest-1" data-quest="1">
+			<div class="l-content quest quest-4" data-quest="4">
 				<div class="stage cut-1">
 					<ul class="choice-list jq-transition" data-first="true" data-select="" data-reverse="">
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="girl">
-								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
 								<em class="hide-text">女</em>
 							</button>
 							<div class="image-wrap girl"></div>
 						</li>
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="boy">
-								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
 								<em class="hide-text">男</em>
 							</button>
 							<div class="image-wrap boy"></div>
@@ -61,14 +56,12 @@
 					<ul class="choice-list jq-transition" data-first="true" data-select="" data-reverse="">
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="single">
-								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-1"/></svg>
 								<em class="hide-text">單身</em>
 							</button>
 							<div class="image-wrap girl"></div>
 						</li>
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="merried">
-								<svg class="svg-icon svg-checkbox"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#checkbox-2"/></svg>
 								<em class="hide-text">已婚</em>
 							</button>
 							<div class="image-wrap boy"></div>
@@ -79,53 +72,119 @@
 					</h2>
 				</div>
 				<div class="stage cut-3">
-					<div class="choice-list jq-transition">
+					<div class="choice-list jq-transition chosen-boy">
 						<div class="image-wrap" data-age="young"></div>
 						<div class="range-slider">
-							<input class="age-slider">
+							<input class="slider-picker age-slider">
 						</div>
 					</div>
 					<h2 class="quest-title hide-text jq-title">
 						<em>你的年齡？</em>
 					</h2>
 				</div>
+				<div class="stage cut-4">
+					<ul class="kids-selector">
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">學齡前(0-3歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">幼稚園(4-6歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">國小(7-12歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">國中(13-15歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">高中(16-18歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">大學(19-22歲)</em>
+						</li>
+						<li class="list">
+							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical">
+							<em class="desc">研究所以上</em>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="dinky">
+								<em class="hide-text">沒有小孩</em>
+							</button>
+							<em class="desc">沒有小孩</em>
+						</li>
+					</ul>
+					<h2 class="quest-title hide-text jq-title">
+						<em>你有小孩嗎？</em>
+					</h2>
+					<div class="kids-pool">
+						<ul class="institute">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="collage">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="seniorHigh">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="juniorHigh">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="elementary">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="kindergarten">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<ul class="baby">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<div class="dog"></div>
+					</div>
+				</div>
 				<ol class="step-list complete-phase-0">
 					<li class="list is-complete">
 						<em>基本資料</em>
-						<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-step1"/></svg>
 					</li>
 					<li class="list is-curr">
 						<em>生活開銷</em>
-						<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-step2"/></svg>
 					</li>
 					<li class="list">
 						<em>夢想藍圖</em>
-						<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-step3"/></svg>
 					</li>
 					<li class="list">
 						<em>戰力評估</em>
-						<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-step4"/></svg>
 					</li>
 					<li class="list">
 						<em>分析結果</em>
-						<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#bg-step5"/></svg>
 					</li>
-					<li class="bg-line">
-						<svg class="svg-icon svg-line"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#dashed-line"/></svg>
-					</li>
-					<li class="step-line">
-						<div class="svg-container">
-							<svg class="svg-icon svg-line"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#solid-line"/></svg>
-						</div>
-					</li>
+					<li class="bg-line"></li>
+					<li class="step-line"></li>
 				</ol>
 				<button class="btn-topic btn-prev jq-topic hide-text">
 					<em>上一題</em>
-					<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#btn-prev"/></svg>
 				</button>
 				<button class="btn-topic btn-next jq-topic hide-text">
 					<em>下一題</em>
-					<svg class="svg-icon"><use xlink:href="../Content/svg/icon.svg?SVG=20160420_01#btn-next"/></svg>
 				</button>
 			</div>
 		</div>
@@ -162,6 +221,7 @@
 <script src="../Scripts/plugin/jquery/jquery.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/lazyload/jquery.lazyload.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/ion-rangeSlider/ion.rangeSlider.min.js?JS=20160216_01"></script>
+<script src="../Scripts/plugin/rangeslider/rangeslider.min.js?JS=20160216_01"></script>
 <script src="../Scripts/js/factory.js?JS=20160420_01"></script>
 <script src="../Scripts/js/common.js?JS=20160420_01"></script>
 </html>
