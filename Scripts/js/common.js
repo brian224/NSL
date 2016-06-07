@@ -12,6 +12,7 @@
 		this._transition = '.jq-transition';
 		this._imageWrap  = '.image-wrap';
 		this._prevAge    = 20; // 紀錄預設年紀
+		this.ageRange    = [30, 50, 70]; // 年紀區間
 		this._steps      = [7, 10, 14, 15]; // 五階段的題目區隔
 	}
 
@@ -22,6 +23,30 @@
 		$(className).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 			$(this).removeClass('btn-shake');
 		});
+	}
+
+	// Q4 點擊 "沒有小孩"
+	index.prototype.checkKid = function(className) {
+		if (!$(className).hasClass('is-checked')) {
+			if ($('.dog').siblings().find('.is-show').length === 0) {
+				$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+			} else {
+				$('[data-age]').val(0).change();
+				$('.dog').siblings().find('.is-show').addClass('ani-reverse');
+				$('.ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					$(this).removeClass('ani-reverse is-show');
+
+					if ($('.ani-reverse.is-show').length === 0) {
+						$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+					}
+				});
+			}
+		} else {
+			$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+				$(this).removeClass('ani-reverse is-show');
+			});
+		}
+		$(className).toggleClass('is-checked');
 	}
 
 	projects.$w.load(function(){
@@ -35,40 +60,40 @@
 			},
 			onFinish: function (data) {
 				// console.log(data);
-				if ((data.from >= 55 && data.from < 84) && common._prevAge < 35) {
+				if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && common._prevAge < common.ageRange[0]) {
 					// 青年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-o');
-				} else if ((data.from >= 55 && data.from < 84) && (common._prevAge >= 35 && common._prevAge < 55)) {
+				} else if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
 					// 中年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-o');
-				} else if ((data.from >= 55 && data.from < 84) && common._prevAge >= 84) {
+				} else if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && common._prevAge >= common.ageRange[2]) {
 					// 人瑞拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-o');
-				} else if ((data.from >= 35 && data.from < 55) && common._prevAge < 35) {
+				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && common._prevAge < common.ageRange[0]) {
 					// 青年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-m');
-				} else if ((data.from >= 35 && data.from < 55) && (common._prevAge >= 55 && common._prevAge < 84)) {
+				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
 					// 老年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-m');
-				} else if ((data.from >= 35 && data.from < 55) && common._prevAge >= 84) {
+				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && common._prevAge >= common.ageRange[2]) {
 					// 人瑞拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-m');
-				} else if (data.from < 35 && (common._prevAge >= 55 && common._prevAge < 84)) {
+				} else if (data.from < common.ageRange[0] && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
 					// 老年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-y');
-				} else if (data.from < 35 && (common._prevAge >= 35 && common._prevAge < 55)) {
+				} else if (data.from < common.ageRange[0] && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
 					// 中年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-y');
-				} else if (data.from < 35 && common._prevAge >= 84) {
+				} else if (data.from < common.ageRange[0] && common._prevAge >= common.ageRange[2]) {
 					// 人瑞拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-y');
-				} else if (data.from >= 84 && common._prevAge < 35) {
+				} else if (data.from >= common.ageRange[2] && common._prevAge < common.ageRange[0]) {
 					// 青年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-c');
-				} else if (data.from >= 84 && (common._prevAge >= 35 && common._prevAge < 55)) {
+				} else if (data.from >= common.ageRange[2] && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
 					// 中年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-c');
-				} else if (data.from >= 84 && (common._prevAge >= 55 && common._prevAge < 84)) {
+				} else if (data.from >= common.ageRange[2] && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
 					// 老年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-c');
 				} else {
@@ -81,11 +106,37 @@
 		$('.amount-slider').each(function(){
 			$(this).rangeslider({
 				polyfill : false,
-				onInit: function() {
+				// onInit: function() {},
+				onSlide: function(position, value) {
+					var $tag = $('#' + $(this)[0].identifier).siblings('.tag');
 
+					$tag.attr('class', 'tag tag-' + value);
 				},
 				onSlideEnd: function(position, value) {
-					console.log(value);
+					var _class = $('#' + $(this)[0].identifier).siblings('.amount-slider').data('age');
+
+					if (value === 0) {
+						$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
+					} else {
+						$('[data-meta="dinky"]').removeClass('is-checked');
+						$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
+
+						for (var i = 0; i < value; i++) {
+							$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						}
+
+						for (var j = $('.kids-pool .' + _class + ' *').length; j > value; j--) {
+							if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
+								$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+									$(this).removeClass('ani-reverse is-show');
+								});
+							}
+						}
+					}
 				}
 			});
 		});
@@ -150,7 +201,7 @@
 					}
 				}
 			} else if ($(common._lContent).hasClass('quest-4')) {
-				$(this).toggleClass('is-checked');
+				common.checkKid('.cut-4 ' + common._checkbox);
 			}
 		});
 

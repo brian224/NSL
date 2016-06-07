@@ -28,6 +28,86 @@
 	}
 }
 
+@include keyframes(q4-institute) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -2562px 0;
+	}
+}
+
+@include keyframes(q4-institute-reverse) {
+	0% {
+		background-position: -2745px 0;
+	}
+
+	100% {
+		background-position: -4941px 0;
+	}
+}
+
+@include keyframes(q4-collage) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3483px 0;
+	}
+}
+
+@include keyframes(q4-collage-reverse) {
+	0% {
+		background-position: -3612px 0;
+	}
+
+	100% {
+		background-position: -5160px 0;
+	}
+}
+
+@include keyframes(q4-seniorHigh) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3636px 0;
+	}
+}
+
+@include keyframes(q4-seniorHigh-reverse) {
+	0% {
+		background-position: -3838px 0;
+	}
+
+	100% {
+		background-position: -6060px 0;
+	}
+}
+
+@include keyframes(q4-juniorHigh) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -2366px 0;
+	}
+}
+
+@include keyframes(q4-juniorHigh-reverse) {
+	0% {
+		background-position: -2535px 0;
+	}
+
+	100% {
+		background-position: -4732px 0;
+	}
+}
+
 @include keyframes(q4-elementary) {
 	0% {
 		background-position: 0 0;
@@ -44,7 +124,7 @@
 	}
 
 	100% {
-		background-position: -4488px 0;
+		background-position: -4224px 0;
 	}
 }
 
@@ -105,5 +185,35 @@
 
 	100% {
 		background-position: 0 0;
+	}
+}
+
+@include keyframes(q4-tag-1) {
+	0% {
+		background-position: -41px -13px;
+	}
+
+	100% {
+		background-position: -365px -13px;
+	}
+}
+
+@include keyframes(q4-tag-2) {
+	0% {
+		background-position: -41px -35px;
+	}
+
+	100% {
+		background-position: -365px -35px;
+	}
+}
+
+@include keyframes(q4-tag-3) {
+	0% {
+		background-position: -41px -57px;
+	}
+
+	100% {
+		background-position: -365px -57px;
 	}
 }
