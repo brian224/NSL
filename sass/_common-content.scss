@@ -637,7 +637,7 @@
 
 		.irs-single {
 			padding: 0;
-			background: image-url('bg-slider.png') 0 bottom no-repeat;
+			background: image-url('bg-slider.png') 0 -13px no-repeat;
 			width: 32px;
 			height: 39px;
 			border-radius: 0;
@@ -1198,6 +1198,7 @@
 	height: 103px;
 	position: absolute !important;
 	top: 460px;
+	z-index: 5;
 	@include transition(ease-in-out all 0.3s);
 
 	&.btn-prev {
