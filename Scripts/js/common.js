@@ -25,6 +25,45 @@
 		});
 	}
 
+	index.prototype.slider = function() {
+		$('.amount-slider').each(function(){
+			$(this).rangeslider({
+				polyfill : false,
+				onSlide: function(position, value) {
+					var $tag = $('#' + $(this)[0].identifier).siblings('.tag');
+
+					$tag.attr('class', 'tag tag-' + value);
+				},
+				onSlideEnd: function(position, value) {
+					var _class = $('#' + $(this)[0].identifier).siblings('.amount-slider').data('age'); // 取得是哪個年齡層的在做調整
+
+					if (value === 0) {
+						$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
+					} else {
+						$('[data-meta="dinky"]').removeClass('is-checked');
+						$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
+
+						for (var i = 0; i < value; i++) {
+							$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						}
+
+						for (var j = $('.kids-pool .' + _class + ' *').length; j > value; j--) {
+							if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
+								$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+									$(this).removeClass('ani-reverse is-show');
+								});
+							}
+						}
+					}
+				}
+			});
+		});
+	}
+
 	// Q4 點擊 "沒有小孩"
 	index.prototype.checkKid = function(className) {
 		if (!$(className).hasClass('is-checked')) {
@@ -103,44 +142,6 @@
 			}
 		});
 
-		$('.amount-slider').each(function(){
-			$(this).rangeslider({
-				polyfill : false,
-				// onInit: function() {},
-				onSlide: function(position, value) {
-					var $tag = $('#' + $(this)[0].identifier).siblings('.tag');
-
-					$tag.attr('class', 'tag tag-' + value);
-				},
-				onSlideEnd: function(position, value) {
-					var _class = $('#' + $(this)[0].identifier).siblings('.amount-slider').data('age');
-
-					if (value === 0) {
-						$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-							$(this).removeClass('ani-reverse is-show');
-						});
-					} else {
-						$('[data-meta="dinky"]').removeClass('is-checked');
-						$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-							$(this).removeClass('ani-reverse is-show');
-						});
-
-						for (var i = 0; i < value; i++) {
-							$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
-						}
-
-						for (var j = $('.kids-pool .' + _class + ' *').length; j > value; j--) {
-							if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
-								$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-									$(this).removeClass('ani-reverse is-show');
-								});
-							}
-						}
-					}
-				}
-			});
-		});
-
 		if ($(common._lContent).hasClass('index')) {
 			$(common._start).on('click', function(){
 				if ($(common._required).hasClass('is-checked')) {
@@ -202,6 +203,19 @@
 				}
 			} else if ($(common._lContent).hasClass('quest-4')) {
 				common.checkKid('.cut-4 ' + common._checkbox);
+			} else if ($(common._lContent).hasClass('quest-5')) {
+				var $another = $(this).parent().siblings().find(common._checkbox),
+					_meta    = $(this).data('meta');
+
+				if (!$(this).hasClass('is-checked')) {
+					$(this).addClass('is-checked').removeClass('ani-reverse');
+				}
+
+				if ($another.hasClass('is-checked')) {
+					$another.removeClass('is-checked').addClass('ani-reverse');
+				}
+
+				$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
 			}
 		});
 
@@ -257,6 +271,10 @@
 						'class': 'l-content quest quest-' + (_num + _direct),
 						'data-quest': _num + _direct
 					});
+
+					if (_num === 3) {
+						common.slider();
+					}
 				}
 			} else {
 				_direct = -1;
@@ -271,6 +289,8 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
+				} else if (_num === 5) {
+					common.slider();
 				}
 			}
 		});

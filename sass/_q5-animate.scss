@@ -1,0 +1,105 @@
+﻿@include keyframes(q5-title-1) {
+	0%, 16.9% {
+		height: 0;
+	}
+
+	17%, 33.9% {
+		height: 38px;
+	}
+
+	34%, 49.9% {
+		height: 61px;
+	}
+
+	50%, 66.9% {
+		height: 98px;
+	}
+
+	67%, 83.9% {
+		height: 130px;
+	}
+
+	84%, 99.9% {
+		height: 158px;
+	}
+
+	100% {
+		height: 190px;
+	}
+}
+
+@include keyframes(q5-title-2) {
+	0%, 19% {
+		height: 0;
+	}
+
+	20%, 39% {
+		height: 77px;
+	}
+
+	40%, 59% {
+		height: 108px;
+	}
+
+	60%, 79% {
+		height: 134px;
+	}
+
+	80%, 99% {
+		height: 165px;
+	}
+
+	100% {
+		height: 190px;
+	}
+}
+
+@include keyframes(q5-girl-young) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -7546px 0;
+	}
+}
+
+@include keyframes(q5-girl-new-couple) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -8154px 0;
+	}
+}
+
+@include keyframes(q5-girl-pregnant) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -6644px 0;
+	}
+}
+
+@include keyframes(q5-girl-near-retired) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -10032px 0;
+	}
+}
+
+@include keyframes(q5-girl-retired) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -7876px 0;
+	}
+}
