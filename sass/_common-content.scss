@@ -882,18 +882,24 @@
 		height: 464px;
 		position: relative;
 
+		ul {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 0;
+		}
+
 		.doll {
 			display: none;
 			position: absolute;
 			bottom: 0;
-			z-index: 1;
+			z-index: 5;
 
-			&:nth-child(2) {
-				@include animation-delay(0.3s !important);
-			}
-
-			&:nth-child(3) {
-				@include animation-delay(0.6s !important);
+			@for $i from 2 through 5 {
+				&:nth-child(#{$i}) {
+					z-index: (5 - $i + 1);
+					@include animation-delay((0.3s * ($i - 1)) !important);
+				}
 			}
 
 			&.is-show {
@@ -905,18 +911,29 @@
 			background: url(../img/ani-q4-institute.png) 0 0 no-repeat;
 			width: 183px;
 			height: 743px;
+			left: 50%;
 			@include animation(q4-institute 0.7s steps(14, end) forwards);
 
 			&:first-child {
-				right: -10px;
+				margin-left: -73px;
 			}
 
 			&:nth-child(2) {
-				left: 50%;
+				margin-left: -22px;
+				z-index: 5;
 			}
 
 			&:nth-child(3) {
-				left: 10px;
+				margin-left: -124px;
+			}
+
+			&:nth-child(4) {
+				margin-left: 29px;
+				z-index: 5;
+			}
+
+			&:nth-child(5) {
+				margin-left: -175px;
 			}
 
 			&.ani-reverse {
@@ -930,21 +947,29 @@
 			width: 129px;
 			height: 711px;
 			bottom: -9px;
+			left: 50%;
 			@include animation(q4-collage 1.5s steps(27, end) forwards);
 
 			&:first-child {
-				left: 0;
+				margin-left: 60px;
 			}
 
 			&:nth-child(2) {
-				margin-right: -30px;
-				right: 50%;
+				margin-left: 110px;
 			}
 
 			&:nth-child(3) {
-				margin-left: -30px;
-				left: 50%;
-				z-index: 0;
+				margin-left: 10px;
+				z-index: 5;
+			}
+
+			&:nth-child(4) {
+				margin-left: 160px;
+			}
+
+			&:nth-child(5) {
+				margin-left: -40px;
+				z-index: 5;
 			}
 
 			&.ani-reverse {
@@ -957,19 +982,29 @@
 			background: url(../img/ani-q4-seniorHigh.png) 0 0 no-repeat;
 			width: 202px;
 			height: 707px;
+			left: 50%;
 			@include animation(q4-seniorHigh 1s steps(18, end) forwards);
 
 			&:first-child {
-				left: 45px;
+				margin-left: -175px;
 			}
 
 			&:nth-child(2) {
-				margin-left: -25px;
-				left: 50%;
+				margin-left: -115px;
+				z-index: 5;
 			}
 
 			&:nth-child(3) {
-				right: -20px;
+				margin-left: -235px;
+			}
+
+			&:nth-child(4) {
+				margin-left: -55px;
+				z-index: 5;
+			}
+
+			&:nth-child(5) {
+				margin-left: -295px;
 			}
 
 			&.ani-reverse {
@@ -983,18 +1018,28 @@
 			width: 169px;
 			height: 723px;
 			bottom: -16px;
+			left: 50%;
 			@include animation(q4-juniorHigh 0.8s steps(14, end) forwards);
 
 			&:first-child {
-				right: 80px;
+				margin-left: -26px;
 			}
 
 			&:nth-child(2) {
-				right: -30px;
+				margin-left: -74px;
+				z-index: 5;
 			}
 
 			&:nth-child(3) {
-				left: 160px;
+				margin-left: 22px;
+			}
+
+			&:nth-child(4) {
+				margin-left: 70px;
+			}
+
+			&:nth-child(5) {
+				margin-left: 118px;
 			}
 
 			&.ani-reverse {
@@ -1007,19 +1052,30 @@
 			background: url(../img/ani-q4-elementary.png) 0 0 no-repeat;
 			width: 132px;
 			height: 662px;
+			left: 50%;
 			@include animation(q4-elementary 1.1s steps(19, end) forwards);
 
 			&:first-child {
-				left: 126px;
+				margin-left: -116px;
 			}
 
 			&:nth-child(2) {
-				margin-left: -50px;
-				left: 50%;
+				margin-left: -162px;
+				z-index: 5;
 			}
 
 			&:nth-child(3) {
-				left: 15px;
+				margin-left: -72px;
+			}
+
+			&:nth-child(4) {
+				margin-left: -208px;
+				z-index: 5;
+			}
+
+			&:nth-child(5) {
+				margin-left: -254px;
+				z-index: 5;
 			}
 
 			&.ani-reverse {
@@ -1032,19 +1088,27 @@
 			background: url(../img/ani-q4-kindergarten.png) 0 0 no-repeat;
 			width: 91px;
 			height: 613px;
+			left: 50%;
 			@include animation(q4-kindergarten 2.4s steps(44, end) forwards);
 
 			&:first-child {
-				left: 50%;
+				margin-left: -18px;
 			}
 
 			&:nth-child(2) {
-				margin-left: 60px;
-				left: 50%;
+				margin-left: -62px;
 			}
 
 			&:nth-child(3) {
-				left: 108px;
+				margin-left: 28px;
+			}
+
+			&:nth-child(4) {
+				margin-left: -106px;
+			}
+
+			&:nth-child(5) {
+				margin-left: 74px;
 			}
 
 			&.ani-reverse {
@@ -1057,19 +1121,27 @@
 			background: url(../img/ani-q4-baby.png) 0 0 no-repeat;
 			width: 93px;
 			height: 572px;
+			left: 50%;
 			@include animation(q4-baby 2.3s steps(41, end) forwards);
 
 			&:first-child {
-				margin-left: -62px;
-				left: 50%;
+				margin-left: -66px;
 			}
 
 			&:nth-child(2) {
-				right: 70px;
+				margin-left: -110px;
 			}
 
 			&:nth-child(3) {
-				left: 0;
+				margin-left: -20px;
+			}
+
+			&:nth-child(4) {
+				margin-left: -154px;
+			}
+
+			&:nth-child(5) {
+				margin-left: 26px;
 			}
 
 			&.ani-reverse {
@@ -1202,15 +1274,23 @@
 				height: 513px;
 				top: -28px;
 				@include animation(q5-girl-young 2.7s steps(49, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-girl-young-reverse 2.7s steps(49, start) forwards);
+				}
 			}
 
 			&.new-couple {
-				margin-left: -75px;
+				margin-left: -76px;
 				background: url(../img/ani-q5-girl-new-couple.png) 0 0 no-repeat;
 				width: 151px;
 				height: 540px;
 				top: -55px;
 				@include animation(q5-girl-new-couple 3s steps(54, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-girl-new-couple-reverse 3s steps(54, start) forwards);
+				}
 			}
 
 			&.pregnant {
@@ -1220,6 +1300,10 @@
 				height: 235px;
 				top: 250px;
 				@include animation(q5-girl-pregnant 2.4s steps(44, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-girl-pregnant-reverse 2.4s steps(44, start) forwards);
+				}
 			}
 
 			&.near-retired {
@@ -1227,8 +1311,12 @@
 				background: url(../img/ani-q5-girl-near-retired.png) 0 0 no-repeat;
 				width: 228px;
 				height: 276px;
-				top: 209px;
+				top: 208px;
 				@include animation(q5-girl-near-retired 2.4s steps(44, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-girl-near-retired-reverse 2.4s steps(44, start) forwards);
+				}
 			}
 
 			&.retired {
@@ -1238,6 +1326,10 @@
 				height: 784px;
 				top: -298px;
 				@include animation(q5-girl-retired 2.4s steps(44, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-girl-retired-reverse 2.4s steps(44, start) forwards);
+				}
 			}
 		}
 
@@ -1246,14 +1338,86 @@
 			background: image-url('boy.png') -148px 0 no-repeat;
 			width: 148px;
 			height: 242px;
-			top: 250px;
+			top: 245px;
 			left: 50%;
 			@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+
+			&.young {
+				margin-left: -73px;
+				background: url(../img/ani-q5-boy-young.png) 0 0 no-repeat;
+				width: 147px;
+				height: 524px;
+				top: -40px;
+				@include animation(q5-boy-young 1.9s steps(34, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-boy-young-reverse 1.9s steps(34, start) forwards);
+				}
+			}
+
+			&.new-couple {
+				margin-left: -73px;
+				background: url(../img/ani-q5-boy-new-couple.png) 0 0 no-repeat;
+				width: 147px;
+				height: 239px;
+				top: 245px;
+				@include animation(q5-boy-new-couple 1.9s steps(34, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-boy-new-couple-reverse 1.9s steps(34, start) forwards);
+				}
+			}
+
+			&.pregnant {
+				margin-left: -102px;
+				background: url(../img/ani-q5-boy-pregnant.png) 0 0 no-repeat;
+				width: 176px;
+				height: 578px;
+				top: -94px;
+				@include animation(q5-boy-pregnant 2.8s steps(51, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-boy-pregnant-reverse 2.8s steps(51, start) forwards);
+				}
+			}
+
+			&.near-retired {
+				margin-left: -79px;
+				background: url(../img/ani-q5-boy-near-retired.png) 0 0 no-repeat;
+				width: 218px;
+				height: 312px;
+				top: 175px;
+				@include animation(q5-boy-near-retired 1.9s steps(34, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-boy-near-retired-reverse 1.9s steps(34, start) forwards);
+				}
+			}
+
+			&.retired {
+				margin-left: -73px;
+				background: url(../img/ani-q5-boy-retired.png) 0 0 no-repeat;
+				width: 147px;
+				height: 239px;
+				top: 245px;
+				@include animation(q5-boy-retired 2.2s steps(39, start) forwards);
+
+				&.ani-reverse {
+					@include animation(q5-boy-retired-reverse 2.2s steps(39, start) forwards);
+				}
+			}
 		}
 	}
 
 	.image-wrap {
 		position: absolute;
+	}
+}
+
+.quest-6 {
+	.cut-6 {
+		display: block;
+		height: 100%;
 	}
 }
 

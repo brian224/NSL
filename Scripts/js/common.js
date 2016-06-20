@@ -28,7 +28,7 @@
 	index.prototype.slider = function() {
 		$('.amount-slider').each(function(){
 			$(this).rangeslider({
-				polyfill : false,
+				polyfill: false,
 				onSlide: function(position, value) {
 					var $tag = $('#' + $(this)[0].identifier).siblings('.tag');
 
@@ -208,14 +208,20 @@
 					_meta    = $(this).data('meta');
 
 				if (!$(this).hasClass('is-checked')) {
-					$(this).addClass('is-checked').removeClass('ani-reverse');
+					$(this).addClass('is-checked');
 				}
 
 				if ($another.hasClass('is-checked')) {
-					$another.removeClass('is-checked').addClass('ani-reverse');
-				}
+					// 切換選取時要先跑復原動畫
+					$another.removeClass('is-checked');
+					$('.cut-5 ' + common._imageWrap).addClass('ani-reverse');
 
-				$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
+					setTimeout(function(){
+						$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
+					}, (parseFloat($('.cut-5 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-5 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
+				} else {
+					$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
+				}
 			}
 		});
 
@@ -294,6 +300,8 @@
 				}
 			}
 		});
+
+		common.slider();
 	});
 
 	projects.$d.ready(function(){
