@@ -591,74 +591,6 @@
 		left: 50%;
 	}
 
-	.range-slider {
-		margin-left: -194px;
-		display: block;
-		width: 388px;
-		height: 55px;
-		position: absolute;
-		bottom: 180px;
-		left: 50%;
-
-		.slider-picker {
-			display: none;
-		}
-
-		.irs {
-			height: 55px;
-		}
-
-		.irs-line {
-			background: url(../img/bg-slider.png) center 0 no-repeat;
-			height: 13px;
-			top: 33px;
-			border: 0;
-			border-radius: 0;
-			cursor: pointer;
-		}
-
-		.irs-bar, .irs-bar-edge {
-			display: none;
-		}
-
-		.irs-min, .irs-max {
-			padding: 0;
-			background: none;
-			width: 30px;
-			top: auto;
-			bottom: -1em;
-			visibility: visible !important;
-			color: #8a6f5b;
-			font-size: 14px;
-			font-weight: bold;
-			line-height: 1.6em;
-			text-align: center;
-		}
-
-		.irs-single {
-			padding: 0;
-			background: url(../img/bg-slider.png) 0 -13px no-repeat;
-			width: 32px;
-			height: 39px;
-			border-radius: 0;
-			cursor: pointer;
-			color: #fff;
-			font-size: 14px;
-			line-height: 32px;
-			text-align: center;
-		}
-
-		.irs-slider {
-			background: none;
-			width: 27px;
-			height: 27px;
-			top: 25px;
-			border: 0;
-			box-shadow: none;
-			cursor: pointer;
-		}
-	}
-
 	.chosen-girl .image-wrap {
 		margin-left: -75px;
 		background: url(../img/ani-q3-girl.png) 0 0 no-repeat;
@@ -1419,6 +1351,75 @@
 		display: block;
 		height: 100%;
 	}
+
+	.image-wrap {
+		margin-left: -100px;
+		background: url(../img/ani-q6.png) 0 0 no-repeat;
+		width: 200px;
+		height: 190px;
+		position: absolute;
+		top: 265px;
+		left: 50%;
+
+		&[data-level="0-t-50"] {
+			@include animation(q6-0-t-50 0.7s steps(12, end) forwards);
+		}
+
+		&[data-level="50-t-100"] {
+			@include animation(q6-50-t-100 0.8s steps(14, end) forwards);
+		}
+
+		&[data-level="100-t-200"] {
+			@include animation(q6-100-t-200 1.8s steps(33, end) forwards);
+		}
+
+		&[data-level="200-t-500"] {
+			@include animation(q6-200-t-500 3.1s steps(55, end) forwards);
+		}
+
+		&[data-level="500-t-1000"] {
+			@include animation(q6-500-t-1000 2.4s steps(44, end) forwards);
+		}
+
+		&[data-level="1000-t-500"] {
+			@include animation(q6-1000-t-500 2.4s steps(44, end) forwards);
+		}
+
+		&[data-level="500-t-200"] {
+			@include animation(q6-500-t-200 3.1s steps(55, end) forwards);
+		}
+
+		&[data-level="200-t-100"] {
+			@include animation(q6-200-t-100 1.8s steps(33, end) forwards);
+		}
+
+		&[data-level="100-t-50"] {
+			@include animation(q6-100-t-50 0.8s steps(14, end) forwards);
+		}
+
+		&[data-level="50-t-0"] {
+			@include animation(q6-50-t-0 0.7s steps(12, end) forwards);
+		}
+	}
+
+	.range-slider {
+		.irs-max {
+			width: 40px;
+			white-space: nowrap;
+	
+			.postfix {
+				margin-left: 3px;
+				background: url(../img/q6-max.png) 0 0 no-repeat;
+				display: inline-block;
+				width: 33px;
+				height: 12px;
+			}
+		}
+
+		.irs-single.size-adj {
+			font-size: 12px;
+		}
+	}
 }
 
 .step-list {
@@ -1551,6 +1552,74 @@
 
 .btn-shake {
 	@include animation(btn-shake 0.4s linear forwards !important);
+}
+
+.range-slider {
+	margin-left: -194px;
+	display: block;
+	width: 388px;
+	height: 55px;
+	position: absolute;
+	bottom: 180px;
+	left: 50%;
+
+	.slider-picker {
+		display: none;
+	}
+
+	.irs {
+		height: 55px;
+	}
+
+	.irs-line {
+		background: url(../img/bg-slider.png) center 0 no-repeat;
+		height: 13px;
+		top: 33px;
+		border: 0;
+		border-radius: 0;
+		cursor: pointer;
+	}
+
+	.irs-bar, .irs-bar-edge {
+		display: none;
+	}
+
+	.irs-min, .irs-max {
+		padding: 0;
+		background: none;
+		width: 30px;
+		top: auto;
+		bottom: -1em;
+		visibility: visible !important;
+		color: #8a6f5b;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 1.6em;
+		text-align: center;
+	}
+
+	.irs-single {
+		padding: 0;
+		background: url(../img/bg-slider.png) 0 -13px no-repeat;
+		width: 32px;
+		height: 39px;
+		border-radius: 0;
+		cursor: pointer;
+		color: #fff;
+		font-size: 14px;
+		line-height: 32px;
+		text-align: center;
+	}
+
+	.irs-slider {
+		background: none;
+		width: 27px;
+		height: 27px;
+		top: 25px;
+		border: 0;
+		box-shadow: none;
+		cursor: pointer;
+	}
 }
 
 @include respond-to(Desktops) {}

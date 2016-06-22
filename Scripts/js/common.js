@@ -4,16 +4,19 @@
 	var common = new index();
 
 	function index() {
-		this._start      = '.jq-start';
-		this._required   = '.jq-required';
-		this._lContent   = '.l-content';
-		this._checkbox   = '.jq-checkbox';
-		this._btnTopic   = '.jq-topic';
-		this._transition = '.jq-transition';
-		this._imageWrap  = '.image-wrap';
-		this._prevAge    = 20; // 紀錄預設年紀
-		this.ageRange    = [30, 50, 70]; // 年紀區間
-		this._steps      = [7, 10, 14, 15]; // 五階段的題目區隔
+		this._start       = '.jq-start';
+		this._required    = '.jq-required';
+		this._lContent    = '.l-content';
+		this._checkbox    = '.jq-checkbox';
+		this._btnTopic    = '.jq-topic';
+		this._transition  = '.jq-transition';
+		this._imageWrap   = '.image-wrap';
+		this._prevAge     = 20; // 紀錄預設年紀
+		this._ageRange    = [30, 50, 70]; // 年紀區間
+		this._steps       = [7, 10, 14, 15]; // 五階段的題目區隔
+		this._prevIncome  = 0; // 紀錄預設收入
+		this._IncomeAct   = [0, 0]; // 紀錄收入變化
+		this._IncomeRange = [0, 50, 100, 200, 500, 1000]; // 收入區間
 	}
 
 	// 沒作答就往下一題
@@ -98,47 +101,102 @@
 				common._prevAge = data.min;
 			},
 			onFinish: function (data) {
-				// console.log(data);
-				if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && common._prevAge < common.ageRange[0]) {
+				if ((data.from >= common._ageRange[1] && data.from < common._ageRange[2]) && common._prevAge < common._ageRange[0]) {
 					// 青年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-o');
-				} else if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
+				} else if ((data.from >= common._ageRange[1] && data.from < common._ageRange[2]) && (common._prevAge >= common._ageRange[0] && common._prevAge < common._ageRange[1])) {
 					// 中年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-o');
-				} else if ((data.from >= common.ageRange[1] && data.from < common.ageRange[2]) && common._prevAge >= common.ageRange[2]) {
+				} else if ((data.from >= common._ageRange[1] && data.from < common._ageRange[2]) && common._prevAge >= common._ageRange[2]) {
 					// 人瑞拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-o');
-				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && common._prevAge < common.ageRange[0]) {
+				} else if ((data.from >= common._ageRange[0] && data.from < common._ageRange[1]) && common._prevAge < common._ageRange[0]) {
 					// 青年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-m');
-				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
+				} else if ((data.from >= common._ageRange[0] && data.from < common._ageRange[1]) && (common._prevAge >= common._ageRange[1] && common._prevAge < common._ageRange[2])) {
 					// 老年拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-m');
-				} else if ((data.from >= common.ageRange[0] && data.from < common.ageRange[1]) && common._prevAge >= common.ageRange[2]) {
+				} else if ((data.from >= common._ageRange[0] && data.from < common._ageRange[1]) && common._prevAge >= common._ageRange[2]) {
 					// 人瑞拉到中年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-m');
-				} else if (data.from < common.ageRange[0] && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
+				} else if (data.from < common._ageRange[0] && (common._prevAge >= common._ageRange[1] && common._prevAge < common._ageRange[2])) {
 					// 老年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-y');
-				} else if (data.from < common.ageRange[0] && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
+				} else if (data.from < common._ageRange[0] && (common._prevAge >= common._ageRange[0] && common._prevAge < common._ageRange[1])) {
 					// 中年拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-y');
-				} else if (data.from < common.ageRange[0] && common._prevAge >= common.ageRange[2]) {
+				} else if (data.from < common._ageRange[0] && common._prevAge >= common._ageRange[2]) {
 					// 人瑞拉到青年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'c-t-y');
-				} else if (data.from >= common.ageRange[2] && common._prevAge < common.ageRange[0]) {
+				} else if (data.from >= common._ageRange[2] && common._prevAge < common._ageRange[0]) {
 					// 青年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-c');
-				} else if (data.from >= common.ageRange[2] && (common._prevAge >= common.ageRange[0] && common._prevAge < common.ageRange[1])) {
+				} else if (data.from >= common._ageRange[2] && (common._prevAge >= common._ageRange[0] && common._prevAge < common._ageRange[1])) {
 					// 中年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'm-t-c');
-				} else if (data.from >= common.ageRange[2] && (common._prevAge >= common.ageRange[1] && common._prevAge < common.ageRange[2])) {
+				} else if (data.from >= common._ageRange[2] && (common._prevAge >= common._ageRange[1] && common._prevAge < common._ageRange[2])) {
 					// 老年拉到人瑞
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'o-t-c');
 				} else {
 					// 不改變
 				}
 				common._prevAge = data.from;
+			}
+		});
+
+		$('.income-slider').ionRangeSlider({
+			min: 0,
+			max: 1000,
+			from: common._prevIncome,
+			max_postfix: '<i class="postfix"></i>',
+			prettify_separator: ',',
+			onStart: function (data) {
+				common._prevIncome = data.min;
+			},
+			onFinish: function (data) {
+				var _startRange, _endRange;
+
+				common._IncomeAct[1] = data.from;
+				console.log(common._IncomeAct);
+
+				for (var i = (common._IncomeRange.length - 1); i >= 0; i--) {
+					if (common._IncomeAct[0] === common._IncomeRange[0]) {
+						// = 最小值
+						_startRange = i;
+					} else if (common._IncomeAct[0] === common._IncomeRange[common._IncomeRange.length - 1]) {
+						// = 最大值
+						_startRange = common._IncomeRange.length - 1;
+					} else if (common._IncomeAct[0] <= common._IncomeRange[i]) {
+						_startRange = i - 1;
+					}
+				}
+
+				for (var j = 0; j < common._IncomeRange.length; j++) {
+					if (common._IncomeAct[1] >= common._IncomeRange[j]) {
+						_endRange = j;
+					}
+				}
+
+				if (_startRange !== _endRange) {
+					// $('.cut-6 ' + common._imageWrap).attr('data-level', common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_startRange + j]);
+
+					// $('.cut-6 ' + common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+					// 	if (_startRange + j !== _endRange) {
+					// 		j += 1;
+
+					// 		$('.cut-6 ' + common._imageWrap).attr('data-level', common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_startRange + j]);
+					// 	}
+					// });
+					console.log(common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_endRange]);
+				}
+
+				if (data.from === data.max) {
+					$('.quest-6 .irs-single').addClass('size-adj');
+				} else {
+					$('.quest-6 .irs-single').removeClass('size-adj');
+				}
+				common._prevIncome = data.from;
+				common._IncomeAct[0] = data.from;
 			}
 		});
 
