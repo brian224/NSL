@@ -11,6 +11,7 @@
 		this._btnTopic    = '.jq-topic';
 		this._transition  = '.jq-transition';
 		this._imageWrap   = '.image-wrap';
+		this._stepList    = '.step-list';
 		this._prevAge     = 20; // 紀錄預設年紀
 		this._ageRange    = [30, 50, 70]; // 年紀區間
 		this._steps       = [7, 10, 14, 15]; // 五階段的題目區隔
@@ -91,6 +92,28 @@
 		$(className).toggleClass('is-checked');
 	}
 
+	index.prototype.mixAnimate = function(className, start, end) {
+		var _direction;
+
+		if (start < end) {
+			_direction = 1;
+		} else {
+			_direction = -1;
+		}
+
+		$(className).attr('data-level', common._IncomeRange[start] + '-t-' + common._IncomeRange[start + _direction]);
+
+		$(className).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+			if (start + _direction !== end) {
+				start += _direction;
+
+				$(className).attr('data-level', common._IncomeRange[start] + '-t-' + common._IncomeRange[start + _direction]);
+
+				common.mixAnimate(className, start, end);
+			}
+		});
+	}
+
 	projects.$w.load(function(){
 		$('.age-slider').ionRangeSlider({
 			min: 20,
@@ -157,7 +180,6 @@
 				var _startRange, _endRange;
 
 				common._IncomeAct[1] = data.from;
-				console.log(common._IncomeAct);
 
 				for (var i = (common._IncomeRange.length - 1); i >= 0; i--) {
 					if (common._IncomeAct[0] === common._IncomeRange[0]) {
@@ -178,16 +200,7 @@
 				}
 
 				if (_startRange !== _endRange) {
-					// $('.cut-6 ' + common._imageWrap).attr('data-level', common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_startRange + j]);
-
-					// $('.cut-6 ' + common._imageWrap).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					// 	if (_startRange + j !== _endRange) {
-					// 		j += 1;
-
-					// 		$('.cut-6 ' + common._imageWrap).attr('data-level', common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_startRange + j]);
-					// 	}
-					// });
-					console.log(common._IncomeRange[_startRange] + '-t-' + common._IncomeRange[_endRange]);
+					common.mixAnimate('.cut-6 ' + common._imageWrap, _startRange, _endRange);
 				}
 
 				if (data.from === data.max) {
@@ -316,7 +329,7 @@
 							});
 						});
 					}
-				} else if (_num === 2) {
+				} else if (_num === 2 || _num === 5) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
@@ -336,8 +349,14 @@
 						'data-quest': _num + _direct
 					});
 
-					if (_num === 3) {
+					if (_num === 3 || _num === 4 || _num === 6) {
 						common.slider();
+					}
+				}
+
+				for (var i = 0; i < common._steps.length; i++) {
+					if (_num >= (common._steps[i] - 1)) {
+						$(common._stepList).attr('class', common._stepList.split('.')[1] + ' complete-phase-' + (i + 1));
 					}
 				}
 			} else {
@@ -356,10 +375,14 @@
 				} else if (_num === 5) {
 					common.slider();
 				}
+
+				for (var i = common._steps.length - 1; i >= 0; i--) {
+					if (_num <= (common._steps[i])) {
+						$(common._stepList).attr('class', common._stepList.split('.')[1] + ' complete-phase-' + i);
+					}
+				}
 			}
 		});
-
-		common.slider();
 	});
 
 	projects.$d.ready(function(){

@@ -1,0 +1,41 @@
+﻿@include keyframes(q7-title) {}
+
+@include keyframes(q7-bird-left) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -7000px 0;
+	}
+}
+
+@include keyframes(q7-bird-right) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -12644px 0;
+	}
+}
+
+@include keyframes(q7-money) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -14553px 0;
+	}
+}
+
+@include keyframes(q7-star) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -64px 0;
+	}
+}

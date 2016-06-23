@@ -9,7 +9,7 @@
 		// 生活支出
 		$('.livingExpenses').on('click', function(){
 			var _data = {
-				'annualIncome' : $('.livingExpenses').val(),
+				'annualIncome' : $('.annualIncome1').val(),
 				'CSRFToken'    : _CSRFToken
 			};
 
@@ -181,7 +181,7 @@
 		// 理财/退休金社保已有/一次给付
 		$('.existingSocialInsurancePensionFinancialOnePayment').on('click', function(){
 			var _data = {
-				'monthlyInsuranceSalary' : $('.monthlyInsuranceSalary').val(),
+				'monthlyInsuranceSalary' : $('.monthlyInsuranceSalary7').val(),
 				'insuredYears'           : $('.insuredYears').val(),
 				'CSRFToken'              : _CSRFToken
 			};
@@ -207,7 +207,7 @@
 		// 理财/退休金社保已有/劳工退休金
 		$('.existingSocialInsurancePensionFinancialLaborPension').on('click', function(){
 			var _data = {
-				'monthlyInsuranceSalary' : $('.monthlyInsuranceSalary').val(),
+				'monthlyInsuranceSalary' : $('.monthlyInsuranceSalary8').val(),
 				'ruleType'               : $('.ruleType:checked').val(),
 				'CSRFToken'              : _CSRFToken
 			};
@@ -280,6 +280,7 @@
 		// 重大疾病/癌症醫療共同問項
 		$('.commonMajorDiseaseCancerCareItems').on('click', function(){
 			var _data = {
+				'annualIncome'                         : $('.annualIncome11').val(),
 				'recuperationIncomeCompensationOption' : $('#recuperationIncomeCompensationOption').val(),
 				'CSRFToken'                            : _CSRFToken
 			};
@@ -330,6 +331,7 @@
 		// 意外殘廢需求
 		$('.accidentalDisabilityDemand').on('click', function(){
 			var _data = {
+				'annualIncome'              : $('.annualIncome13').val(),
 				'recuperationIncomeSubsidy' : $('#recuperationIncomeSubsidy').val(),
 				'CSRFToken'                 : _CSRFToken
 			};
@@ -381,7 +383,7 @@
 		function totalCount() {
 			var _str = '';
 
-			_str = '{"traditionalLiftNeed":"' + $('.traditionalLiftNeed').val() + '","traditionalLiftExist":"' + $('.traditionalLiftExist').val() + '","ilpDream":"' + $('#ilpDream').val() + '","ilpNeed":"' + $('.ilpNeed').val() + '","ilpExist":"' + $('.ilpExist').val() + '","mc1Need":"' + $('.mc1Need').val() + '","mc1Exist":"' + $('.mc1Exist').val() + '","mc2Need":"' + $('.mc2Need').val() + '","mc2Exist":"' + $('.mc2Exist').val() + '","mc3Need":"' + $('.mc3Need').val() + '","mc3Exist":"' + $('.mc3Exist').val() + '","mc4Need":"' + $('.mc4Need').val() + '","mc4Exist":"' + $('.mc4Exist').val() + '","mc5Need":"' + $('.mc5Need').val() + '","mc5Exist":"' + $('.mc5Exist').val() + '","mc6Need":"' + $('.mc6Need').val() + '","mc6Exist":"' + $('.mc6Exist').val() + '","mc7Need":"' + $('.mc7Need').val() + '","mc7Exist":"' + $('.mc7Exist').val() + '","annualIncome":"' + $('.annualIncome').val() + '","lifeEvent":"' + $('#lifeEvent').val() + '","CSRFToken":"' + _CSRFToken + '"}';
+			_str = '{"traditionalLiftNeed":"' + $('.traditionalLiftNeed').val() + '","traditionalLiftExist":"' + $('.traditionalLiftExist').val() + '","ilpDream":"' + $('#ilpDream').val() + '","ilpNeed":"' + $('.ilpNeed').val() + '","ilpExist":"' + $('.ilpExist').val() + '","mc1Need":"' + $('.mc1Need').val() + '","mc1Exist":"' + $('.mc1Exist').val() + '","mc2Need":"' + $('.mc2Need').val() + '","mc2Exist":"' + $('.mc2Exist').val() + '","mc3Need":"' + $('.mc3Need').val() + '","mc3Exist":"' + $('.mc3Exist').val() + '","mc4Need":"' + $('.mc4Need').val() + '","mc4Exist":"' + $('.mc4Exist').val() + '","mc5Need":"' + $('.mc5Need').val() + '","mc5Exist":"' + $('.mc5Exist').val() + '","mc6Need":"' + $('.mc6Need').val() + '","mc6Exist":"' + $('.mc6Exist').val() + '","mc7Need":"' + $('.mc7Need').val() + '","mc7Exist":"' + $('.mc7Exist').val() + '","annualIncome":"' + $('.annualIncome15').val() + '","lifeEvent":"' + $('#lifeEvent').val() + '","CSRFToken":"' + _CSRFToken + '"}';
 
 			$('.totalData').val(_str);
 		}

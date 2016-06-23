@@ -1422,6 +1422,111 @@
 	}
 }
 
+.quest-7 {
+	.cut-7 {
+		display: block;
+		height: 100%;
+	}
+
+	.image-wrap {
+		margin-left: -340px;
+		width: 680px;
+		height: 542px;
+		position: absolute;
+		top: 0;
+		left: 50%;
+	}
+
+	.money-bag {
+		background: image-url('bg-q7.png') 0 0 no-repeat;
+		position: absolute;
+		left: 50%;
+
+		&.back {
+			margin-left: -94px;
+			width: 157px;
+			height: 124px;
+			top: 342px;
+		}
+
+		&.front {
+			margin-left: -94px;
+			background-position: 0 -124px;
+			width: 195px;
+			height: 94px;
+			top: 372px;
+		}
+	}
+
+	.bird-left {
+		background: url(../img/ani-q7-bird-left.png) 0 0 no-repeat;
+		width: 250px;
+		height: 249px;
+		position: absolute;
+		top: 168px;
+		left: 90px;
+		@include animation(q7-bird-left 3.2s steps(28, end) infinite);
+	}
+
+	.bird-right {
+		background: url(../img/ani-q7-bird-right.png) 0 0 no-repeat;
+		width: 436px;
+		height: 478px;
+		position: absolute;
+		top: -42px;
+		right: -40px;
+		@include animation(q7-bird-right 3.2s 0.8s steps(29, end) infinite);
+	}
+
+	.money-erupt {
+		margin-left: -151px;
+		background: url(../img/ani-q7-money.png) 297px 0 no-repeat;
+		width: 297px;
+		height: 166px;
+		position: absolute;
+		bottom: 68px;
+		left: 50%;
+		@include animation(q7-money 2.7s 1.6s steps(49, end) forwards);
+	}
+
+	.star {
+		background: url(../img/ani-q7-star.png) 0 0 no-repeat;
+		width: 8px;
+		height: 14px;
+		position: absolute;
+		@include animation(q7-star 2.4s steps(8, end) infinite);
+
+		&.left {
+			bottom: 143px;
+			left: 201px;
+			@include transform(rotate(-15deg));
+		}
+
+		&.bottom {
+			bottom: 48px;
+			left: 332px;
+		}
+
+		&.bottom-right {
+			bottom: 39px;
+			left: 450px;
+			@include transform(rotate(-30deg));
+		}
+
+		&.right {
+			bottom: 111px;
+			left: 458px;
+			@include transform(scale(-1, 1) rotate(-30deg));
+		}
+
+		&.top-right {
+			bottom: 177px;
+			left: 415px;
+			@include transform(scale(-1, 1));
+		}
+	}
+}
+
 .step-list {
 	width: 100%;
 	position: absolute;
@@ -1433,10 +1538,8 @@
 	$types : 0;
 	$total : 4;
 	@while $types <= $total {
-		@for $i from 1 through ($total + 1) {
-			.list:nth-child(#{$i}) {
-				background-position: (-59px * ($i - 1)) -55px;
-			}
+		.list:nth-child(#{$types + 1}) {
+			background-position: (-59px * ($types - 1)) -55px;
 		}
 
 		&.complete-phase-#{$types} {
@@ -1501,7 +1604,7 @@
 		z-index: 1;
 		font-size: 14px;
 		line-height: 16px;
-		@include transition(ease-in all 0.3s);
+		@include transition(ease-in color 0.3s);
 
 		em {
 			margin: -16px 0 0 -15px;

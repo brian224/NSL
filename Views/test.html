@@ -18,14 +18,14 @@
 	</style>
 </head>
 <body>
-	<input type="hidden" id="CSRFToken" class="CSRFToken" value="f34ff75b-272a-418d-8835-21cb33e41f50">
+	<input type="hidden" id="CSRFToken" name="CSRFToken" value="f34ff75b-272a-418d-8835-21cb33e41f50">
 	<table class="layout">
 		<tr>
 			<td>
 				<strong>1. 生活支出 </strong>
 			</td>
 			<td>
-				<input type="text" class="livingExpenses" value="289">
+				<input type="text" class="annualIncome1" value="289">
 			</td>
 			<td>
 				<button class="livingExpenses">送出</button>
@@ -85,7 +85,7 @@
 			<td>
 				<button class="existingSocialLifeInsurance">送出</button>
 			</td>
-			<td></td>
+			<td><p>投保類別 單選還是多選？</p></td>
 		</tr>
 		<tr>
 			<td>
@@ -168,7 +168,7 @@
 							<span>每月保險費用</span>
 						</td>
 						<td>
-							<input type="text" class="monthlyInsuranceSalary" value="2000">
+							<input type="text" class="monthlyInsuranceSalary7" value="2000">
 						</td>
 					</tr>
 					<tr>
@@ -197,7 +197,7 @@
 							<span>每月保險費用</span>
 						</td>
 						<td>
-							<input type="text" class="monthlyInsuranceSalary" value="2000">
+							<input type="text" class="monthlyInsuranceSalary8" value="2000">
 						</td>
 					</tr>
 					<tr>
@@ -271,7 +271,8 @@
 				<button class="commonInpatientMedicalItems">送出</button>
 			</td>
 			<td>
-				<span>Output三個結果分別代表什麼？</span>
+				<p>1. Output三個結果分別代表什麼？</p>
+				<p>2. 單選還是多選？</p>
 			</td>
 		</tr>
 		<tr>
@@ -279,17 +280,34 @@
 				<strong>11. 重大疾病/癌症醫療共同問項 </strong>
 			</td>
 			<td>
-				<select name="recuperationIncomeCompensationOption" id="recuperationIncomeCompensationOption">
-					<option value="1">無需收入補償，只要基本醫療費用即可</option>
-					<option value="2">除了基本醫療費用外，應該還需要療養1年</option>
-					<option value="3">除了基本醫療費用外，應該還需要療養3年</option>
-					<option value="4">除了基本醫療費用外，應該還需要療養5年以上</option>
-				</select>
+				<table>
+					<tr>
+						<td>
+							<span>年收入</span>
+						</td>
+						<td>
+							<input type="text" class="annualIncome11" value="5454">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>補助需求</span>
+						</td>
+						<td>
+							<select name="recuperationIncomeCompensationOption" id="recuperationIncomeCompensationOption">
+								<option value="1">無需收入補償，只要基本醫療費用即可</option>
+								<option value="2">除了基本醫療費用外，應該還需要療養1年</option>
+								<option value="3">除了基本醫療費用外，應該還需要療養3年</option>
+								<option value="4">除了基本醫療費用外，應該還需要療養5年以上</option>
+							</select>
+						</td>
+					</tr>
+				</table>
 			</td>
 			<td>
 				<button class="commonMajorDiseaseCancerCareItems">送出</button>
 			</td>
-			<td></td>
+			<td><p>單選還是多選？</p></td>
 		</tr>
 		<tr>
 			<td>
@@ -306,24 +324,41 @@
 			<td>
 				<button class="longTermCareNeeds">送出</button>
 			</td>
-			<td></td>
+			<td><p>單選還是多選？</p></td>
 		</tr>
 		<tr>
 			<td>
 				<strong>13. 意外殘廢需求 </strong>
 			</td>
 			<td>
-				<select name="recuperationIncomeSubsidy" id="recuperationIncomeSubsidy">
-					<option value="1">3年療養收入補貼</option>
-					<option value="2">5療養收入補貼</option>
-					<option value="3">7年療養收入補貼</option>
-					<option value="4">10年療養收入補貼</option>
-				</select>
+				<table>
+					<tr>
+						<td>
+							<span>年收入</span>
+						</td>
+						<td>
+							<input type="text" class="annualIncome13" value="5454">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>補助需求</span>
+						</td>
+						<td>
+							<select name="recuperationIncomeSubsidy" id="recuperationIncomeSubsidy">
+								<option value="1">3年療養收入補貼</option>
+								<option value="2">5療養收入補貼</option>
+								<option value="3">7年療養收入補貼</option>
+								<option value="4">10年療養收入補貼</option>
+							</select>
+						</td>
+					</tr>
+				</table>
 			</td>
 			<td>
 				<button class="accidentalDisabilityDemand">送出</button>
 			</td>
-			<td></td>
+			<td><p>單選還是多選？</p></td>
 		</tr>
 		<tr>
 			<td>
@@ -343,7 +378,7 @@
 			<td>
 				<button class="nanshanExistingMedicalInsurantAmount">送出</button>
 			</td>
-			<td></td>
+			<td><p>單選還是多選？</p></td>
 		</tr>
 		<tr>
 			<td>
@@ -435,7 +470,7 @@
 					</tr>
 					<tr>
 						<td>年收入</td>
-						<td><input type="text" class="annualIncome" value="1200000"></td>
+						<td><input type="text" class="annualIncome15" value="1200000"></td>
 					</tr>
 					<tr>
 						<td>人生階段</td>
@@ -458,7 +493,8 @@
 				</form>
 			</td>
 			<td>
-				<span>Exist & Exis 沒有統一</span>
+				<p>1. Exist & Exis 沒有統一</p>
+				<p>2. 理財目標、人生階段 單選還是多選？</p>
 			</td>
 		</tr>
 	</table>
