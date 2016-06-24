@@ -102,3 +102,13 @@
 		@include transform(translate(0, 0));
 	}
 }
+
+@include keyframes(wave-cloud) {
+	0%, 100% {
+		@include transform(rotate(3deg));
+	}
+
+	50% {
+		@include transform(rotate(-3deg));
+	}
+}

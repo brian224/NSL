@@ -72,13 +72,23 @@
 	@include background-image(linear-gradient(to bottom, #304d91 0%, #253a71 100%));
 }
 
-@include keyframes(wave-cloud) {
-	0%, 100% {
-		@include transform(rotate(3deg));
+.l-lightbox {
+	background: rgba(0, 0, 0, 0.55);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	z-index: -1;
+	@include transition(ease-in opacity 0.3s);
+
+	&.animation-op {
+		opacity: 1;
 	}
 
-	50% {
-		@include transform(rotate(-3deg));
+	&.is-show {
+		z-index: 10;
 	}
 }
 

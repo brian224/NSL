@@ -1,4 +1,30 @@
-﻿@include keyframes(wink-girl) {
+﻿@include keyframes(q1-title) {
+	0%, 19% {
+		width: 0;
+	}
+
+	20%, 39% {
+		width: 37px;
+	}
+
+	40%, 59% {
+		width: 70px;
+	}
+
+	60%, 79% {
+		width: 108px;
+	}
+
+	80%, 99% {
+		width: 146px;
+	}
+
+	100% {
+		width: 166px;
+	}
+}
+
+@include keyframes(wink-girl) {
 	65%, 75% {
 		background-position: -151px 0;
 	}

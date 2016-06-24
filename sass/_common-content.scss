@@ -100,18 +100,36 @@
 		left: 520px;
 	}
 
-	.btn-check {
-		margin-left: -18px;
+	.btn-area {
+		margin-left: 8px;
 		position: absolute;
-		top: 492px;
+		top: 498px;
 		left: 50%;
-		overflow: visible;
 
-		em {
+		.btn-notify {
+			margin-bottom: 10px;
 			background: image-url('bg-index.png') -112px -390px no-repeat;
-			display: inline-block;
-			width: 80px;
-			height: 15px;
+			display: block;
+			width: 130px;
+			height: 17px;
+		}
+
+		.btn-check {
+			em {
+				background: image-url('bg-index.png') -242px -390px no-repeat;
+				display: inline-block;
+				width: 25px;
+				height: 15px;
+			}
+
+			&.disagree {
+				margin-left: 20px;
+
+				em {
+					background-position: -267px -390px;
+					width: 40px;
+				}
+			}
 		}
 	}
 
@@ -294,7 +312,12 @@
 	}
 
 	.quest-title {
-		@include transition(ease-in opacity 0.3s);
+		margin-left: -83px;
+		width: 0;
+		height: 38px;
+		top: 78px;
+		left: 50%;
+		@include animation(q1-title 0.7s linear forwards);
 	}
 
 	.choice-list {
@@ -305,7 +328,7 @@
 
 			&:first-child .btn-check {
 				em {
-					background-position: 0 -180px;
+					background-position: -166px 0;
 				}
 
 				&.is-checked ~ .image-wrap {
@@ -323,7 +346,7 @@
 				}
 
 				em {
-					background-position: 0 -201px;
+					background-position: -185px 0;
 				}
 
 				&.is-checked ~ .image-wrap {
@@ -394,9 +417,12 @@
 	}
 
 	.quest-title {
-		background-position: -35px 0;
-		width: 35px;
-		height: 0;
+		margin-left: -83px;
+		background-position: 0 -38px;
+		width: 0;
+		height: 38px;
+		top: 78px;
+		left: 50%;
 		@include animation(q2-title 1.5s linear forwards);
 	}
 
@@ -419,7 +445,7 @@
 			}
 
 			&:first-child .btn-check em {
-				background-position: -35px -186px;
+				background-position: -166px -21px;
 			}
 
 			&:last-child .btn-check {
@@ -428,7 +454,7 @@
 				}
 
 				em {
-					background-position: -35px -207px;
+					background-position: -166px -42px;
 				}
 			}
 		}
@@ -579,10 +605,12 @@
 	}
 
 	.quest-title {
-		background-position: -74px 0;
-		width: 37px;
-		height: 0;
-		top: 48px;
+		margin-left: -80px;
+		background-position: 0 -76px;
+		width: 0;
+		height: 37px;
+		top: 78px;
+		left: 50%;
 		@include animation(q3-title 1.2s 0.1s linear forwards);
 	}
 
@@ -711,10 +739,12 @@
 	}
 
 	.quest-title {
-		background-position: -111px 0;
-		width: 35px;
-		height: 0;
-		top: 47px;
+		margin-left: -100px;
+		background-position: 0 -113px;
+		width: 0;
+		height: 37px;
+		top: 78px;
+		left: 50%;
 		@include animation(q4-title 0.9s linear forwards);
 	}
 
