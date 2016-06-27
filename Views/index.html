@@ -40,7 +40,7 @@
 				<i class="icon-flying-bird"></i>
 				<i class="icon-flying-bird reverse"></i>
 			</div>
-			<div class="l-content quest quest-4" data-quest="4">
+			<div class="l-content quest quest-14" data-quest="14">
 				<div class="stage cut-1">
 					<ul class="choice-list jq-transition" data-first="true" data-select="">
 						<li class="list">
@@ -56,7 +56,7 @@
 							<div class="image-wrap boy"></div>
 						</li>
 					</ul>
-					<h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>你的性別？</em>
 					</h2>
 				</div>
@@ -75,7 +75,7 @@
 							<div class="image-wrap boy"></div>
 						</li>
 					</ul>
-					<h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>你婚了嗎？</em>
 					</h2>
 				</div>
@@ -86,46 +86,39 @@
 							<input class="slider-picker age-slider">
 						</div>
 					</div>
-					<h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>你的年齡？</em>
 					</h2>
 				</div>
 				<div class="stage cut-4">
 					<ul class="kids-selector">
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="baby">
 							<em class="desc">學齡前(0-3歲)</em>
+							<input class="slider-picker amount-slider" data-age="baby">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="kindergarten">
 							<em class="desc">幼稚園(4-6歲)</em>
+							<input class="slider-picker amount-slider" data-age="kindergarten">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="elementary">
 							<em class="desc">國小(7-12歲)</em>
+							<input class="slider-picker amount-slider" data-age="elementary">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="juniorHigh">
 							<em class="desc">國中(13-15歲)</em>
+							<input class="slider-picker amount-slider" data-age="juniorHigh">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="seniorHigh">
 							<em class="desc">高中(16-18歲)</em>
+							<input class="slider-picker amount-slider" data-age="seniorHigh">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="collage">
 							<em class="desc">大學(19-22歲)</em>
+							<input class="slider-picker amount-slider" data-age="collage">
 						</li>
 						<li class="list">
-							<span class="tag"></span>
-							<input class="slider-picker amount-slider" type="range" min="0" max="3" value="0" data-orientation="vertical" data-age="institute">
 							<em class="desc">研究所以上</em>
+							<input class="slider-picker amount-slider" data-age="institute">
 						</li>
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="dinky">
@@ -134,7 +127,7 @@
 							<em class="desc">沒有小孩</em>
 						</li>
 					</ul>
-					<h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>你有小孩嗎？</em>
 					</h2>
 					<div class="kids-pool">
@@ -193,7 +186,7 @@
 					</div>
 				</div>
 				<div class="stage cut-5">
-					<ul class="choice-list jq-transition">
+					<ul class="choice-list jq-transition chosen-girl">
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="young">
 								<em class="hide-text">社會新鮮人</em>
@@ -221,9 +214,9 @@
 						</li>
 					</ul>
 					<div class="image-wrap"></div>
-					<h2 class="quest-title hide-text jq-title">
-						<em>你正處於哪個</em>
-						<em>人生階段？</em>
+					<h2 class="quest-title hide-text">
+						<em>你正處於哪個人生階段？</em>
+						<em>可複選 非必填</em>
 					</h2>
 				</div>
 				<div class="stage cut-6">
@@ -233,9 +226,9 @@
 							<input class="slider-picker income-slider">
 						</div>
 					</div>
-					<!-- <h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>不好意思，你的年收入？</em>
-					</h2> -->
+					</h2>
 				</div>
 				<div class="stage cut-7">
 					<div class="image-wrap">
@@ -250,15 +243,21 @@
 						<span class="star right"></span>
 						<span class="star top-right"></span>
 					</div>
-					<!-- <h2 class="quest-title hide-text jq-title">
+					<h2 class="quest-title hide-text">
 						<em>每天睜開眼睛就要花錢，立馬診斷你的生活開銷吧！</em>
-					</h2> -->
+					</h2>
 				</div>
-				<ol class="step-list complete-phase-1">
-					<li class="list is-complete">
+				<div class="stage cut-14">
+					<div class="image-wrap"></div>
+					<h2 class="quest-title hide-text">
+						<em>人生沒有夢想，跟鹹魚有什麼分別？但夢想不該只停在「想」 能夠實現的人早就捲起袖口做了這個小測驗（恭喜邁開第一步！）在每個階段，設定不同的目標 現在所做的每一分準備，都將為你擺脫鹹魚人生</em>
+					</h2>
+				</div>
+				<ol class="step-list complete-phase-0">
+					<li class="list">
 						<em>基本資料</em>
 					</li>
-					<li class="list is-curr">
+					<li class="list">
 						<em>生活開銷</em>
 					</li>
 					<li class="list">
@@ -324,35 +323,40 @@
 		<img class="b-lazy" src="../Content/img/bg-exams.png" alt="">
 		<img class="b-lazy" src="../Content/img/bg-slider.png" alt="">
 		<img class="b-lazy" src="../Content/img/shared.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q2-girl.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q2-boy.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q3-girl.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q3-boy.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-institute.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-collage.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-seniorHigh.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-juniorHigh.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-elementary.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-kindergarten.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-baby.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q4-dog.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-girl-young.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-girl-new-couple.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-girl-pregnant.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-girl-near-retired.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-girl-retired.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-boy-young.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-boy-new-couple.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-boy-pregnant.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-boy-near-retired.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q5-boy-retired.png" alt="">
-		<img class="b-lazy" src="../Content/img/ani-q6.png" alt="">
+		<img class="b-lazy" src="../Content/img/q2/ani-q2-girl.png" alt="">
+		<img class="b-lazy" src="../Content/img/q2/ani-q2-boy.png" alt="">
+		<img class="b-lazy" src="../Content/img/q3/ani-q3-girl.png" alt="">
+		<img class="b-lazy" src="../Content/img/q3/ani-q3-boy.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-institute.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-collage.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-seniorHigh.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-juniorHigh.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-elementary.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-kindergarten.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-baby.png" alt="">
+		<img class="b-lazy" src="../Content/img/q4/ani-q4-dog.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-girl-young.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-girl-new-couple.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-girl-pregnant.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-girl-near-retired.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-girl-retired.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-boy-young.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-boy-new-couple.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-boy-pregnant.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-boy-near-retired.png" alt="">
+		<img class="b-lazy" src="../Content/img/q5/ani-q5-boy-retired.png" alt="">
+		<img class="b-lazy" src="../Content/img/q6/ani-q6.png" alt="">
+		<img class="b-lazy" src="../Content/img/q7/ani-q7-bird-left.png" alt="">
+		<img class="b-lazy" src="../Content/img/q7/ani-q7-bird-right.png" alt="">
+		<img class="b-lazy" src="../Content/img/q7/ani-q7-money.png" alt="">
+		<img class="b-lazy" src="../Content/img/q7/ani-q7-star.png" alt="">
+		<img class="b-lazy" src="../Content/img/q14/ani-q14.png" alt="">
 	</div>
 </body>
 <script src="../Scripts/plugin/jquery/jquery.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/lazyload/jquery.lazyload.min.js?JS=20160216_01"></script>
 <script src="../Scripts/plugin/ion-rangeSlider/ion.rangeSlider.min.js?JS=20160216_01"></script>
-<script src="../Scripts/plugin/rangeslider/rangeslider.min.js?JS=20160216_01"></script>
+<!-- <script src="../Scripts/plugin/rangeslider/rangeslider.min.js?JS=20160216_01"></script> -->
 <script src="../Scripts/js/factory.js?JS=20160420_01"></script>
 <script src="../Scripts/js/common.js?JS=20160420_01"></script>
 </html>

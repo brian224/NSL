@@ -1,4 +1,52 @@
-﻿@include keyframes(q6-title) {}
+﻿@include keyframes(q6-title) {
+	0%, 9% {
+		width: 0;
+	}
+
+	9.1%, 18.1% {
+		width: 22px;
+	}
+
+	18.2%, 27.2% {
+		width: 59px;
+	}
+
+	27.3%, 36.3% {
+		width: 86px;
+	}
+
+	36.4%, 45.4% {
+		width: 120px;
+	}
+
+	45.5%, 54.5% {
+		width: 140px;
+	}
+
+	54.6%, 63.6% {
+		width: 179px;
+	}
+
+	63.7%, 72.7% {
+		width: 203px;
+	}
+
+	72.8%, 81.8% {
+		width: 239px;
+	}
+
+	81.9%, 90.9% {
+		width: 267px;
+	}
+
+	91%, 99.9% {
+		width: 302px;
+	}
+
+	100% {
+		width: 316px;
+	}
+}
 
 @include keyframes(q6-0-t-50) {
 	0% {

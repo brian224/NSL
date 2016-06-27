@@ -187,33 +187,3 @@
 		background-position: 0 0;
 	}
 }
-
-@include keyframes(q4-tag-1) {
-	0% {
-		background-position: -41px -13px;
-	}
-
-	100% {
-		background-position: -365px -13px;
-	}
-}
-
-@include keyframes(q4-tag-2) {
-	0% {
-		background-position: -41px -35px;
-	}
-
-	100% {
-		background-position: -365px -35px;
-	}
-}
-
-@include keyframes(q4-tag-3) {
-	0% {
-		background-position: -41px -57px;
-	}
-
-	100% {
-		background-position: -365px -57px;
-	}
-}

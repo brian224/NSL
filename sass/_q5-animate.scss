@@ -1,56 +1,52 @@
-﻿@include keyframes(q5-title-1) {
-	0%, 16.9% {
-		height: 0;
+﻿@include keyframes(q5-title) {
+	0%, 9% {
+		width: 0;
 	}
 
-	17%, 33.9% {
-		height: 38px;
+	9.1%, 18.1% {
+		width: 36px;
 	}
 
-	34%, 49.9% {
-		height: 61px;
+	18.2%, 27.2% {
+		width: 59px;
 	}
 
-	50%, 66.9% {
-		height: 98px;
+	27.3%, 36.3% {
+		width: 95px;
 	}
 
-	67%, 83.9% {
-		height: 130px;
+	36.4%, 45.4% {
+		width: 126px;
 	}
 
-	84%, 99.9% {
-		height: 158px;
+	45.5%, 54.5% {
+		width: 153px;
 	}
 
-	100% {
-		height: 190px;
-	}
-}
-
-@include keyframes(q5-title-2) {
-	0%, 19% {
-		height: 0;
+	54.6%, 63.6% {
+		width: 181px;
 	}
 
-	20%, 39% {
-		height: 77px;
+	63.7%, 72.7% {
+		width: 220px;
 	}
 
-	40%, 59% {
-		height: 108px;
+	72.8%, 81.8% {
+		width: 256px;
 	}
 
-	60%, 79% {
-		height: 134px;
+	81.9%, 90.9% {
+		width: 293px;
 	}
 
-	80%, 99% {
-		height: 165px;
+	91%, 99.9% {
+		width: 333px;
+		height: 45px;
 	}
 
 	100% {
-		height: 190px;
+		width: 348px;
+		height: 69px;
 	}
 }
 
