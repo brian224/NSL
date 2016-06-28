@@ -32,52 +32,16 @@
 		});
 	}
 
-	// index.prototype.slider = function() {
-	// 	$('.amount-slider').each(function(){
-	// 		$(this).rangeslider({
-	// 			polyfill: false,
-	// 			onSlide: function(position, value) {
-	// 				var $tag = $('#' + $(this)[0].identifier).siblings('.tag');
-
-	// 				$tag.attr('class', 'tag tag-' + value);
-	// 			},
-	// 			onSlideEnd: function(position, value) {
-	// 				var _class = $('#' + $(this)[0].identifier).siblings('.amount-slider').data('age'); // 取得是哪個年齡層的在做調整
-
-	// 				if (value === 0) {
-	// 					$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-	// 						$(this).removeClass('ani-reverse is-show');
-	// 					});
-	// 				} else {
-	// 					$('[data-meta="dinky"]').removeClass('is-checked');
-	// 					$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-	// 						$(this).removeClass('ani-reverse is-show');
-	// 					});
-
-	// 					for (var i = 0; i < value; i++) {
-	// 						$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
-	// 					}
-
-	// 					for (var j = $('.kids-pool .' + _class + ' *').length; j > value; j--) {
-	// 						if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
-	// 							$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-	// 								$(this).removeClass('ani-reverse is-show');
-	// 							});
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		});
-	// 	});
-	// }
-
 	// Q4 點擊 "沒有小孩"
 	index.prototype.checkKid = function(className) {
 		if (!$(className).hasClass('is-checked')) {
 			if ($('.dog').siblings().find('.is-show').length === 0) {
 				$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 			} else {
-				$('[data-age]').val(0).change();
+				$('input[data-age]').each(function(){
+					$(this).data('ionRangeSlider').reset();
+				});
+
 				$('.dog').siblings().find('.is-show').addClass('ani-reverse');
 				$('.ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 					$(this).removeClass('ani-reverse is-show');
@@ -144,7 +108,6 @@
 			min: 20,
 			max: 84,
 			from: common._prevAge,
-			max_postfix: '+',
 			onStart: function (data) {
 				common._prevAge = data.min;
 			},
@@ -197,34 +160,31 @@
 				min: 0,
 				max: 5,
 				from: 0,
-				onStart: function (data) {
-				},
 				onFinish: function (data) {
-					console.log('yo');
-					// var _class = $('#' + $(this)[0].identifier).siblings('.amount-slider').data('age'); // 取得是哪個年齡層的在做調整
+					var _class = $(data.input).data('age'); // 取得是哪個年齡層的在做調整
 
-					// if (value === 0) {
-					// 	$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					// 		$(this).removeClass('ani-reverse is-show');
-					// 	});
-					// } else {
-					// 	$('[data-meta="dinky"]').removeClass('is-checked');
-					// 	$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					// 		$(this).removeClass('ani-reverse is-show');
-					// 	});
+					if (data.from === 0) {
+						$('.kids-pool .' + _class + ' .is-show').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
+					} else {
+						$('[data-meta="dinky"]').removeClass('is-checked');
+						$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+							$(this).removeClass('ani-reverse is-show');
+						});
 
-					// 	for (var i = 0; i < value; i++) {
-					// 		$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
-					// 	}
+						for (var i = 0; i < data.from; i++) {
+							$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						}
 
-					// 	for (var j = $('.kids-pool .' + _class + ' *').length; j > value; j--) {
-					// 		if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
-					// 			$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-					// 				$(this).removeClass('ani-reverse is-show');
-					// 			});
-					// 		}
-					// 	}
-					// }
+						for (var j = $('.kids-pool .' + _class + ' *').length; j > data.from; j--) {
+							if ($('.kids-pool .' + _class + ' *').eq(j - 1).hasClass('is-show')) {
+								$('.kids-pool .' + _class + ' *').eq(j - 1).addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+									$(this).removeClass('ani-reverse is-show');
+								});
+							}
+						}
+					}
 				}
 			});
 		});
@@ -273,6 +233,16 @@
 				common._prevIncome = data.from;
 				common._IncomeAct[0] = data.from;
 			}
+		});
+
+		$('.expend-slider').each(function(){
+			$(this).ionRangeSlider({
+				min: 0,
+				max: $(this).data('max'),
+				from: 0,
+				onFinish: function (data) {
+				}
+			});
 		});
 
 		if ($(common._lContent).hasClass('index')) {
