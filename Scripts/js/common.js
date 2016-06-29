@@ -4,23 +4,26 @@
 	var common = new index();
 
 	function index() {
-		this._imageWrap   = '.image-wrap';
-		this._start       = '.jq-start';
-		this._required    = '.jq-required';
-		this._checkbox    = '.jq-checkbox';
-		this._btnTopic    = '.jq-topic';
-		this._transition  = '.jq-transition';
-		this._lightbox    = '.jq-lightbox';
-		this._close       = '.jq-close';
-		this._lContent    = '.l-content';
-		this._lLightbox   = '.l-lightbox';
-		this._stepList    = '.step-list';
-		this._prevAge     = 20; // 紀錄預設年紀
-		this._ageRange    = [30, 50, 70]; // 年紀區間
-		this._steps       = [7, 10, 14, 15]; // 五階段的題目區隔
-		this._prevIncome  = 0; // 紀錄預設收入
-		this._IncomeAct   = [0, 0]; // 紀錄收入變化
-		this._IncomeRange = [0, 50, 100, 200, 500, 1000]; // 收入區間
+		this._imageWrap      = '.image-wrap';
+		this._start          = '.jq-start';
+		this._required       = '.jq-required';
+		this._checkbox       = '.jq-checkbox';
+		this._btnTopic       = '.jq-topic';
+		this._transition     = '.jq-transition';
+		this._lightbox       = '.jq-lightbox';
+		this._close          = '.jq-close';
+		this._lContent       = '.l-content';
+		this._lLightbox      = '.l-lightbox';
+		this._stepList       = '.step-list';
+		this._prevAge        = 20; // 預設年紀
+		this._ageRange       = [30, 50, 70]; // 年紀區間
+		this._steps          = [7, 10, 14, 15]; // 五階段的題目區隔
+		this._prevIncome     = 0; // 預設收入
+		this._IncomeAct      = [0, 0]; // 紀錄收入變化
+		this._IncomeRange    = [0, 50, 100, 200, 500, 1000]; // 收入區間
+		this._prevLiability  = 0; // 預設負債
+		this._LiabilityAct   = [0, 0]; // 紀錄負債變化
+		this._LiabilityRange = [0, 400, 800, 1200, 1600, 2001, 2400, 2800, 3200, 3600, 4030]; // 負債區間
 	}
 
 	// 沒作答就往下一題
@@ -36,7 +39,7 @@
 	index.prototype.checkKid = function(className) {
 		if (!$(className).hasClass('is-checked')) {
 			if ($('.dog').siblings().find('.is-show').length === 0) {
-				$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+				// $('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 			} else {
 				$('input[data-age]').each(function(){
 					$(this).data('ionRangeSlider').reset();
@@ -51,15 +54,17 @@
 					}
 				});
 			}
-		} else {
-			$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-				$(this).removeClass('ani-reverse is-show');
-			});
+			$(className).toggleClass('is-checked');
+		// } else {
+		// 	$('.dog .doll').addClass('ani-reverse').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+		// 		$(this).removeClass('ani-reverse is-show');
+		// 	});
 		}
-		$(className).toggleClass('is-checked');
+		// $(className).toggleClass('is-checked');
 	}
 
-	index.prototype.mixAnimate = function(className, start, end) {
+	// 跑區間動畫
+	index.prototype.mixAnimate = function(className, start, end, range) {
 		var _direction;
 
 		if (start < end) {
@@ -68,15 +73,15 @@
 			_direction = -1;
 		}
 
-		$(className).attr('data-level', common._IncomeRange[start] + '-t-' + common._IncomeRange[start + _direction]);
+		$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
 
 		$(className).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 			if (start + _direction !== end) {
 				start += _direction;
 
-				$(className).attr('data-level', common._IncomeRange[start] + '-t-' + common._IncomeRange[start + _direction]);
+				$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
 
-				common.mixAnimate(className, start, end);
+				common.mixAnimate(className, start, end, range);
 			}
 		});
 	}
@@ -222,7 +227,7 @@
 				}
 
 				if (_startRange !== _endRange) {
-					common.mixAnimate('.cut-6 ' + common._imageWrap, _startRange, _endRange);
+					common.mixAnimate('.cut-6 ' + common._imageWrap, _startRange, _endRange, common._IncomeRange);
 				}
 
 				if (data.from === data.max) {
@@ -239,8 +244,46 @@
 			$(this).ionRangeSlider({
 				min: 0,
 				max: $(this).data('max'),
-				from: 0,
+				max_postfix: '<i class="postfix"></i>',
+				prettify_separator: ',',
+				from: common._prevLiability,
+				values: $(this).data('values').split(','),
 				onFinish: function (data) {
+					var _startRange,
+						_endRange,
+						_total = 0,
+						_aniRange = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+					for (var k = 0; k < $('.cut-8 .irs-single').length; k++) {
+						_total += parseInt($('.cut-8 .irs-single').eq(k).text().split(',').join(''), 10);
+					}
+
+					common._LiabilityAct[1] = _total;
+					// console.log(_total);
+
+					for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
+						if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
+							// = 最小值
+							_startRange = i;
+						} else if (common._LiabilityAct[0] === common._LiabilityRange[common._LiabilityRange.length - 1]) {
+							// = 最大值
+							_startRange = common._LiabilityRange.length - 1;
+						} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
+							_startRange = i - 1;
+						}
+					}
+
+					for (var j = 0; j < common._LiabilityRange.length; j++) {
+						if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
+							_endRange = j;
+						}
+					}
+
+					if (_startRange !== _endRange) {
+						common.mixAnimate('.cut-8 ' + common._imageWrap, _startRange, _endRange, _aniRange);
+					}
+
+					common._LiabilityAct[0] = _total;
 				}
 			});
 		});
@@ -312,19 +355,30 @@
 
 				if (!$(this).hasClass('is-checked')) {
 					$(this).addClass('is-checked');
-				}
 
-				if ($another.hasClass('is-checked')) {
-					// 切換選取時要先跑復原動畫
-					$another.removeClass('is-checked');
-					$('.cut-5 ' + common._imageWrap).addClass('ani-reverse');
-
-					setTimeout(function(){
-						$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
-					}, (parseFloat($('.cut-5 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-5 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
+					if ($(this).data('meta') === 'young') {
+						$(common._checkbox + '[data-meta="retired"]').removeClass('is-checked');
+					} else if ($(this).data('meta') === 'near-retired') {
+						$(common._checkbox + '[data-meta="retired"]').removeClass('is-checked');
+					} else if ($(this).data('meta') === 'retired') {
+						$(common._checkbox + '[data-meta="young"], ' + common._checkbox + '[data-meta="near-retired"]').removeClass('is-checked');
+					}
+					$('.cut-5 ' + common._imageWrap + ' .doll').attr('data-meta', _meta);
 				} else {
-					$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
+					$(this).removeClass('is-checked');
+					$('.cut-5 ' + common._imageWrap + ' .doll').attr('data-meta', '');
 				}
+
+				// if ($another.hasClass('is-checked')) {
+				// 	// 切換選取時要先跑復原動畫
+				// 	$another.removeClass('is-checked');
+				// 	$('.cut-5 ' + common._imageWrap).addClass('ani-reverse');
+
+				// 	setTimeout(function(){
+				// 		$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
+				// 	}, (parseFloat($('.cut-5 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-5 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
+				// } else {
+				// }
 			}
 		});
 

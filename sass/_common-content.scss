@@ -1223,81 +1223,90 @@
 		}
 
 		&.chosen-girl ~ .image-wrap {
-			margin-left: -75px;
-			background: image-url('girl.png') -151px 0 no-repeat;
-			width: 151px;
-			height: 242px;
 			top: 250px;
-			left: 50%;
-			@include animation(wink-girl 5s steps(1, start) infinite);
 
-			&.young {
-				margin-left: -76px;
-				background: url(../img/q5/ani-q5-girl-young.png) 0 0 no-repeat;
-				width: 154px;
-				height: 513px;
-				top: -28px;
-				@include animation(q5-girl-young 2.7s steps(49, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-girl-young-reverse 2.7s steps(49, start) forwards);
-				}
-			}
-
-			&.new-couple {
-				margin-left: -76px;
-				background: url(../img/q5/ani-q5-girl-new-couple.png) 0 0 no-repeat;
+			.doll {
+				/*margin-left: -75px;*/
+				background: image-url('girl.png') -151px 0 no-repeat;
 				width: 151px;
-				height: 540px;
-				top: -55px;
-				@include animation(q5-girl-new-couple 3s steps(54, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-girl-new-couple-reverse 3s steps(54, start) forwards);
+				height: 242px;
+				/*top: 250px;*/
+				/*left: 50%;*/
+				@include animation(wink-girl 5s steps(1, start) infinite);
+	
+				&[data-meta="young"] {
+					/*margin-left: -76px;*/
+					margin: -277px 0 0 1px;
+					background: url(../img/q5/ani-q5-girl-young.png) 0 0 no-repeat;
+					width: 154px;
+					height: 513px;
+					/*top: -28px;*/
+					@include animation(q5-girl-young 2.7s steps(49, start) forwards);
+	
+					&.ani-reverse {
+						@include animation(q5-girl-young-reverse 2.7s steps(49, start) forwards);
+					}
 				}
-			}
-
-			&.pregnant {
-				margin-left: -76px;
-				background: url(../img/q5/ani-q5-girl-pregnant.png) 0 0 no-repeat;
-				width: 151px;
-				height: 235px;
-				top: 250px;
-				@include animation(q5-girl-pregnant 2.4s steps(44, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-girl-pregnant-reverse 2.4s steps(44, start) forwards);
+	
+				&[data-meta="new-couple"] {
+					/*margin-left: -76px;*/
+					margin: -304px 0 0 -1px;
+					background: url(../img/q5/ani-q5-girl-new-couple.png) 0 0 no-repeat;
+					width: 151px;
+					height: 540px;
+					/*top: -55px;*/
+					@include animation(q5-girl-new-couple 3s steps(54, start) forwards);
+	
+					&.ani-reverse {
+						@include animation(q5-girl-new-couple-reverse 3s steps(54, start) forwards);
+					}
 				}
-			}
-
-			&.near-retired {
-				margin-left: -78px;
-				background: url(../img/q5/ani-q5-girl-near-retired.png) 0 0 no-repeat;
-				width: 228px;
-				height: 304px;
-				top: 180px;
-				@include animation(q5-girl-near-retired 2.4s steps(44, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-girl-near-retired-reverse 2.4s steps(44, start) forwards);
+	
+				&[data-meta="pregnant"] {
+					/*margin-left: -76px;*/
+					margin: 0 0 0 -1px;
+					background: url(../img/q5/ani-q5-girl-pregnant.png) 0 0 no-repeat;
+					width: 151px;
+					height: 235px;
+					/*top: 250px;*/
+					@include animation(q5-girl-pregnant 2.4s steps(44, start) forwards);
+	
+					&.ani-reverse {
+						@include animation(q5-girl-pregnant-reverse 2.4s steps(44, start) forwards);
+					}
 				}
-			}
-
-			&.retired {
-				margin-left: -76px;
-				background: url(../img/q5/ani-q5-girl-retired.png) 0 0 no-repeat;
-				width: 179px;
-				height: 784px;
-				top: -298px;
-				@include animation(q5-girl-retired 2.4s steps(44, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-girl-retired-reverse 2.4s steps(44, start) forwards);
+	
+				&[data-meta="near-retired"] {
+					/*margin-left: -78px;*/
+					margin: -69px 0 0 71px;
+					background: url(../img/q5/ani-q5-girl-near-retired.png) 0 0 no-repeat;
+					width: 228px;
+					height: 304px;
+					/*top: 180px;*/
+					@include animation(q5-girl-near-retired 2.4s steps(44, start) forwards);
+	
+					&.ani-reverse {
+						@include animation(q5-girl-near-retired-reverse 2.4s steps(44, start) forwards);
+					}
+				}
+	
+				&[data-meta="retired"] {
+					/*margin-left: -76px;*/
+					margin: -548px 0 0 27px;
+					background: url(../img/q5/ani-q5-girl-retired.png) 0 0 no-repeat;
+					width: 179px;
+					height: 784px;
+					/*top: -298px;*/
+					@include animation(q5-girl-retired 2.4s steps(44, start) forwards);
+	
+					&.ani-reverse {
+						@include animation(q5-girl-retired-reverse 2.4s steps(44, start) forwards);
+					}
 				}
 			}
 		}
 
-		&.chosen-boy ~ .image-wrap {
+		&.chosen-boy ~ .image-wrap .doll {
 			margin-left: -74px;
 			background: image-url('boy.png') -148px 0 no-repeat;
 			width: 148px;
@@ -1374,7 +1383,15 @@
 	}
 
 	.image-wrap {
+		margin-left: -360px;
+		width: 720px;
 		position: absolute;
+		left: 50%;
+		text-align: center;
+
+		.doll {
+			display: inline-block;
+		}
 	}
 }
 
@@ -1455,18 +1472,6 @@
 		.irs-max {
 			width: 40px;
 			white-space: nowrap;
-	
-			.postfix {
-				margin-left: 3px;
-				background: url(../img/bg-exams.png) -166px -62px no-repeat;
-				display: inline-block;
-				width: 33px;
-				height: 12px;
-			}
-		}
-
-		.irs-single.size-adj {
-			font-size: 12px;
 		}
 	}
 }
@@ -1600,6 +1605,154 @@
 		top: 78px;
 		left: 50%;
 		@include animation(q8-title 1.1s steps(8, end) forwards);
+	}
+
+	.expenditure-selector {
+		margin-left: -14px;
+		width: 362px;
+		position: absolute;
+		top: 200px;
+		left: 50%;
+		font-size: 0;
+
+		.list {
+			margin-bottom: 20px;
+			height: 65px;
+
+			.desc {
+				margin-right: 5px;
+				background: url(../img/bg-exams.png) no-repeat;
+				display: inline-block;
+				width: 153px;
+			}
+
+			&:nth-child(1) .desc {
+				background-position: 0 -293px;
+				height: 32px;
+			}
+
+			&:nth-child(2) .desc {
+				background-position: -153px -293px;
+				height: 38px;
+			}
+
+			&:nth-child(3) .desc {
+				background-position: 0 -325px;
+				height: 32px;
+			}
+		}
+	}
+
+	.image-wrap {
+		margin-right: 58px;
+		background: url(../img/q8/ani-q8.png) 0 0 no-repeat;
+		width: 270px;
+		height: 622px;
+		position: absolute;
+		top: -152px;
+		right: 50%;
+
+		&[data-level="0-t-1"] {
+			@include animation(q8-0-t-1 0.7s steps(12, end) forwards);
+		}
+
+		&[data-level="1-t-2"] {
+			@include animation(q8-1-t-2 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="2-t-3"] {
+			@include animation(q8-2-t-3 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="3-t-4"] {
+			@include animation(q8-3-t-4 0.6s steps(10, end) forwards);
+		}
+
+		&[data-level="4-t-5"] {
+			@include animation(q8-4-t-5 0.7s steps(13, end) forwards);
+		}
+
+		&[data-level="5-t-6"] {
+			@include animation(q8-5-t-6 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="6-t-7"] {
+			@include animation(q8-6-t-7 0.9s steps(17, end) forwards);
+		}
+
+		&[data-level="7-t-8"] {
+			@include animation(q8-7-t-8 0.4s steps(8, end) forwards);
+		}
+
+		&[data-level="8-t-9"] {
+			@include animation(q8-8-t-9 0.4s steps(8, end) forwards);
+		}
+
+		&[data-level="9-t-10"] {
+			@include animation(q8-9-t-10 0.4s steps(8, end) forwards);
+		}
+
+		&[data-level="1-t-0"] {
+			@include animation(q8-1-t-0 0.7s steps(12, end) forwards);
+		}
+
+		&[data-level="2-t-1"] {
+			@include animation(q8-2-t-1 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="3-t-2"] {
+			@include animation(q8-3-t-2 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="4-t-3"] {
+			@include animation(q8-4-t-3 0.6s steps(10, end) forwards);
+		}
+
+		&[data-level="5-t-4"] {
+			@include animation(q8-5-t-4 0.7s steps(13, end) forwards);
+		}
+
+		&[data-level="6-t-5"] {
+			@include animation(q8-6-t-5 0.5s steps(9, end) forwards);
+		}
+
+		&[data-level="7-t-6"] {
+			@include animation(q8-7-t-6 0.9s steps(17, end) forwards);
+		}
+
+		&[data-level="8-t-7"] {
+			@include animation(q8-8-t-7 0.4s steps(8, end) forwards);
+		}
+
+		&[data-level="9-t-8"] {
+			@include animation(q8-9-t-8 0.4s steps(8, end) forwards);
+		}
+
+		&[data-level="10-t-9"] {
+			@include animation(q8-10-t-9 0.4s steps(8, end) forwards);
+		}
+	}
+
+	.range-slider {
+		display: inline-block;
+
+		.irs {
+			width: 174px;
+		}
+
+		.irs-max {
+			width: 44px;
+		}
+
+		.irs-line {
+			background-position: 0 -13px;
+			width: 152px;
+			height: 12px;
+		}
+
+		.irs-single {
+			font-size: 12px;
+		}
 	}
 }
 
@@ -1786,7 +1939,7 @@
 		margin: 0 11px;
 		background: url(../img/bg-slider.png) 0 0 no-repeat;
 		width: 454px;
-		height: 14px;
+		height: 13px;
 		top: 33px;
 		border: 0;
 		border-radius: 0;
@@ -1809,6 +1962,16 @@
 		font-weight: bold;
 		line-height: 1.6em;
 		text-align: center;
+		white-space: nowrap;
+	}
+
+	
+	.irs-max .postfix {
+		margin-left: 3px;
+		background: url(../img/bg-exams.png) -159px -76px no-repeat;
+		display: inline-block;
+		width: 42px;
+		height: 12px;
 	}
 
 	.irs-single {
@@ -1822,6 +1985,10 @@
 		font-size: 14px;
 		line-height: 32px;
 		text-align: center;
+
+		&.size-adj {
+			font-size: 12px;
+		}
 	}
 
 	.irs-slider {
