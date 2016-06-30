@@ -220,10 +220,9 @@
 	margin-left: -17px;
 	background: url(../img/bg-exams.png) 0 0 no-repeat;
 	display: block;
-	width: 35px;
-	height: 180px;
+	width: 0;
 	position: absolute;
-	top: 135px;
+	top: 78px;
 	left: 50%;
 }
 
@@ -306,17 +305,17 @@
 	background: image-url('boy.png') -148px 0 no-repeat;
 }
 
-.quest-1 {
-	.cut-1 {
+@for $i from 1 through 20 {
+	.quest-#{$i} .cut-#{$i} {
 		display: block;
+		height: 100%;
 	}
+}
 
+.quest-1 {
 	.quest-title {
 		margin-left: -83px;
-		width: 0;
 		height: 38px;
-		top: 78px;
-		left: 50%;
 		@include animation(q1-title 0.7s linear forwards);
 	}
 
@@ -412,17 +411,10 @@
 }
 
 .quest-2 {
-	.cut-2 {
-		display: block;
-	}
-
 	.quest-title {
 		margin-left: -83px;
 		background-position: 0 -38px;
-		width: 0;
 		height: 38px;
-		top: 78px;
-		left: 50%;
 		@include animation(q2-title 1.5s linear forwards);
 	}
 
@@ -600,17 +592,12 @@
 }
 
 .quest-3 {
-	.cut-3 {
-		display: block;
-	}
-
 	.quest-title {
 		margin-left: -80px;
 		background-position: 0 -76px;
 		width: 0;
 		height: 37px;
 		top: 78px;
-		left: 50%;
 		@include animation(q3-title 1.2s 0.1s linear forwards);
 	}
 
@@ -740,24 +727,16 @@
 		left: 50%;
 
 		.irs-max:after {
-			content: '(歲)';
+			content: '歲';
 		}
 	}
 }
 
 .quest-4 {
-	.cut-4 {
-		display: block;
-		height: 100%;
-	}
-
 	.quest-title {
 		margin-left: -100px;
 		background-position: 0 -113px;
-		width: 0;
 		height: 37px;
-		top: 78px;
-		left: 50%;
 		@include animation(q4-title 0.9s linear forwards);
 	}
 
@@ -1150,18 +1129,10 @@
 }
 
 .quest-5 {
-	.cut-5 {
-		display: block;
-		height: 100%;
-	}
-
 	.quest-title {
 		margin-left: -174px;
 		background-position: 0 -150px;
-		width: 0;
 		height: 45px;
-		top: 78px;
-		left: 50%;
 		@include animation(q5-title 1.9s steps(11, end) forwards);
 	}
 
@@ -1226,22 +1197,21 @@
 			top: 250px;
 
 			.doll {
-				/*margin-left: -75px;*/
 				background: image-url('girl.png') -151px 0 no-repeat;
 				width: 151px;
 				height: 242px;
-				/*top: 250px;*/
-				/*left: 50%;*/
 				@include animation(wink-girl 5s steps(1, start) infinite);
 	
 				&[data-meta="young"] {
-					/*margin-left: -76px;*/
-					margin: -277px 0 0 1px;
+					margin-top: -277px;
 					background: url(../img/q5/ani-q5-girl-young.png) 0 0 no-repeat;
 					width: 154px;
 					height: 513px;
-					/*top: -28px;*/
 					@include animation(q5-girl-young 2.7s steps(49, start) forwards);
+
+					&:only-child {
+						margin-left: 1px;
+					}
 	
 					&.ani-reverse {
 						@include animation(q5-girl-young-reverse 2.7s steps(49, start) forwards);
@@ -1249,13 +1219,15 @@
 				}
 	
 				&[data-meta="new-couple"] {
-					/*margin-left: -76px;*/
-					margin: -304px 0 0 -1px;
+					margin-top: -304px;
 					background: url(../img/q5/ani-q5-girl-new-couple.png) 0 0 no-repeat;
 					width: 151px;
 					height: 540px;
-					/*top: -55px;*/
 					@include animation(q5-girl-new-couple 3s steps(54, start) forwards);
+
+					&:only-child {
+						margin-left: -1px;
+					}
 	
 					&.ani-reverse {
 						@include animation(q5-girl-new-couple-reverse 3s steps(54, start) forwards);
@@ -1263,13 +1235,14 @@
 				}
 	
 				&[data-meta="pregnant"] {
-					/*margin-left: -76px;*/
-					margin: 0 0 0 -1px;
 					background: url(../img/q5/ani-q5-girl-pregnant.png) 0 0 no-repeat;
 					width: 151px;
 					height: 235px;
-					/*top: 250px;*/
 					@include animation(q5-girl-pregnant 2.4s steps(44, start) forwards);
+
+					&:only-child {
+						margin-left: -1px;
+					}
 	
 					&.ani-reverse {
 						@include animation(q5-girl-pregnant-reverse 2.4s steps(44, start) forwards);
@@ -1277,28 +1250,32 @@
 				}
 	
 				&[data-meta="near-retired"] {
-					/*margin-left: -78px;*/
-					margin: -69px 0 0 71px;
+					margin-top: -69px;
 					background: url(../img/q5/ani-q5-girl-near-retired.png) 0 0 no-repeat;
 					width: 228px;
 					height: 304px;
-					/*top: 180px;*/
 					@include animation(q5-girl-near-retired 2.4s steps(44, start) forwards);
 	
+					&:only-child {
+						margin-left: 71px;
+					}
+
 					&.ani-reverse {
 						@include animation(q5-girl-near-retired-reverse 2.4s steps(44, start) forwards);
 					}
 				}
 	
 				&[data-meta="retired"] {
-					/*margin-left: -76px;*/
-					margin: -548px 0 0 27px;
+					margin-top: -548px;
 					background: url(../img/q5/ani-q5-girl-retired.png) 0 0 no-repeat;
 					width: 179px;
 					height: 784px;
-					/*top: -298px;*/
 					@include animation(q5-girl-retired 2.4s steps(44, start) forwards);
-	
+
+					&:only-child {
+						margin-left: 27px;
+					}
+
 					&.ani-reverse {
 						@include animation(q5-girl-retired-reverse 2.4s steps(44, start) forwards);
 					}
@@ -1306,77 +1283,91 @@
 			}
 		}
 
-		&.chosen-boy ~ .image-wrap .doll {
-			margin-left: -74px;
-			background: image-url('boy.png') -148px 0 no-repeat;
-			width: 148px;
-			height: 242px;
+		&.chosen-boy ~ .image-wrap {
 			top: 245px;
-			left: 50%;
-			@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
 
-			&.young {
-				margin-left: -73px;
-				background: url(../img/q5/ani-q5-boy-young.png) 0 0 no-repeat;
-				width: 147px;
-				height: 524px;
-				top: -40px;
-				@include animation(q5-boy-young 1.9s steps(34, start) forwards);
+			.doll {
+				background: image-url('boy.png') -148px 0 no-repeat;
+				width: 148px;
+				height: 242px;
+				@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+	
+				&[data-meta="young"] {
+					margin-top: -285px;
+					background: url(../img/q5/ani-q5-boy-young.png) 0 0 no-repeat;
+					width: 147px;
+					height: 524px;
+					@include animation(q5-boy-young 1.9s steps(34, start) forwards);
 
-				&.ani-reverse {
-					@include animation(q5-boy-young-reverse 1.9s steps(34, start) forwards);
+					&:only-child {
+						margin-left: 0px;
+					}
+	
+					&.ani-reverse {
+						@include animation(q5-boy-young-reverse 1.9s steps(34, start) forwards);
+					}
 				}
-			}
+	
+				&[data-meta="new-couple"] {
+					background: url(../img/q5/ani-q5-boy-new-couple.png) 0 0 no-repeat;
+					width: 147px;
+					height: 239px;
+					@include animation(q5-boy-new-couple 1.9s steps(34, start) forwards);
 
-			&.new-couple {
-				margin-left: -73px;
-				background: url(../img/q5/ani-q5-boy-new-couple.png) 0 0 no-repeat;
-				width: 147px;
-				height: 239px;
-				top: 245px;
-				@include animation(q5-boy-new-couple 1.9s steps(34, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-boy-new-couple-reverse 1.9s steps(34, start) forwards);
+					&:only-child {
+						margin-left: 0px;
+					}
+	
+					&.ani-reverse {
+						@include animation(q5-boy-new-couple-reverse 1.9s steps(34, start) forwards);
+					}
 				}
-			}
+	
+				&[data-meta="pregnant"] {
+					margin-top: -339px;
+					background: url(../img/q5/ani-q5-boy-pregnant.png) 0 0 no-repeat;
+					width: 176px;
+					height: 578px;
+					@include animation(q5-boy-pregnant 2.8s steps(51, start) forwards);
 
-			&.pregnant {
-				margin-left: -102px;
-				background: url(../img/q5/ani-q5-boy-pregnant.png) 0 0 no-repeat;
-				width: 176px;
-				height: 578px;
-				top: -94px;
-				@include animation(q5-boy-pregnant 2.8s steps(51, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-boy-pregnant-reverse 2.8s steps(51, start) forwards);
+					&:only-child {
+						margin-left: -29px;
+					}
+	
+					&.ani-reverse {
+						@include animation(q5-boy-pregnant-reverse 2.8s steps(51, start) forwards);
+					}
 				}
-			}
+	
+				&[data-meta="near-retired"] {
+					margin-top: -98px;
+					background: url(../img/q5/ani-q5-boy-near-retired.png) 0 0 no-repeat;
+					width: 218px;
+					height: 340px;
+					@include animation(q5-boy-near-retired 1.9s steps(34, start) forwards);
 
-			&.near-retired {
-				margin-left: -79px;
-				background: url(../img/q5/ani-q5-boy-near-retired.png) 0 0 no-repeat;
-				width: 218px;
-				height: 340px;
-				top: 147px;
-				@include animation(q5-boy-near-retired 1.9s steps(34, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-boy-near-retired-reverse 1.9s steps(34, start) forwards);
+					&:only-child {
+						margin-left: 59px;
+					}
+	
+					&.ani-reverse {
+						@include animation(q5-boy-near-retired-reverse 1.9s steps(34, start) forwards);
+					}
 				}
-			}
+	
+				&[data-meta="retired"] {
+					background: url(../img/q5/ani-q5-boy-retired.png) 0 0 no-repeat;
+					width: 147px;
+					height: 239px;
+					@include animation(q5-boy-retired 2.2s steps(39, start) forwards);
 
-			&.retired {
-				margin-left: -73px;
-				background: url(../img/q5/ani-q5-boy-retired.png) 0 0 no-repeat;
-				width: 147px;
-				height: 239px;
-				top: 245px;
-				@include animation(q5-boy-retired 2.2s steps(39, start) forwards);
-
-				&.ani-reverse {
-					@include animation(q5-boy-retired-reverse 2.2s steps(39, start) forwards);
+					&:only-child {
+						margin-left: 0px;
+					}
+	
+					&.ani-reverse {
+						@include animation(q5-boy-retired-reverse 2.2s steps(39, start) forwards);
+					}
 				}
 			}
 		}
@@ -1396,18 +1387,10 @@
 }
 
 .quest-6 {
-	.cut-6 {
-		display: block;
-		height: 100%;
-	}
-
 	.quest-title {
 		margin-left: -158px;
 		background-position: 0 -219px;
-		width: 0;
 		height: 37px;
-		top: 78px;
-		left: 50%;
 		@include animation(q6-title 1s steps(11, end) forwards);
 	}
 
@@ -1477,18 +1460,11 @@
 }
 
 .quest-7 {
-	.cut-7 {
-		display: block;
-		height: 100%;
-	}
-
 	.quest-title {
 		margin-left: -159px;
 		background: image-url('q7/bg-q7.png') 0 0 no-repeat;
 		width: 374px;
 		height: 91px;
-		top: 187px;
-		left: 50%;
 	}
 
 	.image-wrap {
@@ -1592,18 +1568,10 @@
 }
 
 .quest-8 {
-	.cut-8 {
-		display: block;
-		height: 100%;
-	}
-
 	.quest-title {
 		margin-left: -123px;
 		background-position: 0 -256px;
-		width: 0;
 		height: 37px;
-		top: 78px;
-		left: 50%;
 		@include animation(q8-title 1.1s steps(8, end) forwards);
 	}
 
@@ -1623,21 +1591,25 @@
 				margin-right: 5px;
 				background: url(../img/bg-exams.png) no-repeat;
 				display: inline-block;
-				width: 153px;
 			}
 
 			&:nth-child(1) .desc {
-				background-position: 0 -293px;
+				margin-right: 25px;
+				background-position: 0 -375px;
+				width: 133px;
 				height: 32px;
 			}
 
 			&:nth-child(2) .desc {
-				background-position: -153px -293px;
+				margin-right: 15px;
+				background-position: -133px -375px;
+				width: 143px;
 				height: 38px;
 			}
 
 			&:nth-child(3) .desc {
-				background-position: 0 -325px;
+				background-position: -276px -375px;
+				width: 153px;
 				height: 32px;
 			}
 		}
@@ -1756,12 +1728,16 @@
 	}
 }
 
-.quest-14 {
-	.cut-14 {
-		display: block;
-		height: 100%;
+.quest-10 {
+	.quest-title {
+		margin-left: -210px;
+		background-position: 0 -413px;
+		height: 36px;
+		@include animation(q10-title 1.4s steps(25, end) forwards);
 	}
+}
 
+.quest-14 {
 	.quest-title {
 		margin-left: -265px;
 		background: url(../img/q14/bg-q14.png) 0 0 no-repeat;

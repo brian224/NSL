@@ -354,31 +354,44 @@
 					_meta    = $(this).data('meta');
 
 				if (!$(this).hasClass('is-checked')) {
+					// 勾選
 					$(this).addClass('is-checked');
 
-					if ($(this).data('meta') === 'young') {
+					// 已退休 與 新鮮人、待退休 衝突
+					if ($(this).data('meta') === 'young'|| $(this).data('meta') === 'near-retired') {
 						$(common._checkbox + '[data-meta="retired"]').removeClass('is-checked');
-					} else if ($(this).data('meta') === 'near-retired') {
-						$(common._checkbox + '[data-meta="retired"]').removeClass('is-checked');
+
+						if ($('.cut-5 .doll').length === 1 && $('.cut-5 .doll').attr('data-meta') === '') {
+							$('.cut-5 .doll').attr('data-meta', _meta);
+						} else {
+							$('.cut-5 ' + common._imageWrap).append($('.cut-5 ' + common._imageWrap + ' .doll').eq(0).clone().attr('data-meta', _meta));
+							$('.cut-5 .doll[data-meta="retired"]').remove();
+						}
 					} else if ($(this).data('meta') === 'retired') {
 						$(common._checkbox + '[data-meta="young"], ' + common._checkbox + '[data-meta="near-retired"]').removeClass('is-checked');
+
+						if ($('.cut-5 .doll').length === 1) {
+							$('.cut-5 .doll').attr('data-meta', _meta);
+						} else {
+							$('.cut-5 ' + common._imageWrap).append($('.cut-5 ' + common._imageWrap + ' .doll').eq(0).clone().attr('data-meta', _meta));
+							$('.cut-5 .doll[data-meta="young"], .cut-5 .doll[data-meta="near-retired"]').remove();
+						}
+					} else {
+						if ($('.cut-5 .is-checked').length === 1) {
+							$('.cut-5 .doll').attr('data-meta', _meta);
+						} else {
+							$('.cut-5 ' + common._imageWrap).append($('.cut-5 ' + common._imageWrap + ' .doll').eq(0).clone().attr('data-meta', _meta));
+						}
 					}
-					$('.cut-5 ' + common._imageWrap + ' .doll').attr('data-meta', _meta);
 				} else {
+					// 取消勾選
 					$(this).removeClass('is-checked');
-					$('.cut-5 ' + common._imageWrap + ' .doll').attr('data-meta', '');
+					if ($('.cut-5 .is-checked').length === 0) {
+						$('.cut-5 .doll').attr('data-meta', '');
+					} else {
+						$('.cut-5 .doll[data-meta="' + _meta + '"]').remove();
+					}
 				}
-
-				// if ($another.hasClass('is-checked')) {
-				// 	// 切換選取時要先跑復原動畫
-				// 	$another.removeClass('is-checked');
-				// 	$('.cut-5 ' + common._imageWrap).addClass('ani-reverse');
-
-				// 	setTimeout(function(){
-				// 		$('.cut-5 ' + common._imageWrap).attr('class', 'image-wrap ' + _meta);
-				// 	}, (parseFloat($('.cut-5 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-5 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
-				// } else {
-				// }
 			}
 		});
 
