@@ -100,56 +100,6 @@
 	}
 }
 
-@include keyframes(q5-girl-young-reverse) {
-	0% {
-		background-position: -7546px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-girl-new-couple-reverse) {
-	0% {
-		background-position: -8154px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-girl-pregnant-reverse) {
-	0% {
-		background-position: -6644px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-girl-near-retired-reverse) {
-	0% {
-		background-position: -10032px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-girl-retired-reverse) {
-	0% {
-		background-position: -7876px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
 @include keyframes(q5-boy-young) {
 	0% {
 		background-position: 0 0;
@@ -200,52 +150,12 @@
 	}
 }
 
-@include keyframes(q5-boy-young-reverse) {
+@include keyframes(q5-smoke) {
 	0% {
-		background-position: -4998px 0;
+		background-position: 0 0;
 	}
 
 	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-boy-new-couple-reverse) {
-	0% {
-		background-position: -4998px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-boy-pregnant-reverse) {
-	0% {
-		background-position: -8976px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-boy-near-retired-reverse) {
-	0% {
-		background-position: -7412px 0;
-	}
-
-	100% {
-		background-position: 0 0;
-	}
-}
-
-@include keyframes(q5-boy-retired-reverse) {
-	0% {
-		background-position: -5733px 0;
-	}
-
-	100% {
-		background-position: 0 0;
+		background-position: -624px 0;
 	}
 }

@@ -20,7 +20,7 @@
 		this._steps          = [7, 10, 14, 15]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
-		this._IncomeRange    = [0, 50, 100, 200, 500, 1000]; // 收入區間
+		this._IncomeRange    = [0, 30, 70, 120, 190, 500]; // 收入區間
 		this._prevLiability  = 0; // 預設負債
 		this._LiabilityAct   = [0, 0]; // 紀錄負債變化
 		this._LiabilityRange = [0, 400, 800, 1200, 1600, 2001, 2400, 2800, 3200, 3600, 4030]; // 負債區間
@@ -200,13 +200,14 @@
 			from: common._prevIncome,
 			max_postfix: '<i class="postfix"></i>',
 			prettify_separator: ',',
+			values: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 250, 300, 350, 400, 450, 500],
 			onStart: function (data) {
 				common._prevIncome = data.min;
 			},
 			onFinish: function (data) {
 				var _startRange, _endRange;
 
-				common._IncomeAct[1] = data.from;
+				common._IncomeAct[1] = data.from_value;
 
 				for (var i = (common._IncomeRange.length - 1); i >= 0; i--) {
 					if (common._IncomeAct[0] === common._IncomeRange[0]) {
@@ -230,13 +231,13 @@
 					common.mixAnimate('.cut-6 ' + common._imageWrap, _startRange, _endRange, common._IncomeRange);
 				}
 
-				if (data.from === data.max) {
+				if (data.from_value === data.max) {
 					$('.quest-6 .irs-single').addClass('size-adj');
 				} else {
 					$('.quest-6 .irs-single').removeClass('size-adj');
 				}
-				common._prevIncome = data.from;
-				common._IncomeAct[0] = data.from;
+				common._prevIncome = data.from_value;
+				common._IncomeAct[0] = data.from_value;
 			}
 		});
 
@@ -392,6 +393,7 @@
 						$('.cut-5 .doll[data-meta="' + _meta + '"]').remove();
 					}
 				}
+			} else if ($(common._lContent).hasClass('quest-10')) {
 			}
 		});
 

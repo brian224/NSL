@@ -1382,6 +1382,23 @@
 
 		.doll {
 			display: inline-block;
+			position: relative;
+
+			&:after {
+				content: '';
+				background: url(../img/q5/ani-q5-smoke.png) 0 0 no-repeat;
+				display: none;
+				width: 104px;
+				height: 221px;
+				position: absolute;
+				bottom: 0;
+				left: 20px;
+			}
+
+			&.fade-out:after {
+				display: block;
+				@include animation(q5-smoke 0.4s -0.2s steps(6, end) forwards);
+			}
 		}
 	}
 }
@@ -1403,44 +1420,44 @@
 		top: 265px;
 		left: 50%;
 
-		&[data-level="0-t-50"] {
-			@include animation(q6-0-t-50 0.7s steps(12, end) forwards);
+		&[data-level="0-t-30"] {
+			@include animation(q6-0-t-30 0.7s steps(12, end) forwards);
 		}
 
-		&[data-level="50-t-100"] {
-			@include animation(q6-50-t-100 0.8s steps(14, end) forwards);
+		&[data-level="30-t-70"] {
+			@include animation(q6-30-t-70 0.8s steps(14, end) forwards);
 		}
 
-		&[data-level="100-t-200"] {
-			@include animation(q6-100-t-200 1.8s steps(33, end) forwards);
+		&[data-level="70-t-120"] {
+			@include animation(q6-70-t-120 1.8s steps(33, end) forwards);
 		}
 
-		&[data-level="200-t-500"] {
-			@include animation(q6-200-t-500 3.1s steps(55, end) forwards);
+		&[data-level="120-t-190"] {
+			@include animation(q6-120-t-190 3.1s steps(55, end) forwards);
 		}
 
-		&[data-level="500-t-1000"] {
-			@include animation(q6-500-t-1000 2.4s steps(44, end) forwards);
+		&[data-level="190-t-500"] {
+			@include animation(q6-190-t-500 2.4s steps(44, end) forwards);
 		}
 
-		&[data-level="1000-t-500"] {
-			@include animation(q6-1000-t-500 2.4s steps(44, end) forwards);
+		&[data-level="500-t-190"] {
+			@include animation(q6-500-t-190 2.4s steps(44, end) forwards);
 		}
 
-		&[data-level="500-t-200"] {
-			@include animation(q6-500-t-200 3.1s steps(55, end) forwards);
+		&[data-level="190-t-120"] {
+			@include animation(q6-190-t-120 3.1s steps(55, end) forwards);
 		}
 
-		&[data-level="200-t-100"] {
-			@include animation(q6-200-t-100 1.8s steps(33, end) forwards);
+		&[data-level="120-t-70"] {
+			@include animation(q6-120-t-70 1.8s steps(33, end) forwards);
 		}
 
-		&[data-level="100-t-50"] {
-			@include animation(q6-100-t-50 0.8s steps(14, end) forwards);
+		&[data-level="70-t-30"] {
+			@include animation(q6-70-t-30 0.8s steps(14, end) forwards);
 		}
 
-		&[data-level="50-t-0"] {
-			@include animation(q6-50-t-0 0.7s steps(12, end) forwards);
+		&[data-level="30-t-0"] {
+			@include animation(q6-30-t-0 0.7s steps(12, end) forwards);
 		}
 	}
 
@@ -1734,6 +1751,136 @@
 		background-position: 0 -413px;
 		height: 36px;
 		@include animation(q10-title 1.4s steps(25, end) forwards);
+	}
+
+	.sub-title {
+		margin-left: -226px;
+		background: url(../img/bg-exams.png) 0 -449px no-repeat;
+		display: block;
+		width: 452px;
+		height: 17px;
+		position: absolute;
+		bottom: 205px;
+		left: 50%;
+	}
+
+	.choice-list {
+		margin-left: -300px;
+		width: 600px;
+		height: auto;
+		position: absolute;
+		bottom: 163px;
+		left: 50%;
+		text-align: center;
+
+		.list {
+			width: 100px;
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+
+				em {
+					background: url(../img/bg-exams.png) no-repeat;
+					display: inline-block;
+					width: 49px;
+					height: 19px;
+				}
+
+				&[data-meta="healthcare"] em {
+					background-position: -372px 0;
+				}
+
+				&[data-meta="double"] em {
+					background-position: -372px -19px;
+				}
+
+				&[data-meta="single"] em {
+					background-position: -372px -38px;
+				}
+
+				&[data-meta="principal"] em {
+					background-position: -372px -57px;
+				}
+
+				&[data-meta="vip"] em {
+					background-position: -372px -76px;
+				}
+
+				&[data-meta="best"] em {
+					background-position: -372px -95px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		margin-left: -68px;
+		background: image-url('q10/bg-q10.png') 0 0 no-repeat;
+		display: block;
+		width: 136px;
+		height: 108px;
+		position: absolute;
+		top: 270px;
+		left: 50%;
+
+		&[data-meta="healthcare"] {
+			margin-left: -204px;
+			background: url(../img/q10/ani-q10-healthcare.png) 0 0 no-repeat;
+			width: 398px;
+			height: 197px;
+			top: 226px;
+			@include animation(q10-ani-healthcare 1.2s steps(21, end) forwards);
+		}
+
+		&[data-meta="double"] {
+			margin-left: -169px;
+			background: url(../img/q10/ani-q10-double.png) 0 0 no-repeat;
+			width: 339px;
+			height: 481px;
+			top: -87px;
+			@include animation(q10-ani-double 1.4s steps(25, end) forwards);
+		}
+
+		&[data-meta="single"] {
+			margin-left: -110px;
+			background: url(../img/q10/ani-q10-single.png) 0 0 no-repeat;
+			width: 178px;
+			height: 468px;
+			top: -57px;
+			@include animation(q10-ani-single 1.9s steps(34, end) forwards);
+		}
+
+		&[data-meta="principal"] {
+			margin-left: -121px;
+			background: url(../img/q10/ani-q10-principal.png) 0 0 no-repeat;
+			width: 212px;
+			height: 538px;
+			top: -120px;
+			@include animation(q10-ani-principal 2.4s steps(43, end) forwards);
+		}
+
+		&[data-meta="vip"] {
+			margin-left: -121px;
+			background: url(../img/q10/ani-q10-vip.png) 0 0 no-repeat;
+			width: 330px;
+			height: 579px;
+			top: -144px;
+			@include animation(q10-ani-vip 1.9s steps(35, end) forwards);
+		}
+
+		&[data-meta="best"] {
+			margin-left: -250px;
+			background: url(../img/q10/ani-q10-best.png) 0 0 no-repeat;
+			width: 579px;
+			height: 589px;
+			top: -127px;
+			@include animation(q10-ani-best 1.9s steps(35, end) forwards);
+		}
 	}
 }
 
