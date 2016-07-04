@@ -4,26 +4,26 @@
 	var common = new index();
 
 	function index() {
-		this._imageWrap      = '.image-wrap';
-		this._start          = '.jq-start';
-		this._required       = '.jq-required';
-		this._checkbox       = '.jq-checkbox';
-		this._btnTopic       = '.jq-topic';
-		this._transition     = '.jq-transition';
-		this._lightbox       = '.jq-lightbox';
-		this._close          = '.jq-close';
-		this._lContent       = '.l-content';
-		this._lLightbox      = '.l-lightbox';
-		this._stepList       = '.step-list';
-		this._prevAge        = 20; // 預設年紀
-		this._ageRange       = [30, 50, 70]; // 年紀區間
-		this._steps          = [7, 10, 14, 15]; // 五階段的題目區隔
-		this._prevIncome     = 0; // 預設收入
-		this._IncomeAct      = [0, 0]; // 紀錄收入變化
-		this._IncomeRange    = [0, 30, 70, 120, 190, 500]; // 收入區間
-		this._prevLiability  = 0; // 預設負債
-		this._LiabilityAct   = [0, 0]; // 紀錄負債變化
-		this._LiabilityRange = [0, 400, 800, 1200, 1600, 2001, 2400, 2800, 3200, 3600, 4030]; // 負債區間
+		this._imageWrap       = '.image-wrap';
+		this._start           = '.jq-start';
+		this._required        = '.jq-required';
+		this._checkbox        = '.jq-checkbox';
+		this._btnTopic        = '.jq-topic';
+		this._transition      = '.jq-transition';
+		this._lightbox        = '.jq-lightbox';
+		this._close           = '.jq-close';
+		this._lContent        = '.l-content';
+		this._lLightbox       = '.l-lightbox';
+		this._stepList        = '.step-list';
+		this._prevAge         = 20; // 預設年紀
+		this._ageRange        = [30, 50, 70]; // 年紀區間
+		this._steps           = [7, 10, 14, 15]; // 五階段的題目區隔
+		this._prevIncome      = 0; // 預設收入
+		this._IncomeAct       = [0, 0]; // 紀錄收入變化
+		this._IncomeRange     = [0, 30, 70, 120, 190, 500]; // 收入區間
+		this._prevLiability   = 0; // 預設負債
+		this._LiabilityAct    = ''; // 紀錄負債變化
+		this._LiabilityRange  = ''; // 負債區間
 	}
 
 	// 沒作答就往下一題
@@ -73,7 +73,7 @@
 			_direction = -1;
 		}
 
-		$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
+		$(className).addClass('disabled').attr('data-level', range[start] + '-t-' + range[start + _direction]);
 
 		$(className).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 			if (start + _direction !== end) {
@@ -82,6 +82,8 @@
 				$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
 
 				common.mixAnimate(className, start, end, range);
+			} else {
+				$(className).removeClass('disabled');
 			}
 		});
 	}
@@ -243,24 +245,28 @@
 
 		$('.expend-slider').each(function(){
 			$(this).ionRangeSlider({
-				min: 0,
-				max: $(this).data('max'),
-				max_postfix: '<i class="postfix"></i>',
-				prettify_separator: ',',
-				from: common._prevLiability,
-				values: $(this).data('values').split(','),
-				onFinish: function (data) {
+				min                : 0,
+				max                : $(this).data('max'),
+				max_postfix        : '<i class="postfix"></i>',
+				prettify_separator : ',',
+				from               : common._prevLiability,
+				values             : $(this).data('values').split(','),
+				onFinish           : function (data) {
 					var _startRange,
-						_endRange,
-						_total = 0,
-						_aniRange = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+						_endRange;
 
-					for (var k = 0; k < $('.cut-8 .irs-single').length; k++) {
-						_total += parseInt($('.cut-8 .irs-single').eq(k).text().split(',').join(''), 10);
-					}
+					common._LiabilityRange = $(data.input[0]).data('range').split(',');
+					common._LiabilityAct = $(data.input[0]).attr('data-liability').split(',');
 
-					common._LiabilityAct[1] = _total;
-					// console.log(_total);
+					for (var i = 0; i < common._LiabilityRange.length; i++) {
+						common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+					};
+
+					for (var i = 0; i < common._LiabilityAct.length; i++) {
+						common._LiabilityAct[i] = parseInt(common._LiabilityAct[i], 10);
+					};
+
+					common._LiabilityAct[1] = data.from_value;
 
 					for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
 						if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
@@ -280,11 +286,22 @@
 						}
 					}
 
-					if (_startRange !== _endRange) {
-						common.mixAnimate('.cut-8 ' + common._imageWrap, _startRange, _endRange, _aniRange);
+					if (_startRange !== _endRange && $(data.input[0]).parents('.stage').hasClass('cut-8')) {
+						var _base = $('.cut-8 ' + common._imageWrap).attr('data-level').split('-t-')[1];
+
+						(_base === undefined) ? _base = 0 : _base = parseInt(_base, 10);
+
+						common.mixAnimate('.cut-8 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+					} else if (_startRange !== _endRange && $(data.input[0]).parents('.stage').hasClass('cut-9')) {
+						var _base = $('.cut-9 ' + common._imageWrap).attr('data-level').split('-t-')[1];
+
+						(_base === undefined) ? _base = 0 : _base = parseInt(_base, 10);
+
+						common.mixAnimate('.cut-9 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5]);
 					}
 
-					common._LiabilityAct[0] = _total;
+					common._LiabilityAct[0] = data.from_value;
+					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 				}
 			});
 		});
@@ -332,7 +349,6 @@
 
 					if ($another.hasClass('is-checked')) {
 						// 切換選取時要先跑復原動畫
-
 						var $this = $(this);
 
 						$another.removeClass('is-checked');
@@ -394,6 +410,30 @@
 					}
 				}
 			} else if ($(common._lContent).hasClass('quest-10')) {
+				var $another = $(this).parent().siblings().find(common._checkbox),
+					_meta    = $(this).data('meta');
+
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
+						var $this = $(this);
+
+						$another.removeClass('is-checked');
+						$('.cut-10 ' + common._imageWrap).attr('data-reverse', $('.cut-10 ' + common._imageWrap).attr('data-meta'));
+
+						setTimeout(function(){
+							$('.cut-10 ' + common._imageWrap).attr({
+								'data-reverse': '',
+								'data-meta': $this.attr('data-meta')
+							});
+						}, (parseFloat($('[data-reverse="' + $('.cut-10 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-10 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
+					} else {
+						$('.cut-10 ' + common._imageWrap).attr('data-meta', _meta);
+					}
+				}
 			}
 		});
 

@@ -235,3 +235,17 @@
 		background-position: -28080px 0;
 	}
 }
+
+@include keyframes(rotate) {
+	0% {
+		@include transform(rotate(0deg) scale(1));
+	}
+
+	50% {
+		@include transform(rotate(180deg) scale(0.6));
+	}
+
+	100% {
+		@include transform(rotate(360deg) scale(1));
+	}
+}

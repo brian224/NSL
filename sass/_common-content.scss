@@ -1612,20 +1612,20 @@
 
 			&:nth-child(1) .desc {
 				margin-right: 25px;
-				background-position: 0 -375px;
+				background-position: 0 -363px;
 				width: 133px;
 				height: 32px;
 			}
 
 			&:nth-child(2) .desc {
 				margin-right: 15px;
-				background-position: -133px -375px;
+				background-position: -133px -363px;
 				width: 143px;
 				height: 38px;
 			}
 
 			&:nth-child(3) .desc {
-				background-position: -276px -375px;
+				background-position: -276px -363px;
 				width: 153px;
 				height: 32px;
 			}
@@ -1640,6 +1640,41 @@
 		position: absolute;
 		top: -152px;
 		right: 50%;
+
+		&.disabled ~ .expenditure-selector {
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+
+			&:after {
+				content: '';
+				margin: -12px 0 0 0;
+				background: transparent !important;
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				position: absolute;
+				top: 50%;
+				right: 30%;
+				border: 2px solid #253a71;
+				border-bottom-color: transparent;
+				border-radius: 100%;
+				z-index: 2;
+				@include animation-fill-mode(both);
+				@include animation(rotate 0.75s 0s linear infinite);
+			}
+
+			.range-slider {
+				opacity: 0.5;
+			}
+		}
 
 		&[data-level="0-t-1"] {
 			@include animation(q8-0-t-1 0.7s steps(12, end) forwards);
@@ -1745,17 +1780,168 @@
 	}
 }
 
+.quest-9 {
+	.quest-title {
+		margin-left: -123px;
+		background-position: 0 -256px;
+		height: 37px;
+		@include animation(q8-title 1.1s steps(8, end) forwards);
+	}
+
+	.expenditure-selector {
+		margin: 0 auto;
+		width: 540px;
+		font-size: 0;
+
+		.list {
+			display: inline-block;
+			width: 50%;
+			height: 110px;
+			text-align: center;
+
+			&:last-child .range-slider .irs-max .postfix {
+				background-position: -159px -88px;
+			}
+
+			.desc {
+				background: url(../img/bg-exams.png) no-repeat;
+				display: inline-block;
+			}
+
+			&:nth-child(1) .desc {
+				margin-bottom: 15px;
+				background-position: 0 -293px;
+				width: 261px;
+				height: 33px;
+			}
+
+			&:nth-child(2) .desc {
+				margin-bottom: 11px;
+				background-position: 0 -326px;
+				width: 217px;
+				height: 37px;
+			}
+		}
+	}
+
+	.image-wrap {
+		margin: 33px auto 40px auto;
+		background: url(../img/q9/ani-q9.png) 0 0 no-repeat;
+		width: 518px;
+		height: 360px;
+
+		&.disabled ~ .expenditure-selector {
+			position: relative;
+			
+			&:before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+
+			&:after {
+				content: '';
+				margin: 2px 0 0 -12px;
+				background: transparent !important;
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				border: 2px solid #253a71;
+				border-bottom-color: transparent;
+				border-radius: 100%;
+				z-index: 2;
+				@include animation-fill-mode(both);
+				@include animation(rotate 0.75s 0s linear infinite);
+			}
+
+			.range-slider {
+				opacity: 0.5;
+			}
+		}
+
+		&[data-level="0-t-1"] {
+			@include animation(q9-0-t-1 0.2s steps(3, end) forwards);
+		}
+
+		&[data-level="1-t-2"] {
+			@include animation(q9-1-t-2 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="2-t-3"] {
+			@include animation(q9-2-t-3 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="3-t-4"] {
+			@include animation(q9-3-t-4 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="4-t-5"] {
+			@include animation(q9-4-t-5 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="1-t-0"] {
+			@include animation(q9-1-t-0 0.2s steps(3, end) forwards);
+		}
+
+		&[data-level="2-t-1"] {
+			@include animation(q9-2-t-1 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="3-t-2"] {
+			@include animation(q9-3-t-2 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="4-t-3"] {
+			@include animation(q9-4-t-3 1.4s steps(26, end) forwards);
+		}
+
+		&[data-level="5-t-4"] {
+			@include animation(q9-5-t-4 1.4s steps(26, end) forwards);
+		}
+	}
+
+	.range-slider {
+		display: inline-block;
+
+		.irs {
+			width: 174px;
+		}
+
+		.irs-max {
+			width: 44px;
+		}
+
+		.irs-line {
+			background-position: 0 -13px;
+			width: 152px;
+			height: 12px;
+		}
+
+		.irs-single {
+			font-size: 12px;
+		}
+	}
+}
+
 .quest-10 {
 	.quest-title {
 		margin-left: -210px;
-		background-position: 0 -413px;
+		background-position: 0 -401px;
 		height: 36px;
 		@include animation(q10-title 1.4s steps(25, end) forwards);
 	}
 
 	.sub-title {
 		margin-left: -226px;
-		background: url(../img/bg-exams.png) 0 -449px no-repeat;
+		background: url(../img/bg-exams.png) 0 -437px no-repeat;
 		display: block;
 		width: 452px;
 		height: 17px;
@@ -1835,6 +2021,10 @@
 			height: 197px;
 			top: 226px;
 			@include animation(q10-ani-healthcare 1.2s steps(21, end) forwards);
+
+			&[data-reverse="healthcare"] {
+				@include animation(q10-ani-healthcare-reverse 1.2s steps(21, end) forwards);
+			}
 		}
 
 		&[data-meta="double"] {
@@ -1844,6 +2034,10 @@
 			height: 481px;
 			top: -87px;
 			@include animation(q10-ani-double 1.4s steps(25, end) forwards);
+
+			&[data-reverse="double"] {
+				@include animation(q10-ani-double-reverse 1.4s steps(25, end) forwards);
+			}
 		}
 
 		&[data-meta="single"] {
@@ -1853,6 +2047,10 @@
 			height: 468px;
 			top: -57px;
 			@include animation(q10-ani-single 1.9s steps(34, end) forwards);
+
+			&[data-reverse="single"] {
+				@include animation(q10-ani-single-reverse 1.9s steps(34, end) forwards);
+			}
 		}
 
 		&[data-meta="principal"] {
@@ -1862,6 +2060,10 @@
 			height: 538px;
 			top: -120px;
 			@include animation(q10-ani-principal 2.4s steps(43, end) forwards);
+
+			&[data-reverse="principal"] {
+				@include animation(q10-ani-principal-reverse 2.4s steps(43, end) forwards);
+			}
 		}
 
 		&[data-meta="vip"] {
@@ -1871,6 +2073,10 @@
 			height: 579px;
 			top: -144px;
 			@include animation(q10-ani-vip 1.9s steps(35, end) forwards);
+
+			&[data-reverse="vip"] {
+				@include animation(q10-ani-vip-reverse 1.9s steps(35, end) forwards);
+			}
 		}
 
 		&[data-meta="best"] {
@@ -1880,6 +2086,10 @@
 			height: 589px;
 			top: -127px;
 			@include animation(q10-ani-best 1.9s steps(35, end) forwards);
+
+			&[data-reverse="best"] {
+				@include animation(q10-ani-best-reverse 1.9s steps(35, end) forwards);
+			}
 		}
 	}
 }
