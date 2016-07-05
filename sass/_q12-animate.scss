@@ -1,0 +1,29 @@
+﻿@include keyframes(q12-patients) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -5016px 0;
+	}
+}
+
+@include keyframes(q12-wc) {
+	0% {
+		background-position: -5280px 0;
+	}
+
+	100% {
+		background-position: -11880px 0;
+	}
+}
+
+@include keyframes(q12-base) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -2184px 0;
+	}
+}

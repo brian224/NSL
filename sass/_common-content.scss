@@ -1832,7 +1832,7 @@
 
 		&.disabled ~ .expenditure-selector {
 			position: relative;
-			
+
 			&:before {
 				content: '';
 				display: block;
@@ -2089,6 +2089,306 @@
 
 			&[data-reverse="best"] {
 				@include animation(q10-ani-best-reverse 1.9s steps(35, end) forwards);
+			}
+		}
+	}
+}
+
+.quest-11 {
+	.quest-title {
+		margin-left: -210px;
+		background-position: 0 -401px;
+		height: 36px;
+		@include animation(q10-title 1.4s steps(25, end) forwards);
+	}
+
+	.sub-title {
+		margin-left: -218px;
+		background: url(../img/bg-exams.png) 0 -454px no-repeat;
+		display: block;
+		width: 435px;
+		height: 17px;
+		position: absolute;
+		bottom: 205px;
+		left: 50%;
+	}
+
+	.choice-list {
+		margin-left: -300px;
+		width: 600px;
+		height: auto;
+		position: absolute;
+		bottom: 154px;
+		left: 50%;
+		text-align: center;
+
+		.list {
+			text-align: left;
+
+			&:first-child {
+				width: 200px;
+			}
+
+			&:nth-child(2) {
+				width: 180px;
+			}
+
+			&:last-child {
+				width: 220px;
+			}
+
+			.btn-check {
+				margin: 0;
+				padding-left: 28px;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+
+				&:before {
+					margin: -10px 0 0 0;
+					position: absolute;
+					top: 50%;
+					left: 0;
+				}
+
+				&:after {
+					bottom: 14px;
+				}
+
+				em {
+					width: 119px;
+					height: 39px;
+				}
+
+				&[data-meta="nhi"] em {
+					background-position: -348px -114px;
+				}
+
+				&[data-meta="self-provided"] em {
+					background-position: -348px -153px;
+				}
+
+				&[data-meta="best"] em {
+					background-position: -348px -192px;
+					width: 183px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.bed {
+			display: block;
+			position: absolute;
+			left: 50%;
+		}
+
+		&[data-meta="healthcare"] .bed {
+			margin-left: -204px;
+			background: url(../img/q10/ani-q10-healthcare.png) -8358px 0 no-repeat;
+			width: 398px;
+			height: 197px;
+			top: 226px;
+		}
+
+		&[data-meta="double"] .bed {
+			margin-left: -169px;
+			background: url(../img/q10/ani-q10-double.png) -8475px 0 no-repeat;
+			width: 339px;
+			height: 481px;
+			top: -87px;
+		}
+
+		&[data-meta="single"] .bed {
+			margin-left: -110px;
+			background: url(../img/q10/ani-q10-single.png) -6052px 0 no-repeat;
+			width: 178px;
+			height: 468px;
+			top: -57px;
+		}
+
+		&[data-meta="principal"] .bed {
+			margin-left: -121px;
+			background: url(../img/q10/ani-q10-principal.png) -9116px 0 no-repeat;
+			width: 212px;
+			height: 538px;
+			top: -120px;
+		}
+
+		&[data-meta="vip"] .bed {
+			margin-left: -121px;
+			background: url(../img/q10/ani-q10-vip.png) -11550px 0 no-repeat;
+			width: 330px;
+			height: 579px;
+			top: -144px;
+		}
+
+		&[data-meta="best"] .bed {
+			margin-left: -250px;
+			background: url(../img/q10/ani-q10-best.png) -20265px 0 no-repeat;
+			width: 579px;
+			height: 589px;
+			top: -127px;
+		}
+
+		.function {
+			background: url(../img/q11/ani-q11.png) no-repeat;
+			position: absolute;
+
+			&[data-selection="nhi"] {
+				background-position: 0 0;
+				display: block;
+				width: 92px;
+				height: 485px;
+				top: -37px;
+				left: 202px;
+				@include animation(q11-ani-nhi 0.7s steps(13, end) forwards);
+
+				&[data-reverse="nhi"] {
+					@include animation(q11-ani-nhi-reverse 0.7s steps(13, end) forwards);
+				}
+			}
+
+			&[data-selection="self-provided"] {
+				background-position: 0 -485px;
+				display: block;
+				width: 137px;
+				height: 487px;
+				top: -35px;
+				left: 192px;
+				@include animation(q11-ani-self-provided 0.7s steps(13, end) forwards);
+
+				&[data-reverse="self-provided"] {
+					@include animation(q11-ani-self-provided-reverse 0.7s steps(13, end) forwards);
+				}
+			}
+
+			&[data-selection="best"] {
+				background-position: 0 -972px;
+				display: block;
+				width: 127px;
+				height: 504px;
+				top: -56px;
+				left: 202px;
+				@include animation(q11-ani-best 0.7s steps(13, end) forwards);
+
+				&[data-reverse="best"] {
+					@include animation(q11-ani-best-reverse 0.7s steps(13, end) forwards);
+				}
+			}
+		}
+	}
+}
+
+.quest-12 {
+	.quest-title {
+		margin-left: -210px;
+		background-position: 0 -401px;
+		height: 36px;
+		@include animation(q10-title 1.4s steps(25, end) forwards);
+	}
+
+	.sub-title {
+		margin-left: -268px;
+		background: url(../img/bg-exams.png) 0 -471px no-repeat;
+		display: block;
+		width: 537px;
+		height: 17px;
+		position: absolute;
+		bottom: 238px;
+		left: 50%;
+	}
+
+	.choice-list {
+		margin-left: -300px;
+		padding-left: 30px;
+		width: 600px;
+		height: auto;
+		position: absolute;
+		bottom: 163px;
+		left: 50%;
+		text-align: center;
+		@include box-sizing(border-box);
+
+		.list {
+			width: 285px;
+			text-align: left;
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+
+				em {
+					margin: 3px 0;
+					height: 15px;
+				}
+
+				&[data-meta="no-need"] em {
+					background-position: -261px -256px;
+					width: 236px;
+				}
+
+				&[data-meta="1y"] em {
+					background-position: -261px -271px;
+					width: 170px;
+				}
+
+				&[data-meta="3y"] em {
+					background-position: -261px -286px;
+					width: 170px;
+				}
+
+				&[data-meta="5y"] em {
+					background-position: -261px -301px;
+					width: 198px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.patients {
+			margin-left: -132px;
+			background: url(../img/q12/ani-q12.png) 0 0 no-repeat;
+			display: block;
+			width: 264px;
+			height: 270px;
+			position: absolute;
+			top: 164px;
+			left: 50%;
+			@include animation(q12-patients 2.2s 1s steps(19, end) infinite);
+
+			&.go-ani {
+				@include animation(q12-wc 1.4s steps(25, end) forwards);
+			}
+		}
+
+		.function {
+			&[data-selection="no-need"] {
+				background: url(../img/q12/ani-q12-base.png) 0 0 no-repeat;
+				display: block;
+				width: 104px;
+				height: 45px;
+				position: absolute;
+				top: 110px;
+				left: 32px;
+				@include animation(q12-base 1.2s steps(21, end) forwards);
 			}
 		}
 	}

@@ -1,0 +1,59 @@
+﻿@include keyframes(q11-ani-nhi) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1196px 0;
+	}
+}
+
+@include keyframes(q11-ani-nhi-reverse) {
+	0% {
+		background-position: -1196px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q11-ani-self-provided) {
+	0% {
+		background-position: 0 -485px;
+	}
+
+	100% {
+		background-position: -1781px -485px;
+	}
+}
+
+@include keyframes(q11-ani-self-provided-reverse) {
+	0% {
+		background-position: -1781px -485px;
+	}
+
+	100% {
+		background-position: 0 -485px;
+	}
+}
+
+@include keyframes(q11-ani-best) {
+	0% {
+		background-position: 0 -972px;
+	}
+
+	100% {
+		background-position: -1651px -972px;
+	}
+}
+
+@include keyframes(q11-ani-best-reverse) {
+	0% {
+		background-position: -1651px -972px;
+	}
+
+	100% {
+		background-position: 0 -972px;
+	}
+}
