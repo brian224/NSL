@@ -18,12 +18,52 @@
 	}
 }
 
+@include keyframes(q12-wc-agent-f) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -6075px 0;
+	}
+}
+
 @include keyframes(q12-base) {
 	0% {
 		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -2184px 0;
+		background-position: -2205px 0;
+	}
+}
+
+@include keyframes(q12-1y) {
+	0% {
+		background-position: 0 -45px;
+	}
+
+	100% {
+		background-position: -2205px -45px;
+	}
+}
+
+@include keyframes(q12-3y) {
+	0% {
+		background-position: 0 -97px;
+	}
+
+	100% {
+		background-position: -2205px -97px;
+	}
+}
+
+@include keyframes(q12-5y) {
+	0% {
+		background-position: 0 -161px;
+	}
+
+	100% {
+		background-position: -2520px -161px;
 	}
 }

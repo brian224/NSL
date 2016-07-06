@@ -1,0 +1,64 @@
+﻿@include keyframes(q13-patients-wink) {
+	0% {
+		background-position: -12144px 0;
+	}
+
+	50%, 100% {
+		background-position: -18744px 0;
+	}
+}
+
+@include keyframes(q13-patients-move) {
+	0% {
+		background-position: -19008px 0;
+	}
+
+	100% {
+		background-position: -24024px 0;
+	}
+}
+
+@include keyframes(q13-agent-f-wink) {
+	0% {
+		background-position: -6318px 0;
+	}
+
+	50%, 100% {
+		background-position: -12393px 0;
+	}
+}
+
+@include keyframes(q13-agent-f-move) {
+	0% {
+		background-position: -12636px 0;
+	}
+
+	100% {
+		background-position: -17010px 0;
+	}
+}
+
+@include keyframes(q13-box-move) {
+	0%, 50% {
+		margin: 0;
+	}
+
+	75% {
+		margin-top: 9px;
+	}
+
+	100% {
+		margin-top: 0;
+		margin-left: -63px;
+	}
+}
+
+@include keyframes(q13-agent-m) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1788px 0;
+	}
+}

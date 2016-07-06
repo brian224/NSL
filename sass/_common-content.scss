@@ -1653,24 +1653,6 @@
 				z-index: 1;
 			}
 
-			&:after {
-				content: '';
-				margin: -12px 0 0 0;
-				background: transparent !important;
-				display: inline-block;
-				width: 25px;
-				height: 25px;
-				position: absolute;
-				top: 50%;
-				right: 30%;
-				border: 2px solid #253a71;
-				border-bottom-color: transparent;
-				border-radius: 100%;
-				z-index: 2;
-				@include animation-fill-mode(both);
-				@include animation(rotate 0.75s 0s linear infinite);
-			}
-
 			.range-slider {
 				opacity: 0.5;
 			}
@@ -1784,8 +1766,8 @@
 	.quest-title {
 		margin-left: -123px;
 		background-position: 0 -256px;
+		width: 246px;
 		height: 37px;
-		@include animation(q8-title 1.1s steps(8, end) forwards);
 	}
 
 	.expenditure-selector {
@@ -1842,24 +1824,6 @@
 				top: 0;
 				left: 0;
 				z-index: 1;
-			}
-
-			&:after {
-				content: '';
-				margin: 2px 0 0 -12px;
-				background: transparent !important;
-				display: inline-block;
-				width: 25px;
-				height: 25px;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				border: 2px solid #253a71;
-				border-bottom-color: transparent;
-				border-radius: 100%;
-				z-index: 2;
-				@include animation-fill-mode(both);
-				@include animation(rotate 0.75s 0s linear infinite);
 			}
 
 			.range-slider {
@@ -2098,8 +2062,8 @@
 	.quest-title {
 		margin-left: -210px;
 		background-position: 0 -401px;
+		width: 419px;
 		height: 36px;
-		@include animation(q10-title 1.4s steps(25, end) forwards);
 	}
 
 	.sub-title {
@@ -2291,8 +2255,8 @@
 	.quest-title {
 		margin-left: -210px;
 		background-position: 0 -401px;
+		width: 419px;
 		height: 36px;
-		@include animation(q10-title 1.4s steps(25, end) forwards);
 	}
 
 	.sub-title {
@@ -2363,6 +2327,50 @@
 		height: 100%;
 		position: relative;
 
+		.agent-f {
+			background: url(../img/q12/ani-q12-agent-f.png) 0 0 no-repeat;
+			display: block;
+			width: 243px;
+			height: 225px;
+			position: absolute;
+			top: 203px;
+			left: 285px;
+		}
+
+		.function {
+			background: url(../img/q12/ani-q12-money.png) 0 0 no-repeat;
+			display: block;
+			width: 105px;
+			position: absolute;
+			left: 411px;
+
+			&[data-selection="no-need"] {
+				height: 45px;
+				top: 295px;
+				@include animation(q12-base 1.2s steps(21, end) forwards);
+			}
+
+			&[data-selection="1y"] {
+				height: 52px;
+				top: 288px;
+				@include animation(q12-1y 1.2s steps(21, end) forwards);
+			}
+
+			&[data-selection="3y"] {
+				height: 64px;
+				top: 276px;
+				@include animation(q12-3y 1.2s steps(21, end) forwards);
+			}
+
+			&[data-selection="5y"] {
+				width: 120px;
+				height: 77px;
+				top: 263px;
+				left: 396px;
+				@include animation(q12-5y 1.2s steps(21, end) forwards);
+			}
+		}
+
 		.patients {
 			margin-left: -132px;
 			background: url(../img/q12/ani-q12.png) 0 0 no-repeat;
@@ -2373,31 +2381,204 @@
 			top: 164px;
 			left: 50%;
 			@include animation(q12-patients 2.2s 1s steps(19, end) infinite);
+		}
 
-			&.go-ani {
+		&.go-ani {
+			.agent-f {
+				@include animation(q12-wc-agent-f 1.4s steps(25, end) forwards);
+			}
+
+			.patients {
 				@include animation(q12-wc 1.4s steps(25, end) forwards);
 			}
 		}
 
-		.function {
-			&[data-selection="no-need"] {
-				background: url(../img/q12/ani-q12-base.png) 0 0 no-repeat;
-				display: block;
-				width: 104px;
-				height: 45px;
-				position: absolute;
-				top: 110px;
-				left: 32px;
-				@include animation(q12-base 1.2s steps(21, end) forwards);
+		&.finish-ani {
+			.function {
+				@include animation(none);
+
+				&[data-selection="no-need"] {
+					background-position: -2205px 0;
+				}
+
+				&[data-selection="1y"] {
+					background-position: -2205px -45px;
+				}
+
+				&[data-selection="3y"] {
+					background-position: -2205px -97px;
+				}
+
+				&[data-selection="5y"] {
+					background-position: -2520px -161px;
+				}
 			}
 		}
 	}
 }
 
-.quest-14 {
+.quest-13 {
+	.quest-title {
+		margin-left: -210px;
+		background-position: 0 -401px;
+		width: 419px;
+		height: 36px;
+	}
+
+	.sub-title {
+		margin-left: -212px;
+		background: url(../img/bg-exams.png) 0 -488px no-repeat;
+		display: block;
+		width: 425px;
+		height: 17px;
+		position: absolute;
+		bottom: 238px;
+		left: 50%;
+	}
+
+	.choice-list {
+		margin-left: -240px;
+		width: 480px;
+		height: auto;
+		position: absolute;
+		bottom: 197px;
+		left: 50%;
+		text-align: center;
+
+		.list {
+			width: 25%;
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+
+				em {
+					margin: 3px 0;
+					width: 27px;
+					height: 19px;
+				}
+
+				&[data-meta="3y"] em {
+					background-position: -316px -231px;
+				}
+
+				&[data-meta="5y"] em {
+					background-position: -343px -231px;
+				}
+
+				&[data-meta="7y"] em {
+					background-position: -370px -231px;
+				}
+
+				&[data-meta="10y"] em {
+					background-position: -397px -231px;
+					width: 35px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.agent-f {
+			background: url(../img/q12/ani-q12-agent-f.png) -6075px 0 no-repeat;
+			display: block;
+			width: 243px;
+			height: 225px;
+			position: absolute;
+			top: 203px;
+			left: 285px;
+			@include animation(q13-agent-f-wink 2.8s 1s steps(25, end) infinite);
+		}
+
+		.function {
+			background: url(../img/q12/ani-q12-money.png) no-repeat;
+			display: block;
+			width: 105px;
+			position: absolute;
+			left: 411px;
+
+			&[data-selection="no-need"] {
+				background-position: -2205px 0;
+				height: 45px;
+				top: 295px;
+			}
+
+			&[data-selection="1y"] {
+				background-position: -2205px -45px;
+				height: 52px;
+				top: 288px;
+			}
+
+			&[data-selection="3y"] {
+				background-position: -2205px -97px;
+				height: 64px;
+				top: 276px;
+			}
+
+			&[data-selection="5y"] {
+				background-position: -2520px -161px;
+				width: 120px;
+				height: 77px;
+				top: 263px;
+				left: 396px;
+			}
+		}
+
+		.agent-m {
+			background: url(../img/q12/ani-q12-agent-m.png) 149px 0 no-repeat;
+			display: block;
+			width: 149px;
+			height: 656px;
+			position: absolute;
+			top: -228px;
+			right: 280px;
+		}
+
+		.patients {
+			margin-left: -132px;
+			background: url(../img/q12/ani-q12.png) -12144px 0 no-repeat;
+			display: block;
+			width: 264px;
+			height: 270px;
+			position: absolute;
+			top: 164px;
+			left: 50%;
+			@include animation(q13-patients-wink 2.8s 1s steps(25, end) infinite);
+		}
+
+		&.go-ani {
+			.agent-f {
+				@include animation(q13-agent-f-move 1s steps(18, end) forwards);
+			}
+
+			.function {
+				@include animation(q13-box-move 1s ease-in-out forwards);
+			}
+
+			.agent-m {
+				@include animation(q13-agent-m 0.7s 0.8s steps(12, end) forwards);
+			}
+
+			.patients {
+				@include animation(q13-patients-move 1.1s steps(19, end) forwards);
+			}
+		}
+	}
+}
+
+.quest-15 {
 	.quest-title {
 		margin-left: -265px;
-		background: url(../img/q14/bg-q14.png) 0 0 no-repeat;
+		background: url(../img/q15/bg-q15.png) 0 0 no-repeat;
 		width: 530px;
 		height: 201px;
 		top: 180px;
@@ -2414,19 +2595,19 @@
 
 		&:before {
 			content: '';
-			background: url(../img/q14/ani-q14.png) 0 0 no-repeat;
+			background: url(../img/q15/ani-q15.png) 0 0 no-repeat;
 			display: block;
 			width: 115px;
 			height: 110px;
 			position: absolute;
 			bottom: 16px;
 			right: 5px;
-			@include animation(q14-bird 4.4s steps(39, end) infinite);
+			@include animation(q15-bird 4.4s steps(39, end) infinite);
 		}
 
 		&:after {
 			content: '';
-			background: url(../img/q14/bg-q14.png) 0 -201px no-repeat;
+			background: url(../img/q15/bg-q15.png) 0 -201px no-repeat;
 			display: block;
 			width: 100%;
 			height: 60px;

@@ -223,7 +223,7 @@
 						// = 最大值
 						_startRange = common._IncomeRange.length - 1;
 					} else if (common._IncomeAct[0] <= common._IncomeRange[i]) {
-						_startRange = i - 1;
+						_startRange = ( common._IncomeAct[0] === common._IncomeRange[i] ) ? i : ( i - 1 );
 					}
 				}
 
@@ -282,7 +282,7 @@
 							// 起始點 = 最大值
 							_startRange = common._LiabilityRange.length - 1;
 						} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
-							_startRange = i - 1;
+							_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
 						}
 					}
 
@@ -297,14 +297,13 @@
 					if (_startRange !== _endRange && $(data.input[0]).parents('.stage').hasClass('cut-8')) {
 						var _base = $('.cut-8 ' + common._imageWrap).attr('data-level').split('-t-')[1];
 
-						(_base === undefined) ? _base = 0 : _base = parseInt(_base, 10);
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
 						common.mixAnimate('.cut-8 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-						// console.log(_base + ' , ' + (_endRange - _startRange + _base));
 					} else if (_startRange !== _endRange && $(data.input[0]).parents('.stage').hasClass('cut-9')) {
 						var _base = $('.cut-9 ' + common._imageWrap).attr('data-level').split('-t-')[1];
 
-						(_base === undefined) ? _base = 0 : _base = parseInt(_base, 10);
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
 						common.mixAnimate('.cut-9 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5]);
 					}
@@ -334,9 +333,10 @@
 		}
 
 		$(common._checkbox).on('click', function(){
-			if ($(common._lContent).hasClass('quest-1')) {
-				var $another = $(this).parent().siblings().find(common._checkbox);
+			var $another = $(this).parent().siblings().find(common._checkbox),
+				_meta    = $(this).data('meta');
 
+			if ($(common._lContent).hasClass('quest-1')) {
 				if (!$(this).hasClass('is-checked')) {
 					$(this).addClass('is-checked').removeClass('ani-reverse');
 				}
@@ -349,8 +349,6 @@
 					$(this).siblings().removeClass('ani-reverse');
 				});
 			} else if ($(common._lContent).hasClass('quest-2')) {
-				var $another = $(this).parent().siblings().find(common._checkbox);
-
 				$(common._transition).attr('data-first', '');
 
 				if (!$(this).hasClass('is-checked')) {
@@ -376,9 +374,6 @@
 			} else if ($(common._lContent).hasClass('quest-4')) {
 				common.checkKid('.cut-4 ' + common._checkbox);
 			} else if ($(common._lContent).hasClass('quest-5')) {
-				var $another = $(this).parent().siblings().find(common._checkbox),
-					_meta    = $(this).data('meta');
-
 				if (!$(this).hasClass('is-checked')) {
 					// 勾選
 					$(this).addClass('is-checked');
@@ -419,9 +414,6 @@
 					}
 				}
 			} else if ($(common._lContent).hasClass('quest-10')) {
-				var $another = $(this).parent().siblings().find(common._checkbox),
-					_meta    = $(this).data('meta');
-
 				if (!$(this).hasClass('is-checked')) {
 					// 勾選
 					$(this).addClass('is-checked');
@@ -441,33 +433,57 @@
 						$('.cut-10 ' + common._imageWrap).attr('data-meta', _meta);
 					}
 				}
-			} else if ($(common._lContent).hasClass('quest-11') || $(common._lContent).hasClass('quest-12')) {
-				var $another = $(this).parent().siblings().find(common._checkbox),
-					_meta    = $(this).data('meta'),
-					_cutNum  = $(this).parents('.stage').attr('class').split('stage cut-')[1];
-
+			} else if ($(common._lContent).hasClass('quest-11')) {
 				if (!$(this).hasClass('is-checked')) {
 					// 勾選
 					$(this).addClass('is-checked');
 
-					if (_cutNum === '12') {
-						$('.cut-' + _cutNum + ' .patients').addClass('go-ani');
-					}
-
 					if ($another.hasClass('is-checked')) {
 						// 切換選取時要先跑復原動畫
 						$another.removeClass('is-checked');
-						$('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr('data-reverse', $('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr('data-selection'));
+						$('.cut-11 ' + common._imageWrap + ' .function').attr('data-reverse', $('.cut-11 ' + common._imageWrap + ' .function').attr('data-selection'));
 
 						setTimeout(function(){
-							$('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr({
+							$('.cut-11 ' + common._imageWrap + ' .function').attr({
 								'data-reverse': '',
 								'data-selection': _meta
 							});
-						}, (parseFloat($('[data-reverse="' + $('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr('data-selection') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr('data-selection') + '"]').css('animation-delay'), 10)) * 1000);
+						}, (parseFloat($('[data-reverse="' + $('.cut-11 ' + common._imageWrap + ' .function').attr('data-selection') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-11 ' + common._imageWrap + ' .function').attr('data-selection') + '"]').css('animation-delay'), 10)) * 1000);
 					} else {
-						$('.cut-' + _cutNum + ' ' + common._imageWrap + ' .function').attr('data-selection', _meta);
+						$('.cut-11 ' + common._imageWrap + ' .function').attr('data-selection', _meta);
 					}
+				}
+			} else if ($(common._lContent).hasClass('quest-12')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						$another.removeClass('is-checked');
+					} else {
+						$('.cut-12 ' + common._imageWrap).addClass('go-ani');
+					}
+					$('.cut-12 ' + common._imageWrap + ' .function').attr('data-selection', _meta);
+
+					setTimeout(function(){
+						$('.cut-12 ' + common._imageWrap).addClass('finish-ani');
+					}, (parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-duration'), 10) + parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-delay'), 10)) * 1000);
+				}
+			} else if ($(common._lContent).hasClass('quest-13')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						$another.removeClass('is-checked');
+					} else {
+						$('.cut-13 ' + common._imageWrap).addClass('go-ani');
+					}
+					$('.cut-13 ' + common._imageWrap + ' .red-envelopes').attr('data-selection', _meta);
+
+					setTimeout(function(){
+						$('.cut-13 ' + common._imageWrap).addClass('finish-ani');
+					}, (parseFloat($('.cut-13 ' + common._imageWrap + ' .red-envelopes').css('animation-duration'), 10) + parseFloat($('.cut-13 ' + common._imageWrap + ' .function').css('animation-delay'), 10)) * 1000);
 				}
 			}
 		});
@@ -517,10 +533,15 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 10 || _num === 11) {
+				} else if (_num === 10 || _num === 11 || _num === 12) {
 					// 將病房寫入下一題
 					if ($('.cut-' + _num + ' .is-checked').length !== 0) {
-						$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', $('.cut-' + _num + ' ' + common._imageWrap).attr('data-meta'));
+						if (_num === 10) {
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', $('.cut-' + _num + ' ' + common._imageWrap).attr('data-meta'));
+						} else if (_num === 12) {
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .function').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .function').attr('data-selection'));
+						}
+
 						$quest.attr({
 							'class': 'l-content quest quest-' + (_num + _direct),
 							'data-quest': _num + _direct
@@ -562,6 +583,15 @@
 						$(common._stepList).attr('class', common._stepList.split('.')[1] + ' complete-phase-' + i);
 					}
 				}
+			}
+
+			// 療養金的動畫歸零
+			if ($(common._lContent).hasClass('quest-12') && $('.cut-12 ' + common._imageWrap + ' .function').attr('data-selection') !== '') {
+				$('.cut-12 ' + common._imageWrap).removeClass('finish-ani');
+
+				setTimeout(function(){
+					$('.cut-12 ' + common._imageWrap).addClass('finish-ani');
+				}, (parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-duration'), 10) + parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-delay'), 10)) * 1000);
 			}
 		});
 
