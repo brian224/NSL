@@ -17,7 +17,7 @@
 		this._stepList       = '.step-list';
 		this._prevAge        = 20; // 預設年紀
 		this._ageRange       = [30, 50, 70]; // 年紀區間
-		this._steps          = [7, 10, 14, 15]; // 五階段的題目區隔
+		this._steps          = [7, 15, 19, 20]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
 		this._IncomeRange    = [0, 30, 70, 120, 190, 500]; // 收入區間
@@ -479,11 +479,45 @@
 					} else {
 						$('.cut-13 ' + common._imageWrap).addClass('go-ani');
 					}
-					$('.cut-13 ' + common._imageWrap + ' .red-envelopes').attr('data-selection', _meta);
+					$('.cut-13 ' + common._imageWrap + ' .envelopes').attr('data-selection', _meta);
 
 					setTimeout(function(){
 						$('.cut-13 ' + common._imageWrap).addClass('finish-ani');
-					}, (parseFloat($('.cut-13 ' + common._imageWrap + ' .red-envelopes').css('animation-duration'), 10) + parseFloat($('.cut-13 ' + common._imageWrap + ' .function').css('animation-delay'), 10)) * 1000);
+					}, (parseFloat($('.cut-13 ' + common._imageWrap + ' .envelopes').css('animation-duration'), 10) + parseFloat($('.cut-13 ' + common._imageWrap + ' .envelopes').css('animation-delay'), 10)) * 1000);
+				}
+			} else if ($(common._lContent).hasClass('quest-14')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
+						$another.removeClass('is-checked');
+						$('.cut-14 ' + common._imageWrap).attr('data-reverse', $('.cut-14 ' + common._imageWrap).attr('data-meta'));
+
+						setTimeout(function(){
+							$('.cut-14 ' + common._imageWrap).attr({
+								'data-reverse': '',
+								'data-meta': _meta
+							});
+							$('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
+						}, (parseFloat($('[data-reverse="' + $('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection') + '"] .care').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection') + '"] .care').css('animation-delay'), 10)) * 1000);
+					} else {
+						$('.cut-14 ' + common._imageWrap).attr('data-meta', _meta);
+						$('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
+					}
+
+					// if ($another.hasClass('is-checked')) {
+					// 	$another.removeClass('is-checked');
+					// } else {
+					// 	$('.cut-14 ' + common._imageWrap).addClass('go-ani');
+					// }
+					// $('.cut-14 ' + common._imageWrap).attr('data-meta', _meta);
+					// $('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
+
+					// setTimeout(function(){
+					// 	$('.cut-14 ' + common._imageWrap).addClass('finish-ani');
+					// }, (parseFloat($('.cut-14 ' + common._imageWrap + ' .care').css('animation-duration'), 10) + parseFloat($('.cut-14 ' + common._imageWrap + ' .care').css('animation-delay'), 10)) * 1000);
 				}
 			}
 		});
@@ -533,13 +567,16 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 10 || _num === 11 || _num === 12) {
+				} else if (_num === 10 || _num === 11 || _num === 12 || _num === 13) {
 					// 將病房寫入下一題
 					if ($('.cut-' + _num + ' .is-checked').length !== 0) {
 						if (_num === 10) {
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', $('.cut-' + _num + ' ' + common._imageWrap).attr('data-meta'));
 						} else if (_num === 12) {
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .function').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .function').attr('data-selection'));
+						} else if (_num === 13) {
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .function').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .function').attr('data-selection'));
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .envelopes').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .envelopes').attr('data-selection'));
 						}
 
 						$quest.attr({
@@ -592,6 +629,12 @@
 				setTimeout(function(){
 					$('.cut-12 ' + common._imageWrap).addClass('finish-ani');
 				}, (parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-duration'), 10) + parseFloat($('.cut-12 ' + common._imageWrap + ' .function').css('animation-delay'), 10)) * 1000);
+			} else if ($(common._lContent).hasClass('quest-13') && $('.cut-13 ' + common._imageWrap + ' .envelopes').attr('data-selection') !== '') {
+				$('.cut-13 ' + common._imageWrap).removeClass('finish-ani');
+
+				setTimeout(function(){
+					$('.cut-13 ' + common._imageWrap).addClass('finish-ani');
+				}, (parseFloat($('.cut-13 ' + common._imageWrap + ' .envelopes').css('animation-duration'), 10) + parseFloat($('.cut-13 ' + common._imageWrap + ' .envelopes').css('animation-delay'), 10)) * 1000);
 			}
 		});
 

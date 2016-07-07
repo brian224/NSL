@@ -1155,6 +1155,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
+				font-size: 0;
 
 				em {
 					background: url(../img/bg-exams.png) no-repeat;
@@ -1933,6 +1934,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
+				font-size: 0;
 
 				em {
 					background: url(../img/bg-exams.png) no-repeat;
@@ -2272,17 +2274,18 @@
 
 	.choice-list {
 		margin-left: -300px;
-		padding-left: 30px;
+		padding-left: 40px;
 		width: 600px;
 		height: auto;
 		position: absolute;
-		bottom: 163px;
+		bottom: 176px;
 		left: 50%;
 		text-align: center;
 		@include box-sizing(border-box);
 
 		.list {
-			width: 285px;
+			margin-top: 7px;
+			width: 280px;
 			text-align: left;
 
 			.btn-check {
@@ -2292,6 +2295,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
+				font-size: 0;
 
 				em {
 					margin: 3px 0;
@@ -2455,6 +2459,7 @@
 				bottom: auto;
 				left: auto;
 				right: auto;
+				font-size: 0;
 
 				em {
 					margin: 3px 0;
@@ -2543,6 +2548,41 @@
 			right: 280px;
 		}
 
+		.envelopes {
+			background: url(../img/q13/ani-q13-envelopes.png) 0 0 no-repeat;
+			display: block;
+			height: 474px;
+			position: absolute;
+			top: -121px;
+
+			&[data-selection="3y"] {
+				width: 20px;
+				right: 376px;
+				@include animation(q13-3y 0.4s 0.8s steps(7, end) forwards);
+			}
+
+			&[data-selection="5y"] {
+				background-position: -160px 0;
+				width: 41px;
+				right: 365px;
+				@include animation(q13-5y 0.8s 0.8s steps(14, end) forwards);
+			}
+
+			&[data-selection="7y"] {
+				background-position: -775px 0;
+				width: 60px;
+				right: 357px;
+				@include animation(q13-7y 0.8s 0.8s steps(14, end) forwards);
+			}
+
+			&[data-selection="10y"] {
+				background-position: -1675px 0;
+				width: 63px;
+				right: 358px;
+				@include animation(q13-10y 0.8s 0.8s steps(14, end) forwards);
+			}
+		}
+
 		.patients {
 			margin-left: -132px;
 			background: url(../img/q12/ani-q12.png) -12144px 0 no-repeat;
@@ -2571,6 +2611,373 @@
 			.patients {
 				@include animation(q13-patients-move 1.1s steps(19, end) forwards);
 			}
+		}
+
+		&.finish-ani {
+			.envelopes {
+				@include animation(none);
+
+				&[data-selection="3y"] {
+					background-position: -140px 0;
+				}
+
+				&[data-selection="5y"] {
+					background-position: -734px 0;
+				}
+
+				&[data-selection="7y"] {
+					background-position: -1615px 0;
+				}
+
+				&[data-selection="10y"] {
+					background-position: -2557px 0;
+				}
+			}
+		}
+	}
+}
+
+.quest-14 {
+	.quest-title {
+		margin-left: -210px;
+		background-position: 0 -401px;
+		width: 419px;
+		height: 36px;
+	}
+
+	.sub-title {
+		margin-left: -196px;
+		background: url(../img/bg-exams.png) 0 -505px no-repeat;
+		display: block;
+		width: 393px;
+		height: 17px;
+		position: absolute;
+		bottom: 238px;
+		left: 50%;
+	}
+
+	.choice-list {
+		margin-left: -300px;
+		width: 600px;
+		height: auto;
+		position: absolute;
+		bottom: 197px;
+		left: 50%;
+		text-align: center;
+
+		.list {
+			margin-right: 20px;
+			width: auto;
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+				font-size: 0;
+
+				em {
+					margin: 3px 0;
+					height: 17px;
+				}
+
+				&[data-meta="family"] em {
+					background-position: -261px -316px;
+					width: 92px;
+				}
+
+				&[data-meta="day-care"] em {
+					background-position: -384px -316px;
+					width: 120px;
+				}
+
+				&[data-meta="full-care"] em {
+					background-position: -261px -333px;
+					width: 123px;
+				}
+
+				&[data-meta="facility"] em {
+					background-position: -384px -333px;
+					width: 93px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		&[data-meta="family"] {
+			.agent-m {
+				@include animation(q14-agent-m-family 0.7s steps(13, end) forwards);
+			}
+
+			.envelopes {
+				@include animation(q14-envelopes-move 0.4s 0.3s linear forwards);
+			}
+
+			.patients {
+				@include animation(q14-patients-family 1.7s steps(29, end) forwards);
+			}
+		}
+
+		&[data-meta="day-care"], &[data-meta="full-care"] {
+			.agent-f {
+				@include animation(q14-agent-f-pro 0.8s steps(16, end) forwards);
+			}
+
+			.function {
+				@include animation(q14-box-move 0.4s 0.3s ease-out forwards);
+			}
+
+			.agent-m {
+				@include animation(q14-agent-m-pro 0.7s steps(13, end) forwards);
+			}
+
+			.envelopes {
+				@include animation(q14-envelopes-move2 0.4s 0.3s linear forwards);
+			}
+
+			.patients {
+				@include animation(q14-patients-pro 0.8s steps(15, end) forwards);
+			}
+		}
+
+		&[data-meta="day-care"] .time {
+			margin-left: -130px;
+			background-position: 141px -1042px;
+			width: 141px;
+			height: 60px;
+			@include animation(q14-time-day 0.8s 0.9s steps(15, end) forwards);
+		}
+
+		&[data-meta="full-care"] .time {
+			margin-left: -124px;
+			background-position: 248px -1102px;
+			width: 248px;
+			height: 59px;
+			@include animation(q14-time-full 0.4s 0.9s steps(7, end) forwards);
+		}
+
+		&[data-reverse="family"] {
+			.care[data-selection="family"] {
+				background-position: -2590px 0;
+				@include animation(q14-family-care-reverse 1.6s steps(15, end) forwards);
+			}
+
+			.agent-m {
+				background-position: -6854px 0;
+				@include animation(q14-agent-m-family-reverse 0.7s 0.8s steps(13, end) forwards);
+			}
+
+			.envelopes {
+				margin-right: -63px;
+				@include animation(q14-envelopes-move-reverse 0.4s 0.9s linear forwards);
+			}
+
+			.patients {
+				@include animation(q14-patients-family-reverse 1.7s steps(29, end) forwards);
+			}
+		}
+
+		&[data-reverse="day-care"], &[data-reverse="full-care"] {
+			.care[data-selection="day-care"], .care[data-selection="full-care"] {
+				background-position: -1938px -223px;
+				@include animation(q14-pro-care-reverse 1.8s steps(18, end) forwards);
+			}
+
+			.agent-f {
+				background-position: -26001px 0;
+				@include animation(q14-agent-f-pro-reverse 0.8s 0.9s steps(16, end) forwards);
+			}
+
+			.function {
+				margin: 0 0 0 -105px;
+				@include animation(q14-box-move-reverse 0.4s 1.2s ease-out forwards);
+			}
+
+			.agent-m {
+				background-position: -8940px 0;
+				@include animation(q14-agent-m-pro-reverse 0.7s 1s steps(13, end) forwards);
+			}
+
+			.envelopes {
+				margin: 0 -37px 0 0;
+				@include animation(q14-envelopes-move2-reverse 0.4s 1.1s linear forwards);
+			}
+
+			.patients {
+				background-position: -41448px 0;
+				@include animation(q14-patients-pro-reverse 0.8s 0.9s steps(15, end) forwards);
+			}
+		}
+
+		&[data-reverse="day-care"] .time {
+			background-position: -2115px -1042px;
+			@include animation(q14-time-day-reverse 0.8s steps(16, end) forwards);
+		}
+
+		&[data-reverse="full-care"] .time {
+			background-position: -1736px -1102px;
+			@include animation(q14-time-full-reverse 0.4s steps(8, end) forwards);
+		}
+
+		&[data-reverse="facility"] {
+			.care[data-selection="facility"] {
+				background-position: -3696px -462px;
+				@include animation(q14-facility-fall-reverse 0.9s 0.2s steps(16, end) forwards);
+			}
+		}
+
+		.time {
+			background: url(../img/q14/ani-q14.png) no-repeat;
+			display: block;
+			position: absolute;
+			top: 126px;
+			left: 50%;
+		}
+
+		.care {
+			background: url(../img/q14/ani-q14.png) no-repeat;
+			display: block;
+			position: absolute;
+
+			&[data-selection="family"] {
+				background-position: 185px 0;
+				width: 185px;
+				height: 223px;
+				top: 205px;
+				left: 322px;
+				@include animation(q14-family-care 0.8s 0.8s steps(14, end) forwards);
+			}
+
+			&[data-selection="day-care"], &[data-selection="full-care"] {
+				background-position: 114px -223px;
+				width: 114px;
+				height: 239px;
+				top: 191px;
+				right: 385px;
+				@include animation(q14-pro-care 0.9s 0.8s steps(17, end) forwards);
+			}
+
+			&[data-selection="facility"] {
+				background-position: 231px -462px;
+				width: 231px;
+				height: 580px;
+				top: -180px;
+				right: 165px;
+				@include animation(q14-facility-fall 0.9s 0.2s steps(16, end) forwards);
+			}
+		}
+
+		.agent-f {
+			background: url(../img/q12/ani-q12-agent-f.png) -17253px 0 no-repeat;
+			display: block;
+			width: 243px;
+			height: 225px;
+			position: absolute;
+			top: 203px;
+			left: 285px;
+			@include animation(q14-agent-f-wink 2.2s 1s steps(19, end) infinite);
+		}
+
+		.function {
+			margin-left: -63px;
+			background: url(../img/q12/ani-q12-money.png) no-repeat;
+			display: block;
+			width: 105px;
+			position: absolute;
+			left: 411px;
+
+			&[data-selection="no-need"] {
+				background-position: -2205px 0;
+				height: 45px;
+				top: 295px;
+			}
+
+			&[data-selection="1y"] {
+				background-position: -2205px -45px;
+				height: 52px;
+				top: 288px;
+			}
+
+			&[data-selection="3y"] {
+				background-position: -2205px -97px;
+				height: 64px;
+				top: 276px;
+			}
+
+			&[data-selection="5y"] {
+				background-position: -2520px -161px;
+				width: 120px;
+				height: 77px;
+				top: 263px;
+				left: 396px;
+			}
+		}
+
+		.agent-m {
+			background: url(../img/q12/ani-q12-agent-m.png) -1937px 0 no-repeat;
+			display: block;
+			width: 149px;
+			height: 656px;
+			position: absolute;
+			top: -228px;
+			right: 280px;
+			@include animation(q14-agent-m-wink 2.2s 1s steps(19, end) infinite);
+		}
+
+		.envelopes {
+			background: url(../img/q13/ani-q13-envelopes.png) 0 0 no-repeat;
+			display: block;
+			height: 474px;
+			position: absolute;
+			top: -121px;
+
+			&[data-selection="3y"] {
+				background-position: -140px 0;
+				width: 20px;
+				right: 376px;
+			}
+
+			&[data-selection="5y"] {
+				background-position: -734px 0;
+				width: 41px;
+				right: 365px;
+			}
+
+			&[data-selection="7y"] {
+				background-position: -1615px 0;
+				width: 60px;
+				right: 357px;
+			}
+
+			&[data-selection="10y"] {
+				background-position: -2557px 0;
+				width: 63px;
+				right: 358px;
+			}
+		}
+
+		.patients {
+			margin-left: -132px;
+			background: url(../img/q12/ani-q12.png) -24288px 0 no-repeat;
+			display: block;
+			width: 264px;
+			height: 270px;
+			position: absolute;
+			top: 164px;
+			left: 50%;
+			@include animation(q14-patients-wink 2.2s 1s steps(19, end) infinite);
 		}
 	}
 }

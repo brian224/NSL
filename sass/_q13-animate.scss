@@ -62,3 +62,43 @@
 		background-position: -1788px 0;
 	}
 }
+
+@include keyframes(q13-3y) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -140px 0;
+	}
+}
+
+@include keyframes(q13-5y) {
+	0% {
+		background-position: -160px 0;
+	}
+
+	100% {
+		background-position: -734px 0;
+	}
+}
+
+@include keyframes(q13-7y) {
+	0% {
+		background-position: -775px 0;
+	}
+
+	100% {
+		background-position: -1615px 0;
+	}
+}
+
+@include keyframes(q13-10y) {
+	0% {
+		background-position: -1675px 0;
+	}
+
+	100% {
+		background-position: -2557px 0;
+	}
+}
