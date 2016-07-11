@@ -17,7 +17,7 @@
 		this._stepList       = '.step-list';
 		this._prevAge        = 20; // 預設年紀
 		this._ageRange       = [30, 50, 70]; // 年紀區間
-		this._steps          = [7, 15, 19, 20]; // 五階段的題目區隔
+		this._steps          = [7, 17, 21, 22]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
 		this._IncomeRange    = [0, 30, 70, 120, 190, 500]; // 收入區間
@@ -93,7 +93,15 @@
 	}
 
 	index.prototype.openBox = function() {
-		$(common._lLightbox).addClass('is-show animation-op');
+		var _which = '';
+
+		if ($('.l-main').hasClass('is-index')) {
+			_which = '.is-notify';
+		} else if ($('.l-main').hasClass('is-quest')) {
+			_which = '.is-insurance';
+		}
+
+		$(common._lLightbox).addClass('is-show animation-op').find(_which).addClass('is-show');
 	}
 
 	index.prototype.closeBox = function() {
@@ -310,6 +318,25 @@
 
 					common._LiabilityAct[0] = data.from_value;
 					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
+				}
+			});
+		});
+
+		$('.medical-slider').each(function(){
+			$(this).ionRangeSlider({
+				min                : 0,
+				max                : $(this).data('max'),
+				max_postfix        : '<i class="postfix"></i>',
+				prettify_separator : ',',
+				from               : common._prevLiability,
+				values             : $(this).data('values').split(','),
+				onFinish           : function (data) {
+					var $imgWrap = $(data.input[0]).parent().prev();
+
+					$imgWrap.addClass('go-ani');
+					$imgWrap.on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+						$(this).removeClass('go-ani');
+					});
 				}
 			});
 		});

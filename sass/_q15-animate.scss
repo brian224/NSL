@@ -1,9 +1,173 @@
-﻿@include keyframes(q15-bird) {
+﻿@include keyframes(q15-title-1) {
+	0%, 3.9% {
+		width: 27px;
+	}
+
+	4%, 7.9% {
+		width: 55px;
+	}
+
+	8%, 11.9% {
+		width: 73px;
+	}
+
+	12%, 15.9% {
+		width: 94px;
+	}
+
+	16%, 19.9% {
+		width: 120px;
+	}
+
+	20%, 43.9% {
+		width: 148px;
+	}
+
+	44%, 47.9% {
+		width: 167px;
+	}
+
+	48%, 51.9% {
+		width: 186px;
+	}
+
+	52%, 55.9% {
+		width: 205px;
+	}
+
+	56%, 59.9% {
+		width: 218px;
+	}
+
+	60%, 63.9% {
+		width: 245px;
+	}
+
+	64%, 67.9% {
+		width: 282px;
+	}
+
+	68%, 71.9% {
+		width: 320px;
+	}
+
+	72%, 75.9% {
+		width: 358px;
+	}
+
+	76%, 79.9% {
+		width: 391px;
+	}
+
+	80%, 83.9% {
+		width: 423px;
+	}
+
+	84%, 87.9% {
+		width: 450px;
+	}
+
+	88%, 91.9% {
+		width: 478px;
+	}
+
+	92%, 95.9% {
+		width: 506px;
+	}
+
+	96%, 99.9% {
+		width: 523px;
+	}
+
+	100% {
+		width: 539px;
+	}
+}
+
+@include keyframes(q15-title-2) {
+	0%, 7.6% {
+		width: 0;
+	}
+
+	7.7%, 15.3% {
+		width: 25px;
+	}
+
+	15.4%, 23% {
+		width: 45px;
+	}
+
+	23.1%, 30.7% {
+		width: 64px;
+	}
+
+	30.8%, 38.4% {
+		width: 90px;
+	}
+
+	38.5%, 46.1% {
+		width: 116px;
+	}
+
+	46.2%, 53.8% {
+		width: 142px;
+	}
+
+	53.9%, 61.5% {
+		width: 170px;
+	}
+
+	61.6%, 69.2% {
+		width: 189px;
+	}
+
+	69.3%, 76.9% {
+		width: 217px;
+	}
+
+	77%, 84.6% {
+		width: 244px;
+	}
+
+	84.7%, 92.2% {
+		width: 269px;
+	}
+
+	92.3%, 99.9% {
+		width: 296px;
+	}
+
+	100% {
+		width: 323px;
+	}
+}
+
+@include keyframes(q15-hospitalized) {
 	0% {
 		background-position: 0 0;
 	}
 
-	50%, 100% {
-		background-position: -4485px 0;
+	100% {
+		background-position: -1088px 0;
+	}
+}
+
+@include keyframes(q15-pay) {
+	0%, 100% {
+		background-position: 0 -152px;
+	}
+
+	50% {
+		background-position: -2982px -152px;
+	}
+}
+
+@include keyframes(q15-surgery) {
+	0%, 100% {
+		background-position: 0 -261px;
+	}
+
+	50% {
+		background-position: -2926px -261px;
 	}
 }

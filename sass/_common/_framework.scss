@@ -19,6 +19,14 @@ input {
 	@include appearance(none);
 }
 
+select {
+	@include appearance(none);
+
+	&::-ms-expand {
+		display : none;
+	}
+}
+
 a {
 	@include button-default;
 	text-decoration : none;

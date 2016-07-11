@@ -1,0 +1,39 @@
+﻿@include keyframes(q16-diseases) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1639px 0;
+	}
+}
+
+@include keyframes(q16-cancer) {
+	0%, 100% {
+		background-position: 0 -138px;
+	}
+
+	50% {
+		background-position: -544px -138px;
+	}
+}
+
+@include keyframes(q16-disability) {
+	0% {
+		background-position: 0 -226px;
+	}
+
+	100% {
+		background-position: -1140px -226px;
+	}
+}
+
+@include keyframes(q16-care) {
+	0%, 100% {
+		background-position: 0 -285px;
+	}
+
+	50% {
+		background-position: -1862px -285px;
+	}
+}

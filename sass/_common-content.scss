@@ -305,7 +305,7 @@
 	background: image-url('boy.png') -148px 0 no-repeat;
 }
 
-@for $i from 1 through 20 {
+@for $i from 1 through 21 {
 	.quest-#{$i} .cut-#{$i} {
 		display: block;
 		height: 100%;
@@ -1739,28 +1739,6 @@
 			@include animation(q8-10-t-9 0.4s steps(8, end) forwards);
 		}
 	}
-
-	.range-slider {
-		display: inline-block;
-
-		.irs {
-			width: 174px;
-		}
-
-		.irs-max {
-			width: 44px;
-		}
-
-		.irs-line {
-			background-position: 0 -13px;
-			width: 152px;
-			height: 12px;
-		}
-
-		.irs-single {
-			font-size: 12px;
-		}
-	}
 }
 
 .quest-9 {
@@ -1870,28 +1848,6 @@
 
 		&[data-level="5-t-4"] {
 			@include animation(q9-5-t-4 1.4s steps(26, end) forwards);
-		}
-	}
-
-	.range-slider {
-		display: inline-block;
-
-		.irs {
-			width: 174px;
-		}
-
-		.irs-max {
-			width: 44px;
-		}
-
-		.irs-line {
-			background-position: 0 -13px;
-			width: 152px;
-			height: 12px;
-		}
-
-		.irs-single {
-			font-size: 12px;
 		}
 	}
 }
@@ -2984,8 +2940,357 @@
 
 .quest-15 {
 	.quest-title {
+		margin-left: -270px;
+		background: none;
+		width: 540px;
+		height: 81px;
+		top: 73px;
+
+		&:before, &:after {
+			content: '';
+			background: url(../img/bg-exams.png) no-repeat;
+			position: absolute;
+			left: 50%;
+		}
+
+		&:before {
+			margin-left: -270px;
+			background-position: 0 -522px;
+			width: 27px;
+			height: 38px;
+			top: 0;
+			@include animation(q15-title-1 1.4s steps(25, end) forwards);
+		}
+
+		&:after {
+			margin-left: -166px;
+			background-position: 0 -560px;
+			height: 27px;
+			bottom: 0;
+			@include animation(q15-title-2 0.7s 1.7s steps(13, end) forwards);
+		}
+	}
+
+	.choice-list {
+		margin: 0 auto;
+		padding-top: 203px;
+		width: 612px;
+		@include box-sizing(border-box);
+
+		.list {
+			position: relative;
+			vertical-align: top;
+
+			@for $i from 1 through 3 {
+				&:nth-child(#{$i}) .question:before {
+					content: '#{$i}';
+				}
+			}
+
+			&:first-child {
+				width: 192px;
+
+				.question {
+					background-position: -467px 0;
+				}
+
+				.image-wrap {
+					margin-top: 20px;
+					margin-bottom: 18px;
+					width: 136px;
+					height: 152px;
+
+					&.go-ani {
+						@include animation(q15-hospitalized 0.5s steps(8, end) forwards);
+					}
+				}
+
+				.range-slider .irs-max .postfix {
+					background-position: -159px -99px;
+					width: 26px;
+					height: 11px;
+				}
+
+				.desc {
+					margin-left: -62px;
+					background-position: 0 -587px;
+					width: 123px;
+					height: 30px;
+				}
+			}
+
+			&:nth-child(2) {
+				width: 238px;
+
+				.question {
+					background-position: -467px -18px;
+				}
+
+				.image-wrap {
+					margin-top: 49px;
+					margin-bottom: 36px;
+					background-position: 0 -152px;
+					width: 142px;
+					height: 108px;
+
+					&.go-ani {
+						@include animation(q15-pay 2.4s steps(21, end) forwards);
+					}
+				}
+
+				.range-slider .irs-max {
+					width: 60px;
+
+					.postfix {
+						background-position: -290px -95px;
+						width: 68px;
+						height: 12px;
+					}
+				}
+
+				.desc {
+					margin-left: -86px;
+					background-position: -170px -587px;
+					width: 173px;
+					height: 14px;
+				}
+			}
+
+			&:nth-child(3) {
+				width: 182px;
+
+				.question {
+					background-position: -467px -36px;
+				}
+
+				.image-wrap {
+					margin-top: 21px;
+					margin-bottom: 19px;
+					background-position: 0 -261px;
+					width: 133px;
+					height: 150px;
+
+					&.go-ani {
+						@include animation(q15-surgery 2.4s steps(22, end) forwards);
+					}
+				}
+
+				.range-slider .irs-max .postfix {
+					background-position: -185px -99px;
+					width: 10px;
+					height: 11px;
+				}
+
+				.desc {
+					margin-left: -88px;
+					background-position: -352px -560px;
+					width: 175px;
+					height: 30px;
+				}
+			}
+		}
+
+		.question {
+			margin-left: 24px;
+			background: url(../img/bg-exams.png) no-repeat;
+			display: inline-block;
+			width: 67px;
+			height: 18px;
+			position: relative;
+			vertical-align: bottom;
+
+			&:before {
+				margin-top: -9px;
+				background: #dc5753;
+				display: block;
+				width: 19px;
+				height: 17px;
+				position: absolute;
+				top: 50%;
+				left: -24px;
+				border-radius: 50%;
+				color: #fff;
+				font-size: 12px;
+			}
+		}
+
+		.image-wrap {
+			margin: 0 auto;
+			background: url(../img/q15/ani-q15.png) no-repeat;
+			display: block;
+		}
+
+		.desc {
+			background: url(../img/bg-exams.png) no-repeat;
+			display: block;
+			position: absolute;
+			top: 284px;
+			left: 50%;
+		}
+	}
+}
+
+.quest-16 {
+	.choice-list {
+		margin: 120px auto 0 auto;
+		width: 860px;
+
+		.list {
+			display: inline-block;
+			width: 25%;
+			position: relative;
+			vertical-align: top;
+
+			@for $i from 1 through 4 {
+				&:nth-child(#{$i}) .question:before {
+					content: '#{$i + 3}';
+				}
+			}
+
+			&:first-child {
+				.question {
+					background-position: -467px -54px;
+				}
+
+				.image-wrap {
+					margin-top: 19px;
+					margin-bottom: 5px;
+					width: 149px;
+					height: 138px;
+
+					&.go-ani {
+						@include animation(q16-diseases 0.6s steps(11, end) forwards);
+					}
+				}
+
+				.desc {
+					margin-left: -96px;
+					background-position: 0 -617px;
+					width: 193px;
+					height: 54px;
+				}
+			}
+
+			&:nth-child(2) {
+				.question {
+					background-position: -467px -72px;
+				}
+
+				.image-wrap {
+					margin-top: 35px;
+					margin-bottom: 39px;
+					background-position: 0 -138px;
+					width: 68px;
+					height: 88px;
+
+					&.go-ani {
+						@include animation(q16-cancer 0.8s steps(8, end) forwards);
+					}
+				}
+
+				.desc {
+					margin-left: -74px;
+					background-position: -193px -601px;
+					width: 148px;
+					height: 34px;
+				}
+			}
+
+			&:nth-child(3) {
+				.question {
+					background-position: -467px -90px;
+				}
+
+				.image-wrap {
+					margin-top: 62px;
+					margin-bottom: 41px;
+					background-position: 0 -226px;
+					width: 114px;
+					height: 59px;
+
+					&.go-ani {
+						@include animation(q16-disability 0.6s steps(10, end) forwards);
+					}
+				}
+
+				.desc {
+					margin-left: -91px;
+					background-position: -352px -590px;
+					width: 183px;
+					height: 74px;
+				}
+			}
+
+			&:nth-child(4) {
+				.question {
+					background-position: -467px -108px;
+				}
+
+				.image-wrap {
+					margin-top: -43px;
+					margin-bottom: 25px;
+					background-position: 0 -285px;
+					width: 98px;
+					height: 180px;
+
+					&.go-ani {
+						@include animation(q16-care 2.2s steps(19, end) forwards);
+					}
+				}
+
+				.desc {
+					margin-left: -80px;
+					background-position: -193px -635px;
+					width: 159px;
+					height: 34px;
+				}
+			}
+		}
+
+		.question {
+			margin-left: 24px;
+			background: url(../img/bg-exams.png) no-repeat;
+			display: inline-block;
+			width: 67px;
+			height: 18px;
+			position: relative;
+			vertical-align: bottom;
+
+			&:before {
+				margin-top: -9px;
+				background: #dc5753;
+				display: block;
+				width: 19px;
+				height: 17px;
+				position: absolute;
+				top: 50%;
+				left: -24px;
+				border-radius: 50%;
+				color: #fff;
+				font-size: 12px;
+			}
+		}
+
+		.image-wrap {
+			margin: 0 auto;
+			background: url(../img/q16/ani-q16.png) no-repeat;
+			display: block;
+		}
+
+		.desc {
+			background: url(../img/bg-exams.png) no-repeat;
+			display: block;
+			position: absolute;
+			top: 254px;
+			left: 50%;
+		}
+	}
+}
+
+.quest-17 {
+	.quest-title {
 		margin-left: -265px;
-		background: url(../img/q15/bg-q15.png) 0 0 no-repeat;
+		background: url(../img/q17/bg-q17.png) 0 0 no-repeat;
 		width: 530px;
 		height: 201px;
 		top: 180px;
@@ -3002,19 +3307,19 @@
 
 		&:before {
 			content: '';
-			background: url(../img/q15/ani-q15.png) 0 0 no-repeat;
+			background: url(../img/q17/ani-q17.png) 0 0 no-repeat;
 			display: block;
 			width: 115px;
 			height: 110px;
 			position: absolute;
 			bottom: 16px;
 			right: 5px;
-			@include animation(q15-bird 4.4s steps(39, end) infinite);
+			@include animation(q17-bird 4.4s steps(39, end) infinite);
 		}
 
 		&:after {
 			content: '';
-			background: url(../img/q15/bg-q15.png) 0 -201px no-repeat;
+			background: url(../img/q17/bg-q17.png) 0 -201px no-repeat;
 			display: block;
 			width: 100%;
 			height: 60px;
@@ -3219,6 +3524,122 @@
 		top: 25px;
 		border: 0;
 		box-shadow: none;
+		cursor: pointer;
+	}
+
+	&.is-small {
+		display: inline-block;
+
+		.irs {
+			width: 174px;
+		}
+
+		.irs-max {
+			width: 44px;
+		}
+
+		.irs-line {
+			background-position: 0 -13px;
+			width: 152px;
+			height: 12px;
+		}
+
+		.irs-single {
+			font-size: 12px;
+		}
+	}
+}
+
+.is-insurance .m-box-body {
+	text-align: center;
+
+	.box-title {
+		margin-bottom: 40px;
+		padding: 0 10px;
+		background: #4a7cad;
+		display: inline-block;
+		width: auto;
+		height: 33px;
+		border-radius: 36px;
+		text-align: center;
+	}
+}
+
+.ins-search-info {
+	font-size: 0;
+
+	.list {
+		margin-bottom: 15px;
+		display: table;
+		width: 100%;
+		height: 34px;
+	}
+
+	.box-wrap {
+		display: table-cell;
+		position: relative;
+
+		&:before, &:after {
+			content: '';
+			background: url(../img/bg-box.png) 0 -66px no-repeat;
+			display: block;
+			position: absolute;
+			top: 50%;
+		}
+
+		&:before {
+			margin: -17px 0 0 -118px;
+			width: 236px;
+			height: 34px;
+			left: 50%;
+		}
+
+		&.b-col-12 > * {
+			width: 100%;
+		}
+
+		&.b-col-6 {
+			width: 50%;
+
+			> * {
+				width: 212px;
+			}
+		}
+
+		&.b-col-4 {
+			width: 33.33%;
+		}
+
+		&.is-select:after {
+			margin-top: -3px;
+			background-position: -409px -32px;
+			width: 13px;
+			height: 7px;
+			right: 47px;
+		}
+	}
+
+	.inputbox, .selection {
+		margin: 0;
+		padding: 0;
+		background: none;
+		display: inline-block;
+		height: 100%;
+		position: relative;
+		border: 0;
+		outline: none;
+		color: #4a7cad;
+		font-family: $font-family;
+		font-weight: bold;
+		letter-spacing: 1px;
+		@include box-sizing(border-box);
+	}
+
+	.inputbox {
+		@include placeholder(#4a7cad);
+	}
+
+	.selection {
 		cursor: pointer;
 	}
 }
