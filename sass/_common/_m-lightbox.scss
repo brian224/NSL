@@ -35,13 +35,14 @@
 
 .m-box-header {
 	.btn-close {
-		background-position: -376px -32px;
+		background-position: -613px -32px;
 		width: 33px;
+		height: 33px;
 		top: -25px;
 		right: -7px;
 
 		&:hover {
-			background-position: -376px -66px;
+			background-position: -646px -32px;
 		}
 	}
 }
@@ -56,7 +57,7 @@
 
 	.box-title {
 		margin: 12px auto 5px auto;
-		background: url(../img/bg-box.png) 0 -32px no-repeat;
+		background: url(../img/bg-box.png) 0 -66px no-repeat;
 		width: 237px;
 		height: 34px;
 		color: #fff;
@@ -73,8 +74,9 @@
 
 .m-box-footer {
 	.btn-close {
-		background-position: -237px -32px;
+		background-position: -237px -66px;
 		width: 139px;
+		height: 34px;
 		bottom: -28px;
 		right: 66px;
 		color: #e95854;
@@ -83,7 +85,7 @@
 		letter-spacing: 1px;
 
 		&:hover {
-			background-position: -237px -66px;
+			background-position: -376px -66px;
 			color: #fff;
 		}
 	}
@@ -91,7 +93,6 @@
 
 .btn-close {
 	background: url(../img/bg-box.png) no-repeat;
-	height: 33px;
 	position: absolute;
 }
 

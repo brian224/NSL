@@ -20,7 +20,7 @@
 		this._steps          = [7, 17, 21, 22]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
-		this._IncomeRange    = [0, 30, 70, 120, 190, 500]; // 收入區間
+		this._IncomeRange    = [0, 10, 30, 70, 120, 190]; // 收入區間
 		this._prevLiability  = 0; // 預設負債
 		this._LiabilityAct   = ''; // 紀錄負債變化
 		this._LiabilityRange = ''; // 負債區間
@@ -39,7 +39,7 @@
 	index.prototype.checkKid = function(className) {
 		if (!$(className).hasClass('is-checked')) {
 			if ($('.dog').siblings().find('.is-show').length === 0) {
-				// $('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+				$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 			} else {
 				$('input[data-age]').each(function(){
 					$(this).data('ionRangeSlider').reset();
@@ -104,7 +104,14 @@
 		$(common._lLightbox).addClass('is-show animation-op').find(_which).addClass('is-show');
 	}
 
-	index.prototype.closeBox = function() {
+	index.prototype.closeBox = function(confirm) {
+		if (confirm === 'confirm') {
+			$(common._lContent + '.quest').attr({
+				'class': 'l-content quest is-ins-list',
+				'data-quest': 'ins-list'
+			});
+		}
+
 		$(common._lLightbox).removeClass('animation-op').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			$(this).removeClass('is-show').off('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend');
 		});
@@ -227,7 +234,7 @@
 					if (common._IncomeAct[0] === common._IncomeRange[0]) {
 						// = 最小值
 						_startRange = i;
-					} else if (common._IncomeAct[0] === common._IncomeRange[common._IncomeRange.length - 1]) {
+					} else if (common._IncomeAct[0] >= common._IncomeRange[common._IncomeRange.length - 1]) {
 						// = 最大值
 						_startRange = common._IncomeRange.length - 1;
 					} else if (common._IncomeAct[0] <= common._IncomeRange[i]) {
@@ -245,11 +252,6 @@
 					common.mixAnimate('.cut-6 ' + common._imageWrap, _startRange, _endRange, common._IncomeRange);
 				}
 
-				if (data.from_value === data.max) {
-					$('.quest-6 .irs-single').addClass('size-adj');
-				} else {
-					$('.quest-6 .irs-single').removeClass('size-adj');
-				}
 				common._prevIncome = data.from_value;
 				common._IncomeAct[0] = data.from_value;
 			}
@@ -533,22 +535,11 @@
 						$('.cut-14 ' + common._imageWrap).attr('data-meta', _meta);
 						$('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
 					}
-
-					// if ($another.hasClass('is-checked')) {
-					// 	$another.removeClass('is-checked');
-					// } else {
-					// 	$('.cut-14 ' + common._imageWrap).addClass('go-ani');
-					// }
-					// $('.cut-14 ' + common._imageWrap).attr('data-meta', _meta);
-					// $('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
-
-					// setTimeout(function(){
-					// 	$('.cut-14 ' + common._imageWrap).addClass('finish-ani');
-					// }, (parseFloat($('.cut-14 ' + common._imageWrap + ' .care').css('animation-duration'), 10) + parseFloat($('.cut-14 ' + common._imageWrap + ' .care').css('animation-delay'), 10)) * 1000);
 				}
 			}
 		});
 
+		// 前往其他題目
 		$(common._btnTopic).on('click', function(){
 			var $quest   = $(common._lContent + '.quest'),
 				_num     = parseInt($quest.attr('data-quest'), 10),
@@ -582,7 +573,7 @@
 							});
 						});
 					}
-				} else if (_num === 2 || _num === 5) {
+				} else if (_num === 2) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
@@ -613,8 +604,18 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
+				} else if (_num === 14) {
+					// 作答了沒
+					if (_meta !== undefined) {
+						$quest.attr({
+							'class': 'l-content quest quest-' + (_num + _direct),
+							'data-quest': _num + _direct
+						});
+					} else {
+						common.shake('.cut-' + _num + ' ' + common._checkbox);
+					}
 				} else {
-					$(common._transition).addClass('chosen-' + _meta);
+					// $(common._transition).addClass('chosen-' + _meta);
 
 					$quest.attr({
 						'class': 'l-content quest quest-' + (_num + _direct),
@@ -670,7 +671,7 @@
 		});
 
 		$(common._close).on('click', function(){
-			common.closeBox();
+			common.closeBox($(this).data('type'));
 		});
 
 		common.offClick();
