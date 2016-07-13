@@ -1,0 +1,169 @@
+﻿@include keyframes(q18-title) {
+	0%, 16.6% {
+		width: 36px;
+	}
+
+	16.7%, 33.2% {
+		width: 64px;
+	}
+
+	33.3%, 49.9% {
+		width: 101px;
+	}
+
+	50%, 66.6% {
+		width: 138px;
+	}
+
+	66.7%, 83.2% {
+		width: 170px;
+	}
+
+	83.3%, 99.9% {
+		width: 204px;
+	}
+
+	100% {
+		width: 218px;
+	}
+}
+
+@include keyframes(q18-girl-wink) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -2774px 0;
+	}
+}
+
+@include keyframes(q18-boy-wink) {
+	0% {
+		background-position: 0 0;
+	}
+
+	50%, 100% {
+		background-position: -2850px 0;
+	}
+}
+
+@include keyframes(q18-girl-retire) {
+	0% {
+		background-position: 0 -224px;
+	}
+
+	100% {
+		background-position: -8500px -224px;
+	}
+}
+
+@include keyframes(q18-girl-retire-reverse) {
+	0% {
+		background-position: -8500px -224px;
+	}
+
+	100% {
+		background-position: 0 -224px;
+	}
+}
+
+@include keyframes(q18-girl-dream) {
+	0% {
+		background-position: 0 -856px;
+	}
+
+	100% {
+		background-position: -3633px -856px;
+	}
+}
+
+@include keyframes(q18-girl-dream-reverse) {
+	0% {
+		background-position: -3633px -856px;
+	}
+
+	100% {
+		background-position: 0 -856px;
+	}
+}
+
+@include keyframes(q18-girl-education) {
+	0% {
+		background-position: 0 -1405px;
+	}
+
+	100% {
+		background-position: -7174px -1405px;
+	}
+}
+
+@include keyframes(q18-girl-education-reverse) {
+	0% {
+		background-position: -7174px -1405px;
+	}
+
+	100% {
+		background-position: 0 -1405px;
+	}
+}
+
+@include keyframes(q18-boy-retire) {
+	0% {
+		background-position: 0 -238px;
+	}
+
+	100% {
+		background-position: -8500px -238px;
+	}
+}
+
+@include keyframes(q18-boy-retire-reverse) {
+	0% {
+		background-position: -8500px -238px;
+	}
+
+	100% {
+		background-position: 0 -238px;
+	}
+}
+
+@include keyframes(q18-boy-dream) {
+	0% {
+		background-position: 0 -870px;
+	}
+
+	100% {
+		background-position: -3465px -870px;
+	}
+}
+
+@include keyframes(q18-boy-dream-reverse) {
+	0% {
+		background-position: -3465px -870px;
+	}
+
+	100% {
+		background-position: 0 -870px;
+	}
+}
+
+@include keyframes(q18-boy-education) {
+	0% {
+		background-position: 0 -1419px;
+	}
+
+	100% {
+		background-position: -7174px -1419px;
+	}
+}
+
+@include keyframes(q18-boy-education-reverse) {
+	0% {
+		background-position: -7174px -1419px;
+	}
+
+	100% {
+		background-position: 0 -1419px;
+	}
+}

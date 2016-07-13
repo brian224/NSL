@@ -298,14 +298,14 @@
 }
 
 .girl {
-	background: image-url('girl.png') -151px 0 no-repeat;
+	background: url(../img/q1/girl.png) -151px 0 no-repeat;
 }
 
 .boy {
-	background: image-url('boy.png') -148px 0 no-repeat;
+	background: url(../img/q1/boy.png) -148px 0 no-repeat;
 }
 
-@for $i from 1 through 21 {
+@for $i from 1 through 24 {
 	.quest-#{$i} .cut-#{$i} {
 		display: block;
 		height: 100%;
@@ -370,7 +370,7 @@
 			}
 
 			.boy {
-				background: url(../img/boy-door.png) 0 0 no-repeat;
+				background: url(../img/q1/boy-door.png) 0 0 no-repeat;
 				width: 335px;
 				height: 309px;
 				top: 179px;
@@ -380,7 +380,7 @@
 		}
 
 		&.chosen-boy .girl {
-			background: url(../img/girl-door.png) 0 0 no-repeat;
+			background: url(../img/q1/girl-door.png) 0 0 no-repeat;
 			width: 335px;
 			height: 309px;
 			top: 179px;
@@ -1198,7 +1198,7 @@
 			top: 250px;
 
 			.doll {
-				background: image-url('girl.png') -151px 0 no-repeat;
+				background: url(../img/q1/girl.png) -151px 0 no-repeat;
 				width: 151px;
 				height: 242px;
 				@include animation(wink-girl 5s steps(1, start) infinite);
@@ -1288,7 +1288,7 @@
 			top: 245px;
 
 			.doll {
-				background: image-url('boy.png') -148px 0 no-repeat;
+				background: url(../img/q1/boy.png) -148px 0 no-repeat;
 				width: 148px;
 				height: 242px;
 				@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
@@ -3131,9 +3131,14 @@
 }
 
 .quest-16 {
+	.cut-16 {
+		overflow: hidden;
+	}
+
 	.choice-list {
 		margin: 120px auto 0 auto;
 		width: 860px;
+		height: auto;
 
 		.list {
 			display: inline-block;
@@ -3326,6 +3331,211 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
+		}
+	}
+}
+
+.quest-18 {
+	.quest-title {
+		margin-left: -109px;
+		background-position: 0 -671px;
+		height: 38px;
+		top: 73px;
+		@include animation(q18-title 0.8s steps(15, end) forwards);
+	}
+
+	.choice-list {
+		margin-left: -195px;
+		width: 390px;
+		height: auto;
+		position: absolute;
+		bottom: 197px;
+		left: 50%;
+		text-align: center;
+
+		.list {
+			width: 130px;
+			text-align: left;
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+				font-size: 0;
+
+				em {
+					margin: 2px 0;
+					height: 19px;
+				}
+
+				&[data-meta="retire"] em {
+					background-position: -429px -350px;
+					width: 65px;
+				}
+
+				&[data-meta="dream"] em {
+					background-position: -429px -369px;
+					width: 65px;
+				}
+
+				&[data-meta="education"] em {
+					background-position: -429px -388px;
+					width: 97px;
+				}
+			}
+		}
+
+		&.chosen-girl ~ .image-wrap {
+			margin-left: -73px;
+			background: url(../img/q18/ani-q18-girl.png) 0 0 no-repeat;
+			width: 146px;
+			height: 224px;
+			top: 184px;
+			@include animation(q18-girl-wink 2.2s steps(19, end) infinite);
+
+			&[data-meta="retire"] {
+				margin-left: -127px;
+				background-position: 0 -224px;
+				width: 250px;
+				height: 632px;
+				top: -207px;
+				@include animation(q18-girl-retire 1.9s steps(34, end) forwards);
+			}
+
+			&[data-meta="dream"] {
+				margin-left: -88px;
+				background-position: 0 -856px;
+				width: 173px;
+				height: 549px;
+				top: -122px;
+				@include animation(q18-girl-dream 1.2s steps(21, end) forwards);
+			}
+
+			&[data-meta="education"] {
+				margin-left: -103px;
+				background-position: 0 -1405px;
+				width: 211px;
+				height: 471px;
+				top: -62px;
+				@include animation(q18-girl-education 1.9s steps(34, end) forwards);
+			}
+
+			&[data-reverse="retire"] {
+				@include animation(q18-girl-retire-reverse 1.9s steps(34, end) forwards);
+			}
+
+			&[data-reverse="dream"] {
+				@include animation(q18-girl-dream-reverse 1.2s steps(21, end) forwards);
+			}
+
+			&[data-reverse="education"] {
+				@include animation(q18-girl-education-reverse 1.9s steps(34, end) forwards);
+			}
+		}
+
+		&.chosen-boy ~ .image-wrap {
+			margin-left: -75px;
+			background: url(../img/q18/ani-q18-boy.png) 0 0 no-repeat;
+			width: 150px;
+			height: 238px;
+			top: 170px;
+			@include animation(q18-boy-wink 2.2s steps(19, end) infinite);
+
+			&[data-meta="retire"] {
+				margin-left: -130px;
+				background-position: 0 -238px;
+				width: 250px;
+				height: 632px;
+				top: -207px;
+				@include animation(q18-boy-retire 1.9s steps(34, end) forwards);
+			}
+
+			&[data-meta="dream"] {
+				margin-left: -83px;
+				background-position: 0 -870px;
+				width: 165px;
+				height: 549px;
+				top: -122px;
+				@include animation(q18-boy-dream 1.2s steps(21, end) forwards);
+			}
+
+			&[data-meta="education"] {
+				margin-left: -106px;
+				background-position: 0 -1419px;
+				width: 211px;
+				height: 471px;
+				top: -62px;
+				@include animation(q18-boy-education 1.9s steps(34, end) forwards);
+			}
+
+			&[data-reverse="retire"] {
+				@include animation(q18-boy-retire-reverse 1.9s steps(34, end) forwards);
+			}
+
+			&[data-reverse="dream"] {
+				@include animation(q18-boy-dream-reverse 1.2s steps(21, end) forwards);
+			}
+
+			&[data-reverse="education"] {
+				@include animation(q18-boy-education-reverse 1.9s steps(34, end) forwards);
+			}
+		}
+	}
+
+	.image-wrap {
+		position: absolute;
+		left: 50%;
+	}
+}
+
+.quest-20 {
+	.quest-title {
+		margin-left: -285px;
+		background-position: 0 -709px;
+		height: 38px;
+		top: 72px;
+		@include animation(q20-title 1.9s steps(35, end) forwards);
+	}
+
+	.education-selector {
+		margin: 0 auto;
+		width: 540px;
+		position: relative;
+		top: 445px;
+		font-size: 0;
+
+		.list {
+			display: inline-block;
+			width: 50%;
+			height: 110px;
+			vertical-align: top;
+			text-align: center;
+
+			&:first-child .range-slider .irs-max .postfix {
+				background-position: -166px -62px;
+				width: 21px;
+			}
+
+			.desc {
+				margin: 0 auto 8px auto;
+				background: url(../img/bg-exams.png) no-repeat;
+				display: block;
+			}
+
+			&:nth-child(1) .desc {
+				background-position: -218px -669px;
+				width: 267px;
+				height: 17px;
+			}
+
+			&:nth-child(2) .desc {
+				background-position: -485px -669px;
+				width: 84px;
+				height: 17px;
+			}
 		}
 	}
 }
@@ -3928,7 +4138,7 @@
 
 			&:before {
 				content: '';
-				background: url(../img/girl-door.png) 0 0 no-repeat;
+				background: url(../img/q1/girl-door.png) 0 0 no-repeat;
 				display: block;
 				width: 100%;
 				height: 100%;
@@ -3941,7 +4151,7 @@
 
 			&:before {
 				content: '';
-				background: url(../img/boy-door.png) 0 0 no-repeat;
+				background: url(../img/q1/boy-door.png) 0 0 no-repeat;
 				display: block;
 				width: 100%;
 				height: 100%;

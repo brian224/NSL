@@ -24,6 +24,7 @@
 		this._prevLiability  = 0; // 預設負債
 		this._LiabilityAct   = ''; // 紀錄負債變化
 		this._LiabilityRange = ''; // 負債區間
+		this._eduCost        = 0; // 子女教育費
 	}
 
 	// 沒作答就往下一題
@@ -131,13 +132,13 @@
 
 	projects.$w.load(function(){
 		$('.age-slider').ionRangeSlider({
-			min: 20,
-			max: 84,
-			from: common._prevAge,
-			onStart: function (data) {
+			min      : 20,
+			max      : 84,
+			from     : common._prevAge,
+			onStart  : function (data) {
 				common._prevAge = data.min;
 			},
-			onFinish: function (data) {
+			onFinish : function (data) {
 				if ((data.from >= common._ageRange[1] && data.from < common._ageRange[2]) && common._prevAge < common._ageRange[0]) {
 					// 青年拉到老年
 					$('.cut-3 ' + common._imageWrap).attr('data-age', 'y-t-o');
@@ -183,10 +184,10 @@
 
 		$('.amount-slider').each(function(){
 			$(this).ionRangeSlider({
-				min: 0,
-				max: 5,
-				from: 0,
-				onFinish: function (data) {
+				min      : 0,
+				max      : 5,
+				from     : 0,
+				onFinish : function (data) {
 					var _class = $(data.input).data('age'); // 取得是哪個年齡層的在做調整
 
 					if (data.from === 0) {
@@ -216,16 +217,16 @@
 		});
 
 		$('.income-slider').ionRangeSlider({
-			min: 0,
-			max: 1000,
-			from: common._prevIncome,
-			max_postfix: '<i class="postfix"></i>',
-			prettify_separator: ',',
-			values: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 250, 300, 350, 400, 450, 500],
-			onStart: function (data) {
+			min                : 0,
+			max                : 1000,
+			from               : common._prevIncome,
+			max_postfix        : '<i class="postfix"></i>',
+			prettify_separator : ',',
+			values             : [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 250, 300, 350, 400, 450, 500],
+			onStart            : function (data) {
 				common._prevIncome = data.min;
 			},
-			onFinish: function (data) {
+			onFinish           : function (data) {
 				var _startRange, _endRange;
 
 				common._IncomeAct[1] = data.from_value;
@@ -263,7 +264,7 @@
 				max                : $(this).data('max'),
 				max_postfix        : '<i class="postfix"></i>',
 				prettify_separator : ',',
-				from               : common._prevLiability,
+				from               : $(this).hasClass('edu-cost') ? common._eduCost : common._prevLiability,
 				values             : $(this).data('values').split(','),
 				onFinish           : function (data) {
 					var _startRange,
@@ -318,6 +319,11 @@
 						common.mixAnimate('.cut-9 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5]);
 					}
 
+					// 紀錄子女教育費
+					if ($(data.input[0]).hasClass('edu-cost')) {
+						common._eduCost = data.from;
+					}
+
 					common._LiabilityAct[0] = data.from_value;
 					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 				}
@@ -341,6 +347,29 @@
 					});
 				}
 			});
+		});
+
+		$('.edu-cost-slider').ionRangeSlider({
+			min                : 0,
+			max                : $('.edu-cost-slider').data('max'),
+			max_postfix        : '<i class="postfix"></i>',
+			prettify_separator : ',',
+			from               : common._eduCost,
+			values             : $('.edu-cost-slider').data('values').split(','),
+			onFinish           : function (data) {
+				common._eduCost = data.from;
+			}
+		});
+
+		$('.edu-prepare-slider').ionRangeSlider({
+			min                : 0,
+			max                : $('.edu-prepare-slider').data('max'),
+			max_postfix        : '<i class="postfix"></i>',
+			prettify_separator : ',',
+			from               : common._prevLiability,
+			values             : $('.edu-prepare-slider').data('values').split(','),
+			onFinish           : function (data) {
+			}
 		});
 
 		if ($(common._lContent).hasClass('index')) {
@@ -536,6 +565,26 @@
 						$('.cut-14 ' + common._imageWrap + ' .care').attr('data-selection', _meta);
 					}
 				}
+			} else if ($(common._lContent).hasClass('quest-18')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
+						$another.removeClass('is-checked');
+						$('.cut-18 ' + common._imageWrap).attr('data-reverse', $('.cut-18 ' + common._imageWrap).attr('data-meta'));
+
+						setTimeout(function(){
+							$('.cut-18 ' + common._imageWrap).attr({
+								'data-reverse': '',
+								'data-meta': _meta
+							});
+						}, (parseFloat($('[data-reverse="' + $('.cut-18 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-18 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
+					} else {
+						$('.cut-18 ' + common._imageWrap).attr('data-meta', _meta);
+					}
+				}
 			}
 		});
 
@@ -604,7 +653,7 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 14) {
+				} else if (_num === 14 || _num === 18) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$quest.attr({
@@ -615,7 +664,11 @@
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
 				} else {
-					// $(common._transition).addClass('chosen-' + _meta);
+					if (_num === 8) {
+						$('.edu-cost-slider').data('ionRangeSlider').update({
+							from: common._eduCost
+						});
+					}
 
 					$quest.attr({
 						'class': 'l-content quest quest-' + (_num + _direct),
@@ -641,6 +694,10 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
+				} else if (_num === 20) {
+					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
+						from: common._eduCost
+					});
 				}
 
 				for (var i = common._steps.length - 1; i >= 0; i--) {
