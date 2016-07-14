@@ -93,6 +93,7 @@
 		}
 	}
 
+	// 開啟 lightbox
 	index.prototype.openBox = function() {
 		var _which = '';
 
@@ -100,6 +101,11 @@
 			_which = '.is-notify';
 		} else if ($('.l-main').hasClass('is-quest')) {
 			_which = '.is-insurance';
+
+			$(common._lLightbox).find('.inputbox').val('').end().find('.selection').each(function(){
+				$(this).find('option').eq(0).prop('selected', 'selected');
+			});
+			$('.datepicker').DatePicker();
 		}
 
 		$(common._lLightbox).addClass('is-show animation-op').find(_which).addClass('is-show');
@@ -123,7 +129,7 @@
 			if ($(common._lLightbox).hasClass('is-show animation-op')) {
 				e.stopPropagation();
 
-				if (!$(e.target).is('.m-box, .m-box *, ' + common._lightbox + ', ' + common._lightbox + ' *')) {
+				if (!$(e.target).is('.m-box, .m-box *, ' + common._lightbox + ', ' + common._lightbox + ' *, .sugarfun-datepicker, .sugarfun-datepicker *')) {
 					common.closeBox();
 				}
 			}
@@ -289,7 +295,7 @@
 						if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
 							// 起始點 = 最小值
 							_startRange = 0;
-						} else if (common._LiabilityAct[0] === common._LiabilityRange[common._LiabilityRange.length - 1]) {
+						} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
 							// 起始點 = 最大值
 							_startRange = common._LiabilityRange.length - 1;
 						} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
@@ -600,7 +606,8 @@
 			if ($(this).hasClass('btn-next')) {
 				_direct = 1;
 				// 是否為第一題
-				if (_num === 1) {
+				if (isNaN(parseInt($('.quest').attr('data-quest'), 10))) {
+				} else if (_num === 1) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
@@ -663,6 +670,7 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
+
 				} else {
 					if (_num === 8) {
 						$('.edu-cost-slider').data('ionRangeSlider').update({

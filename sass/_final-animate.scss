@@ -1,0 +1,25 @@
+﻿@include keyframes(final-title) {
+	0%, 11% {
+		width: 24px;
+	}
+
+	12%, 23% {
+		width: 44px;
+	}
+
+	24%, 35% {
+		width: 59px;
+	}
+
+	36%, 47% {
+		width: 76px;
+	}
+
+	48%, 59% {
+		width: 89px;
+	}
+
+	60%, 100% {
+		width: 105px;
+	}
+}

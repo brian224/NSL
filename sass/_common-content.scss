@@ -227,6 +227,8 @@
 }
 
 .btn-check {
+	overflow: visible;
+
 	&:before {
 		content: '';
 		margin-right: 7px;
@@ -901,8 +903,7 @@
 			}
 
 			&:nth-child(5) {
-				margin-left: -40px;
-				z-index: 5;
+				margin-left: 210px;
 			}
 
 			&.ani-reverse {
@@ -932,12 +933,11 @@
 			}
 
 			&:nth-child(4) {
-				margin-left: -55px;
-				z-index: 5;
+				margin-left: -295px;
 			}
 
 			&:nth-child(5) {
-				margin-left: -295px;
+				margin-left: -355px;
 			}
 
 			&.ani-reverse {
@@ -1742,6 +1742,23 @@
 }
 
 .quest-9 {
+	.stage {
+		padding-right: 23px;
+		position: relative;
+
+		&:before {
+			content: '';
+			margin-left: -258px;
+			background: url(../img/q9/bg-q9.png) 0 0 no-repeat;
+			display: block;
+			width: 516px;
+			height: 93px;
+			position: absolute;
+			left: 50%;
+			top: 269px;
+		}
+	}
+
 	.quest-title {
 		margin-left: -123px;
 		background-position: 0 -256px;
@@ -1786,10 +1803,11 @@
 	}
 
 	.image-wrap {
-		margin: 33px auto 40px auto;
+		margin: 30px auto 40px auto;
 		background: url(../img/q9/ani-q9.png) 0 0 no-repeat;
-		width: 518px;
-		height: 360px;
+		width: 301px;
+		height: 357px;
+		position: relative;
 
 		&.disabled ~ .expenditure-selector {
 			position: relative;
@@ -3006,7 +3024,7 @@
 				}
 
 				.range-slider .irs-max .postfix {
-					background-position: -159px -99px;
+					background-position: -159px -100px;
 					width: 26px;
 					height: 11px;
 				}
@@ -3076,7 +3094,7 @@
 				}
 
 				.range-slider .irs-max .postfix {
-					background-position: -185px -99px;
+					background-position: -185px -100px;
 					width: 10px;
 					height: 11px;
 				}
@@ -3515,7 +3533,7 @@
 			text-align: center;
 
 			&:first-child .range-slider .irs-max .postfix {
-				background-position: -166px -62px;
+				background-position: -166px -63px;
 				width: 21px;
 			}
 
@@ -3594,6 +3612,27 @@
 			width: 916px;
 			height: 205px;
 			overflow-y: scroll;
+		}
+
+		.ins-footer {
+			margin-top: 20px;
+			text-align: center;
+
+			.btn-link {
+				background: url(../img/bg-box.png) -237px -66px no-repeat;
+				width: 139px;
+				height: 34px;
+				color: #e95854;
+				font-size: 14px;
+				font-weight: bold;
+				letter-spacing: 1px;
+				line-height: 34px;
+
+				&:hover {
+					background-position: -376px -66px;
+					color: #fff;
+				}
+			}
 		}
 	}
 
@@ -3784,6 +3823,67 @@
 			background-position: -97px -69px;
 		}
 	}
+
+	.btn-topic.btn-next {
+		background-position: -295px -157px;
+		width: 105px;
+	}
+}
+
+.is-final {
+	.cut-final {
+		display: block;
+		height: 100%;
+	}
+
+	.image-wrap {
+		margin-left: -256px;
+		background: url(../img/bg-exams.png) 0 -747px no-repeat;
+		width: 512px;
+		height: 177px;
+		position: absolute;
+		top: 239px;
+		left: 50%;
+	}
+
+	.btn-topic.btn-next {
+		background-position: -400px -157px;
+		width: 105px;
+	}
+
+	.quest-title {
+		margin-left: -81px;
+		background: none;
+		display: block;
+		width: 162px;
+		height: 32px;
+		position: absolute;
+		top: 135px;
+		left: 50%;
+
+		&:before {
+			content: '';
+			background: image-url('bg-index.png') -112px -358px no-repeat;
+			display: block;
+			width: 45px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include animation(wing-ani 0.4s steps(1, end) infinite);
+		}
+
+		&:after {
+			content: '';
+			background: url(../img/bg-exams.png) -432px -231px no-repeat;
+			display: block;
+			height: 25px;
+			position: absolute;
+			top: 4px;
+			left: 56px;
+			@include animation(final-title 0.9s steps(5, end) infinite);
+		}
+	}
 }
 
 .step-list {
@@ -3885,15 +3985,15 @@
 	background: image-url('shared.png') no-repeat;
 	display: block;
 	width: 92px;
-	height: 103px;
+	height: 102px;
 	position: absolute !important;
 	top: 460px;
 	z-index: 5;
-	@include transition(ease-in-out all 0.3s);
 
 	&.btn-prev {
 		background-position: -295px -55px;
 		left: 85px;
+		@include transition(ease-in-out all 0.3s);
 	}
 
 	&.btn-next {
@@ -4120,6 +4220,21 @@
 	.selection {
 		padding-right: 30px;
 		cursor: pointer;
+	}
+}
+
+@-moz-document url-prefix() {
+	.quest-14 .choice-list .list {
+		margin-right: 12px;
+	}
+
+	.quest-18 .choice-list {
+		margin-left: -198px;
+		width: 396px;
+
+		.list {
+			width: 132px;
+		}
 	}
 }
 
