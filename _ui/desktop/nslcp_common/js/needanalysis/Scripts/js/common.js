@@ -24,7 +24,7 @@
 		this._prevLiability  = 0; // 預設負債
 		this._LiabilityAct   = ''; // 紀錄負債變化
 		this._LiabilityRange = ''; // 負債區間
-		this._eduCost        = 0; // 子女教育費
+		this._eduCost        = 30; // 子女教育費
 	}
 
 	// 沒作答就往下一題
@@ -87,7 +87,7 @@
 						common.mixAnimate(className, start, end, range);
 					}
 				} else {
-					$(className).removeClass('disabled');
+					$(className).removeClass('disabled').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 				}
 			});
 		}
@@ -105,6 +105,7 @@
 			$(common._lLightbox).find('.inputbox').val('').end().find('.selection').each(function(){
 				$(this).find('option').eq(0).prop('selected', 'selected');
 			});
+
 			$('.datepicker').DatePicker();
 		}
 
@@ -362,8 +363,91 @@
 			prettify_separator : ',',
 			from               : common._eduCost,
 			values             : $('.edu-cost-slider').data('values').split(','),
+			onStart            : function (data) {
+				if (data.from !== 0) {
+					var _endRange;
+					// 判斷結束點在哪
+					common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+					common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
+
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityRange.length; i++) {
+						common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+					}
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityAct.length; i++) {
+						common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
+					}
+
+					for (var j = 0; j < common._LiabilityRange.length; j++) {
+						if (data.from_value >= common._LiabilityRange[j]) {
+							_endRange = j;
+						}
+					}
+
+					if (_endRange >= 2) {_endRange = 2;}
+
+					$('.cut-20 ' + common._imageWrap + ' .college').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+						common.mixAnimate('.cut-20 ' + common._imageWrap + ' .college', 0, _endRange, [0, 1, 2]);
+					});
+
+					common._LiabilityAct[0] = data.from_value;
+					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
+				}
+			},
 			onFinish           : function (data) {
+				var _startRange,
+					_endRange;
+
+				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
+
+				// 字串轉數字
+				for (var i = 0; i < common._LiabilityRange.length; i++) {
+					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+				}
+				// 字串轉數字
+				for (var i = 0; i < common._LiabilityAct.length; i++) {
+					common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
+				}
+				// 紀錄變化結束點
+				common._LiabilityAct[1] = data.from_value;
+
+				// 判斷起始點在哪
+				for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
+					if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
+						// 起始點 = 最小值
+						_startRange = 0;
+					} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
+						// 起始點 = 最大值
+						_startRange = common._LiabilityRange.length - 1;
+					} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
+						_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+					}
+				}
+
+				// 判斷結束點在哪
+				for (var j = 0; j < common._LiabilityRange.length; j++) {
+					if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
+						_endRange = j;
+					}
+				}
+
+				if (_endRange >= 2) {_endRange = 2;}
+
+				if (_startRange !== _endRange) {
+					var _base = $('.cut-20 ' + common._imageWrap + ' .college').attr('data-level').split('-t-')[1];
+
+					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+					common.mixAnimate('.cut-20 ' + common._imageWrap + ' .college', _base, _endRange - _startRange + _base, [0, 1, 2]);
+				}
+
+				// 紀錄子女教育費
 				common._eduCost = data.from;
+
+				common._LiabilityAct[0] = data.from_value;
+				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 			}
 		});
 
@@ -606,8 +690,7 @@
 			if ($(this).hasClass('btn-next')) {
 				_direct = 1;
 				// 是否為第一題
-				if (isNaN(parseInt($('.quest').attr('data-quest'), 10))) {
-				} else if (_num === 1) {
+				if (_num === 1) {
 					// 作答了沒
 					if (_meta !== undefined) {
 						$(common._transition).addClass('chosen-' + _meta);
@@ -641,6 +724,17 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
+				} else if (_num === 4) {
+					if ($('.kids-pool .is-show').length === 0) {
+						common.shake('.cut-' + _num + ' .kids-selector');
+					} else {
+						$('.cut-20 .image-wrap').attr('data-kids', (($('.kids-pool .is-show').length >= 4) ? 4 : $('.kids-pool .is-show').length));
+
+						$quest.attr({
+							'class': 'l-content quest quest-' + (_num + _direct),
+							'data-quest': _num + _direct
+						});
+					}
 				} else if (_num === 10 || _num === 11 || _num === 12 || _num === 13) {
 					// 將病房寫入下一題
 					if ($('.cut-' + _num + ' .is-checked').length !== 0) {
@@ -670,7 +764,11 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-
+				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) || _num === 21) {
+					$quest.attr({
+						'class': 'l-content quest is-final',
+						'data-quest': 'final'
+					});
 				} else {
 					if (_num === 8) {
 						$('.edu-cost-slider').data('ionRangeSlider').update({
@@ -691,6 +789,10 @@
 				}
 			} else {
 				_direct = -1;
+
+				if (isNaN(_num)) {
+					_num = 22;
+				}
 
 				$quest.attr({
 					'class': 'l-content quest quest-' + (_num + _direct),
@@ -733,6 +835,25 @@
 
 		$(common._lightbox).on('click', function(){
 			common.openBox();
+
+			if ($(this).hasClass('btn-edit')) {
+				// $(this).prev().find('.info').each(function(){
+				// 	if ($(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1])[0].tagName === 'INPUT') {
+				// 		$(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1]).val($(this).text());
+				// 	} else if ($(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1])[0].tagName === 'SELECT') {
+				// 		var _text = $(this).text();
+
+				// 		$(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1]).find('option').each(function(){
+				// 			if ($(this).text() === _text) {
+				// 				$(this).prop('selected', 'selected');
+				// 			}
+				// 		});
+				// 	}
+				// });
+				$(common._lLightbox + ' .is-insurance .box-title').text('編輯保單');
+			} else if ($(this).hasClass('btn-add') || $(this).hasClass('btn-notify')) {
+				$(common._lLightbox + ' .is-insurance .box-title').text('新增保單');
+			}
 		});
 
 		$(common._close).on('click', function(){
