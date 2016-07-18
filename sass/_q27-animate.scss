@@ -1,0 +1,247 @@
+﻿@include keyframes(q27-title) {
+	0%, 12.4% {
+		width: 35px;
+	}
+
+	12.5%, 24.9% {
+		width: 64px;
+	}
+
+	25%, 37.4% {
+		width: 102px;
+	}
+
+	37.5%, 49.9% {
+		width: 131px;
+	}
+
+	50%, 62.4% {
+		width: 163px;
+	}
+
+	62.5%, 74.9% {
+		width: 182px;
+	}
+
+	75%, 87.4% {
+		width: 209px;
+	}
+
+	87.5%, 99.9% {
+		width: 245px;
+	}
+
+	100% {
+		width: 260px;
+	}
+}
+
+@include keyframes(q27-is-labor) {
+	0% {
+		background-position: 0 -555px;
+	}
+
+	100% {
+		background-position: -2090px -555px;
+	}
+}
+
+@include keyframes(q27-is-civil) {
+	0% {
+		background-position: -5865px -555px;
+	}
+
+	100% {
+		background-position: -7695px -555px;
+	}
+}
+
+@include keyframes(q27-is-farmer) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3655px 0;
+	}
+}
+
+@include keyframes(q27-is-soldier) {
+	0% {
+		background-position: -7817px -555px;
+	}
+
+	100% {
+		background-position: -9211px -555px;
+	}
+}
+
+@include keyframes(q27-is-labor-reverse) {
+	0% {
+		background-position: -3900px -555px;
+	}
+
+	100% {
+		background-position: -2200px -555px;
+	}
+}
+
+@include keyframes(q27-is-civil-reverse) {
+	0% {
+		background-position: -7667px -781px;
+	}
+
+	100% {
+		background-position: -5865px -781px;
+	}
+}
+
+@include keyframes(q27-is-farmer-reverse) {
+	0% {
+		background-position: -7525px 0;
+	}
+
+	100% {
+		background-position: -3870px 0;
+	}
+}
+
+@include keyframes(q27-is-soldier-reverse) {
+	0% {
+		background-position: -9500px -801px;
+	}
+
+	100% {
+		background-position: -7817px -801px;
+	}
+}
+
+@include keyframes(q27-not-labor) {
+	0% {
+		background-position: -2200px -555px;
+	}
+
+	100% {
+		background-position: -3900px -555px;
+	}
+}
+
+@include keyframes(q27-not-civil) {
+	0% {
+		background-position: -5865px -781px;
+	}
+
+	100% {
+		background-position: -7667px -781px;
+	}
+}
+
+@include keyframes(q27-not-farmer) {
+	0% {
+		background-position: -3870px 0;
+	}
+
+	100% {
+		background-position: -7525px 0;
+	}
+}
+
+@include keyframes(q27-not-soldier) {
+	0% {
+		background-position: -7817px -801px;
+	}
+
+	100% {
+		background-position: -9500px -801px;
+	}
+}
+
+@include keyframes(q27-ground-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 0 -1080px;
+	}
+}
+
+@include keyframes(q27-ground-2) {
+	0% {
+		background-position: -510px 0;
+	}
+
+	100% {
+		background-position: -510px -840px;
+	}
+}
+
+@include keyframes(q27-ground-3) {
+	0% {
+		background-position: -1154px 0;
+	}
+
+	100% {
+		background-position: -1154px -840px;
+	}
+}
+
+@include keyframes(q27-ground-reverse) {
+	0% {
+		background-position: -510px -840px;
+	}
+
+	100% {
+		background-position: -510px 0;
+	}
+}
+
+@include keyframes(q27-choose-labor) {
+	0% {
+		background-position: 0 -810px;
+	}
+
+	100% {
+		background-position: -5520px -810px;
+	}
+}
+
+@include keyframes(q27-choose-civil) {
+	0% {
+		background-position: -5865px -1018px;
+	}
+
+	100% {
+		background-position: -6681px -1018px;
+	}
+}
+
+@include keyframes(q27-choose-farmer) {
+	0% {
+		background-position: 0 -284px;
+	}
+
+	100% {
+		background-position: -10384px -284px;
+	}
+}
+
+@include keyframes(q27-choose-soldier) {
+	0% {
+		background-position: -7817px -1058px;
+	}
+
+	100% {
+		background-position: -9797px -1058px;
+	}
+}
+
+@include keyframes(q27-opacity) {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

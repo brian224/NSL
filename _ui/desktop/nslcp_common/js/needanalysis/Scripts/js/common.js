@@ -459,6 +459,53 @@
 			from               : common._prevLiability,
 			values             : $('.edu-prepare-slider').data('values').split(','),
 			onFinish           : function (data) {
+				var _startRange,
+					_endRange;
+
+				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
+
+				// 字串轉數字
+				for (var i = 0; i < common._LiabilityRange.length; i++) {
+					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+				}
+				// 字串轉數字
+				for (var i = 0; i < common._LiabilityAct.length; i++) {
+					common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
+				}
+				// 紀錄變化結束點
+				common._LiabilityAct[1] = data.from_value;
+
+				// 判斷起始點在哪
+				for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
+					if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
+						// 起始點 = 最小值
+						_startRange = 0;
+					} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
+						// 起始點 = 最大值
+						_startRange = common._LiabilityRange.length - 1;
+					} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
+						_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+					}
+				}
+
+				// 判斷結束點在哪
+				for (var j = 0; j < common._LiabilityRange.length; j++) {
+					if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
+						_endRange = j;
+					}
+				}
+
+				if (_startRange !== _endRange) {
+					var _base = $('.cut-20 ' + common._imageWrap + ' .money').attr('data-level').split('-t-')[1];
+
+					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+					common.mixAnimate('.cut-20 ' + common._imageWrap + ' .money', _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4]);
+				}
+
+				common._LiabilityAct[0] = data.from_value;
+				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 			}
 		});
 
@@ -675,6 +722,35 @@
 						$('.cut-18 ' + common._imageWrap).attr('data-meta', _meta);
 					}
 				}
+			} else if ($(common._lContent).hasClass('quest-27')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
+						$another.removeClass('is-checked').parent().addClass('disabled');
+						$('.cut-27 ' + common._imageWrap).attr('data-reverse', _meta);
+
+						setTimeout(function(){
+							$('.cut-27 ' + common._imageWrap).attr({
+								'data-reverse': '',
+								'data-meta': _meta
+							});
+
+							setTimeout(function(){
+								$another.parent().removeClass('disabled');
+							}, (parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
+						}, (parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
+					} else {
+						$('.cut-27 ' + common._imageWrap).attr('data-meta', _meta);
+					}
+				}
+			} else if ($(common._lContent).hasClass('quest-28')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked').siblings().removeClass('is-checked');
+				}
 			}
 		});
 
@@ -754,9 +830,15 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 14 || _num === 18) {
+				} else if (_num === 14 || _num === 18 || _num === 27) {
 					// 作答了沒
 					if (_meta !== undefined) {
+					// 將保險選項寫入下一題
+						if (_num === 27) {
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
+							$('.cut-' + (_num + 1) + ' .respond-wrap').attr('data-meta', _meta);
+						}
+
 						$quest.attr({
 							'class': 'l-content quest quest-' + (_num + _direct),
 							'data-quest': _num + _direct
@@ -764,7 +846,7 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) || _num === 21) {
+				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) || _num === 28) {
 					$quest.attr({
 						'class': 'l-content quest is-final',
 						'data-quest': 'final'
@@ -791,7 +873,7 @@
 				_direct = -1;
 
 				if (isNaN(_num)) {
-					_num = 22;
+					_num = 29;
 				}
 
 				$quest.attr({

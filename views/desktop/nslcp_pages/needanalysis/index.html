@@ -41,7 +41,7 @@
 				<i class="icon-flying-bird"></i>
 				<i class="icon-flying-bird reverse"></i>
 			</div>
-			<div class="l-content quest quest-20" data-quest="20">
+			<div class="l-content quest quest-28" data-quest="28">
 				<div class="stage cut-1">
 					<ul class="choice-list jq-transition" data-first="true" data-select="">
 						<li class="list">
@@ -564,7 +564,7 @@
 					</h2>
 				</div>
 				<div class="stage cut-18">
-					<ul class="choice-list jq-transition chosen-boy">
+					<ul class="choice-list jq-transition">
 						<li class="list">
 							<button class="btn-check jq-checkbox" data-meta="retire">
 								<em class="hide-text">退休基金</em>
@@ -621,7 +621,7 @@
 							<li class="doll"></li>
 							<li class="doll"></li>
 						</ul>
-						<div class="money"></div>
+						<div class="money" data-level=""></div>
 					</div>
 					<ul class="education-selector">
 						<li class="list">
@@ -633,7 +633,7 @@
 						<li class="list">
 							<em class="desc">目前已準備？</em>
 							<div class="range-slider is-small">
-								<input class="slider-picker edu-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="" data-liability="0,0">
+								<input class="slider-picker edu-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="0,20,180,450,900" data-liability="0,0">
 							</div>
 						</li>
 					</ul>
@@ -641,10 +641,106 @@
 						<em>給兒女無憂的求學時光 是為人父母的心願</em>
 					</h2>
 				</div>
-				<div class="stage cut-21">
-					<button class="btn-notify jq-lightbox">
-						<em class="">進行保單健檢吧</em>
-					</button>
+				<div class="stage cut-27">
+					<ul class="choice-list jq-transition">
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="labor">
+								<em class="hide-text">勞保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="civil">
+								<em class="hide-text">公保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="farmer">
+								<em class="hide-text">農保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="soldier">
+								<em class="hide-text">軍保</em>
+							</button>
+						</li>
+					</ul>
+					<div class="image-wrap" data-meta="" data-reverse="">
+						<span class="ground"></span>
+						<ul class="ani-pool">
+							<li class="doll labor"></li>
+							<li class="doll civil"></li>
+							<li class="doll farmer"></li>
+							<li class="doll soldier"></li>
+						</ul>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>最後檢查你的裝備</em>
+					</h2>
+				</div>
+				<div class="stage cut-28">
+					<div class="image-wrap" data-meta="soldier"></div>
+					<div class="respond-wrap" data-meta="soldier">
+						<ul class="respond-area labor">
+							<li class="list b-middle">
+								<em class="money hide-text">月投保薪資：</em>
+								<input type="text" class="inputbox is-large" value="" maxlength="10">
+							</li>
+							<li class="list b-middle">
+								<em class="seniority hide-text">年資</em>
+								<input type="text" class="inputbox is-small" value="" maxlength="2">
+								<em class="unit hide-text">年</em>
+							</li>
+							<li class="list b-middle">
+								<button class="btn-check jq-checkbox" data-meta="new">
+									<em class="hide-text">新制</em>
+								</button>
+								<button class="btn-check jq-checkbox" data-meta="old">
+									<em class="hide-text">舊制</em>
+								</button>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area civil">
+							<li class="list b-middle">
+								<em class="money hide-text">本俸：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large" value="" maxlength="10"></label>
+								<em class="unit hide-text">元</em>
+							</li>
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之公保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-small" value="" maxlength="3"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area farmer">
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之農保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large" value="" maxlength="10"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area soldier">
+							<li class="list b-middle">
+								<em class="money hide-text">本俸：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large" value="" maxlength="10"></label>
+								<em class="unit hide-text">元</em>
+							</li>
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之軍保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-small" value="" maxlength="3"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<button class="btn-notify jq-lightbox">
+							<em class="">進行保單健檢吧</em>
+						</button>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>最後檢查你的裝備</em>
+					</h2>
 				</div>
 				<div class="stage cut-ins-list">
 					<h2 class="quest-title hide-text">

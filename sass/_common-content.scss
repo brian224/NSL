@@ -307,7 +307,7 @@
 	background: url(../img/q1/boy.png) -148px 0 no-repeat;
 }
 
-@for $i from 1 through 24 {
+@for $i from 1 through 28 {
 	.quest-#{$i} .cut-#{$i} {
 		display: block;
 		height: 100%;
@@ -3647,22 +3647,600 @@
 			position: absolute;
 			top: -67px;
 			left: 50%;
+
+			&[data-level="0-t-1"] {
+				@include animation(q20-money-0-t-1 1.3s steps(23, end) forwards);
+			}
+
+			&[data-level="1-t-0"] {
+				@include animation(q20-money-1-t-0 1.3s steps(23, end) forwards);
+			}
+
+			&[data-level="1-t-2"] {
+				@include animation(q20-money-1-t-2 1.3s steps(23, end) forwards);
+			}
+
+			&[data-level="2-t-1"] {
+				@include animation(q20-money-2-t-1 1.3s steps(23, end) forwards);
+			}
+
+			&[data-level="2-t-3"] {
+				@include animation(q20-money-2-t-3 1.3s steps(24, end) forwards);
+			}
+
+			&[data-level="3-t-2"] {
+				@include animation(q20-money-3-t-2 1.3s steps(24, end) forwards);
+			}
+
+			&[data-level="3-t-4"] {
+				@include animation(q20-money-3-t-4 1.3s steps(23, end) forwards);
+			}
+
+			&[data-level="4-t-3"] {
+				@include animation(q20-money-4-t-3 1.3s steps(23, end) forwards);
+			}
 		}
 	}
 }
 
-.quest-21 {
+.quest-27 {
+	.quest-title {
+		margin-left: -130px;
+		background-position: 0 -924px;
+		height: 37px;
+		top: 74px;
+		@include animation(q27-title 1.3s steps(8, end) forwards);
+	}
+
+	.choice-list {
+		margin-left: -290px;
+		padding-left: 280px;
+		width: 580px;
+		height: auto;
+		position: absolute;
+		bottom: 175px;
+		left: 50%;
+		@include box-sizing(border-box);
+
+		&:before {
+			content: '';
+			background: url(../img/bg-exams.png) -218px -686px no-repeat;
+			width: 260px;
+			height: 19px;
+			position: absolute;
+			top: 2px;
+			left: 0;
+		}
+
+		.list {
+			width: 75px;
+			position: relative;
+			text-align: left;
+
+			&.disabled {
+				&:before {
+					content: '';
+					display: block;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 1;
+				}
+
+				> * {
+					opacity: 0.5;
+				}
+			}
+
+			.btn-check {
+				margin: 0;
+				position: relative;
+				top: auto;
+				bottom: auto;
+				left: auto;
+				right: auto;
+				font-size: 0;
+
+				em {
+					margin: 2px 0;
+					width: 34px;
+					height: 19px;
+				}
+
+				&[data-meta="labor"] em {
+					background-position: -421px 0;
+				}
+
+				&[data-meta="civil"] em {
+					background-position: -421px -19px;
+				}
+
+				&[data-meta="farmer"] em {
+					background-position: -421px -38px;
+				}
+
+				&[data-meta="soldier"] em {
+					background-position: -421px -57px;
+				}
+			}
+		}
+	}
+
+	.image-wrap {
+		margin-left: -280px;
+		width: 600px;
+		position: absolute;
+		top: 198px;
+		left: 50%;
+
+		&[data-meta="labor"] {
+			.ground {
+				width: 648px;
+				height: 35px;
+				top: 259px;
+				left: -40px;
+				@include animation(q27-ground-3 1.3s steps(24, end) forwards);
+			}
+
+			.labor {
+				@include animation(q27-is-labor 1.1s 0.8s steps(19, end) forwards);
+			}
+		}
+
+		&[data-meta="civil"] {
+			.ground {
+				width: 510px;
+				height: 45px;
+				top: 250px;
+				left: 90px;
+				@include animation(q27-ground-1 1.3s steps(24, end) forwards);
+			}
+
+			.civil {
+				@include animation(q27-is-civil 0.8s 0.8s steps(15, end) forwards);
+			}
+		}
+
+		&[data-meta="farmer"] {
+			.ground {
+				width: 510px;
+				height: 45px;
+				top: 250px;
+				left: -40px;
+				@include animation(q27-ground-1 1.3s steps(24, end) forwards);
+			}
+
+			.farmer {
+				@include animation(q27-is-farmer 0.9s 0.8s steps(17, end) forwards);
+			}
+		}
+
+		&[data-meta="soldier"] {
+			.ground {
+				width: 644px;
+				height: 35px;
+				top: 259px;
+				left: -50px;
+				@include animation(q27-ground-2 1.3s steps(24, end) forwards);
+			}
+
+			.soldier {
+				@include animation(q27-is-soldier 0.9s 0.8s steps(17, end) forwards);
+			}
+		}
+
+		&:not([data-meta="labor"]):not([data-meta=""]) .labor {
+			background-position: -2200px -555px;
+			width: 100px;
+			height: 255px;
+			left: 291px;
+			@include animation(q27-not-labor 0.9s steps(17, end) forwards);
+		}
+
+		&:not([data-meta="civil"]):not([data-meta=""]) .civil {
+			background-position: -5865px -781px;
+			width: 106px;
+			height: 237px;
+			top: 56px;
+			left: 1px;
+			@include animation(q27-not-civil 0.9s steps(17, end) forwards);
+		}
+
+		&:not([data-meta="farmer"]):not([data-meta=""]) .farmer {
+			background-position: -3870px 0;
+			width: 215px;
+			height: 284px;
+			top: 9px;
+			@include animation(q27-not-farmer 0.9s steps(17, end) forwards);
+		}
+
+		&:not([data-meta="soldier"]):not([data-meta=""]) .soldier {
+			background-position: -7817px -801px;
+			width: 99px;
+			height: 257px;
+			left: 140px;
+			@include animation(q27-not-soldier 0.9s steps(17, end) forwards);
+		}
+
+		&[data-reverse="labor"] {
+			.ground {
+				width: 220px;
+				height: 35px;
+				top: 259px;
+				left: 233px;
+				@include animation(q27-ground-reverse 1.3s steps(24, end) forwards);
+			}
+
+			.doll.labor {
+				background-position: -3900px -555px;
+				@include animation(q27-is-labor-reverse 0.9s 0.4s steps(17, end) forwards);
+			}
+		}
+
+		&[data-reverse="civil"] {
+			.ground {
+				width: 220px;
+				height: 35px;
+				top: 259px;
+				left: -55px;
+				@include animation(q27-ground-reverse 1.3s steps(24, end) forwards);
+			}
+
+			.doll.civil {
+				background-position: -7667px -781px;
+				@include animation(q27-is-civil-reverse 0.9s 0.4s steps(17, end) forwards);
+			}
+		}
+
+		&[data-reverse="farmer"] {
+			.ground {
+				width: 220px;
+				height: 35px;
+				top: 259px;
+				left: auto;
+				right: 0;
+				@include animation(q27-ground-reverse 1.3s steps(24, end) forwards);
+			}
+
+			.doll.farmer {
+				background-position: -7525px 0;
+				@include animation(q27-is-farmer-reverse 0.9s 0.4s steps(17, end) forwards);
+			}
+		}
+
+		&[data-reverse="soldier"] {
+			.ground {
+				width: 220px;
+				height: 35px;
+				top: 259px;
+				left: 88px;
+				@include animation(q27-ground-reverse 1.3s steps(24, end) forwards);
+			}
+
+			.doll.soldier {
+				background-position: -9500px -801px;
+				@include animation(q27-is-soldier-reverse 0.9s 0.4s steps(17, end) forwards);
+			}
+		}
+
+		.ground {
+			background: url(../img/q27/bg-ground.png) no-repeat;
+			display: block;
+			position: absolute;
+		}
+
+		.doll {
+			background: url(../img/q27/ani-q27.png) no-repeat;
+			display: block;
+			position: absolute;
+
+			&.labor {
+				background-position: 0 -555px;
+				width: 110px;
+				height: 239px;
+				top: 38px;
+				left: 281px;
+			}
+
+			&.civil {
+				background-position: -5865px -555px;
+				width: 122px;
+				height: 226px;
+				top: 55px;
+				left: 0;
+			}
+
+			&.farmer {
+				background-position: 0 0;
+				width: 215px;
+				height: 277px;
+				top: 3px;
+				left: 410px;
+			}
+
+			&.soldier {
+				background-position: -7817px -555px;
+				width: 82px;
+				height: 246px;
+				top: 35px;
+				left: 157px;
+			}
+		}
+	}
+}
+
+.quest-28 {
 	.stage {
 		position: relative;
 	}
 
+	.quest-title {
+		margin-left: -130px;
+		background-position: 0 -924px;
+		width: 260px;
+		height: 37px;
+		top: 74px;
+	}
+
+	.image-wrap {
+		background: url(../img/q27/ani-q27.png) no-repeat;
+		position: absolute;
+
+		&[data-meta="labor"] {
+			background-position: 0 -810px;
+			width: 345px;
+			height: 239px;
+			top: 236px;
+			left: 266px;
+			@include animation(q27-choose-labor 0.9s steps(16, end) forwards);
+		}
+
+		&[data-meta="civil"] {
+			background-position: -5865px -1018px;
+			width: 136px;
+			height: 225px;
+			top: 254px;
+			left: 221px;
+			@include animation(q27-choose-civil 0.3s steps(6, end) forwards);
+		}
+
+		&[data-meta="farmer"] {
+			background-position: 0 -284px;
+			width: 649px;
+			height: 271px;
+			top: 207px;
+			left: 196px;
+			@include animation(q27-choose-farmer 0.9s steps(16, end) forwards);
+		}
+
+		&[data-meta="soldier"] {
+			background-position: -7817px -1058px;
+			width: 198px;
+			height: 246px;
+			top: 233px;
+			left: 261px;
+			@include animation(q27-choose-soldier 0.6s steps(10, end) forwards);
+		}
+	}
+
+	.respond-wrap {
+		opacity: 0;
+		@include animation(q27-opacity 0.3s 0.6s linear forwards);
+
+		.respond-area {
+			margin: 0 auto;
+			padding: 252px 0 0 174px;
+			display: none;
+			width: 386px;
+
+			.list {
+				margin-bottom: 22px;
+				padding-left: 16px;
+				display: inline-block;
+				position: relative;
+				line-height: 34px;
+
+				&:after {
+					content: '';
+					background: url(../img/bg-box.png) -679px -55px no-repeat;
+					display: block;
+					width: 9px;
+					height: 8px;
+					position: absolute;
+					top: 13px;
+					left: 0;
+				}
+
+				em {
+					background: url(../img/bg-exams.png) no-repeat;
+					display: inline-block;
+				}
+
+				.retired {
+					width: 244px;
+					height: 19px;
+				}
+
+				.add-ins {
+					background-position: 0 -962px;
+					width: 341px;
+					height: 19px;
+				}
+			}
+
+			.input-style {
+				position: relative;
+
+				&:before {
+					content: '';
+					margin-top: -8px;
+					background: url(../img/bg-box.png) -679px -39px no-repeat;
+					display: block;
+					width: 8px;
+					height: 16px;
+					position: absolute;
+					top: 50%;
+					left: 10px;
+					z-index: 1;
+				}
+			}
+
+			.inputbox {
+				background: url(../img/bg-box.png) no-repeat;
+				height: 34px;
+				border: 0;
+				outline: none;
+				color: #635042;
+				font-size: 16px;
+				text-indent: 24px;
+
+				&.is-large {
+					background-position: -515px -66px;
+					width: 236px;
+				}
+
+				&.is-small {
+					background-position: -751px -66px;
+					width: 65px;
+				}
+			}
+		}
+
+		&[data-meta="labor"] .labor {
+			display: block;
+
+			.money {
+				margin-right: 16px;
+				background-position: -260px -924px;
+				width: 96px;
+				height: 19px;
+			}
+
+			.seniority {
+				margin-right: 10px;
+				background-position: -356px -924px;
+				width: 41px;
+				height: 19px;
+			}
+
+			.unit {
+				margin: 0 30px 0 6px;
+				background-position: -397px -924px;
+				width: 17px;
+				height: 19px;
+			}
+
+			.btn-check {
+				em {
+					width: 35px;
+					height: 19px;
+				}
+
+				&[data-meta="new"] {
+					margin-right: 20px;
+
+					em {
+						background-position: -414px -924px;
+					}
+				}
+	
+				&[data-meta="old"] em {
+					background-position: -449px -924px;
+				}
+			}
+		}
+
+		&[data-meta="civil"] .civil {
+			display: block;
+
+			.money {
+				margin-right: 9px;
+				background-position: -484px -924px;
+				width: 41px;
+				height: 19px;
+			}
+
+			.list {
+				&:first-child .unit {
+					margin-left: 8px;
+					background-position: -525px -924px;
+					width: 17px;
+					height: 19px;
+				}
+
+				&:nth-child(2) .unit {
+					margin-left: 8px;
+					background-position: -504px -943px;
+					width: 35px;
+					height: 19px;
+				}
+			}
+
+			.retired {
+				margin-right: 9px;
+				background-position: -260px -943px;
+			}
+		}
+
+		&[data-meta="farmer"] .farmer {
+			display: block;
+
+			.unit {
+				margin-left: 8px;
+				background-position: -504px -943px;
+				width: 35px;
+				height: 19px;
+			}
+
+			.retired {
+				margin-right: 9px;
+				background-position: 0 -981px;
+			}
+		}
+
+		&[data-meta="soldier"] .soldier {
+			display: block;
+
+			.money {
+				margin-right: 9px;
+				background-position: -484px -924px;
+				width: 41px;
+				height: 19px;
+			}
+
+			.list {
+				&:first-child .unit {
+					margin-left: 8px;
+					background-position: -525px -924px;
+					width: 17px;
+					height: 19px;
+				}
+
+				&:nth-child(2) .unit {
+					margin-left: 8px;
+					background-position: -504px -943px;
+					width: 35px;
+					height: 19px;
+				}
+			}
+
+			.retired {
+				margin-right: 9px;
+				background-position: -244px -981px;
+			}
+		}
+	}
+
 	.btn-notify {
+		margin-left: 115px;
 		background: url(../img/bg-box.png) -237px -66px no-repeat;
 		display: block;
 		width: 139px;
 		height: 34px;
 		position: absolute;
-		top: 400px;
+		top: 410px;
 		left: 50%;
 		color: #e95854;
 		letter-spacing: 1px;
@@ -3672,6 +4250,11 @@
 			background-position: -376px -66px;
 			color: #fff;
 		}
+	}
+
+	.btn-topic.btn-next {
+		background-position: -295px -157px;
+		width: 105px;
 	}
 }
 
