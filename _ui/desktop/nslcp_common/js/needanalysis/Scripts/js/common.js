@@ -17,14 +17,14 @@
 		this._stepList       = '.step-list';
 		this._prevAge        = 20; // 預設年紀
 		this._ageRange       = [30, 50, 70]; // 年紀區間
-		this._steps          = [7, 17, 21, 22]; // 五階段的題目區隔
+		this._steps          = [7, 17, 24, 26]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
-		this._IncomeRange    = [0, 10, 30, 70, 120, 190]; // 收入區間
+		this._IncomeRange    = [0, 10, 40, 80, 130, 200]; // 收入區間
 		this._prevLiability  = 0; // 預設負債
 		this._LiabilityAct   = ''; // 紀錄負債變化
 		this._LiabilityRange = ''; // 負債區間
-		this._eduCost        = 30; // 子女教育費
+		this._eduCost        = 0; // 子女教育費
 	}
 
 	// 沒作答就往下一題
@@ -135,6 +135,24 @@
 				}
 			}
 		});
+	}
+
+	index.prototype.finalCheck = function(_num, _meta, _emptyLength) {
+		var _type = $('.cut-' + _num + ' .respond-wrap').data('meta');
+
+		if (_type === 'labor' && _meta === undefined) {
+			_emptyLength += 1;
+			common.shake('.jq-check-wrap');
+		}
+
+		$('.' + _type + ' input').each(function(){
+			if ($(this).val() === '') {
+				_emptyLength += 1;
+				common.shake($(this).parent());
+			}
+		});
+
+		return _emptyLength;
 	}
 
 	projects.$w.load(function(){
@@ -722,7 +740,27 @@
 						$('.cut-18 ' + common._imageWrap).attr('data-meta', _meta);
 					}
 				}
-			} else if ($(common._lContent).hasClass('quest-27')) {
+			} else if ($(common._lContent).hasClass('quest-21')) {
+				if (!$(this).hasClass('is-checked')) {
+					// 勾選
+					$(this).addClass('is-checked');
+
+					if ($another.hasClass('is-checked')) {
+						// 切換選取時要先跑復原動畫
+						$another.removeClass('is-checked');
+						$('.cut-21 ' + common._imageWrap).attr('data-reverse', $('.cut-21 ' + common._imageWrap).attr('data-meta'));
+
+						setTimeout(function(){
+							$('.cut-21 ' + common._imageWrap).attr({
+								'data-reverse': '',
+								'data-meta': _meta
+							});
+						}, (parseFloat($('[data-reverse="' + $('.cut-21 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $('.cut-21 ' + common._imageWrap).attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
+					} else {
+						$('.cut-21 ' + common._imageWrap).attr('data-meta', _meta);
+					}
+				}
+			} else if ($(common._lContent).hasClass('quest-24')) {
 				if (!$(this).hasClass('is-checked')) {
 					// 勾選
 					$(this).addClass('is-checked');
@@ -730,10 +768,10 @@
 					if ($another.hasClass('is-checked')) {
 						// 切換選取時要先跑復原動畫
 						$another.removeClass('is-checked').parent().addClass('disabled');
-						$('.cut-27 ' + common._imageWrap).attr('data-reverse', _meta);
+						$('.cut-24 ' + common._imageWrap).attr('data-reverse', _meta);
 
 						setTimeout(function(){
-							$('.cut-27 ' + common._imageWrap).attr({
+							$('.cut-24 ' + common._imageWrap).attr({
 								'data-reverse': '',
 								'data-meta': _meta
 							});
@@ -743,10 +781,10 @@
 							}, (parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
 						}, (parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
 					} else {
-						$('.cut-27 ' + common._imageWrap).attr('data-meta', _meta);
+						$('.cut-24 ' + common._imageWrap).attr('data-meta', _meta);
 					}
 				}
-			} else if ($(common._lContent).hasClass('quest-28')) {
+			} else if ($(common._lContent).hasClass('quest-25')) {
 				if (!$(this).hasClass('is-checked')) {
 					// 勾選
 					$(this).addClass('is-checked').siblings().removeClass('is-checked');
@@ -830,7 +868,7 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 14 || _num === 18 || _num === 27) {
+				} else if (_num === 14 || _num === 18 || _num === 24) {
 					// 作答了沒
 					if (_meta !== undefined) {
 					// 將保險選項寫入下一題
@@ -846,11 +884,25 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) || _num === 28) {
+				} else if (_num === 25) {
+					var _emptyLength = 0;
+
+					common.finalCheck(_num, _meta);
+
+					if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
+						$quest.attr({
+							'class': 'l-content quest is-final',
+							'data-quest': 'final'
+						});
+						$(common._stepList).attr('class', 'step-list complete-phase-4');
+					}
+				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10))) {
+					// 最後一 cut
 					$quest.attr({
 						'class': 'l-content quest is-final',
 						'data-quest': 'final'
 					});
+					$(common._stepList).attr('class', 'step-list complete-phase-4');
 				} else {
 					if (_num === 8) {
 						$('.edu-cost-slider').data('ionRangeSlider').update({
@@ -865,7 +917,7 @@
 				}
 
 				for (var i = 0; i < common._steps.length; i++) {
-					if (_num >= (common._steps[i] - 1)) {
+					if (_num >= (common._steps[i] - 1) && _num !== 25) {
 						$(common._stepList).attr('class', common._stepList.split('.')[1] + ' complete-phase-' + (i + 1));
 					}
 				}
@@ -873,7 +925,7 @@
 				_direct = -1;
 
 				if (isNaN(_num)) {
-					_num = 29;
+					_num = 26;
 				}
 
 				$quest.attr({
@@ -916,25 +968,24 @@
 		});
 
 		$(common._lightbox).on('click', function(){
-			common.openBox();
-
 			if ($(this).hasClass('btn-edit')) {
-				// $(this).prev().find('.info').each(function(){
-				// 	if ($(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1])[0].tagName === 'INPUT') {
-				// 		$(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1]).val($(this).text());
-				// 	} else if ($(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1])[0].tagName === 'SELECT') {
-				// 		var _text = $(this).text();
-
-				// 		$(common._lLightbox + ' .' + $(this).attr('class').split('info ')[1]).find('option').each(function(){
-				// 			if ($(this).text() === _text) {
-				// 				$(this).prop('selected', 'selected');
-				// 			}
-				// 		});
-				// 	}
-				// });
+				common.openBox();
 				$(common._lLightbox + ' .is-insurance .box-title').text('編輯保單');
-			} else if ($(this).hasClass('btn-add') || $(this).hasClass('btn-notify')) {
+			} else if ($(this).hasClass('btn-add')) {
+				common.openBox();
 				$(common._lLightbox + ' .is-insurance .box-title').text('新增保單');
+			} else if ($(this).hasClass('btn-notify')) {
+				var $quest       = $(common._lContent + '.quest'),
+					_num         = parseInt($quest.attr('data-quest'), 10),
+					_meta        = $('.cut-' + _num).find('.is-checked').attr('data-meta'),
+					_emptyLength = 0;
+
+				common.finalCheck(_num, _meta, _emptyLength);
+
+				if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
+					common.openBox();
+					$(common._lLightbox + ' .is-insurance .box-title').text('新增保單');
+				}
 			}
 		});
 

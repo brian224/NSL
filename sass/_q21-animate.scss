@@ -1,0 +1,241 @@
+﻿@include keyframes(q21-title) {
+	0%, 9.9% {
+		width: 62px;
+	}
+
+	10%, 19.9% {
+		width: 98px;
+	}
+
+	20%, 29.9% {
+		width: 140px;
+	}
+
+	30%, 49.9% {
+		width: 173px;
+	}
+
+	50%, 59.9% {
+		width: 207px;
+	}
+
+	60%, 69.9% {
+		width: 240px;
+	}
+
+	70%, 79.9% {
+		width: 269px;
+	}
+
+	80%, 89.9% {
+		width: 298px;
+	}
+
+	90%, 99.9% {
+		width: 335px;
+	}
+
+	100% {
+		width: 366px;
+	}
+}
+
+@include keyframes(q21-choose-buycar) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -1683px 0;
+	}
+}
+
+@include keyframes(q21-choose-buycar-reverse) {
+	0% {
+		background-position: -1683px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-choose-house) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -4446px 0;
+	}
+}
+
+@include keyframes(q21-choose-house-reverse) {
+	0% {
+		background-position: -4446px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-choose-job) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -3220px 0;
+	}
+}
+
+@include keyframes(q21-choose-job-reverse) {
+	0% {
+		background-position: -3220px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-choose-travel) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -10155px 0;
+	}
+}
+
+@include keyframes(q21-choose-travel-reverse) {
+	0% {
+		background-position: -10155px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-choose-marry) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -21360px 0;
+	}
+}
+
+@include keyframes(q21-choose-marry-reverse) {
+	0% {
+		background-position: -21360px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-choose-girl) {
+	0% {
+		background-position: 0 -238px;
+	}
+
+	100% {
+		background-position: -906px -238px;
+	}
+}
+
+@include keyframes(q21-choose-girl-reverse) {
+	0% {
+		background-position: -906px -238px;
+	}
+
+	100% {
+		background-position: 151px -238px;
+	}
+}
+
+@include keyframes(q21-choose-boy) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -906px 0;
+	}
+}
+
+@include keyframes(q21-choose-boy-reverse) {
+	0% {
+		background-position: -906px 0;
+	}
+
+	100% {
+		background-position: 151px 0;
+	}
+}
+
+@include keyframes(q21-drop-tree) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -2352px 0;
+	}
+}
+
+@include keyframes(q21-drop-tree-reverse) {
+	0% {
+		background-position: -2352px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q21-drop-cloud) {
+	0% {
+		background-position: 0 -470px;
+	}
+
+	100% {
+		background-position: -4532px -470px;
+	}
+}
+
+@include keyframes(q21-drop-cloud-reverse) {
+	0% {
+		background-position: -4532px -470px;
+	}
+
+	100% {
+		background-position: 0 -470px;
+	}
+}
+
+@include keyframes(q21-drop-border) {
+	0% {
+		background-position: -10584px 0;
+	}
+
+	100% {
+		background-position: -12520px 0;
+	}
+}
+
+@include keyframes(q21-drop-border-reverse) {
+	0% {
+		background-position: -12520px 0;
+	}
+
+	100% {
+		background-position: -10584px 0;
+	}
+}
