@@ -12,6 +12,7 @@
 		this._transition     = '.jq-transition';
 		this._lightbox       = '.jq-lightbox';
 		this._close          = '.jq-close';
+		this._dream          = '.jq-dream';
 		this._lContent       = '.l-content';
 		this._lLightbox      = '.l-lightbox';
 		this._stepList       = '.step-list';
@@ -719,6 +720,38 @@
 			}
 		});
 
+		$('.one-time-slider').ionRangeSlider({
+			min                : 0,
+			max                : $('.one-time-slider').data('max'),
+			max_postfix        : '<i class="postfix"></i>',
+			prettify_separator : ',',
+			from               : common._prevLiability,
+			values             : $('.one-time-slider').data('values').split(','),
+			onFinish           : function (data) {
+			}
+		});
+
+		$('.one-time-prepare-slider').ionRangeSlider({
+			min                : 0,
+			max                : $('.one-time-prepare-slider').data('max'),
+			max_postfix        : '<i class="postfix"></i>',
+			prettify_separator : ',',
+			from               : common._prevLiability,
+			values             : $('.one-time-prepare-slider').data('values').split(','),
+			onFinish           : function (data) {
+			}
+		});
+
+		$('.per-year-slider').ionRangeSlider({
+			min         : 0,
+			max         : $('.per-year-slider').data('max'),
+			max_postfix : '<i class="postfix"></i>',
+			from        : common._prevLiability,
+			values      : $('.per-year-slider').data('values').split(','),
+			onFinish    : function (data) {
+			}
+		});
+
 		if ($(common._lContent).hasClass('index')) {
 			$(common._start).on('click', function(){
 				if ($(common._required).hasClass('is-checked')) {
@@ -1060,7 +1093,7 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 14 || _num === 18 || _num === 24) {
+				} else if (_num === 14 || _num === 18 || _num === 21 || _num === 24) {
 					// 作答了沒
 					if (_meta !== undefined) {
 
@@ -1068,6 +1101,9 @@
 							$('.retire-age-slider').data('ionRangeSlider').update({
 								from: common._nowAge
 							});
+						} else if (_num === 21) {
+							// 將一桶金選項寫入下一題
+							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
 						} else if (_num === 24) {
 							// 將保險選項寫入下一題
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
@@ -1135,9 +1171,13 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
-				} else if (_num === 20) {
+				} else if (_num === 21) {
 					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
 						from: common._eduCost
+					});
+				} else if (_num === 20) {
+					$('.retire-age-slider').data('ionRangeSlider').update({
+						from: common._nowAge
 					});
 				}
 
@@ -1188,6 +1228,11 @@
 
 		$(common._close).on('click', function(){
 			common.closeBox($(this).data('type'));
+		});
+
+		$(common._dream).on('change', function(){
+			$(this).parents(common._transition).attr('data-selection', $(this).val());
+			console.log($(this).val());
 		});
 
 		common.offClick();

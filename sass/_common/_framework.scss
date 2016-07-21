@@ -20,6 +20,7 @@ input {
 }
 
 select {
+	font-family: $font-family;
 	@include appearance(none);
 
 	&::-ms-expand {

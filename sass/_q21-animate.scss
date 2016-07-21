@@ -80,6 +80,26 @@
 	}
 }
 
+@include keyframes(q21-choose-study) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -9392px 0;
+	}
+}
+
+@include keyframes(q21-choose-study-reverse) {
+	0% {
+		background-position: -9392px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
 @include keyframes(q21-choose-job) {
 	0% {
 		background-position: 0 0;
@@ -140,7 +160,7 @@
 	}
 }
 
-@include keyframes(q21-choose-girl) {
+@include keyframes(q21-job-girl) {
 	0% {
 		background-position: 0 -238px;
 	}
@@ -150,7 +170,7 @@
 	}
 }
 
-@include keyframes(q21-choose-girl-reverse) {
+@include keyframes(q21-job-girl-reverse) {
 	0% {
 		background-position: -906px -238px;
 	}
@@ -160,7 +180,27 @@
 	}
 }
 
-@include keyframes(q21-choose-boy) {
+@include keyframes(q21-study-girl) {
+	0% {
+		background-position: 0 -1150px;
+	}
+
+	100% {
+		background-position: -1548px -1150px;
+	}
+}
+
+@include keyframes(q21-study-girl-reverse) {
+	0% {
+		background-position: -1548px -1150px;
+	}
+
+	100% {
+		background-position: 0 -1150px;
+	}
+}
+
+@include keyframes(q21-job-boy) {
 	0% {
 		background-position: 0 0;
 	}
@@ -170,13 +210,33 @@
 	}
 }
 
-@include keyframes(q21-choose-boy-reverse) {
+@include keyframes(q21-job-boy-reverse) {
 	0% {
 		background-position: -906px 0;
 	}
 
 	100% {
 		background-position: 151px 0;
+	}
+}
+
+@include keyframes(q21-study-boy) {
+	0% {
+		background-position: 0 -472px;
+	}
+
+	100% {
+		background-position: -1548px -472px;
+	}
+}
+
+@include keyframes(q21-study-boy-reverse) {
+	0% {
+		background-position: -1548px -472px;
+	}
+
+	100% {
+		background-position: 0 -472px;
 	}
 }
 

@@ -314,7 +314,7 @@
 	}
 }
 
-.cut-1 {
+.quest-1 .cut-1 {
 	.quest-title {
 		margin-left: -83px;
 		height: 38px;
@@ -407,12 +407,12 @@
 		@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
 	}
 
-	.btn-prev {
+	~ .btn-prev {
 		top: -120px;
 	}
 }
 
-.cut-2 {
+/*.cut-2 {
 	.quest-title {
 		margin-left: -83px;
 		background-position: 0 -38px;
@@ -3996,7 +3996,7 @@
 			}
 		}
 	}
-}
+}*/
 
 .cut-21 {
 	.quest-title {
@@ -4085,40 +4085,87 @@
 		}
 
 		&.chosen-girl ~ .image-wrap {
-			.doll {
+			&[data-meta="job"] .doll {
 				margin-left: 30px;
 				background-position: 151px -238px;
 				width: 151px;
 				height: 234px;
 				bottom: 18px;
-			}
-
-			&[data-meta="job"] .doll {
-				@include animation(q21-choose-girl 0.3s 0.4s steps(6, end) forwards);
+				@include animation(q21-job-girl 0.3s 0.4s steps(6, end) forwards);
 			}
 
 			&[data-reverse="job"] .doll {
+				margin-left: 30px;
 				background-position: -906px -238px;
-				@include animation(q21-choose-girl-reverse 0.4s 0.3s steps(7, end) forwards);
+				width: 151px;
+				height: 234px;
+				bottom: 18px;
+				background-position: -906px -238px;
+				@include animation(q21-job-girl-reverse 0.4s 0.3s steps(7, end) forwards);
+			}
+
+			&[data-meta="study"] .doll {
+				margin-right: -108px;
+				background-position: 0 -1150px;
+				width: 172px;
+				height: 682px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+				@include animation(q21-study-girl 0.5s 0.5s steps(9, end) forwards);
+			}
+
+			&[data-reverse="study"] .doll {
+				margin-right: -108px;
+				background-position: -1548px -1150px;
+				width: 172px;
+				height: 682px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+				@include animation(q21-study-girl-reverse 0.5s steps(9, end) forwards);
 			}
 		}
 
 		&.chosen-boy ~ .image-wrap {
-			.doll {
+			&[data-meta="job"] .doll {
 				margin-left: 30px;
 				background-position: 151px 0;
 				width: 151px;
 				height: 238px;
 				bottom: 18px;
-			}
-
-			&[data-meta="job"] .doll {
-				@include animation(q21-choose-boy 0.3s 0.4s steps(6, end) forwards);
+				@include animation(q21-job-boy 0.3s 0.4s steps(6, end) forwards);
 			}
 
 			&[data-reverse="job"] .doll {
+				margin-left: 30px;
 				background-position: -906px 0;
-				@include animation(q21-choose-boy-reverse 0.4s 0.3s steps(7, end) forwards);
+				width: 151px;
+				height: 238px;
+				bottom: 18px;
+				@include animation(q21-job-boy-reverse 0.4s 0.3s steps(7, end) forwards);
+			}
+
+			&[data-meta="study"] .doll {
+				margin-right: -108px;
+				background-position: 0 -472px;
+				width: 172px;
+				height: 678px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+				@include animation(q21-study-boy 0.5s 0.5s steps(9, end) forwards);
+			}
+
+			&[data-reverse="study"] .doll {
+				margin-right: -108px;
+				background-position: -1548px -472px;
+				width: 172px;
+				height: 678px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+				@include animation(q21-study-boy-reverse 0.5s steps(9, end) forwards);
 			}
 		}
 	}
@@ -4178,6 +4225,12 @@
 		}
 
 		&[data-meta="study"] {
+			margin-left: -356px;
+			background: url(../img/q21/ani-q21-study-1.png) 0 0 no-repeat;
+			width: 587px;
+			height: 767px;
+			top: -331px;
+			@include animation(q21-choose-study 0.9s steps(16, end) forwards);
 		}
 
 		&[data-meta="job"] {
@@ -4232,6 +4285,10 @@
 			}
 		}
 
+		&[data-reverse="study"] {
+			@include animation(q21-choose-study-reverse 0.9s steps(16, end) forwards);
+		}
+
 		&[data-reverse="job"] {
 			@include animation(q21-choose-job-reverse 0.8s steps(14, end) forwards);
 		}
@@ -4247,6 +4304,377 @@
 				@include animation(q21-drop-border-reverse 0.4s steps(8, end) forwards);
 			}
 		}
+	}
+}
+
+.cut-22 {
+	.quest-title {
+		margin-left: -183px;
+		background-position: 0 -1000px;
+		width: 366px;
+		height: 38px;
+		top: 73px;
+	}
+
+	.choice-list {
+		margin-left: -320px;
+		width: 640px;
+		height: auto;
+		position: absolute;
+		top: 440px;
+		left: 50%;
+		z-index: 1;
+		text-align: center;
+
+		.list {
+			padding-bottom: 10px;
+			display: inline-block;
+			min-height: 100px;
+			overflow: hidden;
+			vertical-align: top;
+			font-size: 12px;
+
+			&:not(:first-child) {
+				opacity: 0;
+				@include transition(ease-in opacity 0.5s);
+			}
+
+			em {
+				background: url(../img/bg-exams.png) no-repeat;
+				display: inline-block;
+
+				&.prefix {
+					background-position: -452px -425px;
+					width: 28px;
+					height: 15px;
+				}
+			}
+
+			.desc {
+				margin: 8px auto;
+				background-position: -485px -669px;
+				display: block;
+				width: 84px;
+				height: 17px;
+			}
+
+			&.wish {
+				> * {
+					position: absolute;
+					@include transition(ease-in all 0.3s);
+				}
+
+				em {
+					margin-right: 10px;
+					background-position: -366px -1000px;
+					display: inline-block;
+					width: 188px;
+					height: 18px;
+					top: 50px;
+					left: 140px;
+				}
+
+				.selectbox {
+					top: 43px;
+					left: 340px;
+				}
+			}
+
+			&.one-time-content em.postfix {
+				background-position: -480px -425px;
+				width: 82px;
+				height: 16px;
+			}
+
+			&.per-year-content {
+				em.postfix {
+					background-position: -452px -441px;
+					width: 82px;
+					height: 15px;
+				}
+			}
+		}
+
+		&[data-selection=""] .list {
+			vertical-align: middle;
+
+			&:first-child {
+				width: 100%;
+			}
+
+			&:not(:first-child) {
+				width: 0;
+			}
+		}
+
+		&[data-selection="one-time"] .list {
+			width: 33.3%;
+
+			&:first-child {
+				em {
+					top: 10px;
+					left: 18px;
+				}
+
+				.selectbox {
+					top: 40px;
+					left: 40px;
+				}
+			}
+
+			&:nth-child(2), &:nth-child(3) {
+				opacity: 1;
+			}
+
+			&:nth-child(4) {
+				width: 0;
+			}
+		}
+
+		&[data-selection="per-year"] .list {
+			width: 50%;
+
+			&:first-child {
+				em {
+					top: 10px;
+					left: 68px;
+				}
+
+				.selectbox {
+					top: 40px;
+					left: 90px;
+				}
+			}
+
+			&:nth-child(2), &:nth-child(3) {
+				width: 0;
+			}
+
+			&:nth-child(4) {
+				opacity: 1;
+			}
+		}
+
+		.selectbox {
+			background: url(../img/bg-box.png) -483px -100px no-repeat;
+			display: inline-block;
+			width: 146px;
+			height: 34px;
+			position: relative;
+
+			.selection {
+				padding-left: 24px;
+				background: none;
+				width: 100%;
+				height: 100%;
+				border: 0;
+				outline: none;
+				cursor: pointer;
+				color: #6d5847;
+				font-size: 16px;
+				letter-spacing: 1px;
+				line-height: 34px;
+			}
+
+			&:after {
+				content: '';
+				margin-top: -3px;
+				background: url(../img/bg-box.png) -679px -32px no-repeat;
+				display: block;
+				width: 13px;
+				height: 7px;
+				position: absolute;
+				top: 50%;
+				right: 15px;
+				pointer-events: none;
+			}
+
+			&.is-small {
+				margin: 0 5px;
+				background-position: -751px -66px;
+				width: 65px;
+
+				.selection {
+					padding-left: 12px;
+				}
+			}
+		}
+
+		&.chosen-girl ~ .image-wrap {
+			&[data-meta="job"] .doll {
+				margin-left: 30px;
+				background-position: -906px -238px;
+				width: 151px;
+				height: 234px;
+				bottom: 18px;
+			}
+
+			&[data-meta="study"] .doll {
+				margin-right: -108px;
+				background-position: -1548px -1150px;
+				width: 172px;
+				height: 682px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+			}
+		}
+
+		&.chosen-boy ~ .image-wrap {
+			&[data-meta="job"] .doll {
+				margin-left: 30px;
+				background-position: -906px 0;
+				width: 151px;
+				height: 238px;
+				bottom: 18px;
+			}
+
+			&[data-meta="study"] .doll {
+				margin-right: -108px;
+				background-position: -1548px -472px;
+				width: 172px;
+				height: 678px;
+				bottom: -12px;
+				left: auto;
+				right: 0;
+			}
+		}
+	}
+
+	.image-wrap {
+		margin-left: -94px;
+		background: url(../img/q21/ani-q21-car-1.png) 0 0 no-repeat;
+		display: block;
+		width: 187px;
+		height: 149px;
+		position: absolute;
+		top: 287px;
+		left: 50%;
+		
+		.drop {
+			background: url(../img/q21/ani-q21-drop.png) 0 0 no-repeat;
+			display: block;
+			position: absolute;
+			left: 50%;
+		}
+
+		.doll {
+			background: url(../img/q21/ani-q21-doll.png) 0 0 no-repeat;
+			display: block;
+			position: absolute;
+			left: 50%;
+		}
+
+		&[data-meta="buycar"] {
+			background-position: -1870px 0;
+			@include animation(q22-choose-buycar 2.1s steps(39, end) infinite);
+
+			.drop {
+				margin-left: -147px;
+				background-position: -2646px 0;
+				width: 294px;
+				height: 470px;
+				bottom: 110px;
+				@include animation(q22-drop-tree 1.4s steps(26, end) infinite);
+			}
+
+			&[data-level="0-t-1"] {}
+
+			&[data-level="1-t-2"] {}
+
+			&[data-level="2-t-3"] {}
+
+			&[data-level="3-t-4"] {}
+		}
+
+		&[data-meta="buyhouse"] {
+			margin-left: -180px;
+			background: url(../img/q21/ani-q21-house-1.png) -4446px 0 no-repeat;
+			width: 342px;
+			height: 217px;
+			top: 219px;
+
+			.drop {
+				margin-left: -206px;
+				background-position: -4532px -470px;
+				width: 412px;
+				height: 577px;
+				bottom: 172px;
+			}
+
+			&[data-level="0-t-1"] {}
+
+			&[data-level="1-t-2"] {}
+
+			&[data-level="2-t-3"] {}
+		}
+
+		&[data-meta="study"] {
+			margin-left: -356px;
+			background: url(../img/q21/ani-q21-study-1.png) -9392px 0 no-repeat;
+			width: 587px;
+			height: 767px;
+			top: -331px;
+		}
+
+		&[data-meta="job"] {
+			margin-left: -141px;
+			background: url(../img/q21/ani-q21-job-1.png) -3220px 0 no-repeat;
+			width: 230px;
+			height: 765px;
+			top: -329px;
+		}
+
+		&[data-meta="travel"] {
+			margin-left: -332px;
+			background: url(../img/q21/ani-q21-travel-1.png) -10155px 0 no-repeat;
+			width: 677px;
+			height: 759px;
+			top: -301px;
+
+			&[data-level="0-t-1"] {}
+
+			&[data-level="1-t-2"] {}
+
+			&[data-level="2-t-3"] {}
+
+			&[data-level="3-t-4"] {}
+
+			&[data-level="4-t-5"] {}
+		}
+
+		&[data-meta="marry"] {
+			margin-left: -325px;
+			background: url(../img/q21/ani-q21-marry-1.png) -21360px 0 no-repeat;
+			width: 711px;
+			height: 310px;
+			top: 134px;
+
+			.drop {
+				margin-left: -150px;
+				background-position: -12520px 0;
+				width: 242px;
+				height: 919px;
+				bottom: 26px;
+			}
+
+			&[data-level="0-t-1"] {}
+
+			&[data-level="1-t-2"] {}
+
+			&[data-level="2-t-3"] {}
+
+			&[data-level="3-t-4"] {}
+
+			&[data-level="4-t-5"] {}
+
+			&[data-level="5-t-6"] {}
+		}
+	}
+
+	.range-slider .irs-max .postfix {
+		background-position: -166px -63px !important;
+		width: 21px !important;
 	}
 }
 
@@ -4538,7 +4966,7 @@
 	}
 }
 
-.cut-25 {
+.quest-25 .cut-25 {
 	position: relative;
 
 	.quest-title {
@@ -4657,7 +5085,7 @@
 				height: 34px;
 				border: 0;
 				outline: none;
-				color: #635042;
+				color: #6d5847;
 				font-size: 16px;
 				letter-spacing: 1px;
 				text-indent: 24px;
@@ -4683,6 +5111,7 @@
 
 				&:after {
 					content: '';
+					margin-top: -3px;
 					background: url(../img/bg-box.png) -679px -32px no-repeat;
 					display: block;
 					width: 13px;
@@ -4853,7 +5282,7 @@
 		}
 	}
 
-	.btn-topic.btn-next {
+	~ .btn-topic.btn-next {
 		background-position: -295px -157px;
 		width: 105px;
 	}
@@ -5137,21 +5566,6 @@
 		height: 100%;
 	}
 
-	.image-wrap {
-		margin-left: -256px;
-		background: url(../img/bg-exams.png) 0 -747px no-repeat;
-		width: 512px;
-		height: 177px;
-		position: absolute;
-		top: 239px;
-		left: 50%;
-	}
-
-	.btn-topic.btn-next {
-		background-position: -400px -157px;
-		width: 105px;
-	}
-
 	.quest-title {
 		margin-left: -81px;
 		background: none;
@@ -5184,6 +5598,21 @@
 			left: 56px;
 			@include animation(final-title 0.9s steps(5, end) infinite);
 		}
+	}
+
+	.image-wrap {
+		margin-left: -256px;
+		background: url(../img/bg-exams.png) 0 -747px no-repeat;
+		width: 512px;
+		height: 177px;
+		position: absolute;
+		top: 239px;
+		left: 50%;
+	}
+
+	.btn-topic.btn-next {
+		background-position: -400px -157px;
+		width: 105px;
 	}
 }
 
