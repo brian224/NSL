@@ -18,7 +18,7 @@
 	}
 }
 
-@include keyframes(q22-car-0-t-1) {
+/*@include keyframes(q22-car-0-t-1) {
 	0% {
 		background-position: -9724px 0;
 	}
@@ -166,59 +166,369 @@
 	100% {
 		background-position: -px 0;
 	}
-}
+}*/
 
 @include keyframes(q22-travel-0-t-1) {
 	0% {
-		background-position: -px 0;
+		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -8204px 0;
 	}
 }
 
 @include keyframes(q22-travel-1-t-2) {
 	0% {
-		background-position: -px 0;
+		background-position: -8790px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -14064px 0;
 	}
 }
 
 @include keyframes(q22-travel-2-t-3) {
 	0% {
-		background-position: -px 0;
+		background-position: -14650px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -19924px 0;
 	}
 }
 
 @include keyframes(q22-travel-3-t-4) {
 	0% {
-		background-position: -px 0;
+		background-position: 0 -294px;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -5274px -294px;
 	}
 }
 
 @include keyframes(q22-travel-4-t-5) {
 	0% {
-		background-position: -px 0;
+		background-position: -5860px -294px;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -11134px -294px;
 	}
 }
 
-@include keyframes(q22-marry-0-t-1) {
+@include keyframes(q22-travel-5-t-6) {
+	0% {
+		background-position: -11720px -294px;
+	}
+
+	100% {
+		background-position: -16994px -294px;
+	}
+}
+
+@include keyframes(q22-travel-1-t-0) {
+	0% {
+		background-position: -8204px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-travel-2-t-1) {
+	0% {
+		background-position: -14064px 0;
+	}
+
+	100% {
+		background-position: -8790px 0;
+	}
+}
+
+@include keyframes(q22-travel-3-t-2) {
+	0% {
+		background-position: -19924px 0;
+	}
+
+	100% {
+		background-position: -14650px 0;
+	}
+}
+
+@include keyframes(q22-travel-4-t-3) {
+	0% {
+		background-position: -5274px -294px;
+	}
+
+	100% {
+		background-position: 0 -294px;
+	}
+}
+
+@include keyframes(q22-travel-5-t-4) {
+	0% {
+		background-position: -11134px -294px;
+	}
+
+	100% {
+		background-position: -5860px -294px;
+	}
+}
+
+@include keyframes(q22-travel-6-t-5) {
+	0% {
+		background-position: -16994px -294px;
+	}
+
+	100% {
+		background-position: -11720px -294px;
+	}
+}
+
+@include keyframes(q22-flight-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -9478px 0;
+	}
+}
+
+@include keyframes(q22-flight-1-t-2) {
+	0% {
+		background-position: -10155px 0;
+	}
+
+	100% {
+		background-position: -16248px 0;
+	}
+}
+
+@include keyframes(q22-flight-2-t-3) {
+	0% {
+		background-position: -16925px 0;
+	}
+
+	100% {
+		background-position: -23018px 0;
+	}
+}
+
+@include keyframes(q22-flight-3-t-4) {
+	0% {
+		background-position: 0 -96px;
+	}
+
+	100% {
+		background-position: -6093px -96px;
+	}
+}
+
+@include keyframes(q22-flight-4-t-5) {
+	0% {
+		background-position: -6770px -96px;
+	}
+
+	100% {
+		background-position: -12863px -96px;
+	}
+}
+
+@include keyframes(q22-flight-5-t-6) {
+	0% {
+		background-position: -13540px -96px;
+	}
+
+	100% {
+		background-position: -20310px -96px;
+	}
+}
+
+@include keyframes(q22-flight-1-t-0) {
+	0% {
+		background-position: -9478px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-flight-2-t-1) {
+	0% {
+		background-position: -16248px 0;
+	}
+
+	100% {
+		background-position: -10155px 0;
+	}
+}
+
+@include keyframes(q22-flight-3-t-2) {
+	0% {
+		background-position: -23018px 0;
+	}
+
+	100% {
+		background-position: -16925px 0;
+	}
+}
+
+@include keyframes(q22-flight-4-t-3) {
+	0% {
+		background-position: -6093px -96px;
+	}
+
+	100% {
+		background-position: 0 -96px;
+	}
+}
+
+@include keyframes(q22-flight-5-t-4) {
+	0% {
+		background-position: -12863px -96px;
+	}
+
+	100% {
+		background-position: -6770px -96px;
+	}
+}
+
+@include keyframes(q22-flight-6-t-5) {
+	0% {
+		background-position: -20310px -96px;
+	}
+
+	100% {
+		background-position: -13540px -96px;
+	}
+}
+
+@include keyframes(q22-flag-0-t-1) {
+	0% {
+		background-position: 543px 0;
+	}
+
+	100% {
+		background-position: -4344px 0;
+	}
+}
+
+@include keyframes(q22-flag-1-t-2) {
+	0% {
+		background-position: -4344px 0;
+	}
+
+	100% {
+		background-position: -9231px 0;
+	}
+}
+
+@include keyframes(q22-flag-2-t-3) {
+	0% {
+		background-position: -9231px 0;
+	}
+
+	100% {
+		background-position: -14118px 0;
+	}
+}
+
+@include keyframes(q22-flag-3-t-4) {
+	0% {
+		background-position: -14661px 0;
+	}
+
+	100% {
+		background-position: -19005px 0;
+	}
+}
+
+@include keyframes(q22-flag-4-t-5) {
+	0% {
+		background-position: -19005px 0;
+	}
+
+	100% {
+		background-position: -23892px 0;
+	}
+}
+
+@include keyframes(q22-flag-5-t-6) {
+	0% {
+		background-position: -24435px 0;
+	}
+
+	100% {
+		background-position: -29865px 0;
+	}
+}
+
+@include keyframes(q22-flag-1-t-0) {
+	0% {
+		background-position: -4344px 0;
+	}
+
+	100% {
+		background-position: 543px 0;
+	}
+}
+
+@include keyframes(q22-flag-2-t-1) {
+	0% {
+		background-position: -9231px 0;
+	}
+
+	100% {
+		background-position: -4344px 0;
+	}
+}
+
+@include keyframes(q22-flag-3-t-2) {
+	0% {
+		background-position: -14118px 0;
+	}
+
+	100% {
+		background-position: -9231px 0;
+	}
+}
+
+@include keyframes(q22-flag-4-t-3) {
+	0% {
+		background-position: -19005px 0;
+	}
+
+	100% {
+		background-position: -14661px 0;
+	}
+}
+
+@include keyframes(q22-flag-5-t-4) {
+	0% {
+		background-position: -23892px 0;
+	}
+
+	100% {
+		background-position: -19005px 0;
+	}
+}
+
+@include keyframes(q22-flag-6-t-5) {
+	0% {
+		background-position: -29865px 0;
+	}
+
+	100% {
+		background-position: -24435px 0;
+	}
+}
+
+/*@include keyframes(q22-marry-0-t-1) {
 	0% {
 		background-position: -px 0;
 	}
@@ -276,4 +586,4 @@
 	100% {
 		background-position: -px 0;
 	}
-}
+}*/
