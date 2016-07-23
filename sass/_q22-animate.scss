@@ -18,7 +18,7 @@
 	}
 }
 
-/*@include keyframes(q22-car-0-t-1) {
+@include keyframes(q22-car-0-t-1) {
 	0% {
 		background-position: -9724px 0;
 	}
@@ -60,7 +60,7 @@
 
 @include keyframes(q22-house-0-t-1) {
 	0% {
-		background-position: -4788px 0;
+		background-position: -4446px 0;
 	}
 
 	100% {
@@ -78,13 +78,23 @@
 	}
 }
 
-@include keyframes(q22-house-2-t-3) {
+@include keyframes(q22-house-1-t-0) {
 	0% {
-		background-position: -px 0;
+		background-position: -8550px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -4446px 0;
+	}
+}
+
+@include keyframes(q22-house-2-t-1) {
+	0% {
+		background-position: -13680px 0;
+	}
+
+	100% {
+		background-position: -9918px 0;
 	}
 }
 
@@ -130,43 +140,123 @@
 
 @include keyframes(q22-job-0-t-1) {
 	0% {
-		background-position: -px 0;
+		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -6320px 0;
 	}
 }
 
 @include keyframes(q22-job-1-t-2) {
 	0% {
-		background-position: -px 0;
+		background-position: -6636px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -12956px 0;
 	}
 }
 
 @include keyframes(q22-job-2-t-3) {
 	0% {
-		background-position: -px 0;
+		background-position: -13272px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -19592px 0;
 	}
 }
 
-@include keyframes(q22-job-3-t-4) {
+@include keyframes(q22-job-1-t-0) {
 	0% {
-		background-position: -px 0;
+		background-position: -6320px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: 0 0;
 	}
-}*/
+}
+
+@include keyframes(q22-job-2-t-1) {
+	0% {
+		background-position: -12956px 0;
+	}
+
+	100% {
+		background-position: -6636px 0;
+	}
+}
+
+@include keyframes(q22-job-3-t-2) {
+	0% {
+		background-position: -19592px 0;
+	}
+
+	100% {
+		background-position: -13272px 0;
+	}
+}
+
+@include keyframes(q22-flower-0-t-1) {
+	0% {
+		background-position: 0 -592px;
+	}
+
+	100% {
+		background-position: -6320px -592px;
+	}
+}
+
+@include keyframes(q22-flower-1-t-2) {
+	0% {
+		background-position: -6636px -592px;
+	}
+
+	100% {
+		background-position: -14220px -592px;
+	}
+}
+
+@include keyframes(q22-flower-2-t-3) {
+	0% {
+		background-position: -14536px -592px;
+	}
+
+	100% {
+		background-position: -20856px -592px;
+	}
+}
+
+@include keyframes(q22-flower-1-t-0) {
+	0% {
+		background-position: -6320px -592px;
+	}
+
+	100% {
+		background-position: 0 -592px;
+	}
+}
+
+@include keyframes(q22-flower-2-t-1) {
+	0% {
+		background-position: -14220px -592px;
+	}
+
+	100% {
+		background-position: -6636px -592px;
+	}
+}
+
+@include keyframes(q22-flower-3-t-2) {
+	0% {
+		background-position: -20856px -592px;
+	}
+
+	100% {
+		background-position: -14536px -592px;
+	}
+}
 
 @include keyframes(q22-travel-0-t-1) {
 	0% {
@@ -528,62 +618,162 @@
 	}
 }
 
-/*@include keyframes(q22-marry-0-t-1) {
+@include keyframes(q22-marry-0-t-1) {
 	0% {
-		background-position: -px 0;
+		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -6762px 0;
 	}
 }
 
 @include keyframes(q22-marry-1-t-2) {
 	0% {
-		background-position: -px 0;
+		background-position: -7245px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -16422px 0;
 	}
 }
 
 @include keyframes(q22-marry-2-t-3) {
 	0% {
-		background-position: -px 0;
+		background-position: -16905px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -23184px 0;
 	}
 }
 
 @include keyframes(q22-marry-3-t-4) {
 	0% {
-		background-position: -px 0;
+		background-position: -23667px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -30912px 0;
 	}
 }
 
-@include keyframes(q22-marry-4-t-5) {
+@include keyframes(q22-marry-1-t-0) {
 	0% {
-		background-position: -px 0;
+		background-position: -6762px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: 0 0;
 	}
 }
 
-@include keyframes(q22-marry-5-t-6) {
+@include keyframes(q22-marry-2-t-1) {
 	0% {
-		background-position: -px 0;
+		background-position: -16422px 0;
 	}
 
 	100% {
-		background-position: -px 0;
+		background-position: -7245px 0;
 	}
-}*/
+}
+
+@include keyframes(q22-marry-3-t-2) {
+	0% {
+		background-position: -23184px 0;
+	}
+
+	100% {
+		background-position: -16905px 0;
+	}
+}
+
+@include keyframes(q22-marry-4-t-3) {
+	0% {
+		background-position: -30912px 0;
+	}
+
+	100% {
+		background-position: -23667px 0;
+	}
+}
+
+@include keyframes(q22-balloon-0-t-1) {
+	0% {
+		background-position: 435px 0;
+	}
+
+	100% {
+		background-position: -6525px 0;
+	}
+}
+
+@include keyframes(q22-balloon-1-t-2) {
+	0% {
+		background-position: -6960px 0;
+	}
+
+	100% {
+		background-position: -13485px 0;
+	}
+}
+
+@include keyframes(q22-balloon-2-t-3) {
+	0% {
+		background-position: -13920px 0;
+	}
+
+	100% {
+		background-position: -13920px 0;
+	}
+}
+
+@include keyframes(q22-balloon-3-t-4) {
+	0% {
+		background-position: -13920px 0;
+	}
+
+	100% {
+		background-position: -20445px 0;
+	}
+}
+
+@include keyframes(q22-balloon-1-t-0) {
+	0% {
+		background-position: -6525px 0;
+	}
+
+	100% {
+		background-position: 435px 0;
+	}
+}
+
+@include keyframes(q22-balloon-2-t-1) {
+	0% {
+		background-position: -13485px 0;
+	}
+
+	100% {
+		background-position: -6960px 0;
+	}
+}
+
+@include keyframes(q22-balloon-3-t-2) {
+	0% {
+		background-position: -13920px 0;
+	}
+
+	100% {
+		background-position: -13920px 0;
+	}
+}
+
+@include keyframes(q22-balloon-4-t-3) {
+	0% {
+		background-position: -20445px 0;
+	}
+
+	100% {
+		background-position: -13920px 0;
+	}
+}

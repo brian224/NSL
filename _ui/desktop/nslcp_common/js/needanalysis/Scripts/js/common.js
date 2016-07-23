@@ -77,6 +77,10 @@
 			_direction = -1;
 		}
 
+		if (end > range.length) {
+			end = range.length - 1;
+		}
+
 		if (range[start] !== undefined && range[start + _direction] !== undefined) {
 			if (className.split('.cut-22')[1] !== undefined){
 				$('.cut-22').addClass('disabled');
@@ -739,14 +743,16 @@
 			values             : $('.one-time-slider').data('values') ? $('.one-time-slider').data('values').split(',') : '',
 			onFinish           : function (data) {
 				var _startRange,
-					_endRange;
+					_endRange,
+					_array = [];
 
-				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
 				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
 
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityRange.length; i++) {
 					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+					_array.push(i);
 				}
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityAct.length; i++) {
@@ -776,16 +782,25 @@
 				}
 
 				if (_startRange !== _endRange) {
-					var _base     = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1],
-						_siblings = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level') !== '' ? parseInt($('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1], 10) : 0;
+					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
+						var _base     = $('.cut-22 ' + common._imageWrap + ' .doll').attr('data-level').split('-t-')[1],
+							_siblings = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level') !== '' ? parseInt($('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1], 10) : 0;
 
-					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
-					common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6]);
+						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, _array);
+					} else {
+						var _base     = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1],
+							_siblings = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level') !== '' ? parseInt($('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1], 10) : 0;
 
-					if (common._AniCache !== _endRange - _startRange + _base !== _siblings && _siblings > _endRange - _startRange + _base) {
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6]);
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
 					}
+
+					// if (common._AniCache !== _endRange - _startRange + _base !== _siblings && _siblings > _endRange - _startRange + _base) {
+					// 	common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, _endRange - _startRange + _base, _array);
+					// }
 				}
 
 				common._LiabilityAct[0] = data.from_value;
@@ -804,14 +819,16 @@
 			onFinish           : function (data) {
 				var _startRange,
 					_endRange,
+					_array   = [],
 					_limited = $('.cut-22 ' + common._imageWrap).attr('data-level') !== '' ? $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1] : 0;
 
-				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
 				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
 
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityRange.length; i++) {
 					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+					_array.push(i);
 				}
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityAct.length; i++) {
@@ -840,17 +857,24 @@
 					}
 				}
 
-				common._AniCache = _endRange;
-				if (_endRange >= _limited) {_endRange = _limited;}
-				
+				// common._AniCache = _endRange;
+				// if (_endRange >= _limited) {_endRange = _limited;}
+
+				// if (_startRange !== _endRange && _startRange <= _limited) {
 				if (_startRange !== _endRange) {
-					var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
+					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
+						var _base = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1];
 
-					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
-					console.log(_base);
-					console.log(_endRange - _startRange + _base);
-					common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6]);
+						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+					} else {
+						var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
+
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
+					}
 				}
 
 				common._LiabilityAct[0] = data.from_value;
@@ -867,14 +891,16 @@
 			values      : $('.per-year-slider').data('values') ? $('.per-year-slider').data('values').split(',') : '',
 			onFinish    : function (data) {
 				var _startRange,
-					_endRange;
+					_endRange,
+					_array = [];
 
-				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
+				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
 				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
 
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityRange.length; i++) {
 					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+					_array.push(i);
 				}
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityAct.length; i++) {
@@ -908,8 +934,13 @@
 
 					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
-					common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6]);
-					common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, [0, 1, 2, 3, 4, 5, 6]);
+					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
+						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0,1,2,3,4]);
+						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, [0,1,2,3,4]);
+					} else {
+						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
+					}
 				}
 
 				common._LiabilityAct[0] = data.from_value;
@@ -1268,7 +1299,18 @@
 							});
 						} else if (_num === 21) {
 							// 將一桶金選項寫入下一題
+							var  _range = $('.cut-' + _num).find('.is-checked').attr('data-range');
+
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
+							$('.cut-' + (_num + 1) + ' .one-time-slider').attr('data-range', _range);
+
+							if (_meta === 'marry') {
+								$('.cut-' + (_num + 1) + ' .one-time-prepare-slider').attr('data-range', '0,20,100,200,1000');
+								$('.cut-' + (_num + 1) + ' .per-year-slider').attr('data-range', '0,15,30,50,75');
+							} else if (_meta === 'job') {
+								$('.cut-' + (_num + 1) + ' .one-time-prepare-slider').attr('data-range', '0,20,200,1000');
+							}
+
 						} else if (_num === 23) {
 							// 將保險選項寫入下一題
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
@@ -1336,17 +1378,37 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
-				} else if (_num === 21) {
-					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
-						from: common._eduCost
-					});
 				} else if (_num === 20) {
 					$('.retire-age-slider').data('ionRangeSlider').update({
 						from: common._nowAge
 					});
+				} else if (_num === 21) {
+					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
+						from: common._eduCost
+					});
+				} else if (_num === 22) {
+					// 歸零所有選取值
+					$('.cut-22 ' + common._transition).attr('data-selection', '');
+					$('.cut-22 .slider-picker').attr('data-liability', '0,0');
+					$('.cut-22 .selection').each(function(){
+						$(this).find('option').eq(0).prop('selected', 'selected');
+					});
+					$('.one-time-slider').data('ionRangeSlider').update({
+						from: 0
+					});
+
+					$('.one-time-prepare-slider').data('ionRangeSlider').update({
+						from: 0
+					});
+
+					$('.per-year-slider').data('ionRangeSlider').update({
+						from: 0
+					});
+
+					$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll').attr('data-level', '');
 				} else if (_num === 25) {
 					$('.cut-24 .respond-wrap input').val('');
-					$('.cut-24 .selection option').eq(0).attr('selected', 'selected');
+					$('.cut-24 .selection option').eq(0).prop('selected', 'selected');
 				}
 
 				for (var i = common._steps.length - 1; i >= 0; i--) {
@@ -1403,14 +1465,16 @@
 			$('.one-time-slider').data('ionRangeSlider').update({
 				from: 0
 			});
+
 			$('.one-time-prepare-slider').data('ionRangeSlider').update({
 				from: 0
 			});
+
 			$('.per-year-slider').data('ionRangeSlider').update({
 				from: 0
 			});
 
-			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop').attr('data-level', '');
+			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll').attr('data-level', '');
 		});
 
 		common.offClick();
