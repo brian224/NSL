@@ -314,7 +314,7 @@
 	}
 }
 
-/*.quest-1 .cut-1 {
+.quest-1 .cut-1 {
 	.quest-title {
 		margin-left: -83px;
 		height: 38px;
@@ -3996,7 +3996,7 @@
 			}
 		}
 	}
-}*/
+}
 
 .cut-21 {
 	.quest-title {
@@ -4095,11 +4095,6 @@
 			}
 
 			&[data-reverse="job"] .doll {
-				margin-left: 30px;
-				background-position: -906px -238px;
-				width: 151px;
-				height: 234px;
-				bottom: 18px;
 				background-position: -906px -238px;
 				@include animation(q21-job-girl-reverse 0.4s 0.3s steps(7, end) forwards);
 			}
@@ -4109,20 +4104,14 @@
 				background-position: 0 -1150px;
 				width: 172px;
 				height: 682px;
-				bottom: -12px;
+				bottom: -4px;
 				left: auto;
-				right: 0;
+				right: -4px;
 				@include animation(q21-study-girl 0.5s 0.5s steps(9, end) forwards);
 			}
 
 			&[data-reverse="study"] .doll {
-				margin-right: -108px;
 				background-position: -1548px -1150px;
-				width: 172px;
-				height: 682px;
-				bottom: -12px;
-				left: auto;
-				right: 0;
 				@include animation(q21-study-girl-reverse 0.5s steps(9, end) forwards);
 			}
 		}
@@ -4138,11 +4127,7 @@
 			}
 
 			&[data-reverse="job"] .doll {
-				margin-left: 30px;
 				background-position: -906px 0;
-				width: 151px;
-				height: 238px;
-				bottom: 18px;
 				@include animation(q21-job-boy-reverse 0.4s 0.3s steps(7, end) forwards);
 			}
 
@@ -4151,20 +4136,14 @@
 				background-position: 0 -472px;
 				width: 172px;
 				height: 678px;
-				bottom: -12px;
+				bottom: -4px;
 				left: auto;
-				right: 0;
+				right: -4px;
 				@include animation(q21-study-boy 0.5s 0.5s steps(9, end) forwards);
 			}
 
 			&[data-reverse="study"] .doll {
-				margin-right: -108px;
 				background-position: -1548px -472px;
-				width: 172px;
-				height: 678px;
-				bottom: -12px;
-				left: auto;
-				right: 0;
 				@include animation(q21-study-boy-reverse 0.5s steps(9, end) forwards);
 			}
 		}
@@ -4456,6 +4435,653 @@
 				}
 			}
 
+			~ .image-wrap[data-meta="buycar"] {
+				.color {
+					background: url(../img/q22/ani-q22-car-color.png) 0 100px no-repeat;
+					width: 194px;
+					height: 100px;
+					position: absolute;
+					top: 9px;
+					left: 1px;
+				}
+
+				&[data-level=""] .color {
+					&[data-level="0-t-1"] {
+						@include animation(q22-bike-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-bike-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-bike-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-bike-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-bike-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -776px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-bike-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-bike-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-bike-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-bike-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-bike-color-5-t-4 0.1s linear forwards);
+					}
+				}
+
+				&:not([data-level=""]) .doll {
+					background: url(../img/q22/ani-q22-car.png) no-repeat;
+					width: 195px;
+					height: 143px;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+
+				&[data-level="0-t-1"] {
+					.doll {
+						@include animation(q22-car-0-t-1 1.1s steps(20, end) forwards);
+		
+						&[data-level="1"] {
+							@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -970px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"] {
+							@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="6-t-5"] {
+							@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="1-t-2"] {
+					.doll {
+						@include animation(q22-car-1-t-2 1.1s steps(20, end) forwards);
+		
+						&[data-level="2"] {
+							@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -2134px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-car-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-car-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-car-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-car-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-car-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"], &[data-level="6-t-5"] {
+							background-position: -2910px 0;
+							@include animation-duration(0.1s);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-car-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-car-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-car-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-car-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-car-color-5-t-4 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="2-t-3"] {
+					.doll {
+						@include animation(q22-car-2-t-3 1.1s steps(19, end) forwards);
+		
+						&[data-level="3"] {
+							@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -3104px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"], &[data-level="6-t-5"] {
+							background-position: -3880px 0;
+							@include animation-duration(0.1s);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="3-t-4"] {
+					.doll {
+						@include animation(q22-car-3-t-4 1.1s steps(19, end) forwards);
+		
+						&[data-level="4"] {
+							@include animation(q22-car-move-4 0.7s steps(13, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -4074px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-racing-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-racing-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-racing-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-racing-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-racing-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"], &[data-level="6-t-5"] {
+							background-position: -4850px 0;
+							@include animation-duration(0.1s);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-racing-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-racing-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-racing-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-racing-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-racing-color-5-t-4 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="1-t-0"] {
+					.doll {
+						@include animation(q22-car-1-t-0 1.1s steps(20, end) forwards);
+					}
+				}
+
+				&[data-level="2-t-1"] {
+					.doll {
+						@include animation(q22-car-2-t-1 1.1s steps(20, end) forwards);
+		
+						&[data-level="1"] {
+							@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -970px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"] {
+							@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="6-t-5"] {
+							@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="3-t-2"] {
+					.doll {
+						@include animation(q22-car-3-t-2 1.1s steps(19, end) forwards);
+		
+						&[data-level="2"] {
+							@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -2134px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-car-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-car-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-car-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-car-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-car-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"], &[data-level="6-t-5"] {
+							background-position: -2910px 0;
+							@include animation-duration(0.1s);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-car-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-car-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-car-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-car-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-car-color-5-t-4 0.1s linear forwards);
+						}
+					}
+				}
+
+				&[data-level="4-t-3"] {
+					.doll {
+						@include animation(q22-car-4-t-3 1.1s steps(19, end) forwards);
+		
+						&[data-level="3"] {
+							@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
+						}
+					}
+
+					.color {
+						background-position: -3104px 100px;
+
+						&[data-level="0-t-1"] {
+							@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="1-t-2"] {
+							@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-3"] {
+							@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
+						}
+						
+						&[data-level="3-t-4"] {
+							@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
+						}
+
+						&[data-level="4-t-5"] {
+							@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-6"], &[data-level="6-t-5"] {
+							background-position: -3880px 0;
+							@include animation-duration(0.1s);
+						}
+
+						&[data-level="1-t-0"] {
+							@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
+						}
+
+						&[data-level="2-t-1"] {
+							@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
+						}
+
+						&[data-level="3-t-2"] {
+							@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
+						}
+						
+						&[data-level="4-t-3"] {
+							@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
+						}
+
+						&[data-level="5-t-4"] {
+							@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
+						}
+					}
+				}
+			}
+
+			~ .image-wrap[data-meta="buyhouse"] {
+				.color {
+					background: url(../img/q22/ani-q22-house-color.png) no-repeat;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+
+				&[data-level=""] .color, &[data-level="1-t-0"] .color {
+					background-position: 342px 0;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-cottage-color-0-t-1 0.4s steps(7, end) forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-cottage-color-1-t-2 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-cottage-color-2-t-3 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-cottage-color-3-t-4 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-cottage-color-4-t-5 0.1s steps(3, end) forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -8550px 0;
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-cottage-color-1-t-0 0.4s steps(7, end) forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-cottage-color-2-t-1 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-cottage-color-3-t-2 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-cottage-color-4-t-3 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-cottage-color-5-t-4 0.1s steps(3, end) forwards);
+					}
+				}
+
+				&[data-level="0-t-1"] .color, &[data-level="2-t-1"] .color {
+					background-position: -8892px 0;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-cabin-color-0-t-1 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-cabin-color-1-t-2 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-cabin-color-2-t-3 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-cabin-color-3-t-4 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-cabin-color-4-t-5 0.1s steps(3, end) forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -17442px 0;
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-cabin-color-1-t-0 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-cabin-color-2-t-1 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-cabin-color-3-t-2 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-cabin-color-4-t-3 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-cabin-color-5-t-4 0.1s steps(3, end) forwards);
+					}
+				}
+
+				&[data-level="1-t-2"] .color {
+					background-position: -17784px 0;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-luxury-color-0-t-1 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-luxury-color-1-t-2 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-luxury-color-2-t-3 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-luxury-color-3-t-4 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-luxury-color-4-t-5 0.1s steps(3, end) forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -26334px 0;
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-luxury-color-1-t-0 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-luxury-color-2-t-1 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-luxury-color-3-t-2 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-luxury-color-4-t-3 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-luxury-color-5-t-4 0.1s steps(3, end) forwards);
+					}
+				}
+			}
+
 			~ .image-wrap[data-meta="job"] .drop {
 				background: url(../img/q22/ani-q22-job.png) 316px -592px no-repeat;
 				width: 316px;
@@ -4511,6 +5137,108 @@
 	
 				&:nth-child(4) {
 					opacity: 1;
+				}
+			}
+
+			~ .image-wrap[data-meta="buycar"] {
+				&:not([data-level=""]) .doll {
+					margin-left: -94px;
+					background: url(../img/q22/ani-q22-car2.png) no-repeat;
+					width: 195px;
+					height: 143px;
+					top: 0;
+				}
+
+				&[data-level="0-t-1"] .doll {
+					@include animation(q22-car-per-year-0-t-1 1.3s steps(24, end) forwards);
+				}
+
+				&[data-level="1-t-2"] .doll {
+					@include animation(q22-car-per-year-1-t-2 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="2-t-3"] .doll {
+					@include animation(q22-car-per-year-2-t-3 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="3-t-4"] .doll {
+					@include animation(q22-car-per-year-3-t-4 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="4-t-5"] .doll {
+					@include animation(q22-car-per-year-4-t-5 0.8s steps(16, end) forwards);
+				}
+
+				&[data-level="5-t-6"] .doll, &[data-level="6-t-5"] .doll {
+					background-position: -19695px 0;
+				}
+
+				&[data-level="1-t-0"] .doll {
+					@include animation(q22-car-per-year-1-t-0 1.3s steps(24, end) forwards);
+				}
+
+				&[data-level="2-t-1"] .doll {
+					@include animation(q22-car-per-year-2-t-1 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="3-t-2"] .doll {
+					@include animation(q22-car-per-year-3-t-2 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="4-t-3"] .doll {
+					@include animation(q22-car-per-year-4-t-3 1.1s steps(19, end) forwards);
+				}
+
+				&[data-level="5-t-4"] .doll {
+					@include animation(q22-car-per-year-5-t-4 0.8s steps(16, end) forwards);
+				}
+			}
+
+			~ .image-wrap[data-meta="buyhouse"] {
+				background: url(../img/q22/ani-q22-house2.png) 0 0 no-repeat;
+
+				&[data-level="0-t-1"] {
+					@include animation(q22-house-per-year-0-t-1 1.4s steps(25, end) forwards);
+				}
+
+				&[data-level="1-t-2"] {
+					@include animation(q22-house-per-year-1-t-2 0.6s steps(11, end) forwards);
+				}
+
+				&[data-level="2-t-3"] {
+					@include animation(q22-house-per-year-2-t-3 1.4s steps(25, end) forwards);
+				}
+
+				&[data-level="3-t-4"] {
+					@include animation(q22-house-per-year-3-t-4 0.6s steps(11, end) forwards);
+				}
+
+				&[data-level="4-t-5"] {
+					@include animation(q22-house-per-year-4-t-5 1.4s steps(25, end) forwards);
+				}
+
+				&[data-level="5-t-6"], &[data-level="6-t-5"] {
+					background-position: -12654px -217px;
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-house-per-year-1-t-0 1.4s steps(25, end) forwards);
+				}
+
+				&[data-level="2-t-1"] {
+					@include animation(q22-house-per-year-2-t-1 0.6s steps(11, end) forwards);
+				}
+
+				&[data-level="3-t-2"] {
+					@include animation(q22-house-per-year-3-t-2 1.4s steps(25, end) forwards);
+				}
+
+				&[data-level="4-t-3"] {
+					@include animation(q22-house-per-year-4-t-3 0.6s steps(11, end) forwards);
+				}
+
+				&[data-level="5-t-4"] {
+					@include animation(q22-house-per-year-5-t-4 1.4s steps(25, end) forwards);
 				}
 			}
 
@@ -4601,14 +5329,133 @@
 				bottom: 23px;
 			}
 
-			&[data-meta="study"] .doll {
-				margin-right: -108px;
-				background-position: -1548px -1150px;
-				width: 172px;
-				height: 682px;
-				bottom: -12px;
-				left: auto;
-				right: 0;
+			&[data-meta="study"] {
+				margin-left: -356px;
+				background: url(../img/q22/ani-q22-study-f-1.png) 0 0 no-repeat;
+				width: 803px;
+				height: 442px;
+				top: 129px;
+				left: 50%;
+
+				.drop {
+					top: -205px;
+				}
+
+				&[data-level="0-t-1"] {
+					@include animation(q22-study-f-0-t-1 1.7s steps(30, end) forwards);
+
+					.drop {
+						top: -205px;
+					}
+				}
+
+				&[data-level="1-t-2"] {
+					background: url(../img/q22/ani-q22-study-f-2.png) 0 0 no-repeat;
+					top: 5px;
+					@include animation(q22-study-f-1-t-2 2.1s steps(39, end) forwards);
+
+					.drop {
+						top: -81px;
+					}
+				}
+
+				&[data-level="2-t-3"] {
+					background: url(../img/q22/ani-q22-study-f-3.png) 0 0 no-repeat;
+					top: 98px;
+					@include animation(q22-study-f-2-t-3 1.6s steps(28, end) forwards);
+
+					.drop {
+						top: -174px;
+					}
+				}
+
+				&[data-level="3-t-4"] {
+					background: url(../img/q22/ani-q22-study-f-4.png) 0 0 no-repeat;
+					top: -2px;
+					@include animation(q22-study-f-3-t-4 1.9s steps(35, end) forwards);
+
+					.drop {
+						top: -74px;
+					}
+				}
+
+				&[data-level="4-t-5"] {
+					background: url(../img/q22/ani-q22-study-f-5.png) 0 0 no-repeat;
+					top: 67px;
+					@include animation(q22-study-f-4-t-5 1.7s steps(30, end) forwards);
+
+					.drop {
+						top: -143px;
+					}
+				}
+
+				&[data-level="5-t-6"] {
+					background: url(../img/q22/ani-q22-study-f-6.png) 0 0 no-repeat;
+					top: 119px;
+					@include animation(q22-study-f-5-t-6 1.6s steps(29, end) forwards);
+
+					.drop {
+						top: -195px;
+					}
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-study-f-1-t-0 1.7s steps(30, end) forwards);
+
+					.drop {
+						top: -205px;
+					}
+				}
+
+				&[data-level="2-t-1"] {
+					background: url(../img/q22/ani-q22-study-f-2.png) 0 0 no-repeat;
+					top: 5px;
+					@include animation(q22-study-f-1-t-2 2.1s steps(39, end) forwards);
+
+					.drop {
+						top: -81px;
+					}
+				}
+
+				&[data-level="3-t-2"] {
+					background: url(../img/q22/ani-q22-study-f-3.png) 0 0 no-repeat;
+					top: 98px;
+					@include animation(q22-study-f-3-t-2 1.6s steps(28, end) forwards);
+
+					.drop {
+						top: -174px;
+					}
+				}
+
+				&[data-level="4-t-3"] {
+					background: url(../img/q22/ani-q22-study-f-4.png) 0 0 no-repeat;
+					top: -2px;
+					@include animation(q22-study-f-4-t-3 1.9s steps(35, end) forwards);
+
+					.drop {
+						top: -74px;
+					}
+				}
+
+				&[data-level="5-t-4"] {
+					background: url(../img/q22/ani-q22-study-f-5.png) 0 0 no-repeat;
+					top: 67px;
+					@include animation(q22-study-f-5-t-4 1.7s steps(30, end) forwards);
+
+					.drop {
+						top: -143px;
+					}
+				}
+
+				&[data-level="6-t-5"] {
+					background: url(../img/q22/ani-q22-study-f-6.png) 0 0 no-repeat;
+					top: 119px;
+					@include animation(q22-study-f-6-t-5 1.6s steps(29, end) forwards);
+
+					.drop {
+						top: -195px;
+					}
+				}
 			}
 		}
 
@@ -4621,14 +5468,133 @@
 				bottom: 23px;
 			}
 
-			&[data-meta="study"] .doll {
-				margin-right: -108px;
-				background-position: -1548px -472px;
-				width: 172px;
-				height: 678px;
-				bottom: -12px;
-				left: auto;
-				right: 0;
+			&[data-meta="study"] {
+				margin-left: -356px;
+				background: url(../img/q22/ani-q22-study-m-1.png) 0 0 no-repeat;
+				width: 804px;
+				height: 441px;
+				top: 128px;
+				left: 50%;
+
+				.drop {
+					top: -205px;
+				}
+
+				&[data-level="0-t-1"] {
+					@include animation(q22-study-m-0-t-1 1.1s steps(19, end) forwards);
+
+					.drop {
+						top: -205px;
+					}
+				}
+
+				&[data-level="1-t-2"] {
+					background: url(../img/q22/ani-q22-study-m-2.png) 0 0 no-repeat;
+					top: 10px;
+					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
+
+					.drop {
+						top: -8px;
+					}
+				}
+
+				&[data-level="2-t-3"] {
+					background: url(../img/q22/ani-q22-study-m-3.png) 0 0 no-repeat;
+					top: 106px;
+					@include animation(q22-study-m-2-t-3 1.2s steps(21, end) forwards);
+
+					.drop {
+						top: -182px;
+					}
+				}
+
+				&[data-level="3-t-4"] {
+					background: url(../img/q22/ani-q22-study-m-4.png) 0 0 no-repeat;
+					top: -1px;
+					@include animation(q22-study-m-3-t-4 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -75px;
+					}
+				}
+
+				&[data-level="4-t-5"] {
+					background: url(../img/q22/ani-q22-study-m-5.png) 0 0 no-repeat;
+					top: 61px;
+					@include animation(q22-study-m-4-t-5 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -137px;
+					}
+				}
+
+				&[data-level="5-t-6"] {
+					background: url(../img/q22/ani-q22-study-m-6.png) 0 0 no-repeat;
+					top: 123px;
+					@include animation(q22-study-m-5-t-6 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -199px;
+					}
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-study-m-1-t-0 1.1s steps(19, end) forwards);
+
+					.drop {
+						top: -205px;
+					}
+				}
+
+				&[data-level="2-t-1"] {
+					background: url(../img/q22/ani-q22-study-m-2.png) 0 0 no-repeat;
+					top: 10px;
+					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
+
+					.drop {
+						top: -8px;
+					}
+				}
+
+				&[data-level="3-t-2"] {
+					background: url(../img/q22/ani-q22-study-m-3.png) 0 0 no-repeat;
+					top: 106px;
+					@include animation(q22-study-m-3-t-2 1.2s steps(21, end) forwards);
+
+					.drop {
+						top: -182px;
+					}
+				}
+
+				&[data-level="4-t-3"] {
+					background: url(../img/q22/ani-q22-study-m-4.png) 0 0 no-repeat;
+					top: -1px;
+					@include animation(q22-study-m-4-t-3 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -75px;
+					}
+				}
+
+				&[data-level="5-t-4"] {
+					background: url(../img/q22/ani-q22-study-m-5.png) 0 0 no-repeat;
+					top: 61px;
+					@include animation(q22-study-m-5-t-4 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -137px;
+					}
+				}
+
+				&[data-level="6-t-5"] {
+					background: url(../img/q22/ani-q22-study-m-6.png) 0 0 no-repeat;
+					top: 123px;
+					@include animation(q22-study-m-6-t-5 1.2s steps(22, end) forwards);
+
+					.drop {
+						top: -199px;
+					}
+				}
 			}
 		}
 	}
@@ -4657,8 +5623,7 @@
 		}
 
 		&[data-meta="buycar"] {
-			background: url(../img/q21/ani-q21-car.png) -1870px 0 no-repeat;
-			@include animation(q22-choose-buycar 2.1s steps(39, end) infinite);
+			@include animation-duration(1.1s);
 
 			.drop {
 				margin-left: -147px;
@@ -4669,13 +5634,15 @@
 				@include animation(q22-drop-tree 1.4s steps(26, end) infinite);
 			}
 
-			&[data-level="0-t-1"] {}
-
-			&[data-level="1-t-2"] {}
-
-			&[data-level="2-t-3"] {}
-
-			&[data-level="3-t-4"] {}
+			&[data-level=""] .doll {
+				background: url(../img/q21/ani-q21-car.png) -1870px 0 no-repeat;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				@include animation(q22-choose-buycar 2.1s steps(39, end) infinite);
+			}
 		}
 
 		&[data-meta="buyhouse"] {
@@ -4698,7 +5665,7 @@
 			}
 
 			&[data-level="1-t-2"] {
-				@include animation(q22-house-1-t-2 0.7s steps(11, end) forwards);
+				@include animation(q22-house-1-t-2 0.7s steps(12, end) forwards);
 			}
 
 			&[data-level="1-t-0"] {
@@ -4706,16 +5673,64 @@
 			}
 
 			&[data-level="2-t-1"] {
-				@include animation(q22-house-2-t-1 0.7s steps(11, end) forwards);
+				@include animation(q22-house-2-t-1 0.7s steps(12, end) forwards);
 			}
 		}
 
-		&[data-meta="study"] {
-			margin-left: -356px;
-			background: url(../img/q21/ani-q21-study-1.png) -9392px 0 no-repeat;
-			width: 587px;
-			height: 767px;
-			top: -331px;
+		&[data-meta="study"] .drop {
+			background: url(../img/q22/ani-q22-study-flag.png) 0 0 no-repeat;
+			width: 557px;
+			height: 497px;
+			left: auto;
+			right: 147px;
+
+			&[data-level="0-t-1"] {
+				@include animation(q22-study-flag-0-t-1 0.7s steps(12, end) forwards);
+			}
+
+			&[data-level="1-t-2"] {
+				@include animation(q22-study-flag-1-t-2 0.7s steps(13, end) forwards);
+			}
+
+			&[data-level="2-t-3"] {
+				@include animation(q22-study-flag-2-t-3 0.8s steps(14, end) forwards);
+			}
+
+			&[data-level="3-t-4"] {
+				@include animation(q22-study-flag-3-t-4 0.7s steps(12, end) forwards);
+			}
+
+			&[data-level="4-t-5"] {
+				@include animation(q22-study-flag-4-t-5 0.7s steps(13, end) forwards);
+			}
+
+			&[data-level="5-t-6"] {
+				@include animation(q22-study-flag-5-t-6 0.7s steps(13, end) forwards);
+			}
+
+			&[data-level="1-t-0"] {
+				@include animation(q22-study-flag-1-t-0 0.7s steps(12, end) forwards);
+			}
+
+			&[data-level="2-t-1"] {
+				@include animation(q22-study-flag-2-t-1 0.7s steps(13, end) forwards);
+			}
+
+			&[data-level="3-t-2"] {
+				@include animation(q22-study-flag-3-t-2 0.8s steps(14, end) forwards);
+			}
+
+			&[data-level="4-t-3"] {
+				@include animation(q22-study-flag-4-t-3 0.7s steps(12, end) forwards);
+			}
+
+			&[data-level="5-t-4"] {
+				@include animation(q22-study-flag-5-t-4 0.7s steps(13, end) forwards);
+			}
+
+			&[data-level="6-t-5"] {
+				@include animation(q22-study-flag-6-t-5 0.7s steps(13, end) forwards);
+			}
 		}
 
 		&[data-meta="job"] {

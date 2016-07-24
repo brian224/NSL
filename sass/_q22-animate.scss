@@ -20,41 +20,1501 @@
 
 @include keyframes(q22-car-0-t-1) {
 	0% {
-		background-position: -9724px 0;
+		background-position: 0 0;
 	}
 
 	100% {
-		background-position: -16643px 0;
+		background-position: -3900px 0;
 	}
 }
 
 @include keyframes(q22-car-1-t-2) {
 	0% {
-		background-position: -17952px 0;
+		background-position: -4095px 0;
 	}
 
 	100% {
-		background-position: -19074px 0;
+		background-position: -7995px 0;
 	}
 }
 
 @include keyframes(q22-car-2-t-3) {
 	0% {
-		background-position: -26180px 0;
+		background-position: -8190px 0;
 	}
 
 	100% {
-		background-position: -27302px 0;
+		background-position: -11895px 0;
 	}
 }
 
 @include keyframes(q22-car-3-t-4) {
 	0% {
-		background-position: -7215px -149px;
+		background-position: -12090px 0;
 	}
 
 	100% {
-		background-position: -8385px -149px;
+		background-position: -15795px 0;
+	}
+}
+
+@include keyframes(q22-car-1-t-0) {
+	0% {
+		background-position: -3900px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-car-2-t-1) {
+	0% {
+		background-position: -7995px 0;
+	}
+
+	100% {
+		background-position: -4095px 0;
+	}
+}
+
+@include keyframes(q22-car-3-t-2) {
+	0% {
+		background-position: -11895px 0;
+	}
+
+	100% {
+		background-position: -8190px 0;
+	}
+}
+
+@include keyframes(q22-car-4-t-3) {
+	0% {
+		background-position: -15795px 0;
+	}
+
+	100% {
+		background-position: -12090px 0;
+	}
+}
+
+@include keyframes(q22-car-move-1) {
+	0% {
+		background-position: -1365px 0;
+	}
+
+	100% {
+		background-position: -3900px 0;
+	}
+}
+
+@include keyframes(q22-car-move-2) {
+	0% {
+		background-position: -5265px 0;
+	}
+
+	100% {
+		background-position: -7995px 0;
+	}
+}
+
+@include keyframes(q22-car-move-3) {
+	0% {
+		background-position: -9360px 0;
+	}
+
+	100% {
+		background-position: -11895px 0;
+	}
+}
+
+@include keyframes(q22-car-move-4) {
+	0% {
+		background-position: -13260px 0;
+	}
+
+	100% {
+		background-position: -15795px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-0-t-1) {
+	0%, 99.99% {
+		background-position: 0 100px;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-bike-color-1-t-2) {
+	0%, 99.99% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -194px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -194px 0;
+	}
+
+	100% {
+		background-position: -388px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -388px 0;
+	}
+
+	100% {
+		background-position: -582px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -582px 0;
+	}
+
+	100% {
+		background-position: -776px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-1-t-0) {
+	0%, 99.99% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 0 100px;
+	}
+}
+
+@include keyframes(q22-bike-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -194px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-bike-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -388px 0;
+	}
+
+	100% {
+		background-position: -194px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -582px 0;
+	}
+
+	100% {
+		background-position: -388px 0;
+	}
+}
+
+@include keyframes(q22-bike-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -776px 0;
+	}
+
+	100% {
+		background-position: -582px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -970px 100px;
+	}
+
+	100% {
+		background-position: -970px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -970px 0;
+	}
+
+	100% {
+		background-position: -1164px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -1164px 0;
+	}
+
+	100% {
+		background-position: -1358px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -1358px 0;
+	}
+
+	100% {
+		background-position: -1552px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -1552px 0;
+	}
+
+	100% {
+		background-position: -1746px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-5-t-6) {
+	0%, 99.99% {
+		background-position: -1746px 0;
+	}
+
+	100% {
+		background-position: -1940px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -970px 0;
+	}
+
+	100% {
+		background-position: -970px 100px;
+	}
+}
+
+@include keyframes(q22-moto-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -1164px 0;
+	}
+
+	100% {
+		background-position: -970px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -1358px 0;
+	}
+
+	100% {
+		background-position: -1164px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -1552px 0;
+	}
+
+	100% {
+		background-position: -1358px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -1746px 0;
+	}
+
+	100% {
+		background-position: -1552px 0;
+	}
+}
+
+@include keyframes(q22-moto-color-6-t-5) {
+	0%, 99.99% {
+		background-position: -1940px 0;
+	}
+
+	100% {
+		background-position: -1746px 0;
+	}
+}
+
+@include keyframes(q22-car-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -2134px 100px;
+	}
+
+	100% {
+		background-position: -2134px 0;
+	}
+}
+
+@include keyframes(q22-car-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -2134px 0;
+	}
+
+	100% {
+		background-position: -2328px 0;
+	}
+}
+
+@include keyframes(q22-car-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -2328px 0;
+	}
+
+	100% {
+		background-position: -2522px 0;
+	}
+}
+
+@include keyframes(q22-car-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -2522px 0;
+	}
+
+	100% {
+		background-position: -2716px 0;
+	}
+}
+
+@include keyframes(q22-car-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -2716px 0;
+	}
+
+	100% {
+		background-position: -2910px 0;
+	}
+}
+
+@include keyframes(q22-car-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -2134px 0;
+	}
+
+	100% {
+		background-position: -2134px 100px;
+	}
+}
+
+@include keyframes(q22-car-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -2328px 0;
+	}
+
+	100% {
+		background-position: -2134px 0;
+	}
+}
+
+@include keyframes(q22-car-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -2522px 0;
+	}
+
+	100% {
+		background-position: -2328px 0;
+	}
+}
+
+@include keyframes(q22-car-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -2716px 0;
+	}
+
+	100% {
+		background-position: -2522px 0;
+	}
+}
+
+@include keyframes(q22-car-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -2910px 0;
+	}
+
+	100% {
+		background-position: -2716px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -3104px 100px;
+	}
+
+	100% {
+		background-position: -3104px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -3104px 0;
+	}
+
+	100% {
+		background-position: -3298px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -3298px 0;
+	}
+
+	100% {
+		background-position: -3492px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -3492px 0;
+	}
+
+	100% {
+		background-position: -3686px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -3686px 0;
+	}
+
+	100% {
+		background-position: -3880px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -3104px 0;
+	}
+
+	100% {
+		background-position: -3104px 100px;
+	}
+}
+
+@include keyframes(q22-rv-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -3298px 0;
+	}
+
+	100% {
+		background-position: -3104px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -3492px 0;
+	}
+
+	100% {
+		background-position: -3298px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -3686px 0;
+	}
+
+	100% {
+		background-position: -3492px 0;
+	}
+}
+
+@include keyframes(q22-rv-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -3880px 0;
+	}
+
+	100% {
+		background-position: -3686px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -4074px 100px;
+	}
+
+	100% {
+		background-position: -4074px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -4074px 0;
+	}
+
+	100% {
+		background-position: -4268px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -4268px 0;
+	}
+
+	100% {
+		background-position: -4462px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -4462px 0;
+	}
+
+	100% {
+		background-position: -4656px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -4656px 0;
+	}
+
+	100% {
+		background-position: -4850px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -4074px 0;
+	}
+
+	100% {
+		background-position: -4074px 100px;
+	}
+}
+
+@include keyframes(q22-racing-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -4268px 0;
+	}
+
+	100% {
+		background-position: -4074px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -4462px 0;
+	}
+
+	100% {
+		background-position: -4268px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -4656px 0;
+	}
+
+	100% {
+		background-position: -4462px 0;
+	}
+}
+
+@include keyframes(q22-racing-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -4850px 0;
+	}
+
+	100% {
+		background-position: -4656px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -4680px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-1-t-2) {
+	0% {
+		background-position: -4875px 0;
+	}
+
+	100% {
+		background-position: -8580px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-2-t-3) {
+	0% {
+		background-position: -8775px 0;
+	}
+
+	100% {
+		background-position: -12480px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-3-t-4) {
+	0% {
+		background-position: -12675px 0;
+	}
+
+	100% {
+		background-position: -16380px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-4-t-5) {
+	0% {
+		background-position: -16575px 0;
+	}
+
+	100% {
+		background-position: -19695px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-1-t-0) {
+	0% {
+		background-position: -4680px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-2-t-1) {
+	0% {
+		background-position: -8580px 0;
+	}
+
+	100% {
+		background-position: -4875px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-3-t-2) {
+	0% {
+		background-position: -12480px 0;
+	}
+
+	100% {
+		background-position: -8775px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-4-t-3) {
+	0% {
+		background-position: -16380px 0;
+	}
+
+	100% {
+		background-position: -12675px 0;
+	}
+}
+
+@include keyframes(q22-car-per-year-5-t-4) {
+	0% {
+		background-position: -19695px 0;
+	}
+
+	100% {
+		background-position: -16575px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-0-t-1) {
+	0%, 99.99% {
+		background-position: 342px 0;
+	}
+
+	100% {
+		background-position: -2052px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -2394px 0;
+	}
+
+	100% {
+		background-position: -3762px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -4104px 0;
+	}
+
+	100% {
+		background-position: -5472px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -5814px 0;
+	}
+
+	100% {
+		background-position: -7182px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -7524px 0;
+	}
+
+	100% {
+		background-position: -8550px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -2052px 0;
+	}
+
+	100% {
+		background-position: 342px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -3762px 0;
+	}
+
+	100% {
+		background-position: -2394px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -5472px 0;
+	}
+
+	100% {
+		background-position: -4104px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -7182px 0;
+	}
+
+	100% {
+		background-position: -5814px 0;
+	}
+}
+
+@include keyframes(q22-cottage-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -8550px 0;
+	}
+
+	100% {
+		background-position: -7524px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -8892px 0;
+	}
+
+	100% {
+		background-position: -10944px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -11286px 0;
+	}
+
+	100% {
+		background-position: -12654px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -12996px 0;
+	}
+
+	100% {
+		background-position: -14364px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -14706px 0;
+	}
+
+	100% {
+		background-position: -16074px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -16416px 0;
+	}
+
+	100% {
+		background-position: -17442px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -10944px 0;
+	}
+
+	100% {
+		background-position: -8892px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -12654px 0;
+	}
+
+	100% {
+		background-position: -11286px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -14364px 0;
+	}
+
+	100% {
+		background-position: -12996px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -16074px 0;
+	}
+
+	100% {
+		background-position: -14706px 0;
+	}
+}
+
+@include keyframes(q22-cabin-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -17442px 0;
+	}
+
+	100% {
+		background-position: -16416px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-0-t-1) {
+	0%, 99.99% {
+		background-position: -17784px 0;
+	}
+
+	100% {
+		background-position: -19836px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-1-t-2) {
+	0%, 99.99% {
+		background-position: -20178px 0;
+	}
+
+	100% {
+		background-position: -21546px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-2-t-3) {
+	0%, 99.99% {
+		background-position: -21888px 0;
+	}
+
+	100% {
+		background-position: -23256px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-3-t-4) {
+	0%, 99.99% {
+		background-position: -23598px 0;
+	}
+
+	100% {
+		background-position: -24966px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-4-t-5) {
+	0%, 99.99% {
+		background-position: -25308px 0;
+	}
+
+	100% {
+		background-position: -26334px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-1-t-0) {
+	0%, 99.99% {
+		background-position: -19836px 0;
+	}
+
+	100% {
+		background-position: -17784px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-2-t-1) {
+	0%, 99.99% {
+		background-position: -21546px 0;
+	}
+
+	100% {
+		background-position: -20178px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-3-t-2) {
+	0%, 99.99% {
+		background-position: -23256px 0;
+	}
+
+	100% {
+		background-position: -21888px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-4-t-3) {
+	0%, 99.99% {
+		background-position: -24966px 0;
+	}
+
+	100% {
+		background-position: -23598px 0;
+	}
+}
+
+@include keyframes(q22-luxury-color-5-t-4) {
+	0%, 99.99% {
+		background-position: -26334px 0;
+	}
+
+	100% {
+		background-position: -25308px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -8550px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-1-t-2) {
+	0% {
+		background-position: -8892px 0;
+	}
+
+	100% {
+		background-position: -12654px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-2-t-3) {
+	0% {
+		background-position: -12996px 0;
+	}
+
+	100% {
+		background-position: -21546px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-3-t-4) {
+	0% {
+		background-position: 0 -217px;
+	}
+
+	100% {
+		background-position: -3762px -217px;
+	}
+}
+
+@include keyframes(q22-house-per-year-4-t-5) {
+	0% {
+		background-position: -4104px -217px;
+	}
+
+	100% {
+		background-position: -12654px -217px;
+	}
+}
+
+@include keyframes(q22-house-per-year-1-t-0) {
+	0% {
+		background-position: -8550px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-2-t-1) {
+	0% {
+		background-position: -12654px 0;
+	}
+
+	100% {
+		background-position: -8892px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-3-t-2) {
+	0% {
+		background-position: -21546px 0;
+	}
+
+	100% {
+		background-position: -12996px 0;
+	}
+}
+
+@include keyframes(q22-house-per-year-4-t-3) {
+	0% {
+		background-position: -3762px -217px;
+	}
+
+	100% {
+		background-position: 0 -217px;
+	}
+}
+
+@include keyframes(q22-house-per-year-5-t-4) {
+	0% {
+		background-position: -12654px -217px;
+	}
+
+	100% {
+		background-position: -4104px -217px;
+	}
+}
+
+@include keyframes(q22-study-f-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -24090px 0;
+	}
+}
+
+@include keyframes(q22-study-f-1-t-2) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -31317px 0;
+	}
+}
+
+@include keyframes(q22-study-f-2-t-3) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -22484px 0;
+	}
+}
+
+@include keyframes(q22-study-f-3-t-4) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -28105px 0;
+	}
+}
+
+@include keyframes(q22-study-f-4-t-5) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -24090px 0;
+	}
+}
+
+@include keyframes(q22-study-f-5-t-6) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -23287px 0;
+	}
+}
+
+@include keyframes(q22-study-f-1-t-0) {
+	0% {
+		background-position: -24090px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-f-2-t-1) {
+	0% {
+		background-position: -31317px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-f-3-t-2) {
+	0% {
+		background-position: -22484px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-f-4-t-3) {
+	0% {
+		background-position: -28105px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-f-5-t-4) {
+	0% {
+		background-position: -24090px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-f-6-t-5) {
+	0% {
+		background-position: -23287px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -15276px 0;
+	}
+}
+
+@include keyframes(q22-study-m-1-t-2) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -16926px 0;
+	}
+}
+
+@include keyframes(q22-study-m-2-t-3) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -16884px 0;
+	}
+}
+
+@include keyframes(q22-study-m-3-t-4) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -17688px 0;
+	}
+}
+
+@include keyframes(q22-study-m-4-t-5) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -17688px 0;
+	}
+}
+
+@include keyframes(q22-study-m-5-t-6) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -17688px 0;
+	}
+}
+
+@include keyframes(q22-study-m-1-t-0) {
+	0% {
+		background-position: -15276px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-2-t-1) {
+	0% {
+		background-position: -16926px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-3-t-2) {
+	0% {
+		background-position: -16884px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-4-t-3) {
+	0% {
+		background-position: -17688px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-5-t-4) {
+	0% {
+		background-position: -17688px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-m-6-t-5) {
+	0% {
+		background-position: -17688px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-flag-0-t-1) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -6684px 0;
+	}
+}
+
+@include keyframes(q22-study-flag-1-t-2) {
+	0% {
+		background-position: -7241px 0;
+	}
+
+	100% {
+		background-position: -14482px 0;
+	}
+}
+
+@include keyframes(q22-study-flag-2-t-3) {
+	0% {
+		background-position: -15039px 0;
+	}
+
+	100% {
+		background-position: -22837px 0;
+	}
+}
+
+@include keyframes(q22-study-flag-3-t-4) {
+	0% {
+		background-position: 0 -497px;
+	}
+
+	100% {
+		background-position: -6684px -497px;
+	}
+}
+
+@include keyframes(q22-study-flag-4-t-5) {
+	0% {
+		background-position: -7241px -497px;
+	}
+
+	100% {
+		background-position: -14482px -497px;
+	}
+}
+
+@include keyframes(q22-study-flag-5-t-6) {
+	0% {
+		background-position: -15039px -497px;
+	}
+
+	100% {
+		background-position: -22280px -497px;
+	}
+}
+
+@include keyframes(q22-study-flag-1-t-0) {
+	0% {
+		background-position: -6684px 0;
+	}
+
+	100% {
+		background-position: 0 0;
+	}
+}
+
+@include keyframes(q22-study-flag-2-t-1) {
+	0% {
+		background-position: -14482px 0;
+	}
+
+	100% {
+		background-position: -7241px 0;
+	}
+}
+
+@include keyframes(q22-study-flag-3-t-2) {
+	0% {
+		background-position: -22837px 0;
+	}
+
+	100% {
+		background-position: -15039px 0;
+	}
+}
+
+@include keyframes(q22-study-flag-4-t-3) {
+	0% {
+		background-position: -6684px -497px;
+	}
+
+	100% {
+		background-position: 0 -497px;
+	}
+}
+
+@include keyframes(q22-study-flag-5-t-4) {
+	0% {
+		background-position: -14482px -497px;
+	}
+
+	100% {
+		background-position: -7241px -497px;
+	}
+}
+
+@include keyframes(q22-study-flag-6-t-5) {
+	0% {
+		background-position: -22280px -497px;
+	}
+
+	100% {
+		background-position: -15039px -497px;
 	}
 }
 
@@ -70,7 +1530,7 @@
 
 @include keyframes(q22-house-1-t-2) {
 	0% {
-		background-position: -9918px 0;
+		background-position: -9576px 0;
 	}
 
 	100% {
@@ -94,7 +1554,7 @@
 	}
 
 	100% {
-		background-position: -9918px 0;
+		background-position: -9576px 0;
 	}
 }
 

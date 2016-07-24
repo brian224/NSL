@@ -19,7 +19,7 @@
 		this._prevAge        = 0; // 預設年紀
 		this._ageRange       = [30, 50, 70]; // 年紀區間
 		this._nowAge         = 40; // 寫入年紀
-		this._steps          = [7, 17, 24, 26]; // 五階段的題目區隔
+		this._steps          = [7, 17, 23, 25]; // 五階段的題目區隔
 		this._prevIncome     = 0; // 預設收入
 		this._IncomeAct      = [0, 0]; // 紀錄收入變化
 		this._IncomeRange    = [0, 10, 40, 80, 130, 200]; // 收入區間
@@ -85,6 +85,10 @@
 			if (className.split('.cut-22')[1] !== undefined){
 				$('.cut-22').addClass('disabled');
 				$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
+
+				if (($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') && className === '.cut-22 ' + common._imageWrap) {
+					$(className + ' .color').hide();
+				}
 			} else {
 				$(className).addClass('disabled').attr('data-level', range[start] + '-t-' + range[start + _direction]);
 			}
@@ -104,6 +108,18 @@
 					} else if (className.split('.cut-22')[1] !== undefined) {
 						$('.cut-22').removeClass('disabled');
 						$(className).off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+
+						if (($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') && className === '.cut-22 ' + common._imageWrap) {
+							if (end === 0) {
+								$('.cut-22 ' + common._imageWrap).attr('data-level', '');
+								$('.cut-22 ' + common._imageWrap + ' .doll').attr('data-level', '');
+							} else {
+								$('.cut-22 ' + common._imageWrap + ' .doll').attr('data-level', end);
+							}
+							$(className + ' .color').show();
+						} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse' && className === '.cut-22 ' + common._imageWrap + ' .color' && end === 0) {
+							$('.cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
+						}
 					} else {
 						$(className).removeClass('disabled').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 					}
@@ -160,9 +176,16 @@
 	index.prototype.finalCheck = function(_num, _meta, _emptyLength) {
 		var _type = $('.cut-' + _num + ' .respond-wrap').attr('data-meta');
 
-		if (_type === 'labor' && _meta === undefined) {
-			_emptyLength += 1;
-			common.shake('.jq-check-wrap');
+		if (_type === 'labor') {
+			if ($('.cut-' + _num + ' .respond-wrap .selection option:selected').val() === '') {
+				_emptyLength += 1;
+				common.shake('.cut-' + _num + ' .respond-wrap .selectbox');
+			}
+
+			if (_meta === undefined) {
+				_emptyLength += 1;
+				common.shake('.jq-check-wrap');
+			}
 		}
 
 		$('.' + _type + ' input').each(function(){
@@ -868,6 +891,12 @@
 						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
 						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+					} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') {
+						var _base = $('.cut-22 ' + common._imageWrap + ' .color').attr('data-level').split('-t-')[1];
+
+						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .color', _base, _endRange - _startRange + _base, _array);
 					} else {
 						var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
 
@@ -937,6 +966,8 @@
 					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
 						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0,1,2,3,4]);
 						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, [0,1,2,3,4]);
+					} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') {
+						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
 					} else {
 						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
 						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
@@ -1405,7 +1436,7 @@
 						from: 0
 					});
 
-					$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll').attr('data-level', '');
+					$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
 				} else if (_num === 25) {
 					$('.cut-24 .respond-wrap input').val('');
 					$('.cut-24 .selection option').eq(0).prop('selected', 'selected');
@@ -1474,7 +1505,7 @@
 				from: 0
 			});
 
-			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll').attr('data-level', '');
+			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
 		});
 
 		common.offClick();
