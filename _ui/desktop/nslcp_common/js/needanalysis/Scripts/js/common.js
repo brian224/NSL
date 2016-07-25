@@ -4,30 +4,48 @@
 	var common = new index();
 
 	function index() {
-		this._imageWrap      = '.image-wrap';
-		this._start          = '.jq-start';
-		this._required       = '.jq-required';
-		this._checkbox       = '.jq-checkbox';
-		this._btnTopic       = '.jq-topic';
-		this._transition     = '.jq-transition';
-		this._lightbox       = '.jq-lightbox';
-		this._close          = '.jq-close';
-		this._dream          = '.jq-dream';
-		this._lContent       = '.l-content';
-		this._lLightbox      = '.l-lightbox';
-		this._stepList       = '.step-list';
-		this._prevAge        = 0; // 預設年紀
-		this._ageRange       = [30, 50, 70]; // 年紀區間
-		this._nowAge         = 40; // 寫入年紀
-		this._steps          = [7, 17, 23, 25]; // 五階段的題目區隔
-		this._prevIncome     = 0; // 預設收入
-		this._IncomeAct      = [0, 0]; // 紀錄收入變化
-		this._IncomeRange    = [0, 10, 40, 80, 130, 200]; // 收入區間
-		this._prevLiability  = 0; // 預設負債
-		this._LiabilityAct   = ''; // 紀錄負債變化
-		this._LiabilityRange = ''; // 負債區間
-		this._eduCost        = 0; // 子女教育費
-		this._AniCache       = 0; // 一桶金拉霸暫存
+		this._CSRFToken            = '';
+		this._imageWrap            = '.image-wrap';
+		this._start                = '.jq-start';
+		this._required             = '.jq-required';
+		this._checkbox             = '.jq-checkbox';
+		this._btnTopic             = '.jq-topic';
+		this._transition           = '.jq-transition';
+		this._lightbox             = '.jq-lightbox';
+		this._close                = '.jq-close';
+		this._dream                = '.jq-dream';
+		this._lContent             = '.l-content';
+		this._lLightbox            = '.l-lightbox';
+		this._stepList             = '.step-list';
+		this._prevAge              = 0; // 預設年紀
+		this._ageRange             = [30, 50, 70]; // 年紀區間
+		this._steps                = [7, 17, 23, 25]; // 五階段的題目區隔
+		this._prevIncome           = 0; // 預設收入
+		this._IncomeAct            = [0, 0]; // 紀錄收入變化
+		this._IncomeRange          = [0, 10, 40, 80, 130, 200]; // 收入區間
+		this._prevLiability        = 0; // 預設負債
+		this._LiabilityAct         = ''; // 紀錄負債變化
+		this._LiabilityRange       = ''; // 負債區間
+		this._eduCost              = 0; // 子女教育費
+		this._AniCache             = 0; // 一桶金拉霸暫存
+		this._ExpensesAfterRetire  = 0; // 退休後每月支出
+		this._childArray           = []; // 每個小孩的年齡
+		this._lifeEvent            = [], // 記錄人生階段
+		this._AnnualIncome         = 0; // 年收入
+		this._traditionalLiftNeed  = 0; // 壽險需求
+		this._socialSecurityAmount = 0; // 寿险/社保
+		this._traditionalLiftExist = 0; // 寿险南山
+		this._eduExpenses          = 0; // 理财/教育基金需求
+		this._retirementPension    = 0; // 理财/退休金需求
+		this._ilpExist             = 0;
+		this._nanshanInsArray      = ['_hospitalizationDay','_sundry','_surgery','_cancer','_majorDisease','_accident','_longTermCare'];
+		this._hospitalizationDay   = 0; // 住院額度
+		this._sundry               = 0; // 杂费
+		this._surgery              = 0; // 手术
+		this._cancer               = 0; // 癌症
+		this._majorDisease         = 0; // 重大疾病
+		this._accident             = 0; // 意外
+		this._longTermCare         = 0; // 长看
 	}
 
 	// 沒作答就往下一題
@@ -198,7 +216,344 @@
 		return _emptyLength;
 	}
 
+	// ========================== API function start ==============================
+
+	// 生活支出
+	index.prototype.livingExpenses = function() {
+		// 更新年收入
+		common._AnnualIncome = parseInt($('.cut-6 .irs-single').text(), 10);
+
+		var _data = {
+			'annualIncome' : common._AnnualIncome,
+			'CSRFToken'    : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/livingExpenses',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._ExpensesAfterRetire = data.outputData.monthlyLivingExpensesAfterRetirement;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 家庭维持基金
+	index.prototype.familyMaintenanceFund = function() {
+		var $childList = $('.jq-childList'),
+			_data      = {};
+
+		_data.CSRFToken = common._CSRFToken;
+
+		$childList.each(function(){
+			if (parseInt($(this).find('.irs-single').text(), 10) !== 0) {
+				for (var i = 0; i < parseInt($(this).find('.irs-single').text(), 10); i++) {
+					common._childArray.push($(this).attr('data-age'));
+				}
+			}
+		});
+
+		for (var i = 0; i < common._childArray.length; i++) {
+			_data['childList[' + i + '].age'] = common._childArray[i];
+		}
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/familyMaintenanceFund',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				console.log(data);
+				console.log(data.outputData.educationExpenses);
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 住院医疗共同问项
+	index.prototype.commonInpatientMedicalItems = function() {
+		var _data = {
+			'roomType'          : $('.cut-10 .is-checked').data('value'),
+			'selfPayItemOption' : $('.cut-11 .is-checked').data('value'),
+			'CSRFToken'         : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/commonInpatientMedicalItems',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				console.log(data);
+				console.log(data.outputData.amountOfHospitalization + ' , ' + data.outputData.hospitalizationFeesQuota + ' , ' + data.outputData.surgicalCompensationAllowance);
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 重大疾病/癌症醫療共同問項
+	index.prototype.commonMajorDiseaseCancerCareItems = function() {
+		var _data = {
+			'annualIncome'                         : common._AnnualIncome,
+			'recuperationIncomeCompensationOption' : $('.cut-12 .is-checked').data('value'),
+			'CSRFToken'                            : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/commonMajorDiseaseCancerCareItems',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				console.log(data);
+				console.log(data.outputData.medicalDemandForMajorDiseases + ' , ' + data.outputData.cancerMedicalDemand);
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 意外殘廢需求
+	index.prototype.accidentalDisabilityDemand = function() {
+		var _data = {
+			'annualIncome'              : common._AnnualIncome,
+			'recuperationIncomeSubsidy' : $('.cut-13 .is-checked').data('value'),
+			'CSRFToken'                 : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/accidentalDisabilityDemand',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				console.log(data);
+				console.log(data.outputData.accidentalDisabilityDemand);
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 長期照顧需求
+	index.prototype.longTermCareNeeds = function() {
+		var _data = {
+			'longTermCareOption' : $('.cut-14 .is-checked').data('value'),
+			'CSRFToken'          : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/longTermCareNeeds',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				console.log(data);
+				console.log(data.outputData.longTermCareAmount);
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 理财/退休金需求
+	index.prototype.financialPensionNeeds = function() {
+		var _data = {
+			'retirementAge'                        : parseInt($('.retire-age-slider').prev().find('.irs-single').text(), 10),
+			'monthlyLivingExpensesAfterRetirement' : common._ExpensesAfterRetire,
+			'CSRFToken'                            : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/financialPensionNeeds',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._retirementPension = data.outputData.retirementPension;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 理财/教育基金需求
+	index.prototype.financialEducationFundDemand = function() {
+		var _eduType = (parseInt($('.edu-cost-slider').prev().find('.irs-single').text().replace(',', ''), 10) >= 950) ? 2 : 1,
+			_data = {};
+
+		_data.CSRFToken = common._CSRFToken;
+
+		for (var i = 0; i < common._childArray.length; i++) {
+			_data['childEduList[' + i + '].age'] = common._childArray[i];
+			_data['childEduList[' + i + '].eduType'] = _eduType;
+		}
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/financialEducationFundDemand',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._eduExpenses = data.outputData.eduExpenses;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 寿险/社保已有
+	index.prototype.existingSocialLifeInsurance = function() {
+		var _type = $('.cut-' + _num + ' .respond-wrap').attr('data-meta'),
+			_data = {
+			'type'            : $('.cut-23 .is-checked').data('value'),
+			'insuranceSalary' : '',
+			'basicPay'        : parseFloat($('.jq-basicPay .irs-single').text(), 10),
+			'CSRFToken'       : common._CSRFToken
+		};
+
+		if (_type === 'labor') {
+			_data.insuranceSalary = parseInt($('.cut-24 .respond-wrap .selection option:selected').val().replace(',', ''), 10);
+		} else if (_type !== 'farmer') {
+			_data.insuranceSalary = parseInt($('.cut-24 .respond-wrap .' + _type + ' .money').next().find('input').val().replace(',', ''), 10);
+		}
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/existingSocialLifeInsurance',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._socialSecurityAmount = data.outputData.socialSecurityAmount;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 寿险南山保单已有
+	index.prototype.existingNanshanLifeInsurance = function() {
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/existingNanshanLifeInsurance',
+			data     : {
+				'CSRFToken' : common._CSRFToken
+			},
+			dataType : 'json',
+			success  : function(data) {
+				common._traditionalLiftExist = data.outputData.nanshanLifeInsuranceAmount;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 南山現有医疗保障額度
+	index.prototype.nanshanExistingMedicalInsurantAmount = function() {
+		for (var i = 0; i < common._nanshanInsArray.length; i++) {
+			var _data = {
+				'l2Account' : common._nanshanInsArray[i].replace('_', ''),
+				'CSRFToken' : common._CSRFToken
+			};
+
+			$.ajax({
+				type     : 'POST',
+				url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/nanshanExistingMedicalInsurantAmount',
+				data     : _data,
+				dataType : 'json',
+				success  : function(data) {
+					common[common._nanshanInsArray[i]] = data.outputData.insurantAmount;
+				},
+				complete : function(data) {
+				},
+				error    : function(xhr, textStatus, errorThrown) {
+					console.log(_data);
+					console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+				} 
+			});
+		}
+	}
+
+	// 最終總值計算
+	index.prototype.totalCount = function() {
+		var _str = '';
+
+		_str = '{"traditionalLiftNeed":"' + common._traditionalLiftNeed + 
+			'","_traditionalLiftExist":"' + (common._socialSecurityAmount + common._traditionalLiftExist) + 
+			'","ilpDream":"' + $('.cut-18 .is-checked').attr('data-value') + 
+			'","ilpNeed":"' + (common._eduExpenses + common._retirementPension) + 
+			'","ilpExist":"' + common._ilpExist + 
+			'","mc1Need":"' + $('.jq-mc1Need .irs-single').text().replace(',', '') + 
+			'","mc1Exist":"' + common._hospitalizationDay + 
+			'","mc2Need":"' + $('.jq-mc2Need .irs-single').text().replace(',', '') + 
+			'","mc2Exist":"' + common._sundry + 
+			'","mc3Need":"' + $('.jq-mc3Need .irs-single').text().replace(',', '') + 
+			'","mc3Exist":"' + common._surgery + 
+			'","mc4Need":"' + $('.jq-mc4Need .irs-single').text().replace(',', '') + 
+			'","mc4Exist":"' + common._majorDisease + 
+			'","mc5Need":"' + $('.jq-mc5Need .irs-single').text().replace(',', '') + 
+			'","mc5Exist":"' + common._cancer + 
+			'","mc6Need":"' + $('.jq-mc6Need .irs-single').text().replace(',', '') + 
+			'","mc6Exist":"' + common._longTermCare + 
+			'","mc7Need":"' + $('.jq-mc7Need .irs-single').text().replace(',', '') + 
+			'","mc7Exist":"' + common._accident + 
+			'","annualIncome":"' + common._AnnualIncome + 
+			'","lifeEvent":"' + common._lifeEvent.join(',') + 
+			'","CSRFToken":"' + common._CSRFToken + '"}';
+
+		$('.totalData').val(_str);
+	}
+
+	// ========================== API function end ==============================
+
 	projects.$w.load(function(){
+		// common._CSRFToken = $("input[name='CSRFToken']").val();
+		// common.nanshanExistingMedicalInsurantAmount();
+
 		$('.age-slider').ionRangeSlider({
 			min         : 20,
 			max         : 84,
@@ -248,7 +603,6 @@
 					// 不改變
 				}
 				common._prevAge = data.from;
-				common._nowAge = data.from;
 			}
 		});
 
@@ -401,13 +755,32 @@
 		});
 
 		$('.medical-slider').each(function(){
+			var _idx        = 0,
+				_from       = 0,
+				_from_value = 0,
+				_value      = $(this).data('values').split(',');
+
+			if ($(this).parents('.stage').hasClass('cut-15')) {
+				_idx = $(this).parents('.list').index();
+			} else {
+				_idx = $(this).parents('.list').index() + $('.cut-15 .list').length;
+			}
+
+			_from = common[common._nanshanInsArray[_idx]]
+
+			for (var i = 0; i < _value.length; i++) {
+				if (_from >= parseInt(_value[i], 10)) {
+					_from_value = i;
+				}
+			}
+
 			$(this).ionRangeSlider({
 				min                : 0,
 				max                : $(this).data('max'),
 				max_postfix        : '<i class="postfix"></i>',
 				prettify_separator : ',',
-				from               : common._prevLiability,
-				values             : $(this).data('values').split(','),
+				from               : _from_value,
+				values             : _value,
 				onFinish           : function (data) {
 					var $imgWrap = $(data.input[0]).parent().prev();
 
@@ -423,25 +796,13 @@
 			min         : 40,
 			max         : $('.retire-age-slider').data('max'),
 			max_postfix : '<i class="postfix"></i>',
-			from        : common._nowAge,
-			onUpdate    : function (data) {
-				if (common._nowAge > $(data.input[0]).data('range').split(',')[2]) {
-					common.mixAnimate('.cut-19 ' + common._imageWrap + ' .doll', 0, 2, [0, 1, 2]);
-				} else if (common._nowAge > $(data.input[0]).data('range').split(',')[1]) {
-					common.mixAnimate('.cut-19 ' + common._imageWrap + ' .doll', 0, 1, [0, 1, 2]);
-				} else {
-					$('.cut-19 ' + common._imageWrap + ' .doll').on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
-						$(this).attr('data-level', '0').removeClass('disabled').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
-					});
-				}
-			},
+			from        : 40,
 			onFinish    : function (data) {
 				var _startRange,
 					_endRange;
 
 				common._LiabilityRange = $(data.input[0]).data('range').split(','); //寫入動畫區間
 				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
-				common._LiabilityAct[0] = common._nowAge;
 
 				// 字串轉數字
 				for (var i = 0; i < common._LiabilityRange.length; i++) {
@@ -483,7 +844,6 @@
 				}
 
 				common._LiabilityAct[0] = data.from;
-				common._nowAge = data.from;
 				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 			}
 		});
@@ -1056,7 +1416,7 @@
 					} else if ($(this).data('meta') === 'retired') {
 						$(common._checkbox + '[data-meta="young"], ' + common._checkbox + '[data-meta="near-retired"]').removeClass('is-checked');
 
-						if ($('.cut-5 .doll').length === 1) {
+						if ($('.cut-5 .doll[data-meta=""]').length === 1) {
 							$('.cut-5 .doll').attr('data-meta', _meta);
 						} else {
 							$('.cut-5 ' + common._imageWrap).append($('.cut-5 ' + common._imageWrap + ' .doll').eq(0).clone().attr('data-meta', _meta));
@@ -1300,17 +1660,23 @@
 							'class': 'l-content quest quest-' + (_num + _direct),
 							'data-quest': _num + _direct
 						});
+
+						// common.familyMaintenanceFund();
 					}
 				} else if (_num === 10 || _num === 11 || _num === 12 || _num === 13) {
 					// 將病房寫入下一題
 					if ($('.cut-' + _num + ' .is-checked').length !== 0) {
 						if (_num === 10) {
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', $('.cut-' + _num + ' ' + common._imageWrap).attr('data-meta'));
+						} else if (_num === 11) {
+							// common.commonInpatientMedicalItems();
 						} else if (_num === 12) {
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .function').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .function').attr('data-selection'));
+							// common.commonMajorDiseaseCancerCareItems();
 						} else if (_num === 13) {
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .function').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .function').attr('data-selection'));
 							$('.cut-' + (_num + 1) + ' ' + common._imageWrap + ' .envelopes').attr('data-selection', $('.cut-' + _num + ' ' + common._imageWrap + ' .envelopes').attr('data-selection'));
+							// common.accidentalDisabilityDemand();
 						}
 
 						$quest.attr({
@@ -1324,10 +1690,8 @@
 					// 作答了沒
 					if (_meta !== undefined) {
 
-						if (_num === 18) {
-							$('.retire-age-slider').data('ionRangeSlider').update({
-								from: common._nowAge
-							});
+						if (_num === 14) {
+							// common.longTermCareNeeds();
 						} else if (_num === 21) {
 							// 將一桶金選項寫入下一題
 							var  _range = $('.cut-' + _num).find('.is-checked').attr('data-range');
@@ -1355,30 +1719,57 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
+				} else if (_num === 22) {
+					if ($(common._dream + ' option:selected').val() === '') {
+						common.shake('.cut-' + _num + ' .wish');
+					} else {
+						$quest.attr({
+							'class': 'l-content quest quest-' + (_num + _direct),
+							'data-quest': _num + _direct
+						});
+					}
 				} else if (_num === 24) {
 					var _emptyLength = 0;
 
 					common.finalCheck(_num, _meta);
 
 					if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
+						// common.existingSocialLifeInsurance();
+
 						$quest.attr({
 							'class': 'l-content quest is-final',
 							'data-quest': 'final'
 						});
 						$(common._stepList).attr('class', 'step-list complete-phase-4');
+						// common.totalCount();
 					}
-				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10))) {
+				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) && $('.quest').attr('data-quest') !== 'final') {
 					// 最後一 cut
 					$quest.attr({
 						'class': 'l-content quest is-final',
 						'data-quest': 'final'
 					});
 					$(common._stepList).attr('class', 'step-list complete-phase-4');
+					// common.totalCount();
+				} else if (isNaN(parseInt($('.quest').attr('data-quest'), 10)) && $('.quest').attr('data-quest') === 'final') {
+					// 結果出爐
+					$('.nanForm').submit();
 				} else {
-					if (_num === 8) {
+					if (_num === 5) {
+						// 記錄人生階段
+						$('.cut-5 .is-checked').each(function(){
+							common._lifeEvent.push($(this).attr('data-value'));
+						});
+					} else if (_num === 6) {
+						// common.livingExpenses();
+					} else if (_num === 8) {
 						$('.edu-cost-slider').data('ionRangeSlider').update({
 							from: common._eduCost
 						});
+					} else if (_num === 19) {
+						// common.financialPensionNeeds();
+					} else if (_num === 20) {
+						// common.financialEducationFundDemand();
 					}
 
 					$quest.attr({
@@ -1409,10 +1800,6 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
-				} else if (_num === 20) {
-					$('.retire-age-slider').data('ionRangeSlider').update({
-						from: common._nowAge
-					});
 				} else if (_num === 21) {
 					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
 						from: common._eduCost
@@ -1437,7 +1824,7 @@
 					});
 
 					$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
-				} else if (_num === 25) {
+				} else if (_num === 24) {
 					$('.cut-24 .respond-wrap input').val('');
 					$('.cut-24 .selection option').eq(0).prop('selected', 'selected');
 				}
@@ -1483,6 +1870,8 @@
 				if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
 					common.openBox();
 					$(common._lLightbox + ' .is-insurance .box-title').text('新增保單');
+
+					// common.existingSocialLifeInsurance();
 				}
 			}
 		});
