@@ -14,6 +14,9 @@
 		this._lightbox             = '.jq-lightbox';
 		this._close                = '.jq-close';
 		this._dream                = '.jq-dream';
+		this._insName              = '.jq-ins-name';
+		this._search               = '.jq-search';
+		this._result               = '.jq-result';
 		this._lContent             = '.l-content';
 		this._lLightbox            = '.l-lightbox';
 		this._stepList             = '.step-list';
@@ -37,7 +40,7 @@
 		this._traditionalLiftExist = 0; // 寿险南山
 		this._eduExpenses          = 0; // 理财/教育基金需求
 		this._retirementPension    = 0; // 理财/退休金需求
-		this._ilpExist             = 0;
+		this._ilpExist             = 0; // 理财已有
 		this._nanshanInsArray      = ['_hospitalizationDay','_sundry','_surgery','_cancer','_majorDisease','_accident','_longTermCare'];
 		this._hospitalizationDay   = 0; // 住院額度
 		this._sundry               = 0; // 杂费
@@ -165,6 +168,7 @@
 		$(common._lLightbox).addClass('is-show animation-op').find(_which).addClass('is-show');
 	}
 
+	// 關閉 lightbox
 	index.prototype.closeBox = function(confirm) {
 		if (confirm === 'confirm') {
 			$(common._lContent + '.quest').attr({
@@ -178,13 +182,22 @@
 		});
 	}
 
-	index.prototype.offClick = function() {
+	// 點擊目標區域以外的地方可關閉目標區域
+	index.prototype.offClick = function(_target) {
 		projects.$d.off('click').on('click' , function(e){
-			if ($(common._lLightbox).hasClass('is-show animation-op')) {
+			if (_target === common._lLightbox && $(common._lLightbox).hasClass('is-show animation-op')) {
+				// 這是 lightbox
 				e.stopPropagation();
 
 				if (!$(e.target).is('.m-box, .m-box *, ' + common._lightbox + ', ' + common._lightbox + ' *, .sugarfun-datepicker, .sugarfun-datepicker *')) {
 					common.closeBox();
+				}
+			} else if (_target === common._result) {
+				// 這是 搜尋類似項目
+				e.stopPropagation();
+
+				if (!$(e.target).is(common._search + ', ' + _target + ', ' + _target + ' *')) {
+					$(_target).removeClass('is-show');
 				}
 			}
 		});
@@ -443,11 +456,11 @@
 	index.prototype.existingSocialLifeInsurance = function() {
 		var _type = $('.cut-' + _num + ' .respond-wrap').attr('data-meta'),
 			_data = {
-			'type'            : $('.cut-23 .is-checked').data('value'),
-			'insuranceSalary' : '',
-			'basicPay'        : parseFloat($('.jq-basicPay .irs-single').text(), 10),
-			'CSRFToken'       : common._CSRFToken
-		};
+				'type'            : $('.cut-23 .is-checked').data('value'),
+				'insuranceSalary' : '',
+				'basicPay'        : parseFloat($('.jq-basicPay .irs-single').text(), 10),
+				'CSRFToken'       : common._CSRFToken
+			};
 
 		if (_type === 'labor') {
 			_data.insuranceSalary = parseInt($('.cut-24 .respond-wrap .selection option:selected').val().replace(',', ''), 10);
@@ -487,6 +500,56 @@
 			complete : function(data) {
 			},
 			error    : function(xhr, textStatus, errorThrown) {
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 理财/退休金社保已有/一次给付
+	index.prototype.existingSocialInsurancePensionFinancialOnePayment = function() {
+		var _data = {
+			'monthlyInsuranceSalary' : $('.cut-24 .labor .selection option:selected').val(),
+			'insuredYears'           : $('.cut-24 .labor .ins-year').val(),
+			'CSRFToken'              : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/existingSocialInsurancePensionFinancialOnePayment',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._ilpExist += data.outputData.amount;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 理财/退休金社保已有/劳工退休金
+	index.prototype.existingSocialInsurancePensionFinancialLaborPension = function() {
+		var _data = {
+			'monthlyInsuranceSalary' : $('.cut-24 .labor .selection option:selected').val(),
+			'ruleType'               : $('.cut-24 .labor .is-checked').attr('data-value'),
+			'CSRFToken'              : common._CSRFToken
+		};
+
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/existingSocialInsurancePensionFinancialLaborPension',
+			data     : _data,
+			dataType : 'json',
+			success  : function(data) {
+				common._ilpExist += data.outputData.amount;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
+				console.log(_data);
 				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
 			} 
 		});
@@ -554,6 +617,7 @@
 		// common._CSRFToken = $("input[name='CSRFToken']").val();
 		// common.nanshanExistingMedicalInsurantAmount();
 
+		// 你的年齡
 		$('.age-slider').ionRangeSlider({
 			min         : 20,
 			max         : 84,
@@ -606,6 +670,7 @@
 			}
 		});
 
+		// 有幾個小孩
 		$('.amount-slider').each(function(){
 			$(this).ionRangeSlider({
 				min      : 0,
@@ -640,6 +705,7 @@
 			});
 		});
 
+		// 收入
 		$('.income-slider').ionRangeSlider({
 			min                : 0,
 			max                : 1000,
@@ -682,6 +748,7 @@
 			}
 		});
 
+		// 支出
 		$('.expend-slider').each(function(){
 			$(this).ionRangeSlider({
 				min                : 0,
@@ -754,6 +821,7 @@
 			});
 		});
 
+		// 醫療相關問項
 		$('.medical-slider').each(function(){
 			var _idx        = 0,
 				_from       = 0,
@@ -1736,6 +1804,11 @@
 					if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
 						// common.existingSocialLifeInsurance();
 
+						if ($('.cut-' + _num + ' .respond-wrap').attr('data-meta') === 'labor') {
+							// common.existingSocialInsurancePensionFinancialOnePayment();
+							// common.existingSocialInsurancePensionFinancialLaborPension();
+						}
+
 						$quest.attr({
 							'class': 'l-content quest is-final',
 							'data-quest': 'final'
@@ -1852,6 +1925,7 @@
 			}
 		});
 
+		// 觸發 lightbox 開啟事件
 		$(common._lightbox).on('click', function(){
 			if ($(this).hasClass('btn-edit')) {
 				common.openBox();
@@ -1876,10 +1950,12 @@
 			}
 		});
 
+		// 觸發 lightbox 關閉事件
 		$(common._close).on('click', function(){
 			common.closeBox($(this).data('type'));
 		});
 
+		// 一桶金更換類別即清空資料
 		$(common._dream).on('change', function(){
 			$(this).parents(common._transition).attr('data-selection', $(this).val());
 			$('.one-time-slider').data('ionRangeSlider').update({
@@ -1897,7 +1973,21 @@
 			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
 		});
 
-		common.offClick();
+		// 開啟相似結果清單
+		$(common._search).on('click', function(){
+			if ($(common._insName).val() !== '') {
+				$(common._result).addClass('is-show');
+				common.offClick(common._result);
+			}
+		});
+
+		// 選擇相似結果後將值帶入 input 並關閉清單
+		$(common._result + ' .result').on('click', function(){
+			$(common._insName).val($(this).text());
+			$(common._result).removeClass('is-show');
+		});
+
+		common.offClick(common._lLightbox);
 	});
 
 	projects.$d.ready(function(){

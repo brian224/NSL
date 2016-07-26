@@ -213,7 +213,18 @@
 }
 
 .stage {
-	display: none;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+
+	&:not(.cut-2):not(.cut-22):not(.cut-24) {
+		@include transition(ease-in opacity 0.5s);
+	}
 }
 
 .quest-title {
@@ -309,8 +320,8 @@
 
 @for $i from 1 through 24 {
 	.quest-#{$i} .cut-#{$i} {
-		display: block;
-		height: 100%;
+		opacity: 1;
+		z-index: 1;
 	}
 }
 
@@ -1743,7 +1754,7 @@
 }
 
 .cut-9 {
-	.stage {
+	&.stage {
 		padding-right: 23px;
 		position: relative;
 
@@ -1756,7 +1767,7 @@
 			height: 93px;
 			position: absolute;
 			left: 50%;
-			top: 269px;
+			top: 300px;
 		}
 	}
 
@@ -5092,7 +5103,7 @@
 				left: 0;
 
 				&[data-level="0-t-1"] {
-					@include animation(q22-flower-0-t-1 1.1s steps(20, end) forwards);
+					@include animation(q22-flower-0-t-1 1.1s steps(21, end) forwards);
 				}
 
 				&[data-level="1-t-2"] {
@@ -5104,7 +5115,7 @@
 				}
 
 				&[data-level="1-t-0"] {
-					@include animation(q22-flower-1-t-0 1.1s steps(20, end) forwards);
+					@include animation(q22-flower-1-t-0 1.1s steps(21, end) forwards);
 				}
 
 				&[data-level="2-t-1"] {
@@ -6334,7 +6345,7 @@
 }
 
 .quest-24 .cut-24 {
-	position: relative;
+	/*position: relative;*/
 
 	.quest-title {
 		margin-left: -130px;
@@ -7234,6 +7245,11 @@
 		height: 34px;
 		position: relative;
 
+		&.is-disabled:before {
+			opacity: 0.7;
+			z-index: 2;
+		}
+
 		&:before, &:after {
 			content: '';
 			background: url(../img/bg-box.png) 0 -100px no-repeat;
@@ -7359,6 +7375,37 @@
 			top: 50%;
 			left: 16px;
 			@include transform(rotate(-45deg));
+		}
+	}
+
+	.similar-list {
+		background: #fff;
+		display: none;
+		max-height: 300px;
+		position: absolute;
+		top: 100%;
+		border: 1px solid #f2f2f2;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		z-index: 3;
+
+		&.is-show {
+			display: block;
+		}
+
+		.result {
+			padding: 0 15px;
+			height: 34px;
+			cursor: pointer;
+			font-size: 13px;
+			letter-spacing: 1px;
+			line-height: 34px;
+			text-align: left;
+			@include box-sizing(border-box);
+
+			&:hover {
+				background: #f2f2f2;
+			}
 		}
 	}
 }
