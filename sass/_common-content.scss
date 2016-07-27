@@ -4326,7 +4326,7 @@
 		position: absolute;
 		top: 440px;
 		left: 50%;
-		z-index: 1;
+		z-index: 4;
 		text-align: center;
 
 		&:after {
@@ -4423,675 +4423,30 @@
 			}
 		}
 
+		&:not([data-selection=""]) .list {
+			width: 33.3%;
+
+			&:first-child {
+				em {
+					top: 10px;
+					left: 18px;
+				}
+
+				.selectbox {
+					top: 40px;
+					left: 40px;
+				}
+			}
+		}
+
 		&[data-selection="one-time"] {
 			.list {
-				width: 33.3%;
-	
-				&:first-child {
-					em {
-						top: 10px;
-						left: 18px;
-					}
-	
-					.selectbox {
-						top: 40px;
-						left: 40px;
-					}
-				}
-	
 				&:nth-child(2), &:nth-child(3) {
 					opacity: 1;
 				}
 	
-				&:nth-child(4) {
+				&:nth-child(4), &:nth-child(5) {
 					width: 0;
-				}
-			}
-
-			~ .image-wrap[data-meta="buycar"] {
-				.color {
-					background: url(../img/q22/ani-q22-car-color.png) 0 100px no-repeat;
-					width: 194px;
-					height: 100px;
-					position: absolute;
-					top: 9px;
-					left: 1px;
-				}
-
-				&[data-level=""] .color {
-					&[data-level="0-t-1"] {
-						@include animation(q22-bike-color-0-t-1 0.1s linear forwards);
-					}
-
-					&[data-level="1-t-2"] {
-						@include animation(q22-bike-color-1-t-2 0.1s linear forwards);
-					}
-
-					&[data-level="2-t-3"] {
-						@include animation(q22-bike-color-2-t-3 0.1s linear forwards);
-					}
-					
-					&[data-level="3-t-4"] {
-						@include animation(q22-bike-color-3-t-4 0.1s linear forwards);
-					}
-
-					&[data-level="4-t-5"] {
-						@include animation(q22-bike-color-4-t-5 0.1s linear forwards);
-					}
-
-					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -776px 0;
-						@include animation-duration(0.1s);
-					}
-
-					&[data-level="1-t-0"] {
-						@include animation(q22-bike-color-1-t-0 0.1s linear forwards);
-					}
-
-					&[data-level="2-t-1"] {
-						@include animation(q22-bike-color-2-t-1 0.1s linear forwards);
-					}
-
-					&[data-level="3-t-2"] {
-						@include animation(q22-bike-color-3-t-2 0.1s linear forwards);
-					}
-					
-					&[data-level="4-t-3"] {
-						@include animation(q22-bike-color-4-t-3 0.1s linear forwards);
-					}
-
-					&[data-level="5-t-4"] {
-						@include animation(q22-bike-color-5-t-4 0.1s linear forwards);
-					}
-				}
-
-				&:not([data-level=""]) .doll {
-					background: url(../img/q22/ani-q22-car.png) no-repeat;
-					width: 195px;
-					height: 143px;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-
-				&[data-level="0-t-1"] {
-					.doll {
-						@include animation(q22-car-0-t-1 1.1s steps(20, end) forwards);
-		
-						&[data-level="1"] {
-							@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -970px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"] {
-							@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="6-t-5"] {
-							@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="1-t-2"] {
-					.doll {
-						@include animation(q22-car-1-t-2 1.1s steps(20, end) forwards);
-		
-						&[data-level="2"] {
-							@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -2134px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-car-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-car-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-car-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-car-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-car-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"], &[data-level="6-t-5"] {
-							background-position: -2910px 0;
-							@include animation-duration(0.1s);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-car-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-car-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-car-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-car-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-car-color-5-t-4 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="2-t-3"] {
-					.doll {
-						@include animation(q22-car-2-t-3 1.1s steps(19, end) forwards);
-		
-						&[data-level="3"] {
-							@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -3104px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"], &[data-level="6-t-5"] {
-							background-position: -3880px 0;
-							@include animation-duration(0.1s);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="3-t-4"] {
-					.doll {
-						@include animation(q22-car-3-t-4 1.1s steps(19, end) forwards);
-		
-						&[data-level="4"] {
-							@include animation(q22-car-move-4 0.7s steps(13, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -4074px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-racing-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-racing-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-racing-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-racing-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-racing-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"], &[data-level="6-t-5"] {
-							background-position: -4850px 0;
-							@include animation-duration(0.1s);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-racing-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-racing-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-racing-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-racing-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-racing-color-5-t-4 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="1-t-0"] {
-					.doll {
-						@include animation(q22-car-1-t-0 1.1s steps(20, end) forwards);
-					}
-				}
-
-				&[data-level="2-t-1"] {
-					.doll {
-						@include animation(q22-car-2-t-1 1.1s steps(20, end) forwards);
-		
-						&[data-level="1"] {
-							@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -970px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"] {
-							@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="6-t-5"] {
-							@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="3-t-2"] {
-					.doll {
-						@include animation(q22-car-3-t-2 1.1s steps(19, end) forwards);
-		
-						&[data-level="2"] {
-							@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -2134px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-car-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-car-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-car-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-car-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-car-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"], &[data-level="6-t-5"] {
-							background-position: -2910px 0;
-							@include animation-duration(0.1s);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-car-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-car-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-car-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-car-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-car-color-5-t-4 0.1s linear forwards);
-						}
-					}
-				}
-
-				&[data-level="4-t-3"] {
-					.doll {
-						@include animation(q22-car-4-t-3 1.1s steps(19, end) forwards);
-		
-						&[data-level="3"] {
-							@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
-						}
-					}
-
-					.color {
-						background-position: -3104px 100px;
-
-						&[data-level="0-t-1"] {
-							@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="1-t-2"] {
-							@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-3"] {
-							@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
-						}
-						
-						&[data-level="3-t-4"] {
-							@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
-						}
-
-						&[data-level="4-t-5"] {
-							@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-6"], &[data-level="6-t-5"] {
-							background-position: -3880px 0;
-							@include animation-duration(0.1s);
-						}
-
-						&[data-level="1-t-0"] {
-							@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
-						}
-
-						&[data-level="2-t-1"] {
-							@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
-						}
-
-						&[data-level="3-t-2"] {
-							@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
-						}
-						
-						&[data-level="4-t-3"] {
-							@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
-						}
-
-						&[data-level="5-t-4"] {
-							@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
-						}
-					}
-				}
-			}
-
-			~ .image-wrap[data-meta="buyhouse"] {
-				.color {
-					background: url(../img/q22/ani-q22-house-color.png) no-repeat;
-					width: 100%;
-					height: 100%;
-					position: absolute;
-					top: 0;
-					left: 0;
-				}
-
-				&[data-level=""] .color, &[data-level="1-t-0"] .color {
-					background-position: 342px 0;
-
-					&[data-level="0-t-1"] {
-						@include animation(q22-cottage-color-0-t-1 0.4s steps(7, end) forwards);
-					}
-
-					&[data-level="1-t-2"] {
-						@include animation(q22-cottage-color-1-t-2 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="2-t-3"] {
-						@include animation(q22-cottage-color-2-t-3 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="3-t-4"] {
-						@include animation(q22-cottage-color-3-t-4 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="4-t-5"] {
-						@include animation(q22-cottage-color-4-t-5 0.1s steps(3, end) forwards);
-					}
-
-					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -8550px 0;
-					}
-
-					&[data-level="1-t-0"] {
-						@include animation(q22-cottage-color-1-t-0 0.4s steps(7, end) forwards);
-					}
-
-					&[data-level="2-t-1"] {
-						@include animation(q22-cottage-color-2-t-1 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="3-t-2"] {
-						@include animation(q22-cottage-color-3-t-2 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="4-t-3"] {
-						@include animation(q22-cottage-color-4-t-3 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="5-t-4"] {
-						@include animation(q22-cottage-color-5-t-4 0.1s steps(3, end) forwards);
-					}
-				}
-
-				&[data-level="0-t-1"] .color, &[data-level="2-t-1"] .color {
-					background-position: -8892px 0;
-
-					&[data-level="0-t-1"] {
-						@include animation(q22-cabin-color-0-t-1 0.4s steps(6, end) forwards);
-					}
-
-					&[data-level="1-t-2"] {
-						@include animation(q22-cabin-color-1-t-2 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="2-t-3"] {
-						@include animation(q22-cabin-color-2-t-3 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="3-t-4"] {
-						@include animation(q22-cabin-color-3-t-4 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="4-t-5"] {
-						@include animation(q22-cabin-color-4-t-5 0.1s steps(3, end) forwards);
-					}
-
-					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -17442px 0;
-					}
-
-					&[data-level="1-t-0"] {
-						@include animation(q22-cabin-color-1-t-0 0.4s steps(6, end) forwards);
-					}
-
-					&[data-level="2-t-1"] {
-						@include animation(q22-cabin-color-2-t-1 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="3-t-2"] {
-						@include animation(q22-cabin-color-3-t-2 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="4-t-3"] {
-						@include animation(q22-cabin-color-4-t-3 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="5-t-4"] {
-						@include animation(q22-cabin-color-5-t-4 0.1s steps(3, end) forwards);
-					}
-				}
-
-				&[data-level="1-t-2"] .color {
-					background-position: -17784px 0;
-
-					&[data-level="0-t-1"] {
-						@include animation(q22-luxury-color-0-t-1 0.4s steps(6, end) forwards);
-					}
-
-					&[data-level="1-t-2"] {
-						@include animation(q22-luxury-color-1-t-2 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="2-t-3"] {
-						@include animation(q22-luxury-color-2-t-3 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="3-t-4"] {
-						@include animation(q22-luxury-color-3-t-4 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="4-t-5"] {
-						@include animation(q22-luxury-color-4-t-5 0.1s steps(3, end) forwards);
-					}
-
-					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -26334px 0;
-					}
-
-					&[data-level="1-t-0"] {
-						@include animation(q22-luxury-color-1-t-0 0.4s steps(6, end) forwards);
-					}
-
-					&[data-level="2-t-1"] {
-						@include animation(q22-luxury-color-2-t-1 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="3-t-2"] {
-						@include animation(q22-luxury-color-3-t-2 0.2s steps(5, end) forwards);
-					}
-					
-					&[data-level="4-t-3"] {
-						@include animation(q22-luxury-color-4-t-3 0.2s steps(4, end) forwards);
-					}
-
-					&[data-level="5-t-4"] {
-						@include animation(q22-luxury-color-5-t-4 0.1s steps(3, end) forwards);
-					}
 				}
 			}
 
@@ -5130,128 +4485,12 @@
 
 		&[data-selection="per-year"] {
 			.list {
-				width: 50%;
-	
-				&:first-child {
-					em {
-						top: 10px;
-						left: 68px;
-					}
-	
-					.selectbox {
-						top: 40px;
-						left: 90px;
-					}
-				}
-	
 				&:nth-child(2), &:nth-child(3) {
 					width: 0;
 				}
 	
-				&:nth-child(4) {
+				&:nth-child(4), &:nth-child(5) {
 					opacity: 1;
-				}
-			}
-
-			~ .image-wrap[data-meta="buycar"] {
-				&:not([data-level=""]) .doll {
-					margin-left: -94px;
-					background: url(../img/q22/ani-q22-car2.png) no-repeat;
-					width: 195px;
-					height: 143px;
-					top: 0;
-				}
-
-				&[data-level="0-t-1"] .doll {
-					@include animation(q22-car-per-year-0-t-1 1.3s steps(24, end) forwards);
-				}
-
-				&[data-level="1-t-2"] .doll {
-					@include animation(q22-car-per-year-1-t-2 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="2-t-3"] .doll {
-					@include animation(q22-car-per-year-2-t-3 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="3-t-4"] .doll {
-					@include animation(q22-car-per-year-3-t-4 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="4-t-5"] .doll {
-					@include animation(q22-car-per-year-4-t-5 0.8s steps(16, end) forwards);
-				}
-
-				&[data-level="5-t-6"] .doll, &[data-level="6-t-5"] .doll {
-					background-position: -19695px 0;
-				}
-
-				&[data-level="1-t-0"] .doll {
-					@include animation(q22-car-per-year-1-t-0 1.3s steps(24, end) forwards);
-				}
-
-				&[data-level="2-t-1"] .doll {
-					@include animation(q22-car-per-year-2-t-1 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="3-t-2"] .doll {
-					@include animation(q22-car-per-year-3-t-2 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="4-t-3"] .doll {
-					@include animation(q22-car-per-year-4-t-3 1.1s steps(19, end) forwards);
-				}
-
-				&[data-level="5-t-4"] .doll {
-					@include animation(q22-car-per-year-5-t-4 0.8s steps(16, end) forwards);
-				}
-			}
-
-			~ .image-wrap[data-meta="buyhouse"] {
-				background: url(../img/q22/ani-q22-house2.png) 0 0 no-repeat;
-
-				&[data-level="0-t-1"] {
-					@include animation(q22-house-per-year-0-t-1 1.4s steps(25, end) forwards);
-				}
-
-				&[data-level="1-t-2"] {
-					@include animation(q22-house-per-year-1-t-2 0.6s steps(11, end) forwards);
-				}
-
-				&[data-level="2-t-3"] {
-					@include animation(q22-house-per-year-2-t-3 1.4s steps(25, end) forwards);
-				}
-
-				&[data-level="3-t-4"] {
-					@include animation(q22-house-per-year-3-t-4 0.6s steps(11, end) forwards);
-				}
-
-				&[data-level="4-t-5"] {
-					@include animation(q22-house-per-year-4-t-5 1.4s steps(25, end) forwards);
-				}
-
-				&[data-level="5-t-6"], &[data-level="6-t-5"] {
-					background-position: -12654px -217px;
-				}
-
-				&[data-level="1-t-0"] {
-					@include animation(q22-house-per-year-1-t-0 1.4s steps(25, end) forwards);
-				}
-
-				&[data-level="2-t-1"] {
-					@include animation(q22-house-per-year-2-t-1 0.6s steps(11, end) forwards);
-				}
-
-				&[data-level="3-t-2"] {
-					@include animation(q22-house-per-year-3-t-2 1.4s steps(25, end) forwards);
-				}
-
-				&[data-level="4-t-3"] {
-					@include animation(q22-house-per-year-4-t-3 0.6s steps(11, end) forwards);
-				}
-
-				&[data-level="5-t-4"] {
-					@include animation(q22-house-per-year-5-t-4 1.4s steps(25, end) forwards);
 				}
 			}
 
@@ -5507,7 +4746,7 @@
 					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
 
 					.drop {
-						top: -8px;
+						top: -86px;
 					}
 				}
 
@@ -5565,7 +4804,7 @@
 					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
 
 					.drop {
-						top: -8px;
+						top: -86px;
 					}
 				}
 
@@ -5656,6 +4895,496 @@
 				left: 0;
 				@include animation(q22-choose-buycar 2.1s steps(39, end) infinite);
 			}
+
+			&:not([data-level=""]) .doll {
+				background: url(../img/q22/ani-q22-car.png) no-repeat;
+				width: 195px;
+				height: 143px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			.color {
+				background: url(../img/q22/ani-q22-car-color.png) 0 100px no-repeat;
+				width: 194px;
+				height: 100px;
+				position: absolute;
+				top: 9px;
+				left: 1px;
+			}
+
+			&[data-level=""] .color {
+				&[data-level="0-t-1"] {
+					@include animation(q22-bike-color-0-t-1 0.1s linear forwards);
+				}
+
+				&[data-level="1-t-2"] {
+					@include animation(q22-bike-color-1-t-2 0.1s linear forwards);
+				}
+
+				&[data-level="2-t-3"] {
+					@include animation(q22-bike-color-2-t-3 0.1s linear forwards);
+				}
+				
+				&[data-level="3-t-4"] {
+					@include animation(q22-bike-color-3-t-4 0.1s linear forwards);
+				}
+
+				&[data-level="4-t-5"] {
+					@include animation(q22-bike-color-4-t-5 0.1s linear forwards);
+				}
+
+				&[data-level="5-t-6"], &[data-level="6-t-5"] {
+					background-position: -776px 0;
+					@include animation-duration(0.1s);
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-bike-color-1-t-0 0.1s linear forwards);
+				}
+
+				&[data-level="2-t-1"] {
+					@include animation(q22-bike-color-2-t-1 0.1s linear forwards);
+				}
+
+				&[data-level="3-t-2"] {
+					@include animation(q22-bike-color-3-t-2 0.1s linear forwards);
+				}
+				
+				&[data-level="4-t-3"] {
+					@include animation(q22-bike-color-4-t-3 0.1s linear forwards);
+				}
+
+				&[data-level="5-t-4"] {
+					@include animation(q22-bike-color-5-t-4 0.1s linear forwards);
+				}
+			}
+
+			&[data-level="0-t-1"] {
+				.doll {
+					@include animation(q22-car-0-t-1 1.1s steps(20, end) forwards);
+	
+					&[data-level="1"] {
+						@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -970px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"] {
+						@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="6-t-5"] {
+						@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="1-t-2"] {
+				.doll {
+					@include animation(q22-car-1-t-2 1.1s steps(20, end) forwards);
+	
+					&[data-level="2"] {
+						@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -2134px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-car-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-car-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-car-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-car-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-car-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -2910px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-car-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-car-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-car-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-car-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-car-color-5-t-4 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="2-t-3"] {
+				.doll {
+					@include animation(q22-car-2-t-3 1.1s steps(19, end) forwards);
+	
+					&[data-level="3"] {
+						@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -3104px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -3880px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="3-t-4"] {
+				.doll {
+					@include animation(q22-car-3-t-4 1.1s steps(19, end) forwards);
+	
+					&[data-level="4"] {
+						@include animation(q22-car-move-4 0.7s steps(13, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -4074px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-racing-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-racing-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-racing-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-racing-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-racing-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -4850px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-racing-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-racing-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-racing-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-racing-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-racing-color-5-t-4 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="1-t-0"] {
+				.doll {
+					@include animation(q22-car-1-t-0 1.1s steps(20, end) forwards);
+				}
+			}
+
+			&[data-level="2-t-1"] {
+				.doll {
+					@include animation(q22-car-2-t-1 1.1s steps(20, end) forwards);
+	
+					&[data-level="1"] {
+						@include animation(q22-car-move-1 0.7s steps(13, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -970px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-moto-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-moto-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-moto-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"] {
+						@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-moto-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-moto-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-moto-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-moto-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="6-t-5"] {
+						@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="3-t-2"] {
+				.doll {
+					@include animation(q22-car-3-t-2 1.1s steps(19, end) forwards);
+	
+					&[data-level="2"] {
+						@include animation(q22-car-move-2 0.7s steps(14, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -2134px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-car-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-car-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-car-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-car-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-car-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -2910px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-car-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-car-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-car-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-car-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-car-color-5-t-4 0.1s linear forwards);
+					}
+				}
+			}
+
+			&[data-level="4-t-3"] {
+				.doll {
+					@include animation(q22-car-4-t-3 1.1s steps(19, end) forwards);
+	
+					&[data-level="3"] {
+						@include animation(q22-car-move-3 0.7s steps(13, end) infinite);
+					}
+				}
+
+				.color {
+					background-position: -3104px 100px;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-rv-color-1-t-2 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-rv-color-2-t-3 0.1s linear forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-rv-color-3-t-4 0.1s linear forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-rv-color-4-t-5 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -3880px 0;
+						@include animation-duration(0.1s);
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-rv-color-1-t-0 0.1s linear forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-rv-color-2-t-1 0.1s linear forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-rv-color-3-t-2 0.1s linear forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-rv-color-4-t-3 0.1s linear forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-rv-color-5-t-4 0.1s linear forwards);
+					}
+				}
+			}
 		}
 
 		&[data-meta="buyhouse"] {
@@ -5673,12 +5402,165 @@
 				bottom: 172px;
 			}
 
+			.color {
+				background: url(../img/q22/ani-q22-house-color.png) no-repeat;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			&[data-level=""] .color, &[data-level="1-t-0"] .color {
+				background-position: 342px 0;
+
+				&[data-level="0-t-1"] {
+					@include animation(q22-cottage-color-0-t-1 0.4s steps(7, end) forwards);
+				}
+
+				&[data-level="1-t-2"] {
+					@include animation(q22-cottage-color-1-t-2 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="2-t-3"] {
+					@include animation(q22-cottage-color-2-t-3 0.2s steps(5, end) forwards);
+				}
+				
+				&[data-level="3-t-4"] {
+					@include animation(q22-cottage-color-3-t-4 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="4-t-5"] {
+					@include animation(q22-cottage-color-4-t-5 0.1s steps(3, end) forwards);
+				}
+
+				&[data-level="5-t-6"], &[data-level="6-t-5"] {
+					background-position: -8550px 0;
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-cottage-color-1-t-0 0.4s steps(7, end) forwards);
+				}
+
+				&[data-level="2-t-1"] {
+					@include animation(q22-cottage-color-2-t-1 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="3-t-2"] {
+					@include animation(q22-cottage-color-3-t-2 0.2s steps(5, end) forwards);
+				}
+				
+				&[data-level="4-t-3"] {
+					@include animation(q22-cottage-color-4-t-3 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="5-t-4"] {
+					@include animation(q22-cottage-color-5-t-4 0.1s steps(3, end) forwards);
+				}
+			}
+
+			&[data-level="0-t-1"] .color, &[data-level="2-t-1"] .color {
+				background-position: -8892px 0;
+
+				&[data-level="0-t-1"] {
+					@include animation(q22-cabin-color-0-t-1 0.4s steps(6, end) forwards);
+				}
+
+				&[data-level="1-t-2"] {
+					@include animation(q22-cabin-color-1-t-2 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="2-t-3"] {
+					@include animation(q22-cabin-color-2-t-3 0.2s steps(5, end) forwards);
+				}
+				
+				&[data-level="3-t-4"] {
+					@include animation(q22-cabin-color-3-t-4 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="4-t-5"] {
+					@include animation(q22-cabin-color-4-t-5 0.1s steps(3, end) forwards);
+				}
+
+				&[data-level="5-t-6"], &[data-level="6-t-5"] {
+					background-position: -17442px 0;
+				}
+
+				&[data-level="1-t-0"] {
+					@include animation(q22-cabin-color-1-t-0 0.4s steps(6, end) forwards);
+				}
+
+				&[data-level="2-t-1"] {
+					@include animation(q22-cabin-color-2-t-1 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="3-t-2"] {
+					@include animation(q22-cabin-color-3-t-2 0.2s steps(5, end) forwards);
+				}
+				
+				&[data-level="4-t-3"] {
+					@include animation(q22-cabin-color-4-t-3 0.2s steps(4, end) forwards);
+				}
+
+				&[data-level="5-t-4"] {
+					@include animation(q22-cabin-color-5-t-4 0.1s steps(3, end) forwards);
+				}
+			}
+
 			&[data-level="0-t-1"] {
 				@include animation(q22-house-0-t-1 0.7s steps(12, end) forwards);
 			}
 
 			&[data-level="1-t-2"] {
 				@include animation(q22-house-1-t-2 0.7s steps(12, end) forwards);
+
+				.color {
+					background-position: -17784px 0;
+
+					&[data-level="0-t-1"] {
+						@include animation(q22-luxury-color-0-t-1 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="1-t-2"] {
+						@include animation(q22-luxury-color-1-t-2 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="2-t-3"] {
+						@include animation(q22-luxury-color-2-t-3 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="3-t-4"] {
+						@include animation(q22-luxury-color-3-t-4 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="4-t-5"] {
+						@include animation(q22-luxury-color-4-t-5 0.1s steps(3, end) forwards);
+					}
+
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -26334px 0;
+					}
+
+					&[data-level="1-t-0"] {
+						@include animation(q22-luxury-color-1-t-0 0.4s steps(6, end) forwards);
+					}
+
+					&[data-level="2-t-1"] {
+						@include animation(q22-luxury-color-2-t-1 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="3-t-2"] {
+						@include animation(q22-luxury-color-3-t-2 0.2s steps(5, end) forwards);
+					}
+					
+					&[data-level="4-t-3"] {
+						@include animation(q22-luxury-color-4-t-3 0.2s steps(4, end) forwards);
+					}
+
+					&[data-level="5-t-4"] {
+						@include animation(q22-luxury-color-5-t-4 0.1s steps(3, end) forwards);
+					}
+				}
 			}
 
 			&[data-level="1-t-0"] {
@@ -5690,59 +5572,63 @@
 			}
 		}
 
-		&[data-meta="study"] .drop {
-			background: url(../img/q22/ani-q22-study-flag.png) 0 0 no-repeat;
-			width: 557px;
-			height: 497px;
-			left: auto;
-			right: 147px;
+		&[data-meta="study"] {
+			z-index: 3;
 
-			&[data-level="0-t-1"] {
-				@include animation(q22-study-flag-0-t-1 0.7s steps(12, end) forwards);
-			}
-
-			&[data-level="1-t-2"] {
-				@include animation(q22-study-flag-1-t-2 0.7s steps(13, end) forwards);
-			}
-
-			&[data-level="2-t-3"] {
-				@include animation(q22-study-flag-2-t-3 0.8s steps(14, end) forwards);
-			}
-
-			&[data-level="3-t-4"] {
-				@include animation(q22-study-flag-3-t-4 0.7s steps(12, end) forwards);
-			}
-
-			&[data-level="4-t-5"] {
-				@include animation(q22-study-flag-4-t-5 0.7s steps(13, end) forwards);
-			}
-
-			&[data-level="5-t-6"] {
-				@include animation(q22-study-flag-5-t-6 0.7s steps(13, end) forwards);
-			}
-
-			&[data-level="1-t-0"] {
-				@include animation(q22-study-flag-1-t-0 0.7s steps(12, end) forwards);
-			}
-
-			&[data-level="2-t-1"] {
-				@include animation(q22-study-flag-2-t-1 0.7s steps(13, end) forwards);
-			}
-
-			&[data-level="3-t-2"] {
-				@include animation(q22-study-flag-3-t-2 0.8s steps(14, end) forwards);
-			}
-
-			&[data-level="4-t-3"] {
-				@include animation(q22-study-flag-4-t-3 0.7s steps(12, end) forwards);
-			}
-
-			&[data-level="5-t-4"] {
-				@include animation(q22-study-flag-5-t-4 0.7s steps(13, end) forwards);
-			}
-
-			&[data-level="6-t-5"] {
-				@include animation(q22-study-flag-6-t-5 0.7s steps(13, end) forwards);
+			.drop {
+				background: url(../img/q22/ani-q22-study-flag.png) 0 0 no-repeat;
+				width: 557px;
+				height: 497px;
+				left: auto;
+				right: 147px;
+	
+				&[data-level="0-t-1"] {
+					@include animation(q22-study-flag-0-t-1 0.7s steps(12, end) forwards);
+				}
+	
+				&[data-level="1-t-2"] {
+					@include animation(q22-study-flag-1-t-2 0.7s steps(13, end) forwards);
+				}
+	
+				&[data-level="2-t-3"] {
+					@include animation(q22-study-flag-2-t-3 0.8s steps(14, end) forwards);
+				}
+	
+				&[data-level="3-t-4"] {
+					@include animation(q22-study-flag-3-t-4 0.7s steps(12, end) forwards);
+				}
+	
+				&[data-level="4-t-5"] {
+					@include animation(q22-study-flag-4-t-5 0.7s steps(13, end) forwards);
+				}
+	
+				&[data-level="5-t-6"] {
+					@include animation(q22-study-flag-5-t-6 0.7s steps(13, end) forwards);
+				}
+	
+				&[data-level="1-t-0"] {
+					@include animation(q22-study-flag-1-t-0 0.7s steps(12, end) forwards);
+				}
+	
+				&[data-level="2-t-1"] {
+					@include animation(q22-study-flag-2-t-1 0.7s steps(13, end) forwards);
+				}
+	
+				&[data-level="3-t-2"] {
+					@include animation(q22-study-flag-3-t-2 0.8s steps(14, end) forwards);
+				}
+	
+				&[data-level="4-t-3"] {
+					@include animation(q22-study-flag-4-t-3 0.7s steps(12, end) forwards);
+				}
+	
+				&[data-level="5-t-4"] {
+					@include animation(q22-study-flag-5-t-4 0.7s steps(13, end) forwards);
+				}
+	
+				&[data-level="6-t-5"] {
+					@include animation(q22-study-flag-6-t-5 0.7s steps(13, end) forwards);
+				}
 			}
 		}
 
@@ -6345,8 +6231,6 @@
 }
 
 .quest-24 .cut-24 {
-	/*position: relative;*/
-
 	.quest-title {
 		margin-left: -130px;
 		background-position: 0 -924px;
@@ -6639,6 +6523,31 @@
 				background-position: -244px -981px;
 			}
 		}
+
+		&[data-meta="none"] .none {
+			padding-top: 352px;
+			display: block;
+		}
+
+		&.chosen-girl ~ .image-wrap[data-meta="none"] {
+			background: url(../img/q1/girl.png) -151px 0 no-repeat;
+			width: 151px;
+			height: 242px;
+			top: 230px;
+			left: 250px;
+			opacity: 1;
+			@include animation(wink-girl 5s steps(1, start) infinite);
+		}
+
+		&.chosen-boy ~ .image-wrap[data-meta="none"] {
+			background: url(../img/q1/boy.png) -148px 0 no-repeat;
+			width: 148px;
+			height: 242px;
+			top: 226px;
+			left: 250px;
+			opacity: 1;
+			@include animation(wink-boy 5s 0.5s steps(1, start) infinite);
+    	}
 	}
 
 	.btn-notify {
@@ -6668,12 +6577,16 @@
 
 .is-ins-list {
 	.cut-ins-list {
-		margin: 0 auto;
+		margin-left: -463px;
 		padding-top: 212px;
 		display: block;
-		width: 900px;
+		width: 926px;
 		height: 100%;
-		position: relative;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		opacity: 1;
+		z-index: 1;
 		@include box-sizing(border-box);
 
 		&:before {
@@ -6942,6 +6855,8 @@
 	.cut-final {
 		display: block;
 		height: 100%;
+		opacity: 1;
+		z-index: 1;
 	}
 
 	.quest-title {

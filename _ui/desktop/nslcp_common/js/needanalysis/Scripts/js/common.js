@@ -17,9 +17,11 @@
 		this._insName              = '.jq-ins-name';
 		this._search               = '.jq-search';
 		this._result               = '.jq-result';
+		this._length               = '.jq-length';
 		this._lContent             = '.l-content';
 		this._lLightbox            = '.l-lightbox';
 		this._stepList             = '.step-list';
+		this._checkNum             = /\D+/g;
 		this._prevAge              = 0; // 預設年紀
 		this._ageRange             = [30, 50, 70]; // 年紀區間
 		this._steps                = [7, 17, 23, 25]; // 五階段的題目區隔
@@ -30,6 +32,7 @@
 		this._LiabilityAct         = ''; // 紀錄負債變化
 		this._LiabilityRange       = ''; // 負債區間
 		this._eduCost              = 0; // 子女教育費
+		this._fundSelection        = 0; // 基金三選一
 		this._AniCache             = 0; // 一桶金拉霸暫存
 		this._ExpensesAfterRetire  = 0; // 退休後每月支出
 		this._childArray           = []; // 每個小孩的年齡
@@ -147,6 +150,20 @@
 				}
 			}, (parseFloat($(className).css('animation-duration'), 10) + parseFloat($(className).css('animation-delay'), 10)) * 1000);
 		}
+	}
+
+	// 計算千分位
+	index.prototype.setPercentile = function(num) {
+		num = num.toString().replace(/\$|\,/g, '');
+		if (isNaN(num)) num = '0';
+		var sign = (num == (num = Math.abs(num)));
+		num = Math.floor(num * 100 + 0.50000000001);
+		var cents = num % 100;
+		num = Math.floor(num / 100).toString();
+		if (cents < 10) cents = '0' + cents;
+		for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3) ; i++)
+		num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3));
+		return (((sign) ? '' : '-') + num);
 	}
 
 	// 開啟 lightbox
@@ -425,7 +442,7 @@
 
 	// 理财/教育基金需求
 	index.prototype.financialEducationFundDemand = function() {
-		var _eduType = (parseInt($('.edu-cost-slider').prev().find('.irs-single').text().replace(',', ''), 10) >= 950) ? 2 : 1,
+		var _eduType = 1, // 公立
 			_data = {};
 
 		_data.CSRFToken = common._CSRFToken;
@@ -454,18 +471,18 @@
 
 	// 寿险/社保已有
 	index.prototype.existingSocialLifeInsurance = function() {
-		var _type = $('.cut-' + _num + ' .respond-wrap').attr('data-meta'),
+		var _type = $('.cut-24 .respond-wrap').attr('data-meta'),
 			_data = {
-				'type'            : $('.cut-23 .is-checked').data('value'),
-				'insuranceSalary' : '',
-				'basicPay'        : parseFloat($('.jq-basicPay .irs-single').text(), 10),
-				'CSRFToken'       : common._CSRFToken
+				'type'      : $('.cut-23 .is-checked').data('value'),
+				'CSRFToken' : common._CSRFToken
 			};
 
 		if (_type === 'labor') {
 			_data.insuranceSalary = parseInt($('.cut-24 .respond-wrap .selection option:selected').val().replace(',', ''), 10);
+			_data.basicPay = parseFloat($('.jq-basicPay .irs-single').text(), 10);
 		} else if (_type !== 'farmer') {
 			_data.insuranceSalary = parseInt($('.cut-24 .respond-wrap .' + _type + ' .money').next().find('input').val().replace(',', ''), 10);
+			_data.basicPay = parseFloat($('.jq-basicPay .irs-single').text(), 10);
 		}
 
 		$.ajax({
@@ -519,7 +536,7 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				common._ilpExist += data.outputData.amount;
+				// common._ilpExist += data.outputData.amount;
 			},
 			complete : function(data) {
 			},
@@ -544,12 +561,32 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				common._ilpExist += data.outputData.amount;
+				// common._ilpExist += data.outputData.amount;
 			},
 			complete : function(data) {
 			},
 			error    : function(xhr, textStatus, errorThrown) {
 				console.log(_data);
+				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
+			} 
+		});
+	}
+
+	// 南山現有保險理財額度
+	index.prototype.nanshanExistingInsuranceFinancingAmount = function() {
+		$.ajax({
+			type     : 'POST',
+			url      : NSLCP.config.encodedContextPath + '/member/needanalysis/ajax/nanshanExistingInsuranceFinancingAmount',
+			data     : {
+				'CSRFToken' : common._CSRFToken
+			},
+			dataType : 'json',
+			success  : function(data) {
+				common._ilpExist = data.outputData.amount;
+			},
+			complete : function(data) {
+			},
+			error    : function(xhr, textStatus, errorThrown) {
 				console.log('xhr:' + xhr + ' , ' + 'textStatus:' + textStatus + ' , ' + 'errorThrown:' + errorThrown);
 			} 
 		});
@@ -616,6 +653,7 @@
 	projects.$w.load(function(){
 		// common._CSRFToken = $("input[name='CSRFToken']").val();
 		// common.nanshanExistingMedicalInsurantAmount();
+		// common.nanshanExistingInsuranceFinancingAmount();
 
 		// 你的年齡
 		$('.age-slider').ionRangeSlider({
@@ -1185,226 +1223,153 @@
 		});
 
 		// 一桶金 一次通通領 幾年後領取第一筆
-		$('.one-time-slider').ionRangeSlider({
-			min                : 0,
-			max                : $('.one-time-slider').data('max'),
-			max_postfix        : '<i class="postfix"></i>',
-			prettify_separator : ',',
-			from               : common._prevLiability,
-			values             : $('.one-time-slider').data('values') ? $('.one-time-slider').data('values').split(',') : '',
-			onFinish           : function (data) {
-				var _startRange,
-					_endRange,
-					_array = [];
+		$('.basic-slider').each(function(){
+			$(this).ionRangeSlider({
+				min                : 0,
+				max                : $(this).data('max'),
+				max_postfix        : '<i class="postfix"></i>',
+				prettify_separator : ',',
+				from               : common._prevLiability,
+				values             : $(this).data('values') ? $(this).data('values').split(',') : '',
+				onFinish           : function (data) {
+					var _startRange,
+						_endRange,
+						_array = [];
 
-				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
-				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
+					common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
+					common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
 
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityRange.length; i++) {
-					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
-					_array.push(i);
-				}
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityAct.length; i++) {
-					common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
-				}
-				// 紀錄變化結束點
-				common._LiabilityAct[1] = data.from_value;
-
-				// 判斷起始點在哪
-				for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
-					if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
-						// 起始點 = 最小值
-						_startRange = 0;
-					} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
-						// 起始點 = 最大值
-						_startRange = common._LiabilityRange.length - 1;
-					} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
-						_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityRange.length; i++) {
+						common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+						_array.push(i);
 					}
-				}
-
-				// 判斷結束點在哪
-				for (var j = 0; j < common._LiabilityRange.length; j++) {
-					if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
-						_endRange = j;
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityAct.length; i++) {
+						common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
 					}
-				}
+					// 紀錄變化結束點
+					common._LiabilityAct[1] = data.from_value;
 
-				if (_startRange !== _endRange) {
-					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
-						var _base     = $('.cut-22 ' + common._imageWrap + ' .doll').attr('data-level').split('-t-')[1],
-							_siblings = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level') !== '' ? parseInt($('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1], 10) : 0;
+					// 判斷起始點在哪
+					for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
+						if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
+							// 起始點 = 最小值
+							_startRange = 0;
+						} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
+							// 起始點 = 最大值
+							_startRange = common._LiabilityRange.length - 1;
+						} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
+							_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+						}
+					}
 
-						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+					// 判斷結束點在哪
+					for (var j = 0; j < common._LiabilityRange.length; j++) {
+						if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
+							_endRange = j;
+						}
+					}
 
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, _array);
-					} else {
+					if (_startRange !== _endRange) {
 						var _base     = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1],
 							_siblings = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level') !== '' ? parseInt($('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1], 10) : 0;
 
 						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
 						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+
+						// if (common._AniCache !== _endRange - _startRange + _base !== _siblings && _siblings > _endRange - _startRange + _base) {
+						// 	common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, _endRange - _startRange + _base, _array);
+						// }
 					}
 
-					// if (common._AniCache !== _endRange - _startRange + _base !== _siblings && _siblings > _endRange - _startRange + _base) {
-					// 	common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, _endRange - _startRange + _base, _array);
-					// }
+					common._LiabilityAct[0] = data.from_value;
+					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 				}
-
-				common._LiabilityAct[0] = data.from_value;
-				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
-			}
+			});
 		});
 
 		// 一桶金 一次通通領 目前已準備
-		$('.one-time-prepare-slider').ionRangeSlider({
-			min                : 0,
-			max                : $('.one-time-prepare-slider').data('max'),
-			max_postfix        : '<i class="postfix"></i>',
-			prettify_separator : ',',
-			from               : common._prevLiability,
-			values             : $('.one-time-prepare-slider').data('values') ? $('.one-time-prepare-slider').data('values').split(',') : '',
-			onFinish           : function (data) {
-				var _startRange,
-					_endRange,
-					_array   = [],
-					_limited = $('.cut-22 ' + common._imageWrap).attr('data-level') !== '' ? $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1] : 0;
+		$('.one-time-prepare-slider').each(function(){
+			$(this).ionRangeSlider({
+				min                : 0,
+				max                : $(this).data('max'),
+				max_postfix        : '<i class="postfix"></i>',
+				prettify_separator : ',',
+				from               : common._prevLiability,
+				values             : $(this).data('values') ? $(this).data('values').split(',') : '',
+				onFinish           : function (data) {
+					var _startRange,
+						_endRange,
+						_array   = [],
+						_limited = $('.cut-22 ' + common._imageWrap).attr('data-level') !== '' ? $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1] : 0;
 
-				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
-				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
+					common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
+					common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
 
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityRange.length; i++) {
-					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
-					_array.push(i);
-				}
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityAct.length; i++) {
-					common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
-				}
-				// 紀錄變化結束點
-				common._LiabilityAct[1] = data.from_value;
-
-				// 判斷起始點在哪
-				for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
-					if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
-						// 起始點 = 最小值
-						_startRange = 0;
-					} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
-						// 起始點 = 最大值
-						_startRange = common._LiabilityRange.length - 1;
-					} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
-						_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityRange.length; i++) {
+						common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
+						_array.push(i);
 					}
-				}
-
-				// 判斷結束點在哪
-				for (var j = 0; j < common._LiabilityRange.length; j++) {
-					if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
-						_endRange = j;
+					// 字串轉數字
+					for (var i = 0; i < common._LiabilityAct.length; i++) {
+						common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
 					}
-				}
+					// 紀錄變化結束點
+					common._LiabilityAct[1] = data.from_value;
 
-				// common._AniCache = _endRange;
-				// if (_endRange >= _limited) {_endRange = _limited;}
-
-				// if (_startRange !== _endRange && _startRange <= _limited) {
-				if (_startRange !== _endRange) {
-					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
-						var _base = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1];
-
-						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
-
-						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
-					} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') {
-						var _base = $('.cut-22 ' + common._imageWrap + ' .color').attr('data-level').split('-t-')[1];
-
-						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
-
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .color', _base, _endRange - _startRange + _base, _array);
-					} else {
-						var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
-
-						_base = ( ! _base ) ? 0 : parseInt(_base, 10);
-
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
+					// 判斷起始點在哪
+					for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
+						if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
+							// 起始點 = 最小值
+							_startRange = 0;
+						} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
+							// 起始點 = 最大值
+							_startRange = common._LiabilityRange.length - 1;
+						} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
+							_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+						}
 					}
-				}
 
-				common._LiabilityAct[0] = data.from_value;
-				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
-			}
-		});
-
-		// 一桶金 年年領
-		$('.per-year-slider').ionRangeSlider({
-			min         : 0,
-			max         : $('.per-year-slider').data('max'),
-			max_postfix : '<i class="postfix"></i>',
-			from        : common._prevLiability,
-			values      : $('.per-year-slider').data('values') ? $('.per-year-slider').data('values').split(',') : '',
-			onFinish    : function (data) {
-				var _startRange,
-					_endRange,
-					_array = [];
-
-				common._LiabilityRange = $(data.input[0]).attr('data-range').split(','); //寫入動畫區間
-				common._LiabilityAct = $(data.input[0]).attr('data-liability').split(','); //寫入負債變化
-
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityRange.length; i++) {
-					common._LiabilityRange[i] = parseFloat(common._LiabilityRange[i], 10);
-					_array.push(i);
-				}
-				// 字串轉數字
-				for (var i = 0; i < common._LiabilityAct.length; i++) {
-					common._LiabilityAct[i] = parseFloat(common._LiabilityAct[i], 10);
-				}
-				// 紀錄變化結束點
-				common._LiabilityAct[1] = data.from_value;
-
-				// 判斷起始點在哪
-				for (var i = (common._LiabilityRange.length - 1); i >= 0; i--) {
-					if (common._LiabilityAct[0] === common._LiabilityRange[0]) {
-						// 起始點 = 最小值
-						_startRange = 0;
-					} else if (common._LiabilityAct[0] >= common._LiabilityRange[common._LiabilityRange.length - 1]) {
-						// 起始點 = 最大值
-						_startRange = common._LiabilityRange.length - 1;
-					} else if (common._LiabilityAct[0] <= common._LiabilityRange[i]) {
-						_startRange = ( common._LiabilityAct[0] === common._LiabilityRange[i] ) ? i : ( i - 1 );
+					// 判斷結束點在哪
+					for (var j = 0; j < common._LiabilityRange.length; j++) {
+						if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
+							_endRange = j;
+						}
 					}
-				}
 
-				// 判斷結束點在哪
-				for (var j = 0; j < common._LiabilityRange.length; j++) {
-					if (common._LiabilityAct[1] >= common._LiabilityRange[j]) {
-						_endRange = j;
+					// common._AniCache = _endRange;
+					// if (_endRange >= _limited) {_endRange = _limited;}
+
+					// if (_startRange !== _endRange && _startRange <= _limited) {
+					if (_startRange !== _endRange) {
+						if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
+							var _base     = $('.cut-22 ' + common._imageWrap + ' .doll').attr('data-level').split('-t-')[1];
+
+							_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+							common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, _array);
+						} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') {
+							var _base = $('.cut-22 ' + common._imageWrap + ' .color').attr('data-level').split('-t-')[1];
+
+							_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+							common.mixAnimate('.cut-22 ' + common._imageWrap + ' .color', _base, _endRange - _startRange + _base, _array);
+						} else {
+							var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
+
+							_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+							common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
+						}
 					}
+
+					common._LiabilityAct[0] = data.from_value;
+					$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
 				}
-
-				if (_startRange !== _endRange) {
-					var _base     = $('.cut-22 ' + common._imageWrap).attr('data-level').split('-t-')[1];
-
-					_base = ( ! _base ) ? 0 : parseInt(_base, 10);
-
-					if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'marry') {
-						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, [0,1,2,3,4]);
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .doll', _base, _endRange - _startRange + _base, [0,1,2,3,4]);
-					} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') {
-						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
-					} else {
-						common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
-						common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _base, _endRange - _startRange + _base, _array);
-					}
-				}
-
-				common._LiabilityAct[0] = data.from_value;
-				$(data.input[0]).attr('data-liability', common._LiabilityAct.join(','));
-			}
+			});
 		});
 
 		if ($(common._lContent).hasClass('index')) {
@@ -1641,28 +1606,31 @@
 					}
 				}
 			} else if ($(common._lContent).hasClass('quest-23')) {
-				if (!$(this).hasClass('is-checked')) {
-					// 勾選
-					$(this).addClass('is-checked');
+				// 勾選
+				$(this).toggleClass('is-checked');
 
-					if ($another.hasClass('is-checked')) {
-						// 切換選取時要先跑復原動畫
-						$another.removeClass('is-checked').parent().addClass('disabled');
-						$('.cut-23 ' + common._imageWrap).attr('data-reverse', _meta);
+				if (!$(this).hasClass('is-checked')) {
+					_meta = '';
+				}
+
+				if ($another.hasClass('is-checked')) {
+					// 切換選取時要先跑復原動畫
+					$another.removeClass('is-checked');
+					$('.cut-23 .list').addClass('disabled');
+					$('.cut-23 ' + common._imageWrap).attr('data-reverse', _meta);
+
+					setTimeout(function(){
+						$('.cut-23 ' + common._imageWrap).attr({
+							'data-reverse': '',
+							'data-meta': _meta
+						});
 
 						setTimeout(function(){
-							$('.cut-23 ' + common._imageWrap).attr({
-								'data-reverse': '',
-								'data-meta': _meta
-							});
-
-							setTimeout(function(){
-								$another.parent().removeClass('disabled');
-							}, (parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
-						}, (parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
-					} else {
-						$('.cut-23 ' + common._imageWrap).attr('data-meta', _meta);
-					}
+							$('.cut-23 .list').removeClass('disabled');
+						}, (parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-meta="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
+					}, (parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-duration'), 10) + parseFloat($('[data-reverse="' + _meta + '"] .' + _meta).css('animation-delay'), 10)) * 1000);
+				} else {
+					$('.cut-23 ' + common._imageWrap).attr('data-meta', _meta);
 				}
 			} else if ($(common._lContent).hasClass('quest-24')) {
 				if (!$(this).hasClass('is-checked')) {
@@ -1754,12 +1722,21 @@
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
-				} else if (_num === 14 || _num === 18 || _num === 21 || _num === 23) {
+				} else if (_num === 14 || _num === 18 || _num === 21) {
 					// 作答了沒
 					if (_meta !== undefined) {
 
 						if (_num === 14) {
 							// common.longTermCareNeeds();
+						} else if (_num === 18) {
+							common._fundSelection = $('.cut-' + _num + ' .is-checked').parent().index();
+
+							// 分岔路
+							if (common._fundSelection === 1) {
+								_direct += 2;
+							} else if (common._fundSelection === 2) {
+								_direct += 1;
+							}
 						} else if (_num === 21) {
 							// 將一桶金選項寫入下一題
 							var  _range = $('.cut-' + _num).find('.is-checked').attr('data-range');
@@ -1772,12 +1749,13 @@
 								$('.cut-' + (_num + 1) + ' .per-year-slider').attr('data-range', '0,15,30,50,75');
 							} else if (_meta === 'job') {
 								$('.cut-' + (_num + 1) + ' .one-time-prepare-slider').attr('data-range', '0,20,200,1000');
+							} else if (_meta === 'buycar') {
+								$('.cut-' + (_num + 1) + ' .per-year-slider').attr('data-range', '0,5,30,60,90');
+							} else if (_meta === 'buyhouse') {
+								$('.cut-' + (_num + 1) + ' .per-year-slider').attr('data-range', '0,5,50');
+							} else {
+								$('.cut-' + (_num + 1) + ' .per-year-slider').attr('data-range', '0,5,15,30,50,75,90');
 							}
-
-						} else if (_num === 23) {
-							// 將保險選項寫入下一題
-							$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
-							$('.cut-' + (_num + 1) + ' .respond-wrap').attr('data-meta', _meta);
 						}
 
 						$quest.attr({
@@ -1788,14 +1766,28 @@
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
 				} else if (_num === 22) {
+					var _select = $('.cut-' + _num + ' ' + common._transition).attr('data-selection');
+
 					if ($(common._dream + ' option:selected').val() === '') {
 						common.shake('.cut-' + _num + ' .wish');
+					} else if ($('.' + _select + '-content .selection option:selected').val() === '') {
+						common.shake('.' + _select + '-content .selectbox');
 					} else {
 						$quest.attr({
 							'class': 'l-content quest quest-' + (_num + _direct),
 							'data-quest': _num + _direct
 						});
 					}
+				} else if (_num === 23) {
+					if (_meta === undefined) { _meta = 'none';}
+					// 將保險選項寫入下一題
+					$('.cut-' + (_num + 1) + ' ' + common._imageWrap).attr('data-meta', _meta);
+					$('.cut-' + (_num + 1) + ' .respond-wrap').attr('data-meta', _meta);
+
+					$quest.attr({
+						'class': 'l-content quest quest-' + (_num + _direct),
+						'data-quest': _num + _direct
+					});
 				} else if (_num === 24) {
 					var _emptyLength = 0;
 
@@ -1840,8 +1832,10 @@
 							from: common._eduCost
 						});
 					} else if (_num === 19) {
+						_direct += 3;
 						// common.financialPensionNeeds();
 					} else if (_num === 20) {
+						_direct += 2;
 						// common.financialEducationFundDemand();
 					}
 
@@ -1861,6 +1855,17 @@
 
 				if (isNaN(_num)) {
 					_num = 25;
+				} else if (_num === 20) {
+					_direct -= 1;
+				} else if (_num === 21) {
+					_direct -= 2;
+				} else if (_num === 23) {
+					// 判斷要回哪一分岔題
+					if (common._fundSelection === 0) {
+						_direct -= 3;
+					} else if (common._fundSelection === 2) {
+						_direct -= 2;
+					}
 				}
 
 				$quest.attr({
@@ -1958,16 +1963,16 @@
 		// 一桶金更換類別即清空資料
 		$(common._dream).on('change', function(){
 			$(this).parents(common._transition).attr('data-selection', $(this).val());
-			$('.one-time-slider').data('ionRangeSlider').update({
-				from: 0
+			$('.basic-slider').each(function(){
+				$(this).data('ionRangeSlider').update({
+					from: 0
+				});
 			});
 
-			$('.one-time-prepare-slider').data('ionRangeSlider').update({
-				from: 0
-			});
-
-			$('.per-year-slider').data('ionRangeSlider').update({
-				from: 0
+			$('.one-time-prepare-slider').each(function(){
+				$(this).data('ionRangeSlider').update({
+					from: 0
+				});
 			});
 
 			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
@@ -1985,6 +1990,17 @@
 		$(common._result + ' .result').on('click', function(){
 			$(common._insName).val($(this).text());
 			$(common._result).removeClass('is-show');
+		});
+
+		// 限制 input 輸入數字
+		$(common._length).each(function(){
+			$(this).on('input', function(){
+				$(this).val($(this).val().replace(common._checkNum, ''));
+			});
+
+			$(this).on('focusout', function(){
+				$(this).val(common.setPercentile($(this).val()));
+			});
 		});
 
 		common.offClick(common._lLightbox);
