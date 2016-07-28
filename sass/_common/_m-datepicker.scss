@@ -30,6 +30,7 @@
 .sugarfun-datepicker-arrow {
 	width: 36px;
 	height: 34px;
+	line-height: 34px;
 
 	&.is-prev > i:before {
 		margin: -5px 0 0 -5px;
@@ -105,3 +106,9 @@
 @include respond-to(Tablets) {}
 
 @include respond-to(Tablets-Mobiles) {}
+
+@include browsers('IE') {
+	.sugarfun-datepicker-times {
+		width: auto;
+	}
+}
