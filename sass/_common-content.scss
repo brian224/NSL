@@ -213,6 +213,7 @@
 }
 
 .stage {
+	display: none;
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -223,7 +224,8 @@
 	z-index: -1;
 
 	&:not(.cut-2):not(.cut-22):not(.cut-24) {
-		@include transition(ease-in opacity 0.5s);
+		@include animation(q23-opacity 0.5s linear forwards);
+		/*@include transition(ease-in opacity 0.5s !important);*/
 	}
 }
 
@@ -320,7 +322,7 @@
 
 @for $i from 1 through 24 {
 	.quest-#{$i} .cut-#{$i} {
-		opacity: 1;
+		display: block;
 		z-index: 1;
 	}
 }
@@ -424,6 +426,8 @@
 }
 
 .cut-2 {
+	opacity: 1;
+
 	.quest-title {
 		margin-left: -83px;
 		background-position: 0 -38px;
@@ -4298,6 +4302,8 @@
 }
 
 .cut-22 {
+	opacity: 1;
+
 	&.disabled {
 		.choice-list {
 			.range-slider, .selectbox {
@@ -4487,7 +4493,7 @@
 			&:after {
 				content: '';
 				margin-top: -3px;
-				background: url(../img/bg-box.png) -679px -32px no-repeat;
+				background: url(../img/bg-box.png) -702px 0 no-repeat;
 				display: block;
 				width: 13px;
 				height: 7px;
@@ -4499,7 +4505,7 @@
 
 			&.is-small {
 				margin: 0 5px;
-				background-position: -751px -66px;
+				background-position: -679px -32px;
 				width: 65px;
 
 				.selection {
@@ -4842,11 +4848,11 @@
 			}
 
 			.color {
-				background: url(../img/q22/ani-q22-car-color.png) 0 100px no-repeat;
-				width: 194px;
-				height: 100px;
+				background: url(../img/q22/ani-q22-car-color.png) 0 98px no-repeat;
+				width: 193px;
+				height: 98px;
 				position: absolute;
-				top: 9px;
+				top: 10px;
 				left: 1px;
 			}
 
@@ -4872,7 +4878,7 @@
 				}
 
 				&[data-level="5-t-6"], &[data-level="6-t-5"] {
-					background-position: -776px 0;
+					background-position: -772px 0;
 					@include animation-duration(0.1s);
 				}
 
@@ -4907,7 +4913,7 @@
 				}
 
 				.color {
-					background-position: -970px 100px;
+					background-position: -965px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
@@ -4929,8 +4935,9 @@
 						@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
 					}
 
-					&[data-level="5-t-6"] {
-						@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -1737px 0;
+						@include animation-duration(0.1s);
 					}
 
 					&[data-level="1-t-0"] {
@@ -4952,10 +4959,6 @@
 					&[data-level="5-t-4"] {
 						@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
 					}
-
-					&[data-level="6-t-5"] {
-						@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
-					}
 				}
 			}
 
@@ -4969,7 +4972,7 @@
 				}
 
 				.color {
-					background-position: -2134px 100px;
+					background-position: -1930px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-car-color-0-t-1 0.1s linear forwards);
@@ -4992,7 +4995,7 @@
 					}
 
 					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -2910px 0;
+						background-position: -2702px 0;
 						@include animation-duration(0.1s);
 					}
 
@@ -5028,7 +5031,7 @@
 				}
 
 				.color {
-					background-position: -3104px 100px;
+					background-position: -2895px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
@@ -5051,7 +5054,7 @@
 					}
 
 					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -3880px 0;
+						background-position: -3667px 0;
 						@include animation-duration(0.1s);
 					}
 
@@ -5087,7 +5090,7 @@
 				}
 
 				.color {
-					background-position: -4074px 100px;
+					background-position: -3860px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-racing-color-0-t-1 0.1s linear forwards);
@@ -5110,7 +5113,7 @@
 					}
 
 					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -4850px 0;
+						background-position: -4632px 0;
 						@include animation-duration(0.1s);
 					}
 
@@ -5152,7 +5155,7 @@
 				}
 
 				.color {
-					background-position: -970px 100px;
+					background-position: -965px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-moto-color-0-t-1 0.1s linear forwards);
@@ -5174,8 +5177,9 @@
 						@include animation(q22-moto-color-4-t-5 0.1s linear forwards);
 					}
 
-					&[data-level="5-t-6"] {
-						@include animation(q22-moto-color-5-t-6 0.1s linear forwards);
+					&[data-level="5-t-6"], &[data-level="6-t-5"] {
+						background-position: -1737px 0;
+						@include animation-duration(0.1s);
 					}
 
 					&[data-level="1-t-0"] {
@@ -5197,10 +5201,6 @@
 					&[data-level="5-t-4"] {
 						@include animation(q22-moto-color-5-t-4 0.1s linear forwards);
 					}
-
-					&[data-level="6-t-5"] {
-						@include animation(q22-moto-color-6-t-5 0.1s linear forwards);
-					}
 				}
 			}
 
@@ -5214,7 +5214,7 @@
 				}
 
 				.color {
-					background-position: -2134px 100px;
+					background-position: -1930px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-car-color-0-t-1 0.1s linear forwards);
@@ -5237,7 +5237,7 @@
 					}
 
 					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -2910px 0;
+						background-position: -2702px 0;
 						@include animation-duration(0.1s);
 					}
 
@@ -5273,7 +5273,7 @@
 				}
 
 				.color {
-					background-position: -3104px 100px;
+					background-position: -2895px 98px;
 
 					&[data-level="0-t-1"] {
 						@include animation(q22-rv-color-0-t-1 0.1s linear forwards);
@@ -5296,7 +5296,7 @@
 					}
 
 					&[data-level="5-t-6"], &[data-level="6-t-5"] {
-						background-position: -3880px 0;
+						background-position: -3667px 0;
 						@include animation-duration(0.1s);
 					}
 
@@ -6199,6 +6199,8 @@
 }
 
 .quest-24 .cut-24 {
+	opacity: 1;
+
 	.quest-title {
 		margin-left: -130px;
 		background-position: 0 -924px;
@@ -6269,7 +6271,7 @@
 
 				&:after {
 					content: '';
-					background: url(../img/bg-box.png) -679px -55px no-repeat;
+					background: url(../img/bg-box.png) -702px -23px no-repeat;
 					display: block;
 					width: 9px;
 					height: 8px;
@@ -6301,7 +6303,7 @@
 				&:before {
 					content: '';
 					margin-top: -8px;
-					background: url(../img/bg-box.png) -679px -39px no-repeat;
+					background: url(../img/bg-box.png) -702px -7px no-repeat;
 					display: block;
 					width: 8px;
 					height: 16px;
@@ -6328,8 +6330,8 @@
 				}
 
 				&.is-small {
-					background-position: -751px -66px;
-					width: 65px;
+					background-position: -629px -100px;
+					width: 80px;
 				}
 			}
 		}
@@ -6344,7 +6346,7 @@
 				&:after {
 					content: '';
 					margin-top: -3px;
-					background: url(../img/bg-box.png) -679px -32px no-repeat;
+					background: url(../img/bg-box.png) -702px 0 no-repeat;
 					display: block;
 					width: 13px;
 					height: 7px;
@@ -6425,6 +6427,8 @@
 			}
 
 			.list {
+				white-space: nowrap;
+
 				&:first-child .unit {
 					margin-left: 8px;
 					background-position: -525px -924px;
@@ -6473,6 +6477,8 @@
 			}
 
 			.list {
+				white-space: nowrap;
+
 				&:first-child .unit {
 					margin-left: 8px;
 					background-position: -525px -924px;
@@ -7194,7 +7200,7 @@
 
 		&.is-select:after {
 			margin-top: -3px;
-			background-position: -679px -32px;
+			background-position: -702px 0;
 			width: 13px;
 			height: 7px;
 			right: 15px;

@@ -53,6 +53,7 @@
 		this._majorDisease         = 0; // 重大疾病
 		this._accident             = 0; // 意外
 		this._longTermCare         = 0; // 长看
+		this._date                 = new Date();
 	}
 
 	// 沒作答就往下一題
@@ -240,6 +241,11 @@
 		});
 
 		return _emptyLength;
+	}
+
+	// datepicker 寫入限制時間
+	index.prototype.setDate = function() {
+		$('.datepicker').attr('data-max-date', common._date.getFullYear() + '/' + (common._date.getMonth() + 1) + '/' + common._date.getDate());
 	}
 
 	// ========================== API function start ==============================
@@ -650,6 +656,7 @@
 		// common._CSRFToken = $("input[name='CSRFToken']").val();
 		// common.nanshanExistingMedicalInsurantAmount();
 		// common.nanshanExistingInsuranceFinancingAmount();
+		common.setDate();
 
 		if ($.fn.ionRangeSlider !== undefined) {
 			// 你的年齡
@@ -1278,7 +1285,15 @@
 
 							_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
-							common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+							if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study') {
+								if (_endRange - _startRange + _base !== 0) {
+									common.mixAnimate('.cut-22 ' + common._imageWrap, (_endRange - _startRange + _base - 1), _endRange - _startRange + _base, _array);
+								} else {
+									common.mixAnimate('.cut-22 ' + common._imageWrap, (_endRange - _startRange + _base + 1), _endRange - _startRange + _base, _array);
+								}
+							} else {
+								common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
+							}
 
 							if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'job' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'travel') {
 								if (common._AniCache >= _endRange ) {
@@ -1756,6 +1771,7 @@
 							if (common._fundSelection === 1) {
 								_direct += 2;
 							} else if (common._fundSelection === 2) {
+								// 子女教育
 								_direct += 1;
 							}
 						} else if (_num === 21) {
@@ -1823,7 +1839,7 @@
 						if (_cereerType === 'labor') {
 							// common.existingSocialInsurancePensionFinancialOnePayment();
 							// common.existingSocialInsurancePensionFinancialLaborPension();
-						} else {
+						} else if (_cereerType !== 'none') {
 							common._ilpExist += $('.respond-area.' + _cereerType + ' .retired').next().find('.inputbox').val().replace(',', '') * 10000;
 						}
 
@@ -1890,7 +1906,12 @@
 					if (common._fundSelection === 0) {
 						_direct -= 3;
 					} else if (common._fundSelection === 2) {
+						// 子女教育
 						_direct -= 2;
+
+						$('.expend-slider.edu-cost').data('ionRangeSlider').update({
+							from: common._eduCost
+						});
 					}
 				}
 
@@ -1904,10 +1925,6 @@
 				if (_num === 2) {
 					// 還原預設值
 					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
-				} else if (_num === 21) {
-					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
-						from: common._eduCost
-					});
 				} else if (_num === 22) {
 					common._AniCache = 0; // 記錄歸零
 					// 歸零所有選取值

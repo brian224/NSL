@@ -83,7 +83,7 @@
 		line-height: 24px;
 		@include box-sizing(border-box);
 
-		> * {
+		> button {
 			border-radius: 4px;
 			color: #4a7cad;
 
@@ -91,6 +91,11 @@
 				background: #4a7cad;
 				color: #fff;
 			}
+		}
+
+		> em {
+			cursor: not-allowed;
+			opacity: 0.3;
 		}
 	}
 
