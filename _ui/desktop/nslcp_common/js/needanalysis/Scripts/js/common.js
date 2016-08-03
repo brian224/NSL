@@ -53,6 +53,7 @@
 		this._majorDisease         = 0; // 重大疾病
 		this._accident             = 0; // 意外
 		this._longTermCare         = 0; // 长看
+		this._hasChild             = false;
 		this._date                 = new Date();
 	}
 
@@ -1364,6 +1365,7 @@
 
 						common._AniCache = _endRange; // 記錄拉霸裡的值，如果沒限制的話要跑到哪
 
+						if (_startRange >= _limited && ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'job' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'travel')) {_startRange = _limited;}
 						if (_endRange >= _limited && ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'job' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'travel')) {_endRange = _limited;}
 
 						if (_startRange !== _endRange) {
@@ -1735,6 +1737,12 @@
 							'data-quest': _num + _direct
 						});
 
+						if ($('.cut-4 ' + common._checkbox).hasClass('is-checked')) {
+							common._hasChild = false;
+						} else {
+							common._hasChild = true;
+						}
+
 						// common.familyMaintenanceFund();
 					}
 				} else if (_num === 10 || _num === 11 || _num === 12 || _num === 13) {
@@ -1869,6 +1877,12 @@
 						});
 					} else if (_num === 6) {
 						// common.livingExpenses();
+					} else if (_num === 7) {
+						if (common._hasChild === true) {
+							$('.cut-8 .expenditure-selector').addClass('has-child');
+						} else {
+							$('.cut-8 .expenditure-selector').removeClass('has-child');
+						}
 					} else if (_num === 8) {
 						$('.edu-cost-slider').data('ionRangeSlider').update({
 							from: common._eduCost
@@ -2044,7 +2058,9 @@
 			});
 
 			$(this).on('focusout', function(){
-				$(this).val(common.setPercentile($(this).val()));
+				if ($(this).val() !== '') {
+					$(this).val(common.setPercentile($(this).val()));
+				}
 			});
 		});
 

@@ -638,6 +638,86 @@
 	}
 }
 
+@include keyframes(q22-moto-wheel-before) {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 0 -92px;
+	}
+}
+
+@include keyframes(q22-moto-wheel-after) {
+	0% {
+		background-position: -46px 0;
+	}
+
+	100% {
+		background-position: -46px -92px;
+	}
+}
+
+@include keyframes(q22-car-wheel-before) {
+	0% {
+		background-position: -90px 0;
+	}
+
+	100% {
+		background-position: -90px -92px;
+	}
+}
+
+@include keyframes(q22-car-wheel-after) {
+	0% {
+		background-position: -119px 0;
+	}
+
+	100% {
+		background-position: -119px -92px;
+	}
+}
+
+@include keyframes(q22-rv-wheel-before) {
+	0% {
+		background-position: -148px 0;
+	}
+
+	100% {
+		background-position: -148px -92px;
+	}
+}
+
+@include keyframes(q22-rv-wheel-after) {
+	0% {
+		background-position: -177px 0;
+	}
+
+	100% {
+		background-position: -177px -92px;
+	}
+}
+
+@include keyframes(q22-racing-wheel-before) {
+	0% {
+		background-position: -206px 0;
+	}
+
+	100% {
+		background-position: -206px -92px;
+	}
+}
+
+@include keyframes(q22-racing-wheel-after) {
+	0% {
+		background-position: -241px 0;
+	}
+
+	100% {
+		background-position: -241px -92px;
+	}
+}
+
 @include keyframes(q22-cottage-color-0-t-1) {
 	0%, 99.99% {
 		background-position: 342px 0;
