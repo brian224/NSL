@@ -93,21 +93,25 @@
 	index.prototype.mixAnimate = function(className, start, end, range) {
 		var _direction;
 
+		// 決定方向
 		if (start < end) {
 			_direction = 1;
 		} else {
 			_direction = -1;
 		}
 
+		// 防止超出最大值
 		if (end > range.length) {
 			end = range.length - 1;
 		}
 
 		if (range[start] !== undefined && range[start + _direction] !== undefined) {
+			// 一桶金需要額外判斷
 			if (className.split('.cut-22')[1] !== undefined){
 				$('.cut-22').addClass('disabled');
 				$(className).attr('data-level', range[start] + '-t-' + range[start + _direction]);
 
+				// 隱藏不必要閃爍
 				if (($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buycar' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'buyhouse') && className === '.cut-22 ' + common._imageWrap) {
 					$(className + ' .color').hide();
 				}
@@ -128,6 +132,7 @@
 					if (className === '.cut-19 ' + common._imageWrap + ' .doll') {
 						$(className).attr('data-level', $(className).attr('data-level').split('-t-')[1]).removeClass('disabled').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 					} else if (className.split('.cut-22')[1] !== undefined) {
+						// 一桶金需要額外判斷
 						$('.cut-22').removeClass('disabled');
 						$(className).off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
 
@@ -624,6 +629,17 @@
 	// 最終總值計算
 	index.prototype.totalCount = function() {
 		var _str = '';
+
+		// 歸零
+		common._traditionalLiftNeed = 0;
+
+		// 每月生活支出及需求年數
+		common._traditionalLiftNeed += (parseFloat($('.jq-basicPay .irs-single').text(), 10) * 12 * parseInt($('.jq-liftNeedYear .irs-single').text(), 10) * 10000);
+
+		// 子女至大學畢業的養育費用 + 其他需求 + 償債基金
+		$('.jq-liftNeed .irs-single').each(function(){
+			common._traditionalLiftNeed += (parseInt($(this).text(), 10) * 10000);
+		});
 
 		_str = '{"traditionalLiftNeed":"' + common._traditionalLiftNeed + 
 			'","traditionalLiftExist":"' + (common._socialSecurityAmount + common._traditionalLiftExist + common._prepare) + 
@@ -1286,21 +1302,38 @@
 
 							_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
+							// 留遊學有不同動畫邏輯
 							if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study') {
-								if (_endRange - _startRange + _base !== 0) {
-									common.mixAnimate('.cut-22 ' + common._imageWrap, (_endRange - _startRange + _base - 1), _endRange - _startRange + _base, _array);
+								if (_base !== 0) {
+									$('.cut-22 ' + common._imageWrap).attr('data-level', _startRange + '-t-0');
+
+									setTimeout(function(){
+										$('.cut-22 ' + common._imageWrap).attr('data-level', '0-t-' + _endRange);
+									}, (parseFloat($('.cut-22 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-22 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
 								} else {
-									common.mixAnimate('.cut-22 ' + common._imageWrap, (_endRange - _startRange + _base + 1), _endRange - _startRange + _base, _array);
+									$('.cut-22 ' + common._imageWrap).attr('data-level', '0-t-' + _endRange);
 								}
 							} else {
 								common.mixAnimate('.cut-22 ' + common._imageWrap, _base, _endRange - _startRange + _base, _array);
 							}
 
-							if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'job' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'travel') {
-								if (common._AniCache >= _endRange ) {
+							// 有限制最大值，需控制另一動畫
+							if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'job' || $('.cut-22 ' + common._imageWrap).attr('data-meta') === 'travel') {
+								if (common._AniCache >= _endRange) {
 									common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, _endRange - _startRange + _base, _array);
-								} else if ( common._AniCache < _endRange && common._AniCache !== _siblings ) {
+								} else if (common._AniCache < _endRange && common._AniCache !== _siblings) {
 									common.mixAnimate('.cut-22 ' + common._imageWrap + ' .drop', _siblings, common._AniCache - _startRange + _base, _array);
+								}
+							} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study' && common._AniCache >= _endRange) {
+								// 實際值大於限制值才調整動畫
+								if (_endRange !== 0) {
+									$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', _startRange + '-t-0');
+
+									setTimeout(function(){
+										$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', '0-t-' + _endRange);
+									}, (parseFloat($('.cut-22 ' + common._imageWrap).css('animation-duration'), 10) + parseFloat($('.cut-22 ' + common._imageWrap).css('animation-delay'), 10)) * 1000);
+								} else {
+									$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', _base + '-t-0');
 								}
 							}
 						}
@@ -1381,6 +1414,21 @@
 								_base = ( ! _base ) ? 0 : parseInt(_base, 10);
 
 								common.mixAnimate('.cut-22 ' + common._imageWrap + ' .color', _base, _endRange - _startRange + _base, _array);
+							} else if ($('.cut-22 ' + common._imageWrap).attr('data-meta') === 'study') {
+								// 留遊學有不同動畫邏輯
+								var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
+
+								_base = ( ! _base ) ? 0 : parseInt(_base, 10);
+
+								if (_base !== 0) {
+									$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', _startRange + '-t-0');
+
+									setTimeout(function(){
+										$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', '0-t-' + _endRange);
+									}, (parseFloat($('.cut-22 ' + common._imageWrap + ' .drop').css('animation-duration'), 10) + parseFloat($('.cut-22 ' + common._imageWrap + ' .drop').css('animation-delay'), 10)) * 1000);
+								} else {
+									$('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level', '0-t-' + _endRange);
+								}
 							} else {
 								var _base = $('.cut-22 ' + common._imageWrap + ' .drop').attr('data-level').split('-t-')[1];
 
@@ -1444,16 +1492,16 @@
 						var $this = $(this);
 
 						$another.removeClass('is-checked');
-						$('.quest-2 ' + common._transition).attr('data-reverse', $another.attr('data-meta'));
+						$('.cut-2 ' + common._transition).attr('data-reverse', $another.attr('data-meta'));
 
 						setTimeout(function(){
-							$('.quest-2 ' + common._transition).attr({
+							$('.cut-2 ' + common._transition).attr({
 								'data-reverse': '',
 								'data-select': $this.attr('data-meta')
 							});
-						}, (parseFloat($('[data-reverse="' + $another.attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('[data-reverse="' + $another.attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
+						}, (parseFloat($('.cut-2 [data-reverse="' + $another.attr('data-meta') + '"]').css('animation-duration'), 10) + parseFloat($('.cut-2 [data-reverse="' + $another.attr('data-meta') + '"]').css('animation-delay'), 10)) * 1000);
 					} else {
-						$('.quest-2 ' + common._transition).attr('data-select', $(this).attr('data-meta'));
+						$('.cut-2 ' + common._transition).attr('data-select', $(this).attr('data-meta'));
 					}
 				}
 			} else if ($(common._lContent).hasClass('quest-4')) {

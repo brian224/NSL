@@ -4693,50 +4693,50 @@
 					}
 				}
 
-				&[data-level="1-t-2"] {
+				&[data-level="0-t-2"] {
 					background: url(../img/q22/ani-q22-study-m-2.png) 0 0 no-repeat;
 					top: 10px;
-					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
+					@include animation(q22-study-m-0-t-2 1.2s steps(21, end) forwards);
 
 					.drop {
 						top: -86px;
 					}
 				}
 
-				&[data-level="2-t-3"] {
+				&[data-level="0-t-3"] {
 					background: url(../img/q22/ani-q22-study-m-3.png) 0 0 no-repeat;
 					top: 106px;
-					@include animation(q22-study-m-2-t-3 1.2s steps(21, end) forwards);
+					@include animation(q22-study-m-0-t-3 1.2s steps(21, end) forwards);
 
 					.drop {
 						top: -182px;
 					}
 				}
 
-				&[data-level="3-t-4"] {
+				&[data-level="0-t-4"] {
 					background: url(../img/q22/ani-q22-study-m-4.png) 0 0 no-repeat;
 					top: -1px;
-					@include animation(q22-study-m-3-t-4 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-0-t-4 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -75px;
 					}
 				}
 
-				&[data-level="4-t-5"] {
+				&[data-level="0-t-5"] {
 					background: url(../img/q22/ani-q22-study-m-5.png) 0 0 no-repeat;
 					top: 61px;
-					@include animation(q22-study-m-4-t-5 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-0-t-5 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -137px;
 					}
 				}
 
-				&[data-level="5-t-6"] {
+				&[data-level="0-t-6"] {
 					background: url(../img/q22/ani-q22-study-m-6.png) 0 0 no-repeat;
 					top: 123px;
-					@include animation(q22-study-m-5-t-6 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-0-t-6 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -199px;
@@ -4751,50 +4751,50 @@
 					}
 				}
 
-				&[data-level="2-t-1"] {
+				&[data-level="2-t-0"] {
 					background: url(../img/q22/ani-q22-study-m-2.png) 0 0 no-repeat;
 					top: 10px;
-					@include animation(q22-study-m-1-t-2 1.2s steps(21, end) forwards);
+					@include animation(q22-study-m-2-t-0 1.2s steps(21, end) forwards);
 
 					.drop {
 						top: -86px;
 					}
 				}
 
-				&[data-level="3-t-2"] {
+				&[data-level="3-t-0"] {
 					background: url(../img/q22/ani-q22-study-m-3.png) 0 0 no-repeat;
 					top: 106px;
-					@include animation(q22-study-m-3-t-2 1.2s steps(21, end) forwards);
+					@include animation(q22-study-m-3-t-0 1.2s steps(21, end) forwards);
 
 					.drop {
 						top: -182px;
 					}
 				}
 
-				&[data-level="4-t-3"] {
+				&[data-level="4-t-0"] {
 					background: url(../img/q22/ani-q22-study-m-4.png) 0 0 no-repeat;
 					top: -1px;
-					@include animation(q22-study-m-4-t-3 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-4-t-0 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -75px;
 					}
 				}
 
-				&[data-level="5-t-4"] {
+				&[data-level="5-t-0"] {
 					background: url(../img/q22/ani-q22-study-m-5.png) 0 0 no-repeat;
 					top: 61px;
-					@include animation(q22-study-m-5-t-4 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-5-t-0 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -137px;
 					}
 				}
 
-				&[data-level="6-t-5"] {
+				&[data-level="6-t-0"] {
 					background: url(../img/q22/ani-q22-study-m-6.png) 0 0 no-repeat;
 					top: 123px;
-					@include animation(q22-study-m-6-t-5 1.2s steps(22, end) forwards);
+					@include animation(q22-study-m-6-t-0 1.2s steps(22, end) forwards);
 
 					.drop {
 						top: -199px;
@@ -5458,7 +5458,7 @@
 			z-index: 3;
 
 			.drop {
-				background: url(../img/q22/ani-q22-study-flag.png) 0 0 no-repeat;
+				background: url(../img/q22/ani-q22-study-flag.png) no-repeat;
 				width: 557px;
 				height: 497px;
 				left: auto;
@@ -5468,48 +5468,48 @@
 					@include animation(q22-study-flag-0-t-1 0.7s steps(12, end) forwards);
 				}
 	
-				&[data-level="1-t-2"] {
-					@include animation(q22-study-flag-1-t-2 0.7s steps(13, end) forwards);
+				&[data-level="0-t-2"] {
+					@include animation(q22-study-flag-0-t-2 0.7s steps(13, end) forwards);
 				}
 	
-				&[data-level="2-t-3"] {
-					@include animation(q22-study-flag-2-t-3 0.8s steps(14, end) forwards);
+				&[data-level="0-t-3"] {
+					@include animation(q22-study-flag-0-t-3 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="3-t-4"] {
-					@include animation(q22-study-flag-3-t-4 0.7s steps(12, end) forwards);
+				&[data-level="0-t-4"] {
+					@include animation(q22-study-flag-0-t-4 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="4-t-5"] {
-					@include animation(q22-study-flag-4-t-5 0.7s steps(13, end) forwards);
+				&[data-level="0-t-5"] {
+					@include animation(q22-study-flag-0-t-5 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="5-t-6"] {
-					@include animation(q22-study-flag-5-t-6 0.7s steps(13, end) forwards);
+				&[data-level="0-t-6"] {
+					@include animation(q22-study-flag-0-t-6 0.8s steps(14, end) forwards);
 				}
 	
 				&[data-level="1-t-0"] {
 					@include animation(q22-study-flag-1-t-0 0.7s steps(12, end) forwards);
 				}
 	
-				&[data-level="2-t-1"] {
-					@include animation(q22-study-flag-2-t-1 0.7s steps(13, end) forwards);
+				&[data-level="2-t-0"] {
+					@include animation(q22-study-flag-2-t-0 0.7s steps(13, end) forwards);
 				}
 	
-				&[data-level="3-t-2"] {
-					@include animation(q22-study-flag-3-t-2 0.8s steps(14, end) forwards);
+				&[data-level="3-t-0"] {
+					@include animation(q22-study-flag-3-t-0 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="4-t-3"] {
-					@include animation(q22-study-flag-4-t-3 0.7s steps(12, end) forwards);
+				&[data-level="4-t-0"] {
+					@include animation(q22-study-flag-4-t-0 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="5-t-4"] {
-					@include animation(q22-study-flag-5-t-4 0.7s steps(13, end) forwards);
+				&[data-level="5-t-0"] {
+					@include animation(q22-study-flag-5-t-0 0.8s steps(14, end) forwards);
 				}
 	
-				&[data-level="6-t-5"] {
-					@include animation(q22-study-flag-6-t-5 0.7s steps(13, end) forwards);
+				&[data-level="6-t-0"] {
+					@include animation(q22-study-flag-6-t-0 0.8s steps(14, end) forwards);
 				}
 			}
 		}
