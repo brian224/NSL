@@ -191,13 +191,6 @@
 
 	// 關閉 lightbox
 	index.prototype.closeBox = function(confirm) {
-		// if (confirm === 'confirm') {
-		// 	$(common._lContent + '.quest').attr({
-		// 		'class': 'l-content quest is-ins-list',
-		// 		'data-quest': 'ins-list'
-		// 	});
-		// }
-
 		$(common._lLightbox).removeClass('animation-op').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			$(this).removeClass('is-show').off('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend');
 		});
@@ -1100,7 +1093,7 @@
 				prettify_separator : ',',
 				from               : common._eduCost,
 				values             : $('.edu-cost-slider').data('values') ? $('.edu-cost-slider').data('values').split(',') : '',
-				onStart            : function (data) {
+				onUpdate           : function (data) {
 					if (data.from !== 0) {
 						var _endRange;
 						// 判斷結束點在哪
@@ -1732,7 +1725,7 @@
 				if (_num === 1) {
 					// 作答了沒
 					if (_meta !== undefined) {
-						$(common._transition).addClass('chosen-' + _meta);
+						$(common._lContent).attr('data-gender', _meta);
 					} else {
 						common.shake('.cut-' + _num + ' ' + common._checkbox);
 					}
@@ -1990,7 +1983,8 @@
 
 				if (_num === 2) {
 					// 還原預設值
-					$(common._transition).removeClass('chosen-boy chosen-girl chosen-single chosen-merried').attr('data-first', 'true');
+					$(common._lContent).attr('data-gender', '');
+					$(common._transition).removeClass('chosen-single chosen-merried').attr('data-first', 'true');
 				} else if (_num === 22) {
 					common._AniCache = 0; // 記錄歸零
 					// 歸零所有選取值
