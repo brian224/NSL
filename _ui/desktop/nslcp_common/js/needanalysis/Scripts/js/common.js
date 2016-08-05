@@ -48,12 +48,19 @@
 		this._ilpExist             = 0; // 理财已有
 		this._nanshanInsArray      = ['_hospitalizationDay','_sundry','_surgery','_cancer','_majorDisease','_accident','_longTermCare'];
 		this._hospitalizationDay   = 0; // 住院額度
+		this._hospitalDayNeeds     = 0; // 住院額度需求
 		this._sundry               = 0; // 杂费
+		this._sundryNeeds          = 0; // 杂费需求
 		this._surgery              = 0; // 手术
+		this._surgeryNeeds         = 0; // 手术需求
 		this._cancer               = 0; // 癌症
+		this._cancerNeeds          = 0; // 癌症需求
 		this._majorDisease         = 0; // 重大疾病
+		this._majorDiseaseNeeds    = 0; // 重大疾病需求
 		this._accident             = 0; // 意外
+		this._accidentNeeds        = 0; // 意外殘廢需求
 		this._longTermCare         = 0; // 长看
+		this._longTermCareNeeds    = 0; // 长看需求
 		this._hasChild             = false;
 		this._date                 = new Date();
 	}
@@ -328,8 +335,9 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				console.log(data);
-				console.log(data.outputData.amountOfHospitalization + ' , ' + data.outputData.hospitalizationFeesQuota + ' , ' + data.outputData.surgicalCompensationAllowance);
+				common._hospitalDayNeeds = data.outputData.amountOfHospitalization;
+				common._sundryNeeds = data.outputData.hospitalizationFeesQuota;
+				common._surgeryNeeds = data.outputData.surgicalCompensationAllowance;
 			},
 			complete : function(data) {
 			},
@@ -354,8 +362,8 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				console.log(data);
-				console.log(data.outputData.medicalDemandForMajorDiseases + ' , ' + data.outputData.cancerMedicalDemand);
+				common._majorDiseaseNeeds = data.outputData.medicalDemandForMajorDiseases;
+				common._cancerNeeds = data.outputData.cancerMedicalDemand;
 			},
 			complete : function(data) {
 			},
@@ -380,8 +388,7 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				console.log(data);
-				console.log(data.outputData.accidentalDisabilityDemand);
+				common._accidentNeeds = data.outputData.accidentalDisabilityDemand;
 			},
 			complete : function(data) {
 			},
@@ -405,8 +412,7 @@
 			data     : _data,
 			dataType : 'json',
 			success  : function(data) {
-				console.log(data);
-				console.log(data.outputData.longTermCareAmount);
+				common._longTermCareNeeds = data.outputData.longTermCareAmount;
 			},
 			complete : function(data) {
 			},
@@ -640,19 +646,19 @@
 			'","ilpDream":"' + $('.cut-18 .is-checked').attr('data-value') + 
 			'","ilpNeed":"' + (common._eduExpenses + common._retirementPension) + 
 			'","ilpExist":"' + (common._ilpExist + common._nanExistIns)
-			'","mc1Need":"' + $('.jq-mc1Need .irs-single').text().replace(',', '') + 
+			'","mc1Need":"' + common._hospitalDayNeeds + 
 			'","mc1Exist":"' + common._hospitalizationDay + 
-			'","mc2Need":"' + $('.jq-mc2Need .irs-single').text().replace(',', '') + 
+			'","mc2Need":"' + common._sundryNeeds + 
 			'","mc2Exist":"' + common._sundry + 
-			'","mc3Need":"' + $('.jq-mc3Need .irs-single').text().replace(',', '') + 
+			'","mc3Need":"' + common._surgeryNeeds + 
 			'","mc3Exist":"' + common._surgery + 
-			'","mc4Need":"' + $('.jq-mc4Need .irs-single').text().replace(',', '') + 
+			'","mc4Need":"' + common._majorDiseaseNeeds + 
 			'","mc4Exist":"' + common._majorDisease + 
-			'","mc5Need":"' + $('.jq-mc5Need .irs-single').text().replace(',', '') + 
+			'","mc5Need":"' + common._cancerNeeds + 
 			'","mc5Exist":"' + common._cancer + 
-			'","mc6Need":"' + $('.jq-mc6Need .irs-single').text().replace(',', '') + 
+			'","mc6Need":"' + common._longTermCareNeeds + 
 			'","mc6Exist":"' + common._longTermCare + 
-			'","mc7Need":"' + $('.jq-mc7Need .irs-single').text().replace(',', '') + 
+			'","mc7Need":"' + common._accidentNeeds + 
 			'","mc7Exist":"' + common._accident + 
 			'","annualIncome":"' + common._AnnualIncome + 
 			'","lifeEvent":"' + common._lifeEvent.join(',') + 

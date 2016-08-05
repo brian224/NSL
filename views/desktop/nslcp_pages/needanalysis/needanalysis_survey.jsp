@@ -47,7 +47,7 @@
 				<i class="icon-flying-bird"></i>
 				<i class="icon-flying-bird reverse"></i>
 			</div>
-			<div class="l-content quest quest-21" data-quest="21">
+			<div class="l-content quest quest-1" data-quest="1" data-gender="">
 				<div class="stage cut-1">
 					<ul class="choice-list jq-transition" data-first="true" data-select="">
 						<li class="list">
@@ -101,43 +101,43 @@
 					<ul class="kids-selector">
 						<li class="list">
 							<em class="desc">學齡前(0-3歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="2">
 								<input class="slider-picker amount-slider" data-age="baby">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">幼稚園(4-6歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="5">
 								<input class="slider-picker amount-slider" data-age="kindergarten">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">國小(7-12歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="10">
 								<input class="slider-picker amount-slider" data-age="elementary">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">國中(13-15歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="14">
 								<input class="slider-picker amount-slider" data-age="juniorHigh">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">高中(16-18歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="17">
 								<input class="slider-picker amount-slider" data-age="seniorHigh">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">大學(19-22歲)</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="20">
 								<input class="slider-picker amount-slider" data-age="collage">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">研究所以上</em>
-							<div class="range-slider">
+							<div class="range-slider jq-childList" data-age="23">
 								<input class="slider-picker amount-slider" data-age="institute">
 							</div>
 						</li>
@@ -208,27 +208,27 @@
 				<div class="stage cut-5">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="young">
+							<button class="btn-check jq-checkbox" data-value="1" data-meta="young">
 								<em class="hide-text">社會新鮮人</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="new-couple">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="new-couple">
 								<em class="hide-text">新婚一年內</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="pregnant">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="pregnant">
 								<em class="hide-text">懷孕中</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="near-retired">
+							<button class="btn-check jq-checkbox" data-value="4" data-meta="near-retired">
 								<em class="hide-text">計畫退休</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="retired">
+							<button class="btn-check jq-checkbox" data-value="5" data-meta="retired">
 								<em class="hide-text">已退休</em>
 							</button>
 						</li>
@@ -274,20 +274,20 @@
 					<ul class="expenditure-selector">
 						<li class="list">
 							<em class="desc">每月必要支出?(食、衣、住、行、育、樂、孝親)</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker expend-slider" data-values="0,0.5,0.8,1,1.3,1.5,1.8,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,15,20,25,30" data-max="30" data-range="0,0.5,1.3,3.5,7.5" data-liability="0,0">
+							<div class="range-slider is-small jq-basicPay">
+								<input class="slider-picker expend-slider" data-values="0,0.5,0.8,1,1.3,1.5,1.8,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,15,20,25,30" data-max="30" data-range="0,0.5,1.5,4,8" data-liability="0,0">
 							</div>
 						</li>
-						<li class="list">
+						<li class="list child-edu">
 							<em class="desc">所有子女到大學畢業需要多少教育費用？</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker expend-slider edu-cost" data-values="0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,50,450,950" data-liability="0,0">
+							<div class="range-slider is-small jq-liftNeed">
+								<input class="slider-picker expend-slider edu-cost" data-values="0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,50,500,1000" data-liability="0,0">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">還背著多少貸款金額 ?(房貸+車貸+學貸+其他借款)</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker expend-slider" data-values="0,10,20,30,40,50,75,100,150,200,250,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,10,100,900" data-liability="0,0">
+							<div class="range-slider is-small jq-liftNeed">
+								<input class="slider-picker expend-slider" data-values="0,10,20,30,40,50,75,100,150,200,250,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,10,150,1000" data-liability="0,0">
 							</div>
 						</li>
 					</ul>
@@ -300,14 +300,14 @@
 					<ul class="expenditure-selector">
 						<li class="list">
 							<em class="desc">你對於緊急預備金的理想數字是多少？(如疾病、意外事故費用)</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker expend-slider" data-values="0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" data-max="200" data-range="0,10,90" data-liability="0,0">
+							<div class="range-slider is-small jq-liftNeed">
+								<input class="slider-picker expend-slider" data-values="0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" data-max="200" data-range="0,10,100" data-liability="0,0">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">若不幸身故，你的壽險規劃希望讓家人維持同水平的生活幾年？</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker expend-slider" data-values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30" data-max="30" data-range="0,1,5,15" data-liability="0,0">
+							<div class="range-slider is-small jq-liftNeedYear">
+								<input class="slider-picker expend-slider" data-values="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30" data-max="30" data-range="0,1,6,16" data-liability="0,0">
 							</div>
 						</li>
 					</ul>
@@ -318,32 +318,32 @@
 				<div class="stage cut-10">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="healthcare">
+							<button class="btn-check jq-checkbox" data-value="1" data-meta="healthcare">
 								<em class="hide-text">健保房</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="double">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="double">
 								<em class="hide-text">雙人房</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="single">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="single">
 								<em class="hide-text">單人房</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="principal">
+							<button class="btn-check jq-checkbox" data-value="4" data-meta="principal">
 								<em class="hide-text">特等房</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="vip">
+							<button class="btn-check jq-checkbox" data-value="5" data-meta="vip">
 								<em class="hide-text">VIP房</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="best">
+							<button class="btn-check jq-checkbox" data-value="6" data-meta="best">
 								<em class="hide-text">頂級房</em>
 							</button>
 						</li>
@@ -359,17 +359,17 @@
 				<div class="stage cut-11">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="nhi">
+							<button class="btn-check jq-checkbox" data-value="1" data-meta="nhi">
 								<em class="hide-text">使用健保資源即可能不掏腰包最好！</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="self-provided">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="self-provided">
 								<em class="hide-text">如果是病情需要的自費項目，就花吧！</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="best">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="best">
 								<em class="hide-text">追求最好的醫療品質，即使是昂貴的自費項目也通通要！</em>
 							</button>
 						</li>
@@ -388,22 +388,22 @@
 				<div class="stage cut-12">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="no-need">
+							<button class="btn-check jq-checkbox" data-value="1" data-meta="no-need">
 								<em class="hide-text">無需收入補償，只要基本醫療費用即可</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="1y">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="1y">
 								<em class="hide-text">基本醫療費用+好好療養1年</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="3y">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="3y">
 								<em class="hide-text">基本醫療費用+好好療養3年</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="5y">
+							<button class="btn-check jq-checkbox" data-value="4" data-meta="5y">
 								<em class="hide-text">基本醫療費用+好好療養5年以上</em>
 							</button>
 						</li>
@@ -423,22 +423,22 @@
 				<div class="stage cut-13">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="3y">
+							<button class="btn-check jq-checkbox" data-value="1"  data-meta="3y">
 								<em class="hide-text">3年</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="5y">
+							<button class="btn-check jq-checkbox" data-value="2"  data-meta="5y">
 								<em class="hide-text">5年</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="7y">
+							<button class="btn-check jq-checkbox" data-value="3"  data-meta="7y">
 								<em class="hide-text">7年</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="10y">
+							<button class="btn-check jq-checkbox" data-value="4"  data-meta="10y">
 								<em class="hide-text">10年</em>
 							</button>
 						</li>
@@ -460,22 +460,22 @@
 				<div class="stage cut-14">
 					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="family">
+							<button class="btn-check jq-checkbox" data-value="1"  data-meta="family">
 								<em class="hide-text">家人自行照顧</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="day-care">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="day-care">
 								<em class="hide-text">白天聘請專人照顧</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="full-care">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="full-care">
 								<em class="hide-text">全天聘請專人照顧</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="facility">
+							<button class="btn-check jq-checkbox" data-value="4" data-meta="facility">
 								<em class="hide-text">入住療養機構</em>
 							</button>
 						</li>
@@ -501,7 +501,7 @@
 						<li class="list">
 							<em class="question">住院日額</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc1Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000" data-max="8000">
 							</div>
 							<em class="desc">依照住院期間的長短提供每日定額給付保障</em>
@@ -509,15 +509,15 @@
 						<li class="list">
 							<em class="question">實支實付</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
-								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,45,50" data-max="50">
+							<div class="range-slider jq-mc2Need is-small">
+								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100" data-max="100">
 							</div>
 							<em class="desc">保障住院期間各種醫療雜費限額</em>
 						</li>
 						<li class="list">
 							<em class="question">手術醫療</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc3Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000" data-max="6000">
 							</div>
 							<em class="desc">此金額將依據手術部位與項目乘上1-80倍，整筆給付靈活運用</em>
@@ -532,7 +532,7 @@
 						<li class="list">
 							<em class="question">重大疾病</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc4Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,150,200,250,300,350,400,450,500,550,600" data-max="600">
 							</div>
 							<em class="desc">罹患重大疾病(如心肌梗塞、腦中風、癌症…)時一次整筆領取自由運用於醫療、看護或生活的費用</em>
@@ -540,7 +540,7 @@
 						<li class="list">
 							<em class="question">癌症醫療</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc5Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,150,200,250,300,350,400,450,500,550,600" data-max="600">
 							</div>
 							<em class="desc">首次罹患癌症時的整筆給付讓你能放心治療</em>
@@ -548,7 +548,7 @@
 						<li class="list">
 							<em class="question">意外傷殘</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc7Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,50,80,100,150,200,250,300,400,500,600,700,800,1000" data-max="1000">
 							</div>
 							<em class="desc">保障各種意外造成的身體損傷費用(如 : 殘廢/重大燒燙傷/骨折…)補償短期療養期間中斷的收入與持續的生活開銷</em>
@@ -556,7 +556,7 @@
 						<li class="list">
 							<em class="question">長期照顧</em>
 							<div class="image-wrap"></div>
-							<div class="range-slider is-small">
+							<div class="range-slider jq-mc6Need is-small">
 								<input class="slider-picker medical-slider" data-values="0,5,10,15,20,25,30,35,40,50,80,100,150,200,250,300,400,500,600,700,800,1000" data-max="1000">
 							</div>
 							<em class="desc">面臨需要長期照顧狀態時可定期每年領取一筆扶助費用</em>
@@ -570,19 +570,19 @@
 					</h2>
 				</div>
 				<div class="stage cut-18">
-					<ul class="choice-list jq-transition chosen-boy">
+					<ul class="choice-list jq-transition">
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="retire">
+							<button class="btn-check jq-checkbox" data-value="2" data-meta="retire">
 								<em class="hide-text">退休基金</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="dream">
+							<button class="btn-check jq-checkbox" data-value="3" data-meta="dream">
 								<em class="hide-text">夢想基金</em>
 							</button>
 						</li>
 						<li class="list">
-							<button class="btn-check jq-checkbox" data-meta="education">
+							<button class="btn-check jq-checkbox" data-value="1" data-meta="education">
 								<em class="hide-text">子女教育基金</em>
 							</button>
 						</li>
@@ -593,44 +593,57 @@
 					</h2>
 				</div>
 				<div class="stage cut-19">
-					<div class="image-wrap" data-level=""></div>
-					<ul class="retire-selector">
+					<ul class="retire-selector jq-transition">
 						<li class="list">
-							<em class="desc"></em>
+							<em class="desc">希望幾歲退休？</em>
 							<div class="range-slider is-small">
-								<input class="slider-picker retire-slider" data-values="" data-max="" data-range="" data-liability="0,0">
+								<input class="slider-picker retire-age-slider" data-max="80" data-range="40,56,70" data-liability="40,40">
 							</div>
 						</li>
 						<li class="list">
-							<em class="desc"></em>
+							<em class="desc">退休後期望的每月基本收入？</em>
 							<div class="range-slider is-small">
-								<input class="slider-picker retire-slider" data-values="" data-max="" data-range="" data-liability="0,0">
-							</div>
-						</li>
-						<li class="list">
-							<em class="desc"></em>
-							<div class="range-slider is-small">
-								<input class="slider-picker retire-slider" data-values="" data-max="" data-range="" data-liability="0,0">
-							</div>
-						</li>
-					</ul>
-					<h2 class="quest-title hide-text">
-						<em></em>
-					</h2>
-				</div>
-				<div class="stage cut-20">
-					<div class="image-wrap" data-level=""></div>
-					<ul class="education-selector">
-						<li class="list">
-							<em class="desc">所有子女到大學畢業需要多少教育費用?</em>
-							<div class="range-slider is-small">
-								<input class="slider-picker edu-cost-slider" data-values="0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,450,950,2000" data-liability="0,0">
+								<input class="slider-picker retire-income-slider" data-values="0,0.5,0.8,1,1.3,1.5,1.8,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,15,20,25,30" data-max="30" data-range="0,0.5,2,7" data-liability="0,0">
 							</div>
 						</li>
 						<li class="list">
 							<em class="desc">目前已準備？</em>
 							<div class="range-slider is-small">
-								<input class="slider-picker edu-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="" data-liability="0,0">
+								<input class="slider-picker retire-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="0,20,100,200,500,1000" data-liability="0,0">
+							</div>
+						</li>
+					</ul>
+					<div class="image-wrap">
+						<div class="doll" data-level=""></div>
+						<div class="dream" data-level=""></div>
+						<div class="prepare" data-level=""></div>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>來來來！了解如何無痛退休！</em>
+					</h2>
+				</div>
+				<div class="stage cut-20">
+					<div class="image-wrap" data-kids="">
+						<div class="college" data-level=""></div>
+						<ul class="kids-pool">
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+							<li class="doll"></li>
+						</ul>
+						<div class="money" data-level=""></div>
+					</div>
+					<ul class="education-selector">
+						<li class="list">
+							<em class="desc">所有子女到大學畢業需要多少教育費用?</em>
+							<div class="range-slider is-small">
+								<input class="slider-picker edu-cost-slider" data-values="0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000" data-max="2000" data-range="0,500,1000" data-liability="0,0">
+							</div>
+						</li>
+						<li class="list">
+							<em class="desc">目前已準備？</em>
+							<div class="range-slider is-small">
+								<input class="slider-picker edu-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="0,20,100,200,1000" data-liability="0,0">
 							</div>
 						</li>
 					</ul>
@@ -639,9 +652,270 @@
 					</h2>
 				</div>
 				<div class="stage cut-21">
-					<button class="btn-notify jq-lightbox">
-						<em class="">進行保單健檢吧</em>
-					</button>
+					<ul class="choice-list jq-transition chosen-boy">
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="buycar" data-range="0,150,300,500,1000">
+								<em class="hide-text">購車</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="buyhouse" data-range="0,500,1000">
+								<em class="hide-text">購屋</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="study" data-range="0,50,150,300,500,750,1000">
+								<em class="hide-text">留(遊)學</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="job" data-range="0,50,500,1000">
+								<em class="hide-text">創業</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="travel" data-range="0,50,150,300,500,750,1000">
+								<em class="hide-text">環遊世界</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-meta="marry" data-range="0,50,500,750,1000">
+								<em class="hide-text">結婚基金</em>
+							</button>
+						</li>
+					</ul>
+					<div class="image-wrap" data-meta="" data-reverse="">
+						<div class="drop"></div>
+						<div class="doll"></div>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>用這桶金，槓掉一個夢想</em>
+					</h2>
+				</div>
+				<div class="stage cut-22">
+					<ul class="choice-list jq-transition chosen-boy" data-selection="">
+						<li class="list wish">
+							<em class="hide-text">你對於夢想基金的期望是?</em>
+							<div class="selectbox">
+								<select class="selection jq-dream">
+									<option value="">請選擇</option>
+									<option value="one-time">一次通通領</option>
+									<option value="per-year">分次年年領</option>
+								</select>
+							</div>
+						</li>
+						<li class="list one-time-content">
+							<div class="group b-middle">
+								<em class="prefix hide-text">預計</em>
+								<div class="selectbox is-small">
+									<select class="selection">
+										<option value=""></option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+									</select>
+								</div>
+								<em class="postfix hide-text">年後領取一筆</em>
+							</div>
+							<div class="range-slider is-small">
+								<input class="slider-picker basic-slider one-time-slider" data-values="0,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="" data-liability="0,0">
+							</div>
+						</li>
+						<li class="list">
+							<em class="desc hide-text">目前已準備？</em>
+							<div class="range-slider is-small">
+								<input class="slider-picker fund-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="0,20,60,100,200,500,1000" data-liability="0,0">
+							</div>
+						</li>
+						<li class="list per-year-content">
+							<div class="group b-middle">
+								<em class="prefix hide-text">預計</em>
+								<div class="selectbox is-small">
+									<select class="selection">
+										<option value=""></option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+									</select>
+								</div>
+								<em class="postfix hide-text">年後年年領取</em>
+							</div>
+							<div class="range-slider is-small">
+								<input class="slider-picker basic-slider per-year-slider" data-values="0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100" data-max="100" data-range="0,5,15,30,50,75,90" data-liability="0,0">
+							</div>
+						</li>
+						<li class="list">
+							<em class="desc hide-text">目前已準備？</em>
+							<div class="range-slider is-small">
+								<input class="slider-picker fund-prepare-slider" data-values="0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1200,1400,1600,1800,2000" data-max="2000" data-range="0,20,60,100,200,500,1000" data-liability="0,0">
+							</div>
+						</li>
+					</ul>
+					<div class="image-wrap" data-meta="" data-level="">
+						<div class="drop" data-level=""></div>
+						<div class="doll" data-level=""></div>
+						<div class="color" data-level=""></div>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>用這桶金，槓掉一個夢想</em>
+					</h2>
+				</div>
+				<div class="stage cut-23">
+					<ul class="choice-list jq-transition">
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-value="a" data-meta="labor">
+								<em class="hide-text">勞保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-value="b" data-meta="civil">
+								<em class="hide-text">公保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-value="c" data-meta="farmer">
+								<em class="hide-text">農保</em>
+							</button>
+						</li>
+						<li class="list">
+							<button class="btn-check jq-checkbox" data-value="d" data-meta="soldier">
+								<em class="hide-text">軍保</em>
+							</button>
+						</li>
+					</ul>
+					<div class="image-wrap" data-meta="" data-reverse="">
+						<span class="ground"></span>
+						<ul class="ani-pool">
+							<li class="doll labor"></li>
+							<li class="doll civil"></li>
+							<li class="doll farmer"></li>
+							<li class="doll soldier"></li>
+						</ul>
+					</div>
+					<h2 class="quest-title hide-text">
+						<em>最後檢查你的裝備</em>
+					</h2>
+				</div>
+				<div class="stage cut-24">
+					<div class="respond-wrap jq-transition" data-meta="">
+						<ul class="respond-area labor">
+							<li class="list b-middle">
+								<em class="money hide-text">月投保薪資：</em>
+								<div class="selectbox is-large">
+									<select class="selection">
+										<option value=""></option>
+										<option value="20008">20,008元</option>
+										<option value="20100">20,100元</option>
+										<option value="21000">21,000元</option>
+										<option value="21900">21,900元</option>
+										<option value="22800">22,800元</option>
+										<option value="24000">24,000元</option>
+										<option value="25200">25,200元</option>
+										<option value="26400">26,400元</option>
+										<option value="27600">27,600元</option>
+										<option value="28800">28,800元</option>
+										<option value="30300">30,300元</option>
+										<option value="31800">31,800元</option>
+										<option value="33300">33,300元</option>
+										<option value="34800">34,800元</option>
+										<option value="36300">36,300元</option>
+										<option value="38200">38,200元</option>
+										<option value="40100">40,100元</option>
+										<option value="42000">42,000元</option>
+										<option value="43900">43,900元</option>
+										<option value="45800">45,800元</option>
+									</select>
+								</div>
+							</li>
+							<li class="list b-middle">
+								<em class="seniority hide-text">年資</em>
+								<input type="text" class="inputbox ins-year is-small jq-length" value="" maxlength="2">
+								<em class="unit hide-text">年</em>
+							</li>
+							<li class="list b-middle jq-check-wrap">
+								<button class="btn-check jq-checkbox" data-value="1" data-meta="new">
+									<em class="hide-text">新制</em>
+								</button>
+								<button class="btn-check jq-checkbox" data-value="2" data-meta="old">
+									<em class="hide-text">舊制</em>
+								</button>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area civil">
+							<li class="list b-middle">
+								<em class="money hide-text">本俸：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large jq-length" value="" maxlength="10"></label>
+								<em class="unit hide-text">元</em>
+							</li>
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之公保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-small jq-length" value="" maxlength="4"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area farmer">
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之農保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large jq-length" value="" maxlength="4"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area soldier">
+							<li class="list b-middle">
+								<em class="money hide-text">本俸：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-large jq-length" value="" maxlength="10"></label>
+								<em class="unit hide-text">元</em>
+							</li>
+							<li class="list b-middle">
+								<em class="retired hide-text">預期可領取之軍保整筆退休金：</em>
+								<label for="" class="input-style"><input type="text" class="inputbox is-small jq-length" value="" maxlength="4"></label>
+								<em class="unit hide-text">萬元</em>
+							</li>
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<ul class="respond-area none">
+							<li class="list b-middle"><em class="add-ins hide-text">商業保險部分，也可以加入其他非南山保單</em></li>
+						</ul>
+						<button class="btn-notify jq-ins-list">
+							<em class="">進行保單健檢吧</em>
+						</button>
+					</div>
+					<div class="image-wrap" data-meta=""></div>
+					<h2 class="quest-title hide-text">
+						<em>最後檢查你的裝備</em>
+					</h2>
 				</div>
 				<div class="stage cut-ins-list">
 					<h2 class="quest-title hide-text">
@@ -746,6 +1020,9 @@
 					<h2 class="quest-title hide-text">
 						<em>總值分析中...</em>
 					</h2>
+					<form class="nanForm" name="nanForm" method="post" action="/member/needanalysis/survey/do">
+						<input type="hidden" class="totalData" name="totalData" value="">
+					</form>
 				</div>
 				<ol class="step-list complete-phase-0">
 					<li class="list">
@@ -779,7 +1056,7 @@
 				<ul class="info-list">
 					<li class="list"><a class="link" href="http://www.nanshanlife.com.tw/Public_web/declare.html">網站使用條款</a></li>
 					<li class="list"><a class="link" href="http://www.nanshanlife.com.tw/Public_web/privacy.html">隱私權保護聲明</a></li>
-					<li class="list"><small class="copyright">© 2016 Nan Shan Life Insurance Company,Ltd. All rights reserved.</small></li>
+					<li class="list"><small class="copyright">© 2017 Nan Shan Life Insurance Company,Ltd. All rights reserved.</small></li>
 				</ul>
 			</div>
 		</footer>
@@ -834,7 +1111,30 @@
 						</li>
 						<li class="list">
 							<div class="box-wrap b-col-12">
-								<input type="text" class="inputbox ins-name" placeholder="保險名稱">
+								<input type="text" class="inputbox ins-name jq-ins-name" placeholder="保險名稱">
+								<button class="btn-search jq-search">搜尋</button>
+								<ul class="similar-list jq-result">
+									<li class="result">yo</li>
+									<li class="result">yoooo</li>
+									<li class="result">yoyoyoyo</li>
+									<li class="result">yoyoyooyo</li>
+									<li class="result">y</li>
+									<li class="result">yo</li>
+									<li class="result">yoooo</li>
+									<li class="result">yoyoyoyo</li>
+									<li class="result">yoyoyooyo</li>
+									<li class="result">y</li>
+									<li class="result">yo</li>
+									<li class="result">yoooo</li>
+									<li class="result">yoyoyoyo</li>
+									<li class="result">yoyoyooyo</li>
+									<li class="result">y</li>
+									<li class="result">yo</li>
+									<li class="result">yoooo</li>
+									<li class="result">yoyoyoyo</li>
+									<li class="result">yoyoyooyo</li>
+									<li class="result">y</li>
+								</ul>
 							</div>
 						</li>
 						<li class="list">
@@ -904,7 +1204,7 @@
 								</select>
 							</div>
 							<div class="box-wrap b-col-4">
-								<input type="text" class="inputbox ins-sum" placeholder="保額">
+								<input type="text" class="inputbox ins-sum jq-length" maxlength="10" placeholder="保額">
 							</div>
 						</li>
 					</ul>
@@ -972,6 +1272,42 @@
 		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q17/ani-q17.png" alt="">
 		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q18/ani-q18-girl.png" alt="">
 		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q18/ani-q18-boy.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q19/ani-q19-doll.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q19/ani-q19-money.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q20/ani-q20-college.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q20/ani-q20-kids.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-car.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-doll.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-house-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-study-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-job-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-travel.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q21/ani-q21-marry-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-car.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-car-color.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-car-wheel.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-house2.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-house-color.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-2.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-3.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-4.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-5.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-f-6.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-1.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-2.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-3.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-4.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-5.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-study-m-6.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-travel.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-travel-flag.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-travel-flight.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-job.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-marry.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q22/ani-q22-marry-balloon.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q23/ani-q23.png" alt="">
+		<img class="b-lazy" src="${commonResourcePath}/js/needanalysis/Content/img/q23/bg-ground.png" alt="">
 	</div>
 	<form:form action="" method="post"  commandName="ajaxToken">
 	</form:form>
@@ -991,7 +1327,7 @@
 <script src="${commonResourcePath}/js/needanalysis/Scripts/plugin/jquery/jquery.min.js?JS=20160216_01"></script>
 <script src="${commonResourcePath}/js/needanalysis/Scripts/plugin/lazyload/jquery.lazyload.min.js?JS=20160216_01"></script>
 <script src="${commonResourcePath}/js/needanalysis/Scripts/plugin/ion-rangeSlider/ion.rangeSlider.min.js?JS=20160216_01"></script>
-<script src="${commonResourcePath}/js/needanalysis/Scripts/plugin/datepicker/datepicker.js?JS=20160216_01"></script>
-<script src="${commonResourcePath}/js/needanalysis/Scripts/js/factory.js?JS=20160420_01"></script>
-<script src="${commonResourcePath}/js/needanalysis/Scripts/js/common.js?JS=20160420_01"></script>
+<script src="${commonResourcePath}/js/needanalysis/Scripts/plugin/datepicker/datepicker-min.js?JS=20160216_01"></script>
+<script src="${commonResourcePath}/js/needanalysis/Scripts/js/factory-min.js?JS=20160420_01"></script>
+<script src="${commonResourcePath}/js/needanalysis/Scripts/js/common-min.js?JS=20160420_01"></script>
 </html>
