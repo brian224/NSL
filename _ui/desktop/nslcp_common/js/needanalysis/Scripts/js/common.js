@@ -44,6 +44,7 @@
 		this._traditionalLiftExist = 0; // 寿险南山
 		this._eduExpenses          = 0; // 理财/教育基金需求
 		this._retirementPension    = 0; // 理财/退休金需求
+		this._nanExistIns          = 0; // 南山現有保險理財額度
 		this._ilpExist             = 0; // 理财已有
 		this._nanshanInsArray      = ['_hospitalizationDay','_sundry','_surgery','_cancer','_majorDisease','_accident','_longTermCare'];
 		this._hospitalizationDay   = 0; // 住院額度
@@ -190,12 +191,12 @@
 
 	// 關閉 lightbox
 	index.prototype.closeBox = function(confirm) {
-		if (confirm === 'confirm') {
-			$(common._lContent + '.quest').attr({
-				'class': 'l-content quest is-ins-list',
-				'data-quest': 'ins-list'
-			});
-		}
+		// if (confirm === 'confirm') {
+		// 	$(common._lContent + '.quest').attr({
+		// 		'class': 'l-content quest is-ins-list',
+		// 		'data-quest': 'ins-list'
+		// 	});
+		// }
 
 		$(common._lLightbox).removeClass('animation-op').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 			$(this).removeClass('is-show').off('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend');
@@ -590,7 +591,7 @@
 			},
 			dataType : 'json',
 			success  : function(data) {
-				common._ilpExist += data.outputData.amount;
+				common._nanExistIns = data.outputData.amount;
 			},
 			complete : function(data) {
 			},
@@ -645,7 +646,7 @@
 			'","traditionalLiftExist":"' + (common._socialSecurityAmount + common._traditionalLiftExist + common._prepare) + 
 			'","ilpDream":"' + $('.cut-18 .is-checked').attr('data-value') + 
 			'","ilpNeed":"' + (common._eduExpenses + common._retirementPension) + 
-			'","ilpExist":"' + common._ilpExist + 
+			'","ilpExist":"' + (common._ilpExist + common._nanExistIns)
 			'","mc1Need":"' + $('.jq-mc1Need .irs-single').text().replace(',', '') + 
 			'","mc1Exist":"' + common._hospitalizationDay + 
 			'","mc2Need":"' + $('.jq-mc2Need .irs-single').text().replace(',', '') + 
@@ -1892,11 +1893,14 @@
 					if (common.finalCheck(_num, _meta, _emptyLength) === 0) {
 						// common.existingSocialLifeInsurance();
 
+						// 歸零
+						common._ilpExist = 0;
+
 						if (_cereerType === 'labor') {
 							// common.existingSocialInsurancePensionFinancialOnePayment();
 							// common.existingSocialInsurancePensionFinancialLaborPension();
 						} else if (_cereerType !== 'none') {
-							common._ilpExist += $('.respond-area.' + _cereerType + ' .retired').next().find('.inputbox').val().replace(',', '') * 10000;
+							common._ilpExist = $('.respond-area.' + _cereerType + ' .retired').next().find('.inputbox').val().replace(',', '') * 10000;
 						}
 
 						$quest.attr({
@@ -1961,6 +1965,10 @@
 					_num = 25;
 				} else if (_num === 20) {
 					_direct -= 1;
+
+					$('.expend-slider.edu-cost').data('ionRangeSlider').update({
+						from: common._eduCost
+					});
 				} else if (_num === 21) {
 					_direct -= 2;
 				} else if (_num === 23) {
@@ -1970,10 +1978,6 @@
 					} else if (common._fundSelection === 2) {
 						// 子女教育
 						_direct -= 2;
-
-						$('.expend-slider.edu-cost').data('ionRangeSlider').update({
-							from: common._eduCost
-						});
 					}
 				}
 
@@ -2083,6 +2087,13 @@
 			});
 
 			$('.cut-22 ' + common._imageWrap + ', .cut-22 ' + common._imageWrap + ' .drop, .cut-22 ' + common._imageWrap + ' .doll, .cut-22 ' + common._imageWrap + ' .color').attr('data-level', '');
+		});
+
+		$('.jq-ins-list').on('click', function(){
+			$(common._lContent + '.quest').attr({
+				'class': 'l-content quest is-ins-list',
+				'data-quest': 'ins-list'
+			});
 		});
 
 		// 開啟相似結果清單
