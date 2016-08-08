@@ -1438,6 +1438,7 @@
 @for $i from 1 through 24 {
 	.quest-#{$i} .cut-#{$i} {
 		display: block;
+		opacity: 1;
 		z-index: 1;
 	}
 }

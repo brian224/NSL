@@ -2024,6 +2024,11 @@
 				}
 			}
 
+			$('.quest-title').removeClass('quest-title').delay(0).queue(function(){
+				$(this).addClass('quest-title');
+				$('.quest-title').dequeue();
+			});
+
 			// 療養金的動畫歸零
 			if ($(common._lContent).hasClass('quest-12') && $('.cut-12 ' + common._imageWrap + ' .function').attr('data-selection') !== '') {
 				$('.cut-12 ' + common._imageWrap).removeClass('finish-ani');
