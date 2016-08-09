@@ -750,6 +750,13 @@
 
 							for (var i = 0; i < data.from; i++) {
 								$('.kids-pool .' + _class + ' *').eq(i).addClass('is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+
+								if (projects.browsers() === 'IE 11' || projects.browsers() === 'MSIE 10') {
+									$('.kids-pool .' + _class + ' *').eq(i).removeClass('doll').delay(0).queue(function(){
+										$(this).addClass('doll');
+										$('.kids-pool .' + _class + ' *').eq(i).dequeue();
+									});
+								}
 							}
 
 							for (var j = $('.kids-pool .' + _class + ' *').length; j > data.from; j--) {
@@ -2024,10 +2031,12 @@
 				}
 			}
 
-			$('.quest-title').removeClass('quest-title').delay(0).queue(function(){
-				$(this).addClass('quest-title');
-				$('.quest-title').dequeue();
-			});
+			if (projects.browsers() === 'IE 11' || projects.browsers() === 'MSIE 10') {
+				$('.quest-title').removeClass('quest-title').delay(0).queue(function(){
+					$(this).addClass('quest-title');
+					$('.quest-title').dequeue();
+				});
+			}
 
 			// 療養金的動畫歸零
 			if ($(common._lContent).hasClass('quest-12') && $('.cut-12 ' + common._imageWrap + ' .function').attr('data-selection') !== '') {
