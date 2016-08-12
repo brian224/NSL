@@ -444,7 +444,7 @@
 			that     = $(this),
 			selector = this.selector || '',
 			run      = function(e) {
-				var what = $(this).blur(),
+				var what = $(this).focus(),
 					idx  = index,
 					relType,
 					relVal;
