@@ -25,6 +25,39 @@
 	font-weight: bold;
 	letter-spacing: 1px;
 	line-height: 34px;
+
+	.sugarfun-datepicker-frame {
+		text-align: left;
+
+		&:first-child {
+			text-align: right;
+		}
+	}
+
+	select.sugarfun-datepicker-select {
+		padding: 0 0 0 10px;
+		background: #4a7cad;
+		display: inline-block;
+		width: auto;
+		height: 34px;
+		border: 0;
+		cursor: pointer;
+		color: #fff;
+		font-size: 15px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		line-height: 34px;
+		@include appearance(menulist);
+
+		&::-ms-expand {
+			display : block;
+		}
+
+		option {
+			background: #fff;
+			color: #4a7cad;
+		}
+	}
 }
 
 .sugarfun-datepicker-arrow {
