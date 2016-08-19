@@ -78,7 +78,14 @@
 	index.prototype.checkKid = function(className) {
 		if (!$(className).hasClass('is-checked')) {
 			if ($('.dog').siblings().find('.is-show').length === 0) {
-				$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+				if (projects.browsers() === 'IE 11' || projects.browsers() === 'MSIE 10') {
+					$('.dog .doll').removeClass('doll').delay(0).queue(function(){
+						$(this).attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						$('.dog .doll').dequeue();
+					});
+				} else {
+					$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+				}
 			} else {
 				$('input[data-age]').each(function(){
 					$(this).data('ionRangeSlider').reset();
@@ -89,7 +96,14 @@
 					$(this).removeClass('ani-reverse is-show');
 
 					if ($('.ani-reverse.is-show').length === 0) {
-						$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						if (projects.browsers() === 'IE 11' || projects.browsers() === 'MSIE 10') {
+							$('.dog .doll').removeClass('doll').delay(0).queue(function(){
+								$(this).attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+								$('.dog .doll').dequeue();
+							});
+						} else {
+							$('.dog .doll').attr('class', 'doll is-show').off('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend');
+						}
 					}
 				});
 			}
